@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: wall_dirt_crypt_0
+  m_Name: tileFloor
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1876968180, guid: c4944ec78298d8143b56e6a6fc5e7886, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb04bfefe4857c84a9a27fcba9c0e165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
