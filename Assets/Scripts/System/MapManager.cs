@@ -4,11 +4,28 @@ using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
 {
-    public List<TileData> tiles;
+    [SerializeField] private AbstractMapGen mapGen;
+    [SerializeField] private TilemapVisualizer tilemapVisualizer;
+    public HashSet<Vector2Int> floorPositions;
+    public HashSet<Vector2Int> wallPositions;
+    public Dictionary<Vector2Int, Tile> tileDict;
+
+    private void Start()
+    {
+        mapGen.GenerateDungeon(out floorPositions, out wallPositions);
+        UpdateMap();
+
+        
+    }
+
+    private void UpdateMap()
+    {
+        tilemapVisualizer.PaintFloorTiles(floorPositions);
+        tilemapVisualizer.PaintWallTile(wallPositions);
+    }
 }
 
-public class TileData
+public class Tile
 {
     public BaseUnit occupiedUnit;
-
 }

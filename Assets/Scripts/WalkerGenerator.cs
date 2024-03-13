@@ -15,8 +15,8 @@ public class WalkerGenerator : MonoBehaviour
     public TileType[,] tilemapHandler;
     public List<WalkerObject> walkers;
     public Tilemap tilemap;
-    public Tile floor;
-    public Tile wall;
+    public UnityEngine.Tilemaps.Tile floor;
+    public UnityEngine.Tilemaps.Tile wall;
 
     public int mapWidth = 30;
     public int mapHeight = 30;
