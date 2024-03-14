@@ -10,12 +10,10 @@ public class MapManager : Singleton<MapManager>
     public HashSet<Vector2Int> wallPositions;
     public Dictionary<Vector2Int, Tile> tileDict;
 
-    private void Start()
+    public void GenerateMap()
     {
         mapGen.GenerateDungeon(out floorPositions, out wallPositions);
         UpdateMap();
-
-        
     }
 
     private void UpdateMap()
