@@ -28,6 +28,11 @@ public class Inventory : MonoBehaviour
             meats[0].count++;
         }
     }
+
+    public Meat[] GetMeats()
+    {
+        return meats;
+    }
 }
 
 [Serializable]
