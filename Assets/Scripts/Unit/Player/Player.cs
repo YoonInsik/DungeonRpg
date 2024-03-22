@@ -1,34 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : BaseUnit
 {
-    void Update()
+    public Vector2 newPos;
+    public Rigidbody2D rigid;
+    public float speed = 3.0f;
+    private Inventory inventory;
+
+    private void Start()
     {
-        if ((Input.GetKeyDown(KeyCode.LeftArrow)) ||
-            (Input.GetKeyDown(KeyCode.RightArrow)))
+        inventory = Inventory.instance;
+    }
+    private void Update()
+    {
+        newPos.x = Input.GetAxisRaw("Horizontal");
+        newPos.y = Input.GetAxisRaw("Vertical");
+    }
+    void FixedUpdate()
+    {
+        rigid.MovePosition((newPos.normalized * speed * Time.fixedDeltaTime) + rigid.position);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Meat"))
         {
-            var horizontalValue = Input.GetAxisRaw("Horizontal");
-            //var verticalValue = Input.GetAxisRaw("Vertical");
+            Debug.Log("gg");
+            MeatItem meat = collision.gameObject.GetComponent<ItemImplement>().item;
 
-            Vector3 newPos = transform.position;
-            newPos.x += horizontalValue;
-            //newPos.y += verticalValue;
+            if (meat != null)
+            {
+                inventory.AddMeat(meat);
+                Debug.Log(meat.name);
+            }
 
-            transform.position = newPos;
-        }
-        else if ((Input.GetKeyDown(KeyCode.UpArrow)) ||
-                 (Input.GetKeyDown(KeyCode.DownArrow)))
-        {
-            //var horizontalValue = Input.GetAxisRaw("Horizontal");
-            var verticalValue = Input.GetAxisRaw("Vertical");
-
-            Vector3 newPos = transform.position;
-            //newPos.x += horizontalValue;
-            newPos.y += verticalValue;
-
-            transform.position = newPos;
+            Destroy(collision.gameObject);
         }
     }
 }
