@@ -7,8 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     void Start()
     {
-        MapManager.Instance.GenerateMap();
-        UnitManager.Instance.SpawnPlayer(MapManager.Instance.floorPositions.First());
+        UnitManager.Instance.SpawnPlayer(Vector2Int.zero);
     }
 
 }

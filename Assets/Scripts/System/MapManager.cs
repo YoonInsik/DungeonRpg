@@ -1,29 +1,54 @@
+using AYellowpaper.SerializedCollections;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
 {
-    [SerializeField] private AbstractMapGen mapGen;
-    [SerializeField] private TilemapVisualizer tilemapVisualizer;
-    public HashSet<Vector2Int> floorPositions;
-    public HashSet<Vector2Int> wallPositions;
-    public Dictionary<Vector2Int, Tile> tileDict;
+    [SerializeField] private SerializedDictionary<Vector2Int, ChunkData> chunkDataDict;
+    [SerializeField] private Transform chunkContainer;
+    [SerializeField] private Chunk chunkPrefab;
 
-    public void GenerateMap()
+    public TilemapVisualizer tilemapVisualizer;
+
+    public const int CHUNKSIZE = 20;
+    
+    public List<Chunk> chunkList;
+
+    public void Start()
     {
-        mapGen.GenerateDungeon(out floorPositions, out wallPositions);
-        UpdateMap();
+        foreach (var data in chunkDataDict)
+        {
+            RandomChunkData(data.Value);
+        }
+        SpawnChunkPlayerAround();
     }
 
-    private void UpdateMap()
+    public void SpawnChunkPlayerAround()
     {
-        tilemapVisualizer.PaintFloorTiles(floorPositions);
-        tilemapVisualizer.PaintWallTile(wallPositions);
-    }
-}
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                var newChunk = Instantiate(chunkPrefab, chunkContainer);
+                newChunk.UpdateChunk(chunkDataDict[new Vector2Int(i, j)]);
+                newChunk.transform.position = new Vector3(-CHUNKSIZE / 2, -CHUNKSIZE / 2, 0) + new Vector3(CHUNKSIZE * i, CHUNKSIZE * j);
 
-public class Tile
-{
-    public BaseUnit occupiedUnit;
+                chunkList.Add(newChunk);
+            }
+        }
+    }
+
+    public void RandomChunkData(ChunkData _chunkData)
+    {
+        int a = Random.Range(1, 3);
+
+        for (int i = 0; i < CHUNKSIZE; i++)
+        {
+            for (int j = 0; j < CHUNKSIZE; j++)
+            {
+                _chunkData.tileDatas[i, j] = a;
+            }
+        }
+    }
 }

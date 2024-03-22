@@ -14,7 +14,7 @@ public class RoomMapGen : BasicMapGen
     [SerializeField]
     private bool randomWalkRooms = false;
 
-    protected override void RunProceduralGeneration(out HashSet<Vector2Int> floorPositions, out HashSet<Vector2Int> wallPositions)
+/*    protected override void RunProceduralGeneration(out HashSet<Vector2Int> floorPositions, out HashSet<Vector2Int> wallPositions)
     {
         List<BoundsInt> roomList = CreateRooms();
 
@@ -36,15 +36,15 @@ public class RoomMapGen : BasicMapGen
         HashSet<Vector2Int> corridors = ConnectRooms(roomCenters);
         floorPositions.UnionWith(corridors);
 
-        WallGenerator.CreateWalls(floorPositions, out wallPositions);
+        //WallGenerator.CreateWalls(floorPositions, out wallPositions);
     }
-
-    private List<BoundsInt> CreateRooms()
+*/
+/*    private List<BoundsInt> CreateRooms()
     {
         return ProceduralGenerationAlgorithms.BinarySpacePartitioning(new BoundsInt((Vector3Int)startPosition, new Vector3Int(dungeonWidth, dungeonHeight, 0)), minRoomWidth, minRoomHeight);
-    }
+    }*/
 
-    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
+/*    private HashSet<Vector2Int> CreateRoomsRandomly(List<BoundsInt> roomsList)
     {
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
         for (int i = 0; i < roomsList.Count; i++)
@@ -61,7 +61,7 @@ public class RoomMapGen : BasicMapGen
             }
         }
         return floor;
-    }
+    }*/
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
     {
