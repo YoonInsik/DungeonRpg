@@ -8,16 +8,25 @@ public class Player : BaseUnit
     public Vector2 newPos;
     public Rigidbody2D rigid;
     public float speed = 3.0f;
-    private Inventory inventory;
 
+    private Inventory inventory;
+    public GameObject CookingUI;
+    public bool UIopen;
     private void Start()
     {
         inventory = Inventory.instance;
+        rigid = gameObject.GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CookingUI.SetActive(!UIopen);
+            UIopen = !UIopen;
+        }
     }
     void FixedUpdate()
     {
