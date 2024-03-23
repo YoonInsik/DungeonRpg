@@ -46,61 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61d273adca39e747b070cd10cbe6a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkDataDict:
-    _serializedList:
-    - Key: {x: -2, y: -2}
-      Value: {fileID: 11400000, guid: e0cf01623b5748f43b357405eab72944, type: 2}
-    - Key: {x: -2, y: -1}
-      Value: {fileID: 11400000, guid: d398ff06600a8294f89608d08c4bf4af, type: 2}
-    - Key: {x: -2, y: 0}
-      Value: {fileID: 11400000, guid: 91a4a9fc1d2a08741a09394bc9b169ec, type: 2}
-    - Key: {x: -2, y: 1}
-      Value: {fileID: 11400000, guid: dc80ab02a43f33842b70023ff8dd79d4, type: 2}
-    - Key: {x: -2, y: 2}
-      Value: {fileID: 11400000, guid: fcd0612b514e4c54ea92c791535df606, type: 2}
-    - Key: {x: -1, y: -2}
-      Value: {fileID: 11400000, guid: 11220584bb0ec79449ef90265dae2341, type: 2}
-    - Key: {x: -1, y: -1}
-      Value: {fileID: 11400000, guid: 3e29043431482b04bbdd8762a0ed6c24, type: 2}
-    - Key: {x: -1, y: 0}
-      Value: {fileID: 11400000, guid: 5ac61352e63849541b1280d4f50eb5a1, type: 2}
-    - Key: {x: -1, y: 1}
-      Value: {fileID: 11400000, guid: 8f83544812984e5458722007db646a3d, type: 2}
-    - Key: {x: -1, y: 2}
-      Value: {fileID: 11400000, guid: 2160fdb3fdf8ebf49a710df348782417, type: 2}
-    - Key: {x: 0, y: -2}
-      Value: {fileID: 11400000, guid: 0c84495afde907b4ba2d5587abd328a4, type: 2}
-    - Key: {x: 0, y: -1}
-      Value: {fileID: 11400000, guid: 4cec2e296701d87469fe614ccd324ccb, type: 2}
-    - Key: {x: 0, y: 0}
-      Value: {fileID: 11400000, guid: bb029b94f29a0094a9d1a19945907989, type: 2}
-    - Key: {x: 0, y: 1}
-      Value: {fileID: 11400000, guid: fd17d2088dd2da04cad74c20042df446, type: 2}
-    - Key: {x: 0, y: 2}
-      Value: {fileID: 11400000, guid: c2d5a766edc3c954ebf8ae0051bc8dd7, type: 2}
-    - Key: {x: 1, y: -2}
-      Value: {fileID: 11400000, guid: a901ba673ba5f4d4e8a31c9da09b7f03, type: 2}
-    - Key: {x: 1, y: -1}
-      Value: {fileID: 11400000, guid: cafb45300a12bfe4b97dc63f543366a0, type: 2}
-    - Key: {x: 1, y: 0}
-      Value: {fileID: 11400000, guid: 77ee805645c2d0341b7afc0f6319e726, type: 2}
-    - Key: {x: 1, y: 1}
-      Value: {fileID: 11400000, guid: d2fa2f84bf140844bbf6b8c865ec6382, type: 2}
-    - Key: {x: 1, y: 2}
-      Value: {fileID: 11400000, guid: 32c755407011ddc45a0ddd5da58dac84, type: 2}
-    - Key: {x: 2, y: -2}
-      Value: {fileID: 11400000, guid: fe1cc45c85eea064b9185faf11c07146, type: 2}
-    - Key: {x: 2, y: -1}
-      Value: {fileID: 11400000, guid: 72c670540a4259440afc8bb3084c8ff3, type: 2}
-    - Key: {x: 2, y: 0}
-      Value: {fileID: 11400000, guid: 61219d0af3cc1a34fa26ee1c2ecefc92, type: 2}
-    - Key: {x: 2, y: 1}
-      Value: {fileID: 11400000, guid: e74a6181017a10f4088f44cdc097adef, type: 2}
-    - Key: {x: 2, y: 2}
-      Value: {fileID: 11400000, guid: 433103dbb392dae44bfdc7dacdb00022, type: 2}
+  mapData: {fileID: 11400000, guid: ac8c624dd4b65aa4188c241916fc4524, type: 2}
   chunkContainer: {fileID: 1094683525639724797}
   chunkPrefab: {fileID: 296796949759146247, guid: ea6d77e04a752cd48b722c6f65bcca4c, type: 3}
   tilemapVisualizer: {fileID: 4837462556706430154}
+  beforeChunk: {x: 0, y: 0}
   chunkList: []
 --- !u!114 &4837462556706430154
 MonoBehaviour:

@@ -5,21 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class Chunk : MonoBehaviour
 {
-    [SerializeField] private ChunkData chunkData;
     [SerializeField] private Tilemap floorTilemap;
 
-    public void UpdateChunk(ChunkData _chunkData)
-    {
-        SetChunkData(_chunkData);
-        DrawChunk();
-    }
-
-    private void SetChunkData(ChunkData _chunkData)
-    {
-        chunkData = _chunkData;
-    }
-
-    private void DrawChunk()
+    public void DrawChunk(ChunkData chunkData)
     {
         MapManager.Instance.tilemapVisualizer.PaintTiles(chunkData, floorTilemap);
     }

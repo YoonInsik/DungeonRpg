@@ -15,7 +15,7 @@ public class TilemapVisualizer : MonoBehaviour
         {
             for (int y = 0; y < MapManager.CHUNKSIZE; y++)
             {
-                PaintSingleTile(tilemap, tileDict[chunkData.tileDatas[x, y]], new Vector2Int(x, y));
+                PaintSingleTileLocal(tilemap, tileDict[chunkData.data[new Vector2Int(x, y)]], new Vector2Int(x - MapManager.HALFCHUNKSIZE, y - MapManager.HALFCHUNKSIZE));
             }
         }
     }
@@ -23,6 +23,12 @@ public class TilemapVisualizer : MonoBehaviour
     public void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
     {
         var tilePosition = tilemap.WorldToCell((Vector3Int)position);
+        tilemap.SetTile(tilePosition, tile);
+    }
+    
+    public void PaintSingleTileLocal(Tilemap tilemap, TileBase tile, Vector2Int position)
+    {
+        var tilePosition = tilemap.LocalToCell((Vector3Int)position);
         tilemap.SetTile(tilePosition, tile);
     }
 }
