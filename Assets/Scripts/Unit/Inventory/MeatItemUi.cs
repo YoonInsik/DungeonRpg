@@ -5,16 +5,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MeatUI_Implement : MonoBehaviour
+public class MeatItemUI : Singleton<MeatItemUI> 
 {
     private Inventory instance;
     public GameObject[] panels;
     private Meat[] meats;
     private int childCount;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        instance = Inventory.instance;
+        instance = Inventory.Instance;
         meats = instance.GetMeats();
         childCount = gameObject.transform.childCount;
 

@@ -4,16 +4,16 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CookingItemUI : MonoBehaviour
+public class CookingItemUI : Singleton<CookingItemUI>
 {
     private Inventory inventory;
     private Image item;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        inventory = Inventory.instance;
+        inventory = Inventory.Instance;
     }
-
+ 
     public void AddCookingItemUI()
     {
         Cooking[] cookingItem = inventory.getCookingItem();

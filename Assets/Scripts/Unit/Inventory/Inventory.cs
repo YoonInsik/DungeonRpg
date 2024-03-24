@@ -5,23 +5,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class Inventory : MonoBehaviour
+public class Inventory : Singleton<Inventory>
 {
+    //현재 갖고있는 요리아이템 저장
     public Cooking[] cooking;
     [SerializeField] Meat[] meats;
-    //[SerializeField] private List<Item> items;
+    //요리로 생성될 아이템 저장
     public List<CookingItem> cookingList;
 
-    public static Inventory instance;
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(instance);
-    }
     private void Start()
     {
-        cooking = new Cooking[5];
-        //items = new List<Item>();
+         cooking = new Cooking[5];
     }
 
     public void AddMeat(MeatItem meat)
@@ -70,12 +64,6 @@ public struct Meat
 {
     public MeatItem meats;
     public int count;
-
-    //public Meat(MeatItem meatItem, int count)
-    //{
-    //    this.meats = meatItem;
-    //    this.count = count;
-    //}
 }
 
 [Serializable]
@@ -83,10 +71,4 @@ public struct Cooking
 {
     public CookingItem cooking;
     public int count;
-
-    public Cooking(CookingItem cookingItem, int count)
-    {
-        this.cooking = cookingItem;
-        this.count = count;
-    }
 }

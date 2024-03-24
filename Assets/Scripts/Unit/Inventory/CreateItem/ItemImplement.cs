@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemImplement: MonoBehaviour
+public class ItemImplement : MonoBehaviour
 {
     public SpriteRenderer image;
     public MeatItem item;

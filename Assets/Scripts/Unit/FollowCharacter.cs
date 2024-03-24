@@ -8,7 +8,10 @@ public class FollowCharacter : MonoBehaviour
     public float speed = 1.0f; //0.01f
     private Vector3 pos;
 
-
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     // Update is called once per frame
     void LateUpdate()
     {

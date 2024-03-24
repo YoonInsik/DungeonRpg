@@ -10,12 +10,13 @@ public class Player : BaseUnit
     public float speed = 3.0f;
 
     private Inventory inventory;
-    public GameObject CookingUI;
+    private GameObject furnaceUI;
     public bool UIopen;
     private void Start()
     {
-        inventory = Inventory.instance;
+        inventory = Inventory.Instance;
         rigid = gameObject.GetComponent<Rigidbody2D>();
+        furnaceUI = FurnaceItemUI.Instance.gameObject;
     }
     private void Update()
     {
@@ -24,7 +25,7 @@ public class Player : BaseUnit
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            CookingUI.SetActive(!UIopen);
+            furnaceUI.SetActive(!UIopen);
             UIopen = !UIopen;
         }
     }

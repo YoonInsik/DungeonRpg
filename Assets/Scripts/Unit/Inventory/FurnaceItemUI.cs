@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookingItems : MonoBehaviour
+public class FurnaceItemUI : Singleton<FurnaceItemUI>
 {
     private Inventory inventory;
     private Meat[] meats;
 
     public CookingItemUI CookingItemUI;
     // Start is called before the first frame update
-    void Start()
-    { 
+    private void Start()
+    {
         gameObject.SetActive(false);
-        inventory = Inventory.instance;
+        inventory = Inventory.Instance;
         meats = inventory.GetMeats();
     }
 

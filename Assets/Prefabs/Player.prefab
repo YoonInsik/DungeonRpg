@@ -103,6 +103,8 @@ MonoBehaviour:
   newPos: {x: 0, y: 0}
   rigid: {fileID: 283592353888735667}
   speed: 3
+  CookingUI: {fileID: 0}
+  UIopen: 0
 --- !u!61 &3287185988363618621
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,7 +134,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.16666669}
