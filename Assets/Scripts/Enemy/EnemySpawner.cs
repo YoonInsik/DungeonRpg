@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace SHS
 {
     public class EnemySpawner : MonoBehaviour
     {
+        public static EnemySpawner Instance;
+
         //필요변수
         Transform player_trns;
+
+        private void Awake()
+        {
+            Instance = this;
+
+            Initialize(20);
+        }
+
 
         // Start is called before the first frame update
         void Start()
@@ -28,11 +39,60 @@ namespace SHS
 
         }
 
+        #region 풀링
+
+        [Header("풀링")]
+
+        Queue<Enemy> EnemyQueue = new Queue<Enemy>();
+
+        private void Initialize(int initCount)
+        {
+            for (int i = 0; i < initCount; i++)
+            {
+                EnemyQueue.Enqueue(CreateNewEnemy());
+            }
+        }
+
+        Enemy CreateNewEnemy()
+        {
+            var newObj = Instantiate(Enemy_prefab).GetComponent<Enemy>();
+            newObj.gameObject.SetActive(false);
+            newObj.transform.SetParent(transform);
+            return newObj;
+        }
+
+        public static Enemy GetEnemy()
+        {
+            if (Instance.EnemyQueue.Count > 0)
+            {
+                var obj = Instance.EnemyQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                return obj;
+            }
+            else
+            {
+                var newObj = Instance.CreateNewEnemy();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                return newObj;
+            }
+        }
+
+        public static void ReturnObject(Enemy _enemy)
+        {
+            _enemy.gameObject.SetActive(false);
+            _enemy.transform.SetParent(Instance.transform);
+            Instance.EnemyQueue.Enqueue(_enemy);
+        }
+
+        #endregion
+
         #region 쿨타임 생성
 
 
         [Header("쿨타임 생성")]
-        [SerializeField] GameObject[] Enemy_prefab;
+        [SerializeField] GameObject Enemy_prefab;
         [SerializeField] float spawn_cooltime_set;
         [SerializeField] float spawn_radius = 25f;
 
@@ -55,7 +115,7 @@ namespace SHS
                 //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
                 Vector2 randomPosition = Random.insideUnitCircle;
                 Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
-                Instantiate(Enemy_prefab[Random.Range(0, Enemy_prefab.Length)], player_trns.position + ranpos_v3 * spawn_radius, Quaternion.identity);
+                Instantiate(GetEnemy(), player_trns.position + ranpos_v3 * spawn_radius, Quaternion.identity);
             }
         }
 
