@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.Pool;
+using SHS;
 
 public class Bullet : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Bullet : MonoBehaviour
 
     public Vector3 direction;
     float speed = 10.0f;
+    float damage = 1.0f;
 
     private IObjectPool<Bullet> managedPool;
 
@@ -41,6 +43,14 @@ public class Bullet : MonoBehaviour
         managedPool.Release(this);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false);
+            collision.GetComponent<Enemy>().Damaged(damage);
+        }
+    }
 
 
 }

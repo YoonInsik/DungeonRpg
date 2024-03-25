@@ -5040,7 +5040,7 @@ GameObject:
   - component: {fileID: 7684091569535271469}
   m_Layer: 31
   m_Name: Enemy_DemoModel_Follower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
