@@ -12,6 +12,12 @@ public class Player : BaseUnit
     private Inventory inventory;
     private GameObject furnaceUI;
     public bool UIopen;
+    public Scanner scanner;
+
+    public void Awake()
+    {
+        scanner = GetComponent<Scanner>();
+    }
     private void Start()
     {
         inventory = Inventory.Instance;
