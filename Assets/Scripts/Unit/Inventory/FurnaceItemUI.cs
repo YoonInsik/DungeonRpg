@@ -7,7 +7,7 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
     private Inventory inventory;
     private Meat[] meats;
 
-    public CookingItemUI CookingItemUI;
+    [SerializeField] private CookingItemUI CookingItemUI;
     // Start is called before the first frame update
     private void Start()
     {

@@ -8,14 +8,15 @@ using static UnityEditor.Progress;
 public class Inventory : Singleton<Inventory>
 {
     //현재 갖고있는 요리아이템 저장
-    public Cooking[] cooking;
-    [SerializeField] Meat[] meats;
+    [SerializeField] private Cooking[] cooking;
+    [SerializeField] private Meat[] meats;
     //요리로 생성될 아이템 저장
-    public List<CookingItem> cookingList;
-
+    [SerializeField] private List<CookingItem> cookingList;
+    private CookingStatIncrease statUp;
     private void Start()
     {
-         cooking = new Cooking[5];
+        cooking = new Cooking[5];
+        statUp = FindAnyObjectByType<CookingStatIncrease>();
     }
 
     public void AddMeat(MeatItem meat)
@@ -36,19 +37,21 @@ public class Inventory : Singleton<Inventory>
                 Debug.Log("비었다");
                 cooking[i].cooking = cookingList[number];
                 cooking[i].count++;
+                statUp.StatIncrease(cookingList[number]);
                 return;
             }
             else if (cooking[i].cooking.itemName == cookingList[number].itemName)
             {
                 Debug.Log("same name");
                 cooking[i].count++;
+                statUp.StatIncrease(cookingList[number]);
                 return;
             }
         }
         Debug.Log("더 이상 아이템을 추가할 수 없습니다.");
     }
 
-    public Cooking[] getCookingItem()
+    public Cooking[] GetCookingItem()
     {
         return cooking;
     }

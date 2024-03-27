@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MeatItemUI : Singleton<MeatItemUI> 
 {
     private Inventory instance;
-    public GameObject[] panels;
+    [SerializeField] private GameObject[] panels;
     private Meat[] meats;
     private int childCount;
     // Start is called before the first frame update

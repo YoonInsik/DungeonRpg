@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6848612850421539637}
   - component: {fileID: 1771934684173187624}
   - component: {fileID: 77546499729760189}
+  - component: {fileID: -56858625559645732}
   - component: {fileID: 3287185988363618621}
   - component: {fileID: 283592353888735667}
   m_Layer: 0
@@ -101,10 +102,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
   newPos: {x: 0, y: 0}
-  rigid: {fileID: 283592353888735667}
   speed: 3
-  CookingUI: {fileID: 0}
-  UIopen: 0
+  scanner: {fileID: 0}
+--- !u!114 &-56858625559645732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425863989313729109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6235b653972a834c87ce2d57ea9ef19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &3287185988363618621
 BoxCollider2D:
   m_ObjectHideFlags: 0

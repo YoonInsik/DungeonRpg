@@ -6,12 +6,12 @@ using UnityEngine;
 public class Player : BaseUnit
 {
     public Vector2 newPos;
-    public Rigidbody2D rigid;
+    private Rigidbody2D rigid;
     public float speed = 3.0f;
 
     private Inventory inventory;
     private GameObject furnaceUI;
-    public bool UIopen;
+    private bool UIopen;
     public Scanner scanner;
 
     public void Awake()
@@ -19,9 +19,9 @@ public class Player : BaseUnit
         scanner = GetComponent<Scanner>();
     }
     private void Start()
-    {
+    { 
         inventory = Inventory.Instance;
-        rigid = gameObject.GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>();
         furnaceUI = FurnaceItemUI.Instance.gameObject;
     }
     private void Update()
@@ -44,7 +44,6 @@ public class Player : BaseUnit
     {
         if (collision.CompareTag("Meat"))
         {
-            Debug.Log("gg");
             MeatItem meat = collision.gameObject.GetComponent<ItemImplement>().item;
 
             if (meat != null)

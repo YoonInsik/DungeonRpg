@@ -16,7 +16,7 @@ public class CookingItemUI : Singleton<CookingItemUI>
  
     public void AddCookingItemUI()
     {
-        Cooking[] cookingItem = inventory.getCookingItem();
+        Cooking[] cookingItem = inventory.GetCookingItem();
         for (int i = 0; i < cookingItem.Length; i++)
         {
             Image image = gameObject.transform.GetChild(i).GetChild(0).GetComponent<Image>();
