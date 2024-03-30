@@ -12,11 +12,11 @@ public class Inventory : Singleton<Inventory>
     [SerializeField] private Meat[] meats;
     //요리로 생성될 아이템 저장
     [SerializeField] private List<CookingItem> cookingList;
-    private CookingStatIncrease statUp;
+    public CookingStatIncrease statUp;
     private void Start()
     {
         cooking = new Cooking[5];
-        statUp = FindAnyObjectByType<CookingStatIncrease>();
+        statUp = GameObject.FindWithTag("Player").GetComponent<CookingStatIncrease>();
     }
 
     public void AddMeat(MeatItem meat)

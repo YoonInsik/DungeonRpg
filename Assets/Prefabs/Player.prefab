@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1354940770, guid: e9493916c3875af4283f430abf0590be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
   newPos: {x: 0, y: 0}
   speed: 3
+  fullness: 0
   scanner: {fileID: 0}
 --- !u!114 &-56858625559645732
 MonoBehaviour:
