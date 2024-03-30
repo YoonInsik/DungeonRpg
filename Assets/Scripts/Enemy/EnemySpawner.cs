@@ -43,7 +43,7 @@ namespace SHS
 
         [Header("풀링")]
 
-        Queue<Enemy> EnemyQueue = new Queue<Enemy>();
+        [SerializeField] Queue<Enemy> EnemyQueue = new Queue<Enemy>();
 
         private void Initialize(int initCount)
         {
@@ -115,7 +115,9 @@ namespace SHS
                 //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
                 Vector2 randomPosition = Random.insideUnitCircle;
                 Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
-                Instantiate(GetEnemy(), player_trns.position + ranpos_v3 * spawn_radius, Quaternion.identity);
+                GameObject e = GetEnemy().gameObject;
+                e.transform.position = player_trns.position + ranpos_v3 * spawn_radius;
+
             }
         }
 

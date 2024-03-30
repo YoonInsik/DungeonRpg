@@ -53,6 +53,9 @@ MonoBehaviour:
   now_hp: 0
   ptc_damaged: {fileID: 6044909426666564601}
   ptc_dead: {fileID: 893268658169332396}
+  damagescale: {fileID: 6905643228759072850, guid: 0aee350238de4af47886380e6e13438a, type: 3}
+  meat_num: 1
+  meatdrop_rate: 50
 --- !u!114 &5519030663338211113
 MonoBehaviour:
   m_ObjectHideFlags: 0
