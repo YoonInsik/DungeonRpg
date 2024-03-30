@@ -35,6 +35,7 @@ namespace SHS
         [SerializeField] ParticleSystem ptc_dead;
         [SerializeField] GameObject damagescale;
 
+
         public void Damaged(float _damage)
         {
             now_hp -= _damage;
