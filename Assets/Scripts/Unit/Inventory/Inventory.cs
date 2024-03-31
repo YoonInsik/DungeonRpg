@@ -12,11 +12,13 @@ public class Inventory : Singleton<Inventory>
     [SerializeField] private Meat[] meats;
     //요리로 생성될 아이템 저장
     [SerializeField] private List<CookingItem> cookingList;
+    private Player player;
     public CookingStatIncrease statUp;
     private void Start()
     {
         cooking = new Cooking[5];
         statUp = GameObject.FindWithTag("Player").GetComponent<CookingStatIncrease>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     public void AddMeat(MeatItem meat)
@@ -37,6 +39,7 @@ public class Inventory : Singleton<Inventory>
                 Debug.Log("비었다");
                 cooking[i].cooking = cookingList[number];
                 cooking[i].count++;
+                player.IncreaseFullness(cookingList[number].fullness);
                 statUp.StatIncrease(cookingList[number]);
                 return;
             }
@@ -45,6 +48,7 @@ public class Inventory : Singleton<Inventory>
                 Debug.Log("same name");
                 cooking[i].count++;
                 statUp.StatIncrease(cookingList[number]);
+                player.IncreaseFullness(cookingList[number].fullness);
                 return;
             }
         }

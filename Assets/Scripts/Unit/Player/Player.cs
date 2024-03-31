@@ -54,7 +54,6 @@ public class Player : BaseUnit
             if (meat != null)
             {
                 inventory.AddMeat(meat);
-                IncreaseFullness(5);
                 Debug.Log(meat.name);
             }
 
@@ -62,7 +61,7 @@ public class Player : BaseUnit
         }
     }
 
-    public void IncreaseFullness(int amount)
+    public void IncreaseFullness(float amount)
     {
         if (fullness <= maxFullness)
         {

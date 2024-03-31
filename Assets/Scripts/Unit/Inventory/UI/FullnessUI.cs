@@ -16,9 +16,8 @@ public class FullnessUI : MonoBehaviour
         fullnessText = transform.GetChild(1).GetComponent<Text>();   
     }
     // Start is called before the first frame update
-    async void Start()
+    void Start()
     {
-        await Task.Delay(10);
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         if (player == null) Debug.Log("플레이어를 찾을수 없음");
         else Debug.Log("플레이어 발견");
