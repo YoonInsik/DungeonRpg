@@ -39,6 +39,7 @@ public class Gun : WeaponBase
         Vector3 dir = targetPos - transform.position;
         //var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
         var bullet = pool.Get();
+        bullet.transform.parent = transform;
         bullet.transform.position = transform.position + dir.normalized;
         bullet.Shoot(dir.normalized);
     }
