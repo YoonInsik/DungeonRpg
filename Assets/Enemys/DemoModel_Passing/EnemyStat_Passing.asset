@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e1711d4f5600c43aac303871e8830f, type: 3}
   m_Name: EnemyStat_Passing
   m_EditorClassIdentifier: 
+  enemy_id: 11
   hp: 3
   speed: 5

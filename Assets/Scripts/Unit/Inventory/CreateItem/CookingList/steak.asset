@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: steak
   icon: {fileID: -1866338419035408968, guid: a0d3fbbc155eb404a87f827b40a48dfe, type: 3}
+  fullness: 50
   ATK: 10
   SPEED: 10
   HP: 10

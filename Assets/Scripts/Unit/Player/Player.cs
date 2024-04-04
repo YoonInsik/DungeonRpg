@@ -9,6 +9,11 @@ public class Player : BaseUnit
     private Rigidbody2D rigid;
     public float speed = 3.0f;
 
+    [SerializeField] private float fullness = 0;
+    public float Fullness {  get { return fullness; } }
+    private float maxFullness = 300;
+    public float MaxFullness {  get { return maxFullness; } }
+  
     private Inventory inventory;
     private GameObject furnaceUI;
     private bool UIopen;
@@ -17,11 +22,11 @@ public class Player : BaseUnit
     public void Awake()
     {
         scanner = GetComponent<Scanner>();
+        rigid = GetComponent<Rigidbody2D>();
     }
     private void Start()
-    { 
+    {
         inventory = Inventory.Instance;
-        rigid = GetComponent<Rigidbody2D>();
         furnaceUI = FurnaceItemUI.Instance.gameObject;
     }
     private void Update()
@@ -53,6 +58,17 @@ public class Player : BaseUnit
             }
 
             Destroy(collision.gameObject);
+        }
+    }
+
+    public void IncreaseFullness(float amount)
+    {
+        if (fullness <= maxFullness)
+        {
+            fullness += amount;
+        } else
+        {
+            Debug.Log("포만도 가득참");
         }
     }
 }

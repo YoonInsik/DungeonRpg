@@ -416,6 +416,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108254583}
   m_CullTransparentMesh: 1
+--- !u!1 &284699781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284699782}
+  m_Layer: 0
+  m_Name: Kirby
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284699782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284699781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1172155143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &294730648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 294730649}
+  - component: {fileID: 294730650}
+  m_Layer: 0
+  m_Name: MeatMart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &294730649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294730648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1454670073}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &294730650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294730648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23aa6c8510f696f41af8805f142393be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Meats:
+  - {fileID: 3801023143259157865, guid: 8ce5e2b46b5ef534893f463d9cd6e1f1, type: 3}
+  - {fileID: 2794035880965642455, guid: 255eae464d497274285588c8b2f60e5d, type: 3}
 --- !u!1 &358038929
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,9 +539,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy_prefab: {fileID: 8965473975303667378, guid: da46822e42e05fa4a925cdabe4c78ed0, type: 3}
+  JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
   spawn_cooltime_set: 1
   spawn_radius: 20
   spawn_cooltime: 0
+  make_jumper: 0
   Enemy_Group:
   - {fileID: 547017723789074062, guid: 39c3f76c1503f3c42bc32629d86d30f8, type: 3}
   group_num: 0
@@ -956,6 +1036,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 570880202}
+  - {fileID: 284699782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1172155144
@@ -1024,10 +1105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
   newPos: {x: 0, y: 0}
-  rigid: {fileID: 0}
   speed: 3
-  CookingUI: {fileID: 0}
-  UIopen: 0
+  fullness: 0
+  scanner: {fileID: 0}
 --- !u!1 &1454670072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1138,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 358038930}
+  - {fileID: 294730649}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1994682283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994682284}
+  m_Layer: 0
+  m_Name: DropItem_Exp_Demo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1994682284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994682283}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.29, y: -0.02, z: 0.039072055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -1070,3 +1182,4 @@ SceneRoots:
   - {fileID: 1454670073}
   - {fileID: 747958222}
   - {fileID: 83523847}
+  - {fileID: 1994682284}

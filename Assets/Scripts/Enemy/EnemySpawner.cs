@@ -34,16 +34,13 @@ namespace SHS
             //적 생성 조건 _ 쿨타임
             //EnemySpawn_Cooltime();
 
+            //점퍼 생성
+            JumperMaker();
+
             //적 생성 조건 _ 트리거 | 그룹
             //EnemySpawn_Group();
 
         }
-
-        #region 풀링
-
-        [Header("풀링")]
-
-        Queue<Enemy> EnemyQueue = new Queue<Enemy>();
 
         private void Initialize(int initCount)
         {
@@ -51,7 +48,49 @@ namespace SHS
             {
                 EnemyQueue.Enqueue(CreateNewEnemy());
             }
+            for (int i = 0; i < initCount; i++)
+            {
+                JumpEnemyQueue.Enqueue(CreateNewJumpEnemy());
+            }
         }
+
+        public static void ReturnObject(Enemy _enemy)
+        {
+            _enemy.gameObject.SetActive(false);
+            _enemy.transform.SetParent(Instance.transform);
+
+            switch (_enemy.Get_MyStat().enemy_id)
+            {
+                default:
+                    Debug.LogError("id가 할당되지 않은 적개체입니다.");
+                    Destroy(_enemy.gameObject);
+                    break;
+
+                //follower
+                case 0:
+                    Instance.EnemyQueue.Enqueue(_enemy);
+                    break;
+
+                //Jumper
+                case 8:
+                    Instance.JumpEnemyQueue.Enqueue(_enemy);
+                    break;
+
+                //Square
+                case 11:
+                    Destroy(_enemy.gameObject);
+                    break;
+
+            }
+
+        }
+
+        #region 기본 적군 풀링
+
+        [Header("Follower 풀링")]
+        [SerializeField] GameObject Enemy_prefab;
+
+        [SerializeField] Queue<Enemy> EnemyQueue = new Queue<Enemy>();
 
         Enemy CreateNewEnemy()
         {
@@ -79,11 +118,39 @@ namespace SHS
             }
         }
 
-        public static void ReturnObject(Enemy _enemy)
+        #endregion
+
+        #region 점핑 적군 풀링
+
+        [Header("Jumper 풀링")]
+        [SerializeField] GameObject JumpEnemy_prefab;
+
+        [SerializeField] Queue<Enemy> JumpEnemyQueue = new Queue<Enemy>();
+
+        Enemy CreateNewJumpEnemy()
         {
-            _enemy.gameObject.SetActive(false);
-            _enemy.transform.SetParent(Instance.transform);
-            Instance.EnemyQueue.Enqueue(_enemy);
+            var newObj = Instantiate(JumpEnemy_prefab).GetComponent<Enemy>();
+            newObj.gameObject.SetActive(false);
+            newObj.transform.SetParent(transform);
+            return newObj;
+        }
+
+        public static Enemy GetJumpEnemy()
+        {
+            if (Instance.EnemyQueue.Count > 0)
+            {
+                var obj = Instance.JumpEnemyQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                return obj;
+            }
+            else
+            {
+                var newObj = Instance.CreateNewJumpEnemy();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                return newObj;
+            }
         }
 
         #endregion
@@ -92,7 +159,6 @@ namespace SHS
 
 
         [Header("쿨타임 생성")]
-        [SerializeField] GameObject Enemy_prefab;
         [SerializeField] float spawn_cooltime_set;
         [SerializeField] float spawn_radius = 25f;
 
@@ -115,7 +181,30 @@ namespace SHS
                 //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
                 Vector2 randomPosition = Random.insideUnitCircle;
                 Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
-                Instantiate(GetEnemy(), player_trns.position + ranpos_v3 * spawn_radius, Quaternion.identity);
+                GameObject e = GetEnemy().gameObject;
+                e.transform.position = player_trns.position + ranpos_v3 * spawn_radius;
+
+            }
+        }
+
+        #endregion
+
+        [Space(10)]
+
+        #region 점퍼생성
+
+        public bool make_jumper;
+
+        void JumperMaker()
+        {
+            if (make_jumper)
+            {
+                make_jumper = false;
+
+                Vector2 randomPosition = Random.insideUnitCircle;
+                Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
+                GameObject e = GetJumpEnemy().gameObject;
+                e.transform.position = player_trns.position + ranpos_v3 * spawn_radius;
             }
         }
 

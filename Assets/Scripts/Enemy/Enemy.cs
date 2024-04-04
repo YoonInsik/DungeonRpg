@@ -10,6 +10,9 @@ namespace SHS
     public class Enemy : MonoBehaviour
     {
 
+        //인스턴스
+        MeatMart meatmart;
+
         [Header("적 개체 설정")]
         [SerializeField] EnemyStat m_stat;
 
@@ -17,6 +20,8 @@ namespace SHS
 
         private void Start()
         {
+            meatmart = MeatMart.instance;
+
             now_hp = m_stat.hp;
         }
 
@@ -29,6 +34,7 @@ namespace SHS
         [SerializeField] ParticleSystem ptc_damaged;
         [SerializeField] ParticleSystem ptc_dead;
         [SerializeField] GameObject damagescale;
+
 
         public void Damaged(float _damage)
         {
@@ -57,8 +63,25 @@ namespace SHS
             Destroy(_obj);
         }
 
+        [Header("죽음")]
+
+        [Header("고기드랍")]
+        [SerializeField] int meat_num;
+        [Range(0, 100)]
+        [SerializeField] float meatdrop_rate;
+
+
         void Dead()
         {
+            //고기 드랍
+            if (Random.Range(0, 100) < meatdrop_rate)
+            {
+                if (meatmart.Meats[meat_num] == null)
+                    Debug.LogError("해당 고기는 존재하지 않습니다");
+                else
+                    Instantiate(meatmart.Meats[meat_num], transform.position, Quaternion.identity);
+            }
+
             Instantiate(ptc_dead, transform.position, Quaternion.identity);
             EnemySpawner.ReturnObject(this);
         }

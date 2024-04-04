@@ -31,7 +31,7 @@ public class MeatItemUI : Singleton<MeatItemUI>
     {
         for (int i = 0; i < childCount;i++)
         {
-            panels[i].transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = ":  "  + meats[i].count.ToString();
+            panels[i].transform.GetChild(1).GetComponent<Text>().text = ":  "  + meats[i].count.ToString();
         }
     }
 }

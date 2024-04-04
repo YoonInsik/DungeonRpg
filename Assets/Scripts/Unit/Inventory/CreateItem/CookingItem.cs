@@ -7,6 +7,8 @@ public class CookingItem : ScriptableObject
 {
     public string itemName;
     public Sprite icon = null;
+    public float fullness;
+
     public int ATK;
     public int SPEED;
     public int HP;
