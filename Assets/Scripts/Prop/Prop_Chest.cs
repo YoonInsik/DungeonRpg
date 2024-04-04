@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Prop_Chest : BaseProp, IInteractable
 {
-    [SerializeField] protected DropTable dropTable;
+    [SerializeField] protected List<DropData> dropTable;
 
     public void Interact()
     {

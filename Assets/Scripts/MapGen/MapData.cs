@@ -1,4 +1,5 @@
 using AYellowpaper.SerializedCollections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapData", menuName = "SO/MapData")]
@@ -17,8 +18,17 @@ public class ChunkData
 {
     public ChunkData()
     {
-        data = new SerializedDictionary<Vector2Int, int>();
+        dropTable = new List<DropData>();
     }
 
-    public SerializedDictionary<Vector2Int, int> data;
+    public List<DropData> dropTable;
+    public ChunkType chunkType;
+}
+
+public enum ChunkType
+{
+    Start,
+    Boss,
+    Normal,
+    Many,
 }

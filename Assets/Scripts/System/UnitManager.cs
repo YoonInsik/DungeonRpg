@@ -1,3 +1,4 @@
+using SHS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,12 @@ public class UnitManager : Singleton<UnitManager>
 {
     [SerializeField] private Player playerPrefab;
     public Player player;
+    public Queue<Enemy> enemies;
+
+    private void Start()
+    {
+        enemies = new Queue<Enemy>();
+    }
 
     public void SpawnPlayer(Vector2Int spawnPos)
     {

@@ -32,10 +32,10 @@ namespace SHS
         void Update()
         {
             //적 생성 조건 _ 쿨타임
-            EnemySpawn_Cooltime();
+            //EnemySpawn_Cooltime();
 
             //적 생성 조건 _ 트리거 | 그룹
-            EnemySpawn_Group();
+            //EnemySpawn_Group();
 
         }
 
@@ -163,6 +163,20 @@ namespace SHS
 
         #endregion
 
+        public IEnumerator EnemySpawn_Coroutine(float cooltime)
+        {
+            while(true)
+            {
+                //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
+                Vector2 randomPosition = Random.insideUnitCircle;
+                Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
+                var newEnemy = GetEnemy();
+                newEnemy.transform.position = UnitManager.Instance.player.transform.position + ranpos_v3 * spawn_radius;
+                UnitManager.Instance.enemies.Enqueue(newEnemy);
+
+                yield return new WaitForSeconds(cooltime);
+            }
+        }
 
         private void OnDrawGizmosSelected()
         {
