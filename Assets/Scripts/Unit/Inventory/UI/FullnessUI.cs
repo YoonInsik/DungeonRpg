@@ -18,7 +18,7 @@ public class FullnessUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player = UnitManager.Instance.player;
         if (player == null) Debug.Log("플레이어를 찾을수 없음");
         else Debug.Log("플레이어 발견");
     }

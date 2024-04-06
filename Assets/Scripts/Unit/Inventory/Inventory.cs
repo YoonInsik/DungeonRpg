@@ -11,44 +11,59 @@ public class Inventory : Singleton<Inventory>
     [SerializeField] private Cooking[] cooking;
     [SerializeField] private Meat[] meats;
     //요리로 생성될 아이템 저장
+
     [SerializeField] private List<CookingItem> cookingList;
-    private Player player;
+
+    public Player player;
     public CookingStatIncrease statUp;
     private void Start()
     {
-        cooking = new Cooking[5];
-        statUp = GameObject.FindWithTag("Player").GetComponent<CookingStatIncrease>();
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        cooking = new Cooking[3];
+        statUp = UnitManager.Instance.player.GetComponent<CookingStatIncrease>();
+        player = UnitManager.Instance.player.GetComponent<Player>();
     }
 
     public void AddMeat(MeatItem meat)
     {
-        if(meat.itemName == "beef")
+        switch (meat.itemName)
         {
-            Debug.Log("meet count");
-            meats[0].count++;
+            case "beef":
+                meats[0].count++;
+               break;
+            case "pork":
+                meats[1].count++;
+                break;
+            case "chicken":
+                meats[2].count++;
+                break;
+            default:
+                Debug.Log("can't add meat");
+                break;
         }
     }
 
-    public void AddCookingItem(int number)
+    public void AddCookingItem(CookingItem item)
     {
+        int index = cookingList.IndexOf(item);
+        Debug.Log(index);
+    
         for (int i = 0; i < cooking.Length; i++)
         {
             if (cooking[i].cooking == null)
             {
                 Debug.Log("비었다");
-                cooking[i].cooking = cookingList[number];
+                cooking[i].cooking = cookingList[index];
                 cooking[i].count++;
-                player.IncreaseFullness(cookingList[number].fullness);
-                statUp.StatIncrease(cookingList[number]);
+                player.IncreaseFullness(cookingList[index].fullness);
+                statUp.StatIncrease(cookingList[index]);
                 return;
             }
-            else if (cooking[i].cooking.itemName == cookingList[number].itemName)
+            else if (cooking[i].cooking.itemName == cookingList[index].itemName)
             {
                 Debug.Log("same name");
                 cooking[i].count++;
-                statUp.StatIncrease(cookingList[number]);
-                player.IncreaseFullness(cookingList[number].fullness);
+                statUp.StatIncrease(cookingList[index]);
+                player.IncreaseFullness(cookingList[index].fullness);
                 return;
             }
         }
@@ -63,6 +78,11 @@ public class Inventory : Singleton<Inventory>
     public Meat[] GetMeats()
     {
         return meats;
+    }
+
+    public List<CookingItem> GetCookingList()
+    {
+        return cookingList;
     }
 }
 

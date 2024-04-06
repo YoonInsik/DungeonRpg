@@ -9,9 +9,9 @@ public class Player : BaseUnit
     private Rigidbody2D rigid;
     public float speed = 3.0f;
 
-    [SerializeField] private float fullness = 0;
+    [SerializeField] private float fullness;
     public float Fullness {  get { return fullness; } }
-    private float maxFullness = 300;
+    private float maxFullness = 100;
     public float MaxFullness {  get { return maxFullness; } }
   
     private Inventory inventory;
@@ -28,13 +28,14 @@ public class Player : BaseUnit
     {
         inventory = Inventory.Instance;
         furnaceUI = FurnaceItemUI.Instance.gameObject;
+        StartCoroutine("DecreaseFullness");
     }
     private void Update()
     {
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             furnaceUI.SetActive(!UIopen);
             UIopen = !UIopen;
@@ -63,12 +64,23 @@ public class Player : BaseUnit
 
     public void IncreaseFullness(float amount)
     {
-        if (fullness <= maxFullness)
+        if (fullness + amount > maxFullness)
+        {
+            fullness = maxFullness;
+        }
+        else
         {
             fullness += amount;
-        } else
+        }
+    }
+
+    private IEnumerator DecreaseFullness()
+    {
+        while(fullness > 0)
         {
-            Debug.Log("포만도 가득참");
+            yield return new WaitForSeconds(5.0f);
+            fullness -= 5;
+            Debug.Log("Decrease Fullness");
         }
     }
 }

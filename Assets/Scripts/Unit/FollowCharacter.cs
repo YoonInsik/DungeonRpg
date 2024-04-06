@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class FollowCharacter : MonoBehaviour
 {
-    public GameObject player;
+    public Transform player;
     public float speed = 1.0f; //0.01f
     private Vector3 pos;
 
-    private void Start()
+    void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        player = UnitManager.Instance.player.transform;
+        if (player == null) Debug.Log("error");
     }
-    // Update is called once per frame
-    void LateUpdate()
+
+    private void LateUpdate()
     {
-        pos = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, pos, speed);
+        pos = new Vector3(player.position.x, player.position.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, pos, speed * Time.deltaTime);
     }
 }

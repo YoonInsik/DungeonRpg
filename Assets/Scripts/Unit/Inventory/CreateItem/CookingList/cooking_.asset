@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fa47559a91889f41994359aedb3f2c7, type: 3}
-  m_Name: steak
+  m_Name: cooking_
   m_EditorClassIdentifier: 
   recipe:
   - ingredient: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
     amount: 20
-  itemName: steak
-  icon: {fileID: 21300000, guid: 2a1ec24c9a22fbd4497aebaae207f2f8, type: 3}
-  fullness: 50
+  - ingredient: {fileID: 11400000, guid: 32b4c9a5a68397f40b8c11381ae27b8d, type: 2}
+    amount: 20
+  itemName: exfood
+  icon: {fileID: 1777749549, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  fullness: 30
   ATK: 10
   SPEED: 10
   HP: 10
