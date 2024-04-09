@@ -5,11 +5,12 @@ using UnityEngine;
 public class CookingStatIncrease : MonoBehaviour
 {
     private Player player;
-
+    private Cooking[] cookingInventory;
     // Start is called before the first frame update
     void Start()
     { 
         player = GetComponent<Player>();
+        cookingInventory = Inventory.Instance.GetCookingItem();
     }
 
     // Update is called once per frame

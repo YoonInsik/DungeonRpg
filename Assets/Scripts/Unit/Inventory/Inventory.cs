@@ -55,19 +55,22 @@ public class Inventory : Singleton<Inventory>
                 cooking[i].cooking = cookingList[index];
                 cooking[i].count++;
                 player.IncreaseFullness(cookingList[index].fullness);
-                statUp.StatIncrease(cookingList[index]);
                 return;
             }
             else if (cooking[i].cooking.itemName == cookingList[index].itemName)
             {
                 Debug.Log("same name");
                 cooking[i].count++;
-                statUp.StatIncrease(cookingList[index]);
                 player.IncreaseFullness(cookingList[index].fullness);
                 return;
             }
         }
         Debug.Log("더 이상 아이템을 추가할 수 없습니다.");
+    }
+
+    public void RemoveCookingItem(int index)
+    {
+        cooking[index] = new Cooking(null, 0);
     }
 
     public Cooking[] GetCookingItem()
@@ -98,4 +101,10 @@ public struct Cooking
 {
     public CookingItem cooking;
     public int count;
+
+    public Cooking(CookingItem cooking, int count)
+    {
+        this.cooking = cooking;
+        this.count = count;
+    }
 }
