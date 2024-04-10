@@ -66,10 +66,11 @@ public class Chunk : MonoBehaviour
         MapManager.Instance.CurChunk.SetPropTilemap(true);
         MapManager.Instance.ActiveChunkUI(false);
 
+
         // 몬스터 반복 소환
         var co = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
 
-        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(GameManager.Instance.StartTimer());
         StopCoroutine(co);
 
         // 적 제거 함수
