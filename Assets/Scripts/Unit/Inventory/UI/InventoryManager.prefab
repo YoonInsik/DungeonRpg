@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3693778719022900736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404227896336325662}
+  - component: {fileID: 6067845925578071256}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1404227896336325662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693778719022900736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6067845925578071256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693778719022900736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cccf3b83ff47ca846a22e49c5024bb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooking: []
+  meats:
+  - meats: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
+    count: 30
+  - meats: {fileID: 11400000, guid: 32b4c9a5a68397f40b8c11381ae27b8d, type: 2}
+    count: 0
+  - meats: {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
+    count: 0
+  - meats: {fileID: 11400000, guid: 6b655c627d7a4b748b1c4dc7bd160b03, type: 2}
+    count: 0
+  - meats: {fileID: 11400000, guid: ccf4cfc3be1b6c04da0380fc32a398e5, type: 2}
+    count: 0
+  - meats: {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
+    count: 0
+  cookingList:
+  - {fileID: 11400000, guid: 9a5e68b3eb9e6ed4ebe477aec6fb538c, type: 2}
+  - {fileID: 11400000, guid: 7bc57c78aa2fd994e8d0c33ebaefd056, type: 2}
+  - {fileID: 11400000, guid: 3c2bc5e90384a3849853d3dcb6423b2d, type: 2}
+  player: {fileID: 0}
+  statUp: {fileID: 0}

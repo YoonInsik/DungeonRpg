@@ -18,6 +18,7 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
         cookingList = inventory.GetCookingList();
     }
 
+    // 요리재료와 가지고 있는 재료 비교하여 인벤토리 및 UI에 요리 추가
     public void CookingItem(CookingItem item)
     {
         meats = inventory.GetMeats();

@@ -14,6 +14,7 @@ public class CookingItem : ScriptableObject
 
     [SerializeField] public List<Ingredient> recipe;
 
+    public int buffDuration;
     public string itemName;
     public Sprite icon = null;
     public float fullness;
