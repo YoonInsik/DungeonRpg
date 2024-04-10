@@ -54,14 +54,12 @@ public class Inventory : Singleton<Inventory>
                 Debug.Log("ºñ¾ú´Ù");
                 cooking[i].cooking = cookingList[index];
                 cooking[i].count++;
-                player.IncreaseFullness(cookingList[index].fullness);
                 return;
             }
             else if (cooking[i].cooking.itemName == cookingList[index].itemName)
             {
                 Debug.Log("same name");
                 cooking[i].count++;
-                player.IncreaseFullness(cookingList[index].fullness);
                 return;
             }
         }

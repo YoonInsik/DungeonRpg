@@ -17,10 +17,11 @@ MonoBehaviour:
     amount: 15
   - ingredient: {fileID: 11400000, guid: ccf4cfc3be1b6c04da0380fc32a398e5, type: 2}
     amount: 10
+  buffDuration: 5
   itemName: burger
   icon: {fileID: 21300000, guid: 7ee731f7a19fcea4fa01223d2fb928f5, type: 3}
   fullness: 30
-  ATK: 5
-  SPEED: 5
-  HP: 5
-  DEF: 5
+  ATK: 10
+  SPEED: 10
+  HP: 10
+  DEF: 10

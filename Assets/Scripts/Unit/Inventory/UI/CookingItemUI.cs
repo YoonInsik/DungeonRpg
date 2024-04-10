@@ -9,10 +9,12 @@ public class CookingItemUI : Singleton<CookingItemUI>
 {
     private Inventory inventory;
     private Cooking[] cookingInventory;
+    public  Player player;
     // Start is called before the first frame update
     private void Start()
     {
         inventory = Inventory.Instance;
+        player = UnitManager.Instance.player.GetComponent<Player>();
         cookingInventory = inventory.GetCookingItem();
         ButtonCookingItemUI();
     }
@@ -49,10 +51,19 @@ public class CookingItemUI : Singleton<CookingItemUI>
 
     public void ButtonClick(CookingItem item, int index)
     {
-        Debug.Log(item);
+        Debug.Log("Click" + item);
         if(item == null) { return; }
-        inventory.statUp.StatIncrease(item);
-        inventory.RemoveCookingItem(index);
-        AddCookingItemUI();
+
+        if(player.Fullness + item.fullness < player.MaxFullness)
+        {
+            player.IncreaseFullness(item.fullness);
+            inventory.statUp.IncreaseStat(item);
+            inventory.RemoveCookingItem(index);
+            AddCookingItemUI();
+        }
+        else
+        {
+            Debug.Log("Æ÷¸¸°¨ÀÌ °¡µæÃ¡½À´Ï´Ù.");
+        }
     }
 }
