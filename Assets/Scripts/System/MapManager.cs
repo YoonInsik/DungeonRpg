@@ -2,6 +2,7 @@ using AYellowpaper.SerializedCollections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : Singleton<MapManager>
 {
@@ -9,11 +10,17 @@ public class MapManager : Singleton<MapManager>
 
     [SerializeField] private Transform chunkContainer;
     [SerializeField] private Chunk chunkPrefab;
+    [SerializeField] private GameObject nextChunkUI;
 
     [SerializeField] private TextMeshProUGUI rightChunkText;
     [SerializeField] private TextMeshProUGUI downChunkText;
     [SerializeField] private TextMeshProUGUI leftChunkText;
     [SerializeField] private TextMeshProUGUI upChunkText;
+
+    [SerializeField] private DropTableUI rightChunkDropTableUI;
+    [SerializeField] private DropTableUI downChunkDropTableUI;
+    [SerializeField] private DropTableUI leftChunkDropTableUI;
+    [SerializeField] private DropTableUI upChunkDropTableUI;
 
     public TilemapVisualizer tilemapVisualizer;
     public Vector2Int beforeChunkPos;
@@ -125,27 +132,28 @@ public class MapManager : Singleton<MapManager>
     {
         if ((moveChunkPos - playerChunkPos) == Vector2Int.right)
         {
-            rightChunkText.text = chunkItem.data.chunkType.ToString();
+            rightChunkText.text = chunkItem.data.StringChunkType;
+            rightChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
         else if ((moveChunkPos - playerChunkPos) == Vector2Int.down)
         {
-            downChunkText.text = chunkItem.data.chunkType.ToString();
+            downChunkText.text = chunkItem.data.StringChunkType;
+            downChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
         else if ((moveChunkPos - playerChunkPos) == Vector2Int.left)
         {
-            leftChunkText.text = chunkItem.data.chunkType.ToString();
+            leftChunkText.text = chunkItem.data.StringChunkType;
+            leftChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
         else
         {
-            upChunkText.text = chunkItem.data.chunkType.ToString();
+            upChunkText.text = chunkItem.data.StringChunkType;
+            upChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
     }
 
-    public void ActiveChunkUI(bool value)
+    public void SetActiveNextChunkUI(bool value)
     {
-        rightChunkText.gameObject.SetActive(value);
-        downChunkText.gameObject.SetActive(value);
-        leftChunkText.gameObject.SetActive(value);
-        upChunkText.gameObject.SetActive(value);
+        nextChunkUI.gameObject.SetActive(value);
     }
 }

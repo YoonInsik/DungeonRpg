@@ -63,6 +63,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropPrefabs:
   - {fileID: 2609902746980998286, guid: 0bc9899dc52e0954891740f554ba08d4, type: 3}
+  - {fileID: 5962074900016059063, guid: 43819022cac4b334896136092b323823, type: 3}
+  - {fileID: 6743010594544568794, guid: 58110963515ec28489b1f508eb975274, type: 3}
 --- !u!1 &2761619804517135715
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -135}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &963628184713028316
@@ -230,10 +232,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999
+  m_text: '999
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 62cc409403882ae46bdf14f435c95ab4, type: 2}
+  m_sharedMaterial: {fileID: 429861719840384583, guid: 62cc409403882ae46bdf14f435c95ab4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -257,8 +261,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

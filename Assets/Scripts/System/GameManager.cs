@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
         UnitManager.Instance.SpawnPlayer(Vector2Int.zero);
         MapManager.Instance.InitMap();
 
-        timer = 100;
+        timeText.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
 
     public IEnumerator StartTimer()
     {
+        timeText.gameObject.SetActive(true);
         timer = 10;
 
         while (timer > 0)
@@ -43,6 +44,8 @@ public class GameManager : Singleton<GameManager>
 
             yield return null;
         }
+
+        timeText.gameObject.SetActive(false);
     }
 
     public void EnterChunk()

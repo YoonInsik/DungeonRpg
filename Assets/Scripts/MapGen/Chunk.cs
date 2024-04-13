@@ -19,7 +19,7 @@ public class Chunk : MonoBehaviour
         MapManager.Instance.tilemapVisualizer.PaintTiles(floorTilemap);
     }
 
-    public void SetPropTilemap(bool value)
+    public void SetActiveDoorTilemap(bool value)
     {
         propTilemap.gameObject.SetActive(value);
     }
@@ -38,13 +38,13 @@ public class Chunk : MonoBehaviour
                 chunkEvent = StartChunkEvent;
                 break;
             case ChunkType.Boss:
-                chunkEvent = EventStart;
+                chunkEvent = NormalChunkEvent;
                 break;
             case ChunkType.Normal:
-                chunkEvent = EventStart;
+                chunkEvent = NormalChunkEvent;
                 break;
             case ChunkType.Many:
-                chunkEvent = EventStart;
+                chunkEvent = NormalChunkEvent;
                 break;
             default:
                 break;
@@ -54,22 +54,20 @@ public class Chunk : MonoBehaviour
     public IEnumerator StartChunkEvent()
     {
         // 방 열기
-        MapManager.Instance.CurChunk.SetPropTilemap(false);
-        MapManager.Instance.ActiveChunkUI(true);
+        MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
+        MapManager.Instance.SetActiveNextChunkUI(true);
 
         yield break;
     }
 
-    public IEnumerator EventStart()
+    public IEnumerator NormalChunkEvent()
     {
         // 방 닫기
-        MapManager.Instance.CurChunk.SetPropTilemap(true);
-        MapManager.Instance.ActiveChunkUI(false);
-
+        MapManager.Instance.CurChunk.SetActiveDoorTilemap(true);
+        MapManager.Instance.SetActiveNextChunkUI(false);
 
         // 몬스터 반복 소환
         var co = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
-
         yield return StartCoroutine(GameManager.Instance.StartTimer());
         StopCoroutine(co);
 
@@ -84,7 +82,7 @@ public class Chunk : MonoBehaviour
 
 
         // 방 열기
-        MapManager.Instance.CurChunk.SetPropTilemap(false);
-        MapManager.Instance.ActiveChunkUI(true);
+        MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
+        MapManager.Instance.SetActiveNextChunkUI(true);
     }
 }
