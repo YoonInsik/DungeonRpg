@@ -5477,13 +5477,14 @@ GameObject:
   m_Component:
   - component: {fileID: 358038930}
   - component: {fileID: 358038931}
+  - component: {fileID: 358038932}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &358038930
 Transform:
   m_ObjectHideFlags: 0
@@ -5506,7 +5507,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358038929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2a60e6bfd5376742a31661be1acb4df, type: 3}
   m_Name: 
@@ -5520,6 +5521,29 @@ MonoBehaviour:
   make_jumper: 0
   Enemy_Group:
   - {fileID: 547017723789074062, guid: 39c3f76c1503f3c42bc32629d86d30f8, type: 3}
+  group_num: 0
+  group_make: 0
+--- !u!114 &358038932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358038929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9f59efa8c1d94498a6b944a3b91fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HandlingStart: 0
+  now_enemytype: 0
+  wave_scale: 5
+  spawn_cooltime_set: {x: 1, y: 5}
+  spawn_radius: {x: 5, y: 20}
+  Enemy_prefab: {fileID: 3781566973384271522, guid: 00e8bffd015477d43a1257d7b5ee58c8, type: 3}
+  JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
+  SnipeEnemy_prefab: {fileID: 2600698757297207826, guid: 957faba42f8cea64896fbf268b38b56f, type: 3}
+  Enemy_Group: []
   group_num: 0
   group_make: 0
 --- !u!1 &454653661
