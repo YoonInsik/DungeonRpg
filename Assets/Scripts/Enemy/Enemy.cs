@@ -23,6 +23,9 @@ namespace SHS
             meatmart = MeatMart.instance;
 
             now_hp = m_stat.hp;
+
+            now_burrow = true;
+
         }
 
         public EnemyStat Get_MyStat()
@@ -38,18 +41,23 @@ namespace SHS
 
         public void Damaged(float _damage)
         {
+            if (now_burrow)
+                return; 
+
             now_hp -= _damage;
             if (now_hp <= 0)
             {
                 Dead();
                 return;
             }
-            GameObject ds = Instantiate(damagescale, transform);
+            GameObject ds = Instantiate(damagescale);
+            ds.transform.position = transform.position;
+            ds.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8f + Vector2.right * Random.Range(-5f, 5f), ForceMode2D.Impulse);
             ds.GetComponent<TextMeshPro>().text = _damage.ToString();
-            Destroy_DamageScale(ds);
             ptc_damaged.Play();
         }
 
+        /* ÀÛµ¿ ¾ÈµÊ, ¿ÀºêÁ§Æ®°¡ ºñÈ°¼ºÈ­µÇ¸é¼­ ²¨Áö´Âµí, Á÷Á¢ ÆÄ±«½ÃÅ´
         IEnumerator Destroy_DamageScale(GameObject _obj)
         {
             int a = 0;
@@ -62,6 +70,38 @@ namespace SHS
 
             Destroy(_obj);
         }
+        */
+
+        [Header("Ãâ¸ô")]
+        public bool now_burrow;
+        [SerializeField] ParticleSystem burrow_par;
+        [SerializeField] GameObject burrow_image;
+        [SerializeField] GameObject Model;
+
+        public void Start_Burrowing()
+        {
+            burrow_par.Play();
+
+            Invoke("Burrow_End", Random.Range(3f, 5f));
+        }
+
+        public void Dead_Resetting()
+        {
+            now_burrow = true;
+
+            burrow_image.SetActive(true);
+            Model.SetActive(false);
+        }
+
+        void Burrow_End()
+        {
+            now_burrow = false;
+
+            burrow_par.Stop();
+            burrow_image.SetActive(false);
+            Model.SetActive(true);
+        }
+
 
         [Header("Á×À½")]
 
@@ -83,7 +123,11 @@ namespace SHS
             }
 
             Instantiate(ptc_dead, transform.position, Quaternion.identity);
+
+            Dead_Resetting();
+
             EnemySpawner.ReturnObject(this);
+        
         }
     }
 }

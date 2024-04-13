@@ -9,19 +9,28 @@ namespace SHS
         //변수
         EnemyStat m_stat;
         Transform player_trns;
+        Rigidbody2D m_rigid;
+        Enemy m_enemy;
 
         // Start is called before the first frame update
         void Start()
         {
+            m_enemy = GetComponent<Enemy>();
             m_stat = GetComponent<Enemy>().Get_MyStat();
+            m_rigid = GetComponent<Rigidbody2D>();
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
+
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
+            if (m_enemy.now_burrow)
+                return;
+
             Move();
         }
+
 
         //플레이어로 향하는 방향
         Vector2 Direction()
@@ -34,8 +43,10 @@ namespace SHS
         // 움직임
         void Move()
         {
-            transform.Translate(m_stat.speed * Direction() * Time.deltaTime);
+            m_rigid.velocity = m_stat.speed * Direction();
+
         }
+
     }
 
 }
