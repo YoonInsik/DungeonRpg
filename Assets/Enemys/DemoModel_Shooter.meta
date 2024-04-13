@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Enemys/DemoModel_Shooter.meta
 guid: f3b7354a7dc23204691f777feb9ce3fa
 folderAsset: yes
+========
+guid: f32191402d751eb43b1a4b4b3b7f0fdf
+>>>>>>>> 843cf13bd876217880ab9baccfbf60816ce643f2:Assets/Scenes/MainScenes/Game.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

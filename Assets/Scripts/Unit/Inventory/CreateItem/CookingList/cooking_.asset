@@ -17,10 +17,11 @@ MonoBehaviour:
     amount: 20
   - ingredient: {fileID: 11400000, guid: 32b4c9a5a68397f40b8c11381ae27b8d, type: 2}
     amount: 20
+  buffDuration: 0
   itemName: exfood
   icon: {fileID: 1777749549, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
   fullness: 30
-  ATK: 10
-  SPEED: 10
-  HP: 10
-  DEF: 10
+  ATK: 2
+  SPEED: 2
+  HP: 2
+  DEF: 2
