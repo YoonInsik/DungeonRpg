@@ -209,9 +209,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy_prefab: {fileID: 8965473975303667378, guid: da46822e42e05fa4a925cdabe4c78ed0, type: 3}
+  JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
   spawn_cooltime_set: 1
   spawn_radius: 10
   spawn_cooltime: 0
+  make_jumper: 0
   Enemy_Group: []
   group_num: 0
   group_make: 0

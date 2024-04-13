@@ -5,36 +5,28 @@ using UnityEngine.Pool;
 
 namespace SHS
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemySpawner_Tunnel : MonoBehaviour
     {
-        public static EnemySpawner Instance;
+        public static EnemySpawner_Tunnel instance;
 
         //필요변수
         Transform player_trns;
 
         private void Awake()
         {
-            Instance = this;
+            instance = this;
 
-            Initialize(20);
+            //적 풀링 생성
+            Make_PullingGroup(20);
         }
 
 
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(GameObject.FindGameObjectWithTag("Player"));
-            if (GameObject.FindGameObjectWithTag("Player") == null)
-            {
-                Invoke( "Start", 1f);
-                return;
-            }
-
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
 
             spawn_cooltime = spawn_cooltime_set;
-
-            StartCoroutine(EnemySpawn_Coroutine(spawn_cooltime));
         }
 
         // Update is called once per frame
@@ -44,14 +36,14 @@ namespace SHS
             //EnemySpawn_Cooltime();
 
             //점퍼 생성
-            //JumperMaker();
+            JumperMaker();
 
             //적 생성 조건 _ 트리거 | 그룹
             //EnemySpawn_Group();
 
         }
 
-        private void Initialize(int initCount)
+        private void Make_PullingGroup(int initCount)
         {
             for (int i = 0; i < initCount; i++)
             {
@@ -66,7 +58,7 @@ namespace SHS
         public static void ReturnObject(Enemy _enemy)
         {
             _enemy.gameObject.SetActive(false);
-            _enemy.transform.SetParent(Instance.transform);
+            _enemy.transform.SetParent(instance.transform);
 
             switch (_enemy.Get_MyStat().enemy_id)
             {
@@ -77,12 +69,12 @@ namespace SHS
 
                 //follower
                 case 0:
-                    Instance.EnemyQueue.Enqueue(_enemy);
+                    instance.EnemyQueue.Enqueue(_enemy);
                     break;
 
                 //Jumper
                 case 8:
-                    Instance.JumpEnemyQueue.Enqueue(_enemy);
+                    instance.JumpEnemyQueue.Enqueue(_enemy);
                     break;
 
                 //Square
@@ -111,16 +103,16 @@ namespace SHS
 
         public static Enemy GetEnemy()
         {
-            if (Instance.EnemyQueue.Count > 0)
+            if (instance.EnemyQueue.Count > 0)
             {
-                var obj = Instance.EnemyQueue.Dequeue();
+                var obj = instance.EnemyQueue.Dequeue();
                 obj.transform.SetParent(null);
                 obj.gameObject.SetActive(true);
                 return obj;
             }
             else
             {
-                var newObj = Instance.CreateNewEnemy();
+                var newObj = instance.CreateNewEnemy();
                 newObj.gameObject.SetActive(true);
                 newObj.transform.SetParent(null);
                 return newObj;
@@ -146,16 +138,16 @@ namespace SHS
 
         public static Enemy GetJumpEnemy()
         {
-            if (Instance.EnemyQueue.Count > 0)
+            if (instance.EnemyQueue.Count > 0)
             {
-                var obj = Instance.JumpEnemyQueue.Dequeue();
+                var obj = instance.JumpEnemyQueue.Dequeue();
                 obj.transform.SetParent(null);
                 obj.gameObject.SetActive(true);
                 return obj;
             }
             else
             {
-                var newObj = Instance.CreateNewJumpEnemy();
+                var newObj = instance.CreateNewJumpEnemy();
                 newObj.gameObject.SetActive(true);
                 newObj.transform.SetParent(null);
                 return newObj;
@@ -170,7 +162,6 @@ namespace SHS
         [Header("쿨타임 생성")]
         [SerializeField] float spawn_cooltime_set;
         [SerializeField] float spawn_radius = 25f;
-        [SerializeField] Vector2 spawn_radius_ran = new Vector2(0.1f, 0.5f);
 
         [Header("쿨타임 생성_수치확인")]
         [SerializeField] float spawn_cooltime;
@@ -269,12 +260,9 @@ namespace SHS
                 //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
                 Vector2 randomPosition = Random.insideUnitCircle;
                 Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
-
                 var newEnemy = GetEnemy();
-                newEnemy.transform.position = player_trns.transform.position + ranpos_v3 * Random.Range(spawn_radius_ran.x, spawn_radius_ran.y);
-                //newEnemy.transform.position = UnitManager.Instance.player.transform.position + ranpos_v3 * Random.Range(spawn_radius_ran.x, spawn_radius_ran.y);
-                //UnitManager.Instance.enemies.Enqueue(newEnemy);
-                newEnemy.GetComponent<Enemy>().Start_Burrowing();
+                newEnemy.transform.position = UnitManager.Instance.player.transform.position + ranpos_v3 * spawn_radius;
+                UnitManager.Instance.enemies.Enqueue(newEnemy);
 
                 yield return new WaitForSeconds(cooltime);
             }
