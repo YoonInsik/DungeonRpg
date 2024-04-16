@@ -157,7 +157,38 @@ MonoBehaviour:
   damage: 0
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
   interval: 0.2
-  player: {fileID: 0}
+  player: {fileID: 77546499729760189}
+--- !u!1 &8247511024765584011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2888812139289662}
+  m_Layer: 0
+  m_Name: SixBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2888812139289662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247511024765584011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6848612850421539637}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8270095401963109470
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +249,7 @@ GameObject:
   - component: {fileID: 3287185988363618621}
   - component: {fileID: 283592353888735667}
   - component: {fileID: 2575640557549837899}
+  - component: {fileID: 1674477493026826942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -241,6 +273,7 @@ Transform:
   - {fileID: 4538203926584514793}
   - {fileID: 2284478594889425011}
   - {fileID: 2732442294626863739}
+  - {fileID: 2888812139289662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1771934684173187624
@@ -324,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6235b653972a834c87ce2d57ea9ef19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!61 &3287185988363618621
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -397,6 +431,23 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &2575640557549837899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425863989313729109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50095b68c8589ab468cc7feb3eda3dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanRange: 7
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  nearestTarget: {fileID: 0}
+--- !u!114 &1674477493026826942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
