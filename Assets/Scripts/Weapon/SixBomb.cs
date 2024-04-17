@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class SixBomb : MonoBehaviour
 {
@@ -34,11 +35,14 @@ public class SixBomb : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             var bomb = pool.Get();
-            bomb.transform.parent = transform;
-            Vector3 angle = Vector3.forward * 360 * i / count;
-            bomb.transform.Rotate(angle);
-            Vector3 dir = bomb.transform.position - transform.position;
-            bomb.Shoot(dir.normalized);
+            bomb.transform.parent = null;
+            bomb.transform.position = transform.position;
+
+            float angle = 180 * i / count;
+            bomb.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            Vector3 dir = bomb.transform.up;
+            bomb.Shoot(dir);
         }
     }
 

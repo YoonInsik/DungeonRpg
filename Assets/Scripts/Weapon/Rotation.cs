@@ -36,7 +36,7 @@ public class Rotation : MonoBehaviour
             ReAct();
 
         }
-        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+        //transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
     }
 
     void Activation()
