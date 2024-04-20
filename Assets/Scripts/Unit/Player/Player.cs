@@ -26,6 +26,7 @@ public class Player : BaseUnit
     }
     private void Start()
     {
+        base.Start();
         inventory = Inventory.Instance;
         furnaceUI = FurnaceItemUI.Instance.gameObject;
         StartCoroutine("DecreaseFullness");
@@ -82,5 +83,10 @@ public class Player : BaseUnit
             fullness -= 5;
             Debug.Log("Decrease Fullness");
         }
+    }
+
+    public int GetBaseHP()
+    {
+        return baseStat.baseHP;
     }
 }

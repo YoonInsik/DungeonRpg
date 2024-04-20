@@ -10,7 +10,7 @@ public abstract class BaseUnit : MonoBehaviour
     public int ATK { get; set; }
     public int DEF { get; set; }
 
-    private void Start()
+    protected void Start()
     {
         InitStat();
     }
