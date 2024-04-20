@@ -13,7 +13,11 @@ public class Player : BaseUnit
     public float Fullness {  get { return fullness; } }
     private float maxFullness = 100;
     public float MaxFullness {  get { return maxFullness; } }
-  
+
+
+    private int exp;
+    public int Exp { get => exp; }
+
     private Inventory inventory;
     private GameObject furnaceUI;
     private bool UIopen;
@@ -24,12 +28,11 @@ public class Player : BaseUnit
         scanner = GetComponent<Scanner>();
         rigid = GetComponent<Rigidbody2D>();
     }
-    private void Start()
+    protected override void Start()
     {
         base.Start();
         inventory = Inventory.Instance;
         furnaceUI = FurnaceItemUI.Instance.gameObject;
-        StartCoroutine("DecreaseFullness");
     }
     private void Update()
     {
@@ -75,7 +78,7 @@ public class Player : BaseUnit
         }
     }
 
-    private IEnumerator DecreaseFullness()
+    public IEnumerator DecreaseFullness()
     {
         while(fullness > 0)
         {
@@ -88,5 +91,11 @@ public class Player : BaseUnit
     public int GetBaseHP()
     {
         return baseStat.baseHP;
+    }
+
+    public void IncreaseEXP(int amount)
+    {
+        exp += amount;
+        Debug.Log("EXP = " + exp);
     }
 }

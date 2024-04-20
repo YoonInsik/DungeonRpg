@@ -66,10 +66,16 @@ public class Chunk : MonoBehaviour
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(true);
         MapManager.Instance.SetActiveNextChunkUI(false);
 
+        // 배고픔
+        var decreaseFullnessCo = StartCoroutine(UnitManager.Instance.player.DecreaseFullness());
+
         // 몬스터 반복 소환
-        var co = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
-        yield return StartCoroutine(GameManager.Instance.StartTimer());
-        StopCoroutine(co);
+        var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
+        yield return StartCoroutine(GameManager.Instance.StartTimer(60));
+
+        // 시간 종료
+        StopCoroutine(decreaseFullnessCo);
+        StopCoroutine(enemySpawnCo);
 
         // 적 제거 함수
         foreach (var enemy in UnitManager.Instance.enemies)

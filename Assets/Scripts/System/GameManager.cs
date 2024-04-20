@@ -28,14 +28,14 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            StopAllCoroutines();
+            //StopAllCoroutines();
         }
     }
 
-    public IEnumerator StartTimer()
+    public IEnumerator StartTimer(int time)
     {
         timeText.gameObject.SetActive(true);
-        timer = 10;
+        timer = time;
 
         while (timer > 0)
         {

@@ -294,6 +294,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e544c918f43aad546a3e90834da5cdfa, type: 3}
+--- !u!1 &1334860443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334860445}
+  - component: {fileID: 1334860444}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1334860444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334860443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e858eacdcbf7234187ae44f6d1fedd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectInfos:
+  - objectName: Exp
+    perfab: {fileID: 1222971009289658863, guid: b498f33b5c4c45949902108fe6ee4f68, type: 3}
+    count: 10
+--- !u!4 &1334860445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334860443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1673853158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -428,10 +476,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a60e6bfd5376742a31661be1acb4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy_prefab: {fileID: 8965473975303667378, guid: da46822e42e05fa4a925cdabe4c78ed0, type: 3}
+  Enemy_prefab: {fileID: 3781566973384271522, guid: 00e8bffd015477d43a1257d7b5ee58c8, type: 3}
   JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
   spawn_cooltime_set: 0
-  spawn_radius: 25
+  spawn_radius: 100
+  spawn_radius_ran: {x: 0.1, y: 0.5}
   spawn_cooltime: 0
   make_jumper: 0
   Enemy_Group: []
@@ -603,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4847008070631241083, guid: 65f38078d75215946899582020ce30a2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00014368126
+      value: -0.00006219105
       objectReference: {fileID: 0}
     - target: {fileID: 5133735065729023013, guid: 65f38078d75215946899582020ce30a2, type: 3}
       propertyPath: m_AnchorMax.y
@@ -728,3 +777,4 @@ SceneRoots:
   - {fileID: 821322590}
   - {fileID: 2087987329}
   - {fileID: 412467271}
+  - {fileID: 1334860445}

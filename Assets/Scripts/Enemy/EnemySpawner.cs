@@ -23,32 +23,11 @@ namespace SHS
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(GameObject.FindGameObjectWithTag("Player"));
-            if (GameObject.FindGameObjectWithTag("Player") == null)
-            {
-                Invoke( "Start", 1f);
-                return;
-            }
-
-            player_trns = GameObject.FindGameObjectWithTag("Player").transform;
+            player_trns = UnitManager.Instance.player.transform;
 
             spawn_cooltime = spawn_cooltime_set;
 
-            StartCoroutine(EnemySpawn_Coroutine(spawn_cooltime));
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            //적 생성 조건 _ 쿨타임
-            //EnemySpawn_Cooltime();
-
-            //점퍼 생성
-            //JumperMaker();
-
-            //적 생성 조건 _ 트리거 | 그룹
-            //EnemySpawn_Group();
-
+            // StartCoroutine(EnemySpawn_Coroutine(spawn_cooltime));
         }
 
         private void Initialize(int initCount)
@@ -262,23 +241,28 @@ namespace SHS
 
         #endregion
 
+        #region 적 생성
+
+        private float RandomFloat() {
+            return UnityEngine.Random.Range(-MapManager.CHUNKSIZE / 2 + 1, MapManager.CHUNKSIZE / 2);
+        }
         public IEnumerator EnemySpawn_Coroutine(float cooltime)
         {
             while(true)
             {
-                //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
-                Vector2 randomPosition = Random.insideUnitCircle;
-                Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
+                //청크 기준으로 사각형 랜덤 생성
+                Vector3 newPos = MapManager.Instance.CurChunk.transform.position + new Vector3(RandomFloat(), RandomFloat(), 0);
 
                 var newEnemy = GetEnemy();
-                newEnemy.transform.position = player_trns.transform.position + ranpos_v3 * Random.Range(spawn_radius_ran.x, spawn_radius_ran.y);
-                //newEnemy.transform.position = UnitManager.Instance.player.transform.position + ranpos_v3 * Random.Range(spawn_radius_ran.x, spawn_radius_ran.y);
-                //UnitManager.Instance.enemies.Enqueue(newEnemy);
-                newEnemy.GetComponent<Enemy>().Start_Burrowing();
+                newEnemy.transform.position = newPos;
+                UnitManager.Instance.enemies.Enqueue(newEnemy);
+                newEnemy.Start_Burrowing();
 
                 yield return new WaitForSeconds(cooltime);
             }
         }
+
+        #endregion
 
         private void OnDrawGizmosSelected()
         {
