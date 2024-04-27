@@ -10,6 +10,7 @@ public class CookingItemUI : Singleton<CookingItemUI>
     private Inventory inventory;
     private Cooking[] cookingInventory;
     public  Player player;
+    public AlertText alert;
     // Start is called before the first frame update
     private void Start()
     {
@@ -63,7 +64,7 @@ public class CookingItemUI : Singleton<CookingItemUI>
         }
         else
         {
-            Debug.Log("포만감이 가득찼습니다.");
+            alert.InstantiateAlert("포만감이 가득찼습니다.");
         }
     }
 }
