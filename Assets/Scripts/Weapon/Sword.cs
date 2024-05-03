@@ -28,7 +28,7 @@ public class Sword : MonoBehaviour
                 switch (state)
                 {
                     case SwordState.Wait:
-                        StartCoroutine(TargetSword());
+                        //StartCoroutine(TargetSword());
                         break;
                     case SwordState.Swing:
                         StartCoroutine(SwingSword());
@@ -41,11 +41,11 @@ public class Sword : MonoBehaviour
         }
     }
 
-    IEnumerator TargetSword()
+    /*IEnumerator TargetSword()
     {
         while (true) // 무한 루프로 계속 실행
         {
-            if (player.scanner.nearestTarget != null) // 가장 가까운 타겟이 있을 경우에만 실행
+            if (player.scanner.nearestTarget != null)
             {
                 Vector3 targetDirection = player.scanner.nearestTarget.transform.position - transform.position;
                 float currentAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
@@ -53,9 +53,9 @@ public class Sword : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, currentAngle);
             }
 
-            yield return null; // 다음 프레임까지 기다림
+            yield return null;
         }
-    }
+    }*/
     IEnumerator SwingSword()
     {
         Vector3 directionToTarget = (player.scanner.nearestTarget.position - transform.position).normalized;
@@ -64,9 +64,8 @@ public class Sword : MonoBehaviour
         float distance = Vector3.Distance(transform.position, player.scanner.nearestTarget.position);
         transform.position = transform.position + newDirection * distance;
 
-        yield return new WaitForSeconds(0.5f); // 순간 이동 후 잠시 대기
+        yield return new WaitForSeconds(0.5f);
 
-        // 타깃을 향해 휘두르는 로직
         Vector3 swingDirection = (player.scanner.nearestTarget.position - transform.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, swingDirection);
         while (Quaternion.Angle(transform.rotation, targetRotation) > 1f)
@@ -75,7 +74,6 @@ public class Sword : MonoBehaviour
             yield return null;
         }
 
-        // 원래 위치와 회전으로 돌아가기
         while (transform.position != originalPosition)
         {
             transform.position = Vector3.MoveTowards(transform.position, originalPosition, swingSpeed * Time.deltaTime);
@@ -121,6 +119,7 @@ public class Sword : MonoBehaviour
     Vector3 originalPosition;
     public float swingSpeed = 10f; // 휘두르는 속도
     public float angleOffset = 30f; // 이동 각도 오프셋
+    public int pattern;
     float speed = 5.0f;
 
 
@@ -130,29 +129,58 @@ public class Sword : MonoBehaviour
     }
     private void Start()
     {
-        originalPosition = transform.position;
+        int n = transform.GetSiblingIndex();
+        if(n == 0)
+        {
+            originalPosition = player.transform.position + new Vector3(1.0f, 0.0f, 0.0f);
+        }
+        else if (n == 1)
+        {
+            originalPosition = player.transform.position + new Vector3(-1.0f, 0.0f, 0.0f);
+        }
+        else if (n == 2)
+        {
+            originalPosition = player.transform.position + new Vector3(0.5f, 0.866f, 0.0f);
+        }
+        else if (n == 3)
+        {
+            originalPosition = player.transform.position + new Vector3(-0.5f, 0.866f, 0.0f);
+        }
+        else if (n == 4)
+        {
+            originalPosition = player.transform.position + new Vector3(-0.5f, -0.866f, 0.0f);
+        }
+        else if (n == 5)
+        {
+            originalPosition = player.transform.position + new Vector3(0.5f, -0.866f, 0.0f);
+        }
+
         originalRotation = transform.rotation;
     }
 
     private void Update()
     {
-        int pattern = Random.Range(0, 1);
+        pattern = Random.Range(0, 1);
         difference = player.scanner.nearestTarget.position - player.transform.position;
         sqrDistance = difference.sqrMagnitude;
-        if (player.scanner.nearestTarget != null && sqrDistance < 25)
+        Vector3 targetDirection = player.scanner.nearestTarget.transform.position - transform.position;
+        float currentAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        currentAngle -= 90;
+        transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+        if (sqrDistance < 16)
         {
             if (pattern == 0)
             {
-                state = SwordState.Thrust;
+                State = SwordState.Thrust;
             }
             if (pattern == 1)
             {
-                state = SwordState.Swing;
+                State = SwordState.Swing;
             }
         }
-        else
+        else if (sqrDistance > 16)
         {
-            state = SwordState.Wait;
+            State = SwordState.Wait;
         }
     }
 }
