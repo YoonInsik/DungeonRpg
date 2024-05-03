@@ -10,11 +10,6 @@ public class FullnessUI : MonoBehaviour
     public Text fullnessText;
     public RectTransform fullnessBar;
 
-    private void Awake()
-    {
-        fullnessBar = transform.GetChild(0).GetComponent<RectTransform>();
-        fullnessText = transform.GetChild(1).GetComponent<Text>();   
-    }
     // Start is called before the first frame update
     void Start()
     {
