@@ -60,7 +60,7 @@ namespace SHS
             _enemy.gameObject.SetActive(false);
             _enemy.transform.SetParent(instance.transform);
 
-            switch (_enemy.Get_MyStat().enemy_id)
+            switch (_enemy.Get_MyStat().enemytype)
             {
                 default:
                     Debug.LogError("id가 할당되지 않은 적개체입니다.");
@@ -68,18 +68,18 @@ namespace SHS
                     break;
 
                 //follower
-                case 0:
+                case EnemyType.Follower:
                     instance.EnemyQueue.Enqueue(_enemy);
                     break;
 
                 //Jumper
-                case 8:
+                case EnemyType.Jumper:
                     instance.JumpEnemyQueue.Enqueue(_enemy);
                     break;
 
-                //Square
-                case 11:
-                    Destroy(_enemy.gameObject);
+                //Sniper
+                case EnemyType.Sniper:
+                    //instance..Enqueue(_enemy);
                     break;
 
             }

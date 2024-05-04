@@ -68,6 +68,7 @@ namespace SHS
             _enemy.gameObject.SetActive(false);
             _enemy.transform.SetParent(Instance.transform);
 
+            /*
             switch (_enemy.Get_MyStat().enemy_id)
             {
                 default:
@@ -91,7 +92,7 @@ namespace SHS
                     break;
 
             }
-
+            */
         }
 
         #region 기본 적군 풀링

@@ -43,7 +43,8 @@ public class DamageField : MonoBehaviour
             {
                 for(int i = 0; i< enemys.Length; i++)
                 {
-                    enemys[i].GetComponent<Enemy>().Damaged(damage);
+                    if (enemys[i].GetComponent<Enemy>() != null)
+                        enemys[i].GetComponent<Enemy>().Damaged(damage);
                 }
             }
         }
