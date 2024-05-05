@@ -59,6 +59,7 @@ namespace SHS
 
                 EnemyGroup[] set_eg;
 
+                //웨이브 종류 할당
                 switch (wave_level)
                 {
                     default:
@@ -71,7 +72,7 @@ namespace SHS
 
                         set_eg = wave1_eg;
 
-                        if (wave_count == 1)
+                        if (wave_count == 6)
                         {
                             Debug.Log("보스 생성");
                             sp_enemyspawn.BossSpawn(101);
@@ -86,6 +87,7 @@ namespace SHS
                         break;
                 }
 
+                //적 생성
                 for (int i = 0; i < set_eg.Length; i++)
                 {
                     StartCoroutine(EnemySpawn_Coroutine(set_eg[i]));
