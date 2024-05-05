@@ -10,7 +10,7 @@ public class ExpItem : BaseItem
     protected override void Contact()
     {
         Debug.Log("경험치 습득");
-        UnitManager.Instance.player.IncreaseEXP(expAmount);
+        GameManager.Instance.UpdateEXP(expAmount);
         ReleaseObject();
     }
 }

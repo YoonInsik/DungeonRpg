@@ -13,10 +13,7 @@ public class Player : BaseUnit
     public float Fullness {  get { return fullness; } }
     private float maxFullness = 100;
     public float MaxFullness {  get { return maxFullness; } }
-
-
-    private int exp;
-    public int Exp { get => exp; }
+    public Inventory GetInventory { get => inventory; }
 
     private Inventory inventory;
     private GameObject furnaceUI;
@@ -91,11 +88,5 @@ public class Player : BaseUnit
     public int GetBaseHP()
     {
         return baseStat.baseHP;
-    }
-
-    public void IncreaseEXP(int amount)
-    {
-        exp += amount;
-        Debug.Log("EXP = " + exp);
     }
 }

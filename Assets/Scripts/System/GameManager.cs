@@ -3,55 +3,88 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager>
 {
+    public delegate IEnumerator CoAction();
+
     public const int MAXSTAGE = 5;
     
-    [SerializeField] private int stage;
-    public int Stage { get { return stage; } private set { stage = value; } }
+    public int Exp { get; private set; }
+    public int MaxExp { get { return (Level + 3) * (Level + 3); } }
+    public int Level { get; private set; }
+    public float Timer { get; private set; }
+    public int Stage { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI timeText;
-    [SerializeField] private float timer;
+    public CoAction levelUpAction;
+    public List<ItemData> itemDatas;
+    public List<ItemData> itemDataOptions;
+
+    public LevelUpPanel levelUpPanel;
+    public int levelUpAmount;
 
     void Start()
     {
-        Stage = 0;
+        Init();
 
         UnitManager.Instance.SpawnPlayer(Vector2Int.zero);
         MapManager.Instance.InitMap();
-
-        timeText.gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //StopAllCoroutines();
-        }
+    private void Init() {
+        Level = 1;
     }
 
     public IEnumerator StartTimer(int time)
     {
-        timeText.gameObject.SetActive(true);
-        timer = time;
+        Timer = time;
 
-        while (timer > 0)
+        while (Timer > 0)
         {
-            timer -= Time.deltaTime;
-            timeText.text = Mathf.Round(timer).ToString();
-
+            Timer -= Time.deltaTime;
             yield return null;
         }
-
-        timeText.gameObject.SetActive(false);
     }
 
     public void EnterChunk()
     {
-        stage++;
+        Stage++;
+        levelUpAmount = 0;
         MapManager.Instance.ReloadChunks();
         MapManager.Instance.CurChunk.InvokeEvent();
+    }
+
+    public void UpdateEXP(int amount)
+    {
+        Exp += amount;
+
+        if (Exp >= MaxExp) {
+            Exp = Exp - MaxExp;
+
+            Level++;
+            levelUpAmount++;
+        }
+    }
+
+    public void SelectLevelUpItems(int optionNum)
+    {
+        if (itemDatas.Count < optionNum) return;
+
+        List<int> indexes = new List<int>();
+        while (indexes.Count < optionNum)
+        {
+            var newRandNum = Random.Range(0, itemDatas.Count);
+            if (!indexes.Contains(newRandNum))
+            {
+                indexes.Add(newRandNum);
+            }
+        }
+
+        itemDataOptions.Clear();
+        foreach (var index in indexes)
+        {
+            itemDataOptions.Add(itemDatas[index]);
+        }
     }
 }

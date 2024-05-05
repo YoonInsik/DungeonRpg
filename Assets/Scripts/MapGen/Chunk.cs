@@ -71,7 +71,7 @@ public class Chunk : MonoBehaviour
 
         // 몬스터 반복 소환
         var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
-        yield return StartCoroutine(GameManager.Instance.StartTimer(60));
+        yield return StartCoroutine(GameManager.Instance.StartTimer(20));
 
         // 시간 종료
         StopCoroutine(decreaseFullnessCo);
@@ -85,7 +85,8 @@ public class Chunk : MonoBehaviour
         UnitManager.Instance.enemies.Clear();
 
         // 방 클리어 보상
-
+        GameManager.Instance.levelUpPanel.PopUpLevelUpPanel();
+        yield return new WaitUntil(() => GameManager.Instance.levelUpAmount > 0);
 
         // 방 열기
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
