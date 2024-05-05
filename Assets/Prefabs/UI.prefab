@@ -1025,8 +1025,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1400095621279553005, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+      - m_Target: {fileID: 7966805417491910233}
+        m_TargetAssemblyTypeName: ItemSelectPanel, Assembly-CSharp
         m_MethodName: SelectItem
         m_Mode: 1
         m_Arguments:
@@ -3842,6 +3842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  alert: {fileID: 0}
 --- !u!1 &5383190471244261239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,8 +3976,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1400095621279553005, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+      - m_Target: {fileID: 7966805417491910233}
+        m_TargetAssemblyTypeName: ItemSelectPanel, Assembly-CSharp
         m_MethodName: SelectItem
         m_Mode: 1
         m_Arguments:
@@ -5256,6 +5257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7e10c92a884054dbce2ceb16cb6abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alert: {fileID: 0}
   CookingItemUI: {fileID: 4651730767872559524}
 --- !u!1 &7027612542642763508
 GameObject:
@@ -5763,6 +5765,7 @@ MonoBehaviour:
   itemName: {fileID: 2566438720246478654}
   itemTag: {fileID: 3960403228543802832}
   itemDesc: {fileID: 159916259044634996}
+  data: {fileID: 0}
 --- !u!1 &8227571815354790873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5998,8 +6001,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1400095621279553005, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+      - m_Target: {fileID: 7966805417491910233}
+        m_TargetAssemblyTypeName: ItemSelectPanel, Assembly-CSharp
         m_MethodName: SelectItem
         m_Mode: 1
         m_Arguments:
@@ -6523,6 +6526,7 @@ MonoBehaviour:
   itemName: {fileID: 6281190003754259033}
   itemTag: {fileID: 885165665875675582}
   itemDesc: {fileID: 3991465665102815599}
+  data: {fileID: 0}
 --- !u!1 &8953940305486004598
 GameObject:
   m_ObjectHideFlags: 0
@@ -6912,3 +6916,4 @@ MonoBehaviour:
   itemName: {fileID: 8808258351785954770}
   itemTag: {fileID: 5445050785124785723}
   itemDesc: {fileID: 4506845046052230821}
+  data: {fileID: 0}
