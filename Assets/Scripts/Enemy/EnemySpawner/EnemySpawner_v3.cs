@@ -29,7 +29,7 @@ namespace SHS
             //플레이어 Transform 불러오기
             if (GameObject.FindGameObjectWithTag("Player") == null)
             {
-                Invoke( "Start", 1f);
+                Invoke("Start", 1f);
                 return;
             }
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
@@ -40,9 +40,9 @@ namespace SHS
 
         void Update()
         {
-            if (HandlingStart)
+            if (WaveStart)
             {
-                HandlingStart = false;
+                WaveStart = false;
 
                 //5초마다 생성
                 StartCoroutine(WaveMaker());
@@ -100,7 +100,6 @@ namespace SHS
 
             wave_level++;
 
-            StartCoroutine(WaveMaker());
         }
 
         [Header("웨이브 설정")]
@@ -119,8 +118,14 @@ namespace SHS
 
         #region 소환 설정
 
-        [Header("수동조작")]
-        [SerializeField] bool HandlingStart;
+        [Header("작동조작")]
+        [SerializeField] bool WaveStart;
+        [SerializeField] bool WaveStop;
+
+        public void MakeWave()
+        {
+            WaveStart = true;
+        }
 
         [Header("스폰 설정")]
         [SerializeField] Vector2 spawn_cooltime_set = new Vector2(1f, 5f);
@@ -163,12 +168,22 @@ namespace SHS
 
                 newEnemy.Reset_MyStat(set_eg.enemystat);
 
+                /*
                 if (set_eg.use_customradius)
                 {
                     newEnemy.transform.position = player_trns.transform.position + ranpos_v3 * Random.Range(set_eg.customradius.x, set_eg.customradius.y);
                 }
                 else
                     newEnemy.transform.position = player_trns.transform.position + ranpos_v3 * Random.Range(spawn_radius.x, spawn_radius.y);
+                */
+
+                if (set_eg.use_customradius)
+                {
+                    newEnemy.transform.position = MapManager.Instance.CurChunk.transform.position + ranpos_v3 * Random.Range(set_eg.customradius.x, set_eg.customradius.y);
+                }
+                else
+                    newEnemy.transform.position = MapManager.Instance.CurChunk.transform.position + ranpos_v3 * Random.Range(spawn_radius.x, spawn_radius.y);
+
                 //newEnemy.transform.position = UnitManager.Instance.player.transform.position + ranpos_v3 * Random.Range(spawn_radius_ran.x, spawn_radius_ran.y);
 
                 //UnitManager.Instance.enemies.Enqueue(newEnemy);
