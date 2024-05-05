@@ -1,3 +1,4 @@
+using SHS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,7 +54,7 @@ public class Chunk : MonoBehaviour
 
     public IEnumerator StartChunkEvent()
     {
-        // ¹æ ¿­±â
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
         MapManager.Instance.SetActiveNextChunkUI(true);
 
@@ -62,33 +63,37 @@ public class Chunk : MonoBehaviour
 
     public IEnumerator NormalChunkEvent()
     {
-        // ¹æ ´Ý±â
+        // ï¿½ï¿½ ï¿½Ý±ï¿½
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(true);
         MapManager.Instance.SetActiveNextChunkUI(false);
 
-        // ¹è°íÇÄ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½
         var decreaseFullnessCo = StartCoroutine(UnitManager.Instance.player.DecreaseFullness());
 
-        // ¸ó½ºÅÍ ¹Ýº¹ ¼ÒÈ¯
-        var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
-        yield return StartCoroutine(GameManager.Instance.StartTimer(20));
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½ ï¿½ï¿½È¯
+        //var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
+        //  ----> EnemySpawner_v3ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+        EnemySpawner_v3.Instance.MakeWave();
 
-        // ½Ã°£ Á¾·á
+        yield return StartCoroutine(GameManager.Instance.StartTimer(60));
+
+        // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
         StopCoroutine(decreaseFullnessCo);
-        StopCoroutine(enemySpawnCo);
+        //StopCoroutine(enemySpawnCo);
+        //  ----> ï¿½ï¿½ï¿½Ìºê°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ Å©ï¿½ï¿½(ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Ö±â¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½îµµ ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
-        // Àû Á¦°Å ÇÔ¼ö
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
         foreach (var enemy in UnitManager.Instance.enemies)
         {
             SHS.EnemySpawner.ReturnObject(enemy);
         }
         UnitManager.Instance.enemies.Clear();
 
-        // ¹æ Å¬¸®¾î º¸»ó
+        // ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameManager.Instance.levelUpPanel.PopUpLevelUpPanel();
         yield return new WaitUntil(() => GameManager.Instance.levelUpAmount > 0);
 
-        // ¹æ ¿­±â
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
         MapManager.Instance.SetActiveNextChunkUI(true);
     }

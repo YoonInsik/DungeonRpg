@@ -10,14 +10,16 @@ public class Player : BaseUnit
     public float speed = 3.0f;
 
     [SerializeField] private float fullness;
-    public float Fullness {  get { return fullness; } }
+    public float Fullness {  get => fullness; }
     private float maxFullness = 100;
     public float MaxFullness {  get { return maxFullness; } }
     public Inventory GetInventory { get => inventory; }
 
     private Inventory inventory;
     private GameObject furnaceUI;
-    private bool UIopen;
+    private GameObject menuUI;
+    private bool FurnaceUIopen;
+    private bool MenuUIopen;
     public Scanner scanner;
 
     public void Awake()
@@ -30,16 +32,29 @@ public class Player : BaseUnit
         base.Start();
         inventory = Inventory.Instance;
         furnaceUI = FurnaceItemUI.Instance.gameObject;
+        menuUI = MenuUI.Instance.gameObject;
     }
     private void Update()
     {
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            furnaceUI.SetActive(!UIopen);
-            UIopen = !UIopen;
+            furnaceUI.SetActive(!FurnaceUIopen);
+            FurnaceUIopen = !FurnaceUIopen;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            if (!MenuUIopen)
+            {
+                MenuUI.Instance.openMenuUI();
+            }
+            else
+            {
+                menuUI.SetActive(false);
+            }
+            MenuUIopen = !MenuUIopen;
         }
     }
     void FixedUpdate()

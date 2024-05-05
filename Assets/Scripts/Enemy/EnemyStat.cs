@@ -6,15 +6,17 @@ namespace SHS
     [CreateAssetMenu(fileName = "EnemyStat", menuName = "Enemy/EnemyStat")]
     public class EnemyStat : ScriptableObject
     {
-        public int enemy_id;
+        public EnemyType enemytype;
         public float hp;
         public float speed;
+        public int damage;
 
-        public EnemyStat(int id, float hp, float speed)
+        public EnemyStat(EnemyType enemytype, float hp, float speed, int damage)
         {
-            this.enemy_id = id;
+            this.enemytype = enemytype;
             this.hp = hp;
             this.speed = speed;
+            this.damage = damage;
         }
     }
 }

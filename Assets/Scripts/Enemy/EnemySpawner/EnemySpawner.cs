@@ -5,16 +5,9 @@ using UnityEngine.Pool;
 
 namespace SHS
 {
-    public enum EnemyType
+    public class EnemySpawner : MonoBehaviour
     {
-        Follower,
-        Jumper,
-        Sniper
-    }
-
-    public class EnemySpawner_v2 : MonoBehaviour
-    {
-        public static EnemySpawner_v2 Instance;
+        public static EnemySpawner Instance;
 
         //필요변수
         Transform player_trns;
@@ -27,55 +20,25 @@ namespace SHS
         }
 
 
+        // Start is called before the first frame update
         void Start()
         {
-            //플레이어 Transform 불러오기
-            if (GameObject.FindGameObjectWithTag("Player") == null)
-            {
-                Invoke( "Start", 1f);
-                return;
-            }
-            player_trns = GameObject.FindGameObjectWithTag("Player").transform;
+            player_trns = UnitManager.Instance.player.transform;
 
+            spawn_cooltime = spawn_cooltime_set;
+
+            // StartCoroutine(EnemySpawn_Coroutine(spawn_cooltime));
         }
-
-        void Update()
-        {
-            if (HandlingStart)
-            {
-                HandlingStart = false;
-                StartCoroutine(EnemySpawn_Coroutine(now_enemytype, wave_scale, spawn_cooltime_set, spawn_radius));
-            }
-        }
-
-        #region 소환 설정
-
-        [Header("수동조작")]
-        [SerializeField] bool HandlingStart;
-
-        [Header("스폰 설정")]
-        [SerializeField] EnemyType now_enemytype;
-        [SerializeField] int wave_scale;
-        [SerializeField] Vector2 spawn_cooltime_set = new Vector2(1f, 5f);
-        [SerializeField] Vector2 spawn_radius = new Vector2(5f, 20f);
-
-        public void Set_SpawnSetting(EnemyType _type, int scale, Vector2 cooltime, Vector2 radius)
-        {
-            now_enemytype = _type;
-            wave_scale = scale;
-            spawn_cooltime_set = cooltime;
-            spawn_radius = radius;
-        }
-
-        #endregion
 
         private void Initialize(int initCount)
         {
             for (int i = 0; i < initCount; i++)
             {
                 EnemyQueue.Enqueue(CreateNewEnemy());
+            }
+            for (int i = 0; i < initCount; i++)
+            {
                 JumpEnemyQueue.Enqueue(CreateNewJumpEnemy());
-                SnipeEnemyQueue.Enqueue(CreateNewSnipeEnemy());
             }
         }
 
@@ -84,6 +47,7 @@ namespace SHS
             _enemy.gameObject.SetActive(false);
             _enemy.transform.SetParent(Instance.transform);
 
+            /*
             switch (_enemy.Get_MyStat().enemy_id)
             {
                 default:
@@ -107,10 +71,8 @@ namespace SHS
                     break;
 
             }
-
+            */
         }
-
-        #region 적군 종류
 
         #region 기본 적군 풀링
 
@@ -182,89 +144,57 @@ namespace SHS
 
         #endregion
 
-        #region 저격 적군 풀링
+        #region 쿨타임 생성
 
-        [Header("Sniper 풀링")]
-        [SerializeField] GameObject SnipeEnemy_prefab;
 
-        [SerializeField] Queue<Enemy> SnipeEnemyQueue = new Queue<Enemy>();
+        [Header("쿨타임 생성")]
+        [SerializeField] float spawn_cooltime_set;
+        [SerializeField] float spawn_radius = 25f;
+        [SerializeField] Vector2 spawn_radius_ran = new Vector2(0.1f, 0.5f);
 
-        Enemy CreateNewSnipeEnemy()
+        [Header("쿨타임 생성_수치확인")]
+        [SerializeField] float spawn_cooltime;
+
+
+        //적 생성 조건 _ 쿨타임
+        void EnemySpawn_Cooltime()
         {
-            var newObj = Instantiate(SnipeEnemy_prefab).GetComponent<Enemy>();
-            newObj.gameObject.SetActive(false);
-            newObj.transform.SetParent(transform);
-            return newObj;
-        }
-
-        public static Enemy GetSnipeEnemy()
-        {
-            if (Instance.EnemyQueue.Count > 0)
+            if(spawn_cooltime > 0)
             {
-                var obj = Instance.SnipeEnemyQueue.Dequeue();
-                obj.transform.SetParent(null);
-                obj.gameObject.SetActive(true);
-                return obj;
+                spawn_cooltime -= Time.deltaTime;
+                return;
             }
             else
             {
-                var newObj = Instance.CreateNewSnipeEnemy();
-                newObj.gameObject.SetActive(true);
-                newObj.transform.SetParent(null);
-                return newObj;
+                spawn_cooltime = spawn_cooltime_set;
+
+                //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
+                Vector2 randomPosition = Random.insideUnitCircle;
+                Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
+                GameObject e = GetEnemy().gameObject;
+                e.transform.position = player_trns.position + ranpos_v3 * spawn_radius;
+
             }
         }
 
         #endregion
 
-        #endregion 
+        [Space(10)]
 
-        #region 쿨타임 생성
+        #region 점퍼생성
 
-        IEnumerator EnemySpawn_Coroutine(EnemyType enemytype, int scale, Vector2 cooltime, Vector2 radius)
+        public bool make_jumper;
+
+        void JumperMaker()
         {
-            int a = 0;
-
-            var newEnemy = new Enemy();
-
-
-            while (a < scale)
+            if (make_jumper)
             {
-                //유저를 중심으로 spawn_radius거리에 랜덤으로 생성
+                make_jumper = false;
+
                 Vector2 randomPosition = Random.insideUnitCircle;
                 Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
-
-                switch (enemytype)
-                {
-                    default:
-                        Debug.LogError("해당하는 적의 타입이 없습니다. 생성종료");
-                        yield break;
-
-                    case EnemyType.Follower:
-                        newEnemy = GetEnemy();
-                        break;
-
-                    case EnemyType.Jumper:
-                        newEnemy = GetJumpEnemy();
-                        break;
-
-                    case EnemyType.Sniper:
-                        newEnemy = GetSnipeEnemy();
-                        break;
-                }
-
-
-                newEnemy.transform.position = player_trns.transform.position + ranpos_v3 * Random.Range(radius.x, radius.y);
-                //newEnemy.transform.position = UnitManager.Instance.player.transform.position + ranpos_v3 * Random.Range(spawn_radius_ran.x, spawn_radius_ran.y);
-
-                //UnitManager.Instance.enemies.Enqueue(newEnemy);
-
-                newEnemy.GetComponent<Enemy>().Start_Burrowing();
-
-                a++;
-
-                //스폰 쿨타임 세팅
-                yield return new WaitForSeconds(Random.Range(cooltime.x, cooltime.y));
+                GameObject e = GetJumpEnemy().gameObject;
+                e.transform.position = player_trns.position + ranpos_v3 * spawn_radius;
             }
         }
 
@@ -312,14 +242,33 @@ namespace SHS
 
         #endregion
 
+        #region 적 생성
+
+        private float RandomFloat() {
+            return UnityEngine.Random.Range(-MapManager.CHUNKSIZE / 2 + 1, MapManager.CHUNKSIZE / 2);
+        }
+        public IEnumerator EnemySpawn_Coroutine(float cooltime)
+        {
+            while(true)
+            {
+                //청크 기준으로 사각형 랜덤 생성
+                Vector3 newPos = MapManager.Instance.CurChunk.transform.position + new Vector3(RandomFloat(), RandomFloat(), 0);
+
+                var newEnemy = GetEnemy();
+                newEnemy.transform.position = newPos;
+                UnitManager.Instance.enemies.Enqueue(newEnemy);
+                newEnemy.Start_Burrowing();
+
+                yield return new WaitForSeconds(cooltime);
+            }
+        }
+
+        #endregion
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, spawn_radius.x);
-
-            Gizmos.color = new Color(1f, 1f, 0f);
-            Gizmos.DrawWireSphere(transform.position, spawn_radius.y);
+            Gizmos.DrawWireSphere(transform.position, spawn_radius);
 
         }
     }

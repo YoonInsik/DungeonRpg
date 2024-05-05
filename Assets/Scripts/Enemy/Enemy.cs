@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
+using static UnityEditor.PlayerSettings;
 
 namespace SHS
 {
@@ -13,19 +14,39 @@ namespace SHS
         //인스턴스
         MeatMart meatmart;
 
+        //변수
+        Collider2D m_col;
+
         [Header("적 개체 설정")]
-        [SerializeField] EnemyStat m_stat;
+        public EnemyStat m_stat;
 
         [SerializeField] float now_hp;
 
         private void Start()
         {
+            //인스턴스
             meatmart = MeatMart.instance;
+
+            //변수
+            m_col = GetComponent<Collider2D>();
+            m_col.enabled = false;
 
             now_hp = m_stat.hp;
 
             now_burrow = true;
 
+            if (handling_start)
+            {
+                Start_Burrowing();
+            }
+
+        }
+
+        public void Reset_MyStat(EnemyStat _stat)
+        {
+            m_stat = _stat;
+
+            now_hp = m_stat.hp;
         }
 
         public EnemyStat Get_MyStat()
@@ -77,6 +98,7 @@ namespace SHS
         [SerializeField] ParticleSystem burrow_par;
         [SerializeField] GameObject burrow_image;
         [SerializeField] GameObject Model;
+        [SerializeField] bool handling_start;
 
         public void Start_Burrowing()
         {
@@ -89,6 +111,8 @@ namespace SHS
         {
             now_burrow = true;
 
+            m_col.enabled = false;
+            now_hp = m_stat.hp;
             burrow_image.SetActive(true);
             Model.SetActive(false);
         }
@@ -96,6 +120,8 @@ namespace SHS
         void Burrow_End()
         {
             now_burrow = false;
+
+            m_col.enabled = true;
 
             burrow_par.Stop();
             burrow_image.SetActive(false);
@@ -118,10 +144,13 @@ namespace SHS
             exp.transform.position = transform.position;
 
             //고기 드랍
+            /*
             if (Random.Range(0, 100) < meatdrop_rate)
             {
                 Instantiate(MapManager.Instance.CurChunk.data.dropTable[0].item, transform.position, Quaternion.identity);
             }
+            */
+
 
             // if (Random.Range(0, 100) < meatdrop_rate)
             // {
@@ -135,7 +164,8 @@ namespace SHS
 
             Dead_Resetting();
 
-            EnemySpawner.ReturnObject(this);
+            EnemyDeadCount.instance.Counting();
+            EnemyQueueManager.ReturnObject(this);
         
         }
     }

@@ -116,6 +116,7 @@ MonoBehaviour:
   burrow_par: {fileID: 8454574681784485539}
   burrow_image: {fileID: 6039329443234848779}
   Model: {fileID: 3478975643931949422}
+  handling_start: 0
   meat_num: 0
   meatdrop_rate: 33
 --- !u!114 &4063271551220625829
@@ -132,10 +133,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_model_ani: {fileID: 6534048469498285956}
   snipe_length: 13
+  remain: 0
   attack_center: {fileID: 2579570090271374368}
   now_attack: 0
   snipe_time: 1.5
-  snipe_attack_ani: {fileID: 927389085352387246}
+  snipe_attackgroup: {fileID: 4372378857734207368, guid: ff8970a47e67706418a11d9e652a47a3, type: 3}
 --- !u!58 &3589512301656993723
 CircleCollider2D:
   m_ObjectHideFlags: 0
