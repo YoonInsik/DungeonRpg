@@ -97,11 +97,11 @@ public class Inventory : Singleton<Inventory>
 
         itemDataList.Add(data);
 
-        foreach (GameObject child in player.transform)
+        foreach (Transform child in player.transform)
         {
-            if (child.Equals(data.itemPrefab))
+            if (child.name.Equals(data.itemName))
             {
-                child.SetActive(true);
+                child.gameObject.SetActive(true);
             }
         }
     }

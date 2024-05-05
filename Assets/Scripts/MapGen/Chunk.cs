@@ -75,7 +75,7 @@ public class Chunk : MonoBehaviour
         //  ----> EnemySpawner_v3�� ���̺� ����� ���� �Է�
         EnemySpawner_v3.Instance.MakeWave();
 
-        yield return StartCoroutine(GameManager.Instance.StartTimer(60));
+        yield return StartCoroutine(GameManager.Instance.StartTimer(30));
 
         // �ð� ����
         StopCoroutine(decreaseFullnessCo);

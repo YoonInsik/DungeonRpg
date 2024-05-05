@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCode: 2
   itemImage: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  itemName: "\uC544\uC774\uD15C3"
+  itemName: Rotation Weapon
   itemTag: 0
   itemDesc: "\uC124\uBA85"

@@ -6,7 +6,6 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     public int itemCode;
-    public GameObject itemPrefab;
     public Sprite itemImage;
     public string itemName;
     public ItemType itemTag;

@@ -9,7 +9,7 @@ public class ExpItem : BaseItem
 
     protected override void Contact()
     {
-        Debug.Log("경험치 습득");
+        //Debug.Log("경험치 습득");
         GameManager.Instance.UpdateEXP(expAmount);
         ReleaseObject();
     }
