@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseItem : MonoBehaviour, IInteractable
+public abstract class BaseItem : Poolable
 {
-    public void Interact()
-    {
-        throw new System.NotImplementedException();
-    }
+    protected abstract void Contact();
 
-    public bool IsInteractable()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        if (collision.CompareTag("Player"))
+            Contact();
     }
 }

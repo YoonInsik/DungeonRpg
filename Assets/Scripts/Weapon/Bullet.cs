@@ -9,16 +9,20 @@ using SHS;
 public class Bullet : MonoBehaviour
 {
     Player player;
-
     public Vector3 direction;
     float speed = 10.0f;
     float damage = 1.0f;
-
     private IObjectPool<Bullet> managedPool;
+    private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+    }
+
+    private void OnEnable()
+    {
+        isReleased = false;
     }
 
     private void FixedUpdate()
@@ -34,13 +38,16 @@ public class Bullet : MonoBehaviour
     public void Shoot(Vector3 dir)
     {
         direction = dir;
-
         Invoke("DestroyBullet", 5f);
     }
 
     public void DestroyBullet()
     {
-        managedPool.Release(this);
+        if (!isReleased)
+        {
+            managedPool.Release(this);
+            isReleased = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,5 +59,8 @@ public class Bullet : MonoBehaviour
         }
     }
 
-
+    private void OnDisable()
+    {
+        CancelInvoke("DestroyBullet");
+    }
 }

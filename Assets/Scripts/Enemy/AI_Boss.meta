@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Enemy/AI_Boss.meta
 guid: 509d56d263fc67949a09da722f1d291e
+========
+guid: fc7261f4392f396468feea8bf4e95ae9
+>>>>>>>> 81a82cc6a030457b7a64d7f54062c26c42fbcce8:Assets/Scripts/Unit/Inventory/UI/MenuUI.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

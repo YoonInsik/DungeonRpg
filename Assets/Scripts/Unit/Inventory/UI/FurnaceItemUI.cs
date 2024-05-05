@@ -8,7 +8,7 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
     private Inventory inventory;
     private Meat[] meats;
     private List<CookingItem> cookingList;
-
+    public AlertText alert;
     [SerializeField] private CookingItemUI CookingItemUI;
     // Start is called before the first frame update
     private void Start()
@@ -30,6 +30,7 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
                 if (meats[i].meats.itemName == ingredient.ingredient.itemName && meats[i].count < ingredient.amount)
                 {
                     Debug.Log(meats[i].meats.itemName + ingredient.ingredient.itemName + meats[i].count + ingredient.amount);
+                    alert.InstantiateAlert("재료가 부족합니다.");
                     return;
                 }
             }

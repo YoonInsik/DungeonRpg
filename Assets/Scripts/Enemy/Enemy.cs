@@ -139,17 +139,26 @@ namespace SHS
 
         void Dead()
         {
+            //경험치 드랍
+            var exp = ObjectPoolManager.Instance.GetGo("Exp");
+            exp.transform.position = transform.position;
+
             //고기 드랍
             /*
             if (Random.Range(0, 100) < meatdrop_rate)
             {
-                if (meatmart.Meats[meat_num] == null)
-                    Debug.LogError("해당 고기는 존재하지 않습니다");
-                else
-                    Instantiate(meatmart.Meats[meat_num], transform.position, Quaternion.identity);
+                Instantiate(MapManager.Instance.CurChunk.data.dropTable[0].item, transform.position, Quaternion.identity);
             }
             */
 
+
+            // if (Random.Range(0, 100) < meatdrop_rate)
+            // {
+            //     if (meatmart.Meats[meat_num] == null)
+            //         Debug.LogError("해당 고기는 존재하지 않습니다");
+            //     else
+            //         Instantiate(meatmart.Meats[meat_num], transform.position, Quaternion.identity);
+            // }
 
             Instantiate(ptc_dead, transform.position, Quaternion.identity);
 

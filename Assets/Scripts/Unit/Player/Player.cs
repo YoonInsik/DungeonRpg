@@ -10,13 +10,18 @@ public class Player : BaseUnit
     public float speed = 3.0f;
 
     [SerializeField] private float fullness;
-    public float Fullness {  get { return fullness; } }
+    public float Fullness {  get => fullness; }
     private float maxFullness = 100;
-    public float MaxFullness {  get { return maxFullness; } }
-  
+    public float MaxFullness { get => maxFullness; }
+
+    private int exp;
+    public int Exp { get => exp; }
+
     private Inventory inventory;
     private GameObject furnaceUI;
-    private bool UIopen;
+    private GameObject menuUI;
+    private bool FurnaceUIopen;
+    private bool MenuUIopen;
     public Scanner scanner;
 
     public void Awake()
@@ -24,21 +29,34 @@ public class Player : BaseUnit
         scanner = GetComponent<Scanner>();
         rigid = GetComponent<Rigidbody2D>();
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         inventory = Inventory.Instance;
         furnaceUI = FurnaceItemUI.Instance.gameObject;
-        StartCoroutine("DecreaseFullness");
+        menuUI = MenuUI.Instance.gameObject;
     }
     private void Update()
     {
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            furnaceUI.SetActive(!UIopen);
-            UIopen = !UIopen;
+            furnaceUI.SetActive(!FurnaceUIopen);
+            FurnaceUIopen = !FurnaceUIopen;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            if (!MenuUIopen)
+            {
+                MenuUI.Instance.openMenuUI();
+            }
+            else
+            {
+                menuUI.SetActive(false);
+            }
+            MenuUIopen = !MenuUIopen;
         }
     }
     void FixedUpdate()
@@ -74,7 +92,7 @@ public class Player : BaseUnit
         }
     }
 
-    private IEnumerator DecreaseFullness()
+    public IEnumerator DecreaseFullness()
     {
         while(fullness > 0)
         {
@@ -82,5 +100,16 @@ public class Player : BaseUnit
             fullness -= 5;
             Debug.Log("Decrease Fullness");
         }
+    }
+
+    public int GetBaseHP()
+    {
+        return baseStat.baseHP;
+    }
+
+    public void IncreaseEXP(int amount)
+    {
+        exp += amount;
+        Debug.Log("EXP = " + exp);
     }
 }
