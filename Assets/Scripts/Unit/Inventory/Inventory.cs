@@ -7,6 +7,9 @@ using UnityEngine;
 
 public class Inventory : Singleton<Inventory>
 {
+    //보유 아이템 리스트
+    [SerializeField] private List<ItemData> itemDataList;
+
     //현재 갖고있는 요리아이템 저장
     [SerializeField] private Cooking[] cooking;
     [SerializeField] private Meat[] meats;
@@ -19,6 +22,7 @@ public class Inventory : Singleton<Inventory>
     private void Start()
     {
         cooking = new Cooking[3];
+        itemDataList = new List<ItemData>();
         statUp = UnitManager.Instance.player.GetComponent<CookingStatIncrease>();
         player = UnitManager.Instance.player.GetComponent<Player>();
     }
@@ -84,6 +88,22 @@ public class Inventory : Singleton<Inventory>
     public List<CookingItem> GetCookingList()
     {
         return cookingList;
+    }
+
+    public void AddItemData(ItemData data)
+    {
+        if (itemDataList.Count > 6) return;
+        if (itemDataList.Contains(data)) return;
+
+        itemDataList.Add(data);
+
+        foreach (Transform child in player.transform)
+        {
+            if (child.name.Equals(data.itemName))
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
     }
 }
 
