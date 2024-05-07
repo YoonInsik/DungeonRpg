@@ -30,9 +30,17 @@ public class Bullet : MonoBehaviour
         transform.Translate(direction * Time.fixedDeltaTime * speed);
     }
 
-    public void SetManagedPool(IObjectPool<Bullet> Pool)
+    public void SetManagedPool(IObjectPool<Bullet> pool)
     {
-        managedPool = Pool;
+        managedPool = pool;
+        if (managedPool == null)
+        {
+            Debug.LogError("ManagedPool is not set properly.");
+        }
+        else
+        {
+            Debug.Log("ManagedPool set successfully.");
+        }
     }
 
     public void Shoot(Vector3 dir)
@@ -45,6 +53,11 @@ public class Bullet : MonoBehaviour
     {
         if (!isReleased)
         {
+            if (managedPool == null)
+            {
+                Debug.LogError("ManagedPool is null when trying to release the bullet.");
+                return; // Early exit to avoid the null reference exception
+            }
             managedPool.Release(this);
             isReleased = true;
         }
