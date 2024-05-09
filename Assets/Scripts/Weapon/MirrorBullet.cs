@@ -11,12 +11,14 @@ public class MirrorBullet : MonoBehaviour
     float speed = 10.0f;
     float damage = 1.0f;
     private IObjectPool<MirrorBullet> managedPool;
+    private IObjectPool<Bullet> bulletPool;
     private bool isReleased = false;
     public GameObject normalBulletPrefab; // 일반 총알의 프리팹을 참조
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 30);
     }
 
     private void OnEnable()
@@ -50,14 +52,14 @@ public class MirrorBullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-{
-    if (collision.gameObject.CompareTag("Enemy"))
     {
-        DestroyMirrorBullet(); // 총알 반환
-        SpawnNormalBullets(); // 일반 총알 생성
-        collision.GetComponent<Enemy>().Damaged(damage);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            DestroyMirrorBullet(); // 총알 반환
+            SpawnNormalBullets(); // 일반 총알 생성
+            collision.GetComponent<Enemy>().Damaged(damage);
+        }
     }
-}
 
     void SpawnNormalBullets()
     {
@@ -74,21 +76,38 @@ public class MirrorBullet : MonoBehaviour
 
     void InstantiateAndShoot(GameObject bulletPrefab, Vector3 direction)
     {
-        GameObject bulletObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        Bullet bulletComponent = bulletObject.GetComponent<Bullet>();
-        if (bulletComponent != null)
-        {
-            bulletComponent.Shoot(direction.normalized); // 총알의 방향을 정규화하여 전달
-        }
-        else
-        {
-            Debug.LogError("Bullet component not found on the instantiated object.");
-        }
+        //GameObject bulletObject = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        //Bullet bulletComponent = bulletObject.GetComponent<Bullet>();
+        var bullet = bulletPool.Get();
+        bullet.transform.position = transform.position + direction.normalized;
+        bullet.Shoot(direction.normalized);
     }
 
     private void OnDisable()
     {
         CancelInvoke("DestroyMirrorBullet");
+    }
+
+    private Bullet CreateBullet()
+    {
+        Bullet bullet = Instantiate(normalBulletPrefab).GetComponent<Bullet>();
+        bullet.SetManagedPool(bulletPool);
+        return bullet;
+    }
+
+    private void OnGetBullet(Bullet bullet)
+    {
+        bullet.gameObject.SetActive(true);
+    }
+
+    private void OnReleaseBullet(Bullet bullet)
+    {
+        bullet.gameObject.SetActive(false);
+    }
+
+    private void OnDestroyBullet(Bullet bullet)
+    {
+        Destroy(bullet.gameObject);
     }
 }
 

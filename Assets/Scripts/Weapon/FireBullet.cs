@@ -1,18 +1,16 @@
+using SHS;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.Pool;
-using SHS;
 
-public class Bullet : MonoBehaviour
+public class FireBullet : MonoBehaviour
 {
     Player player;
     public Vector3 direction;
-    float speed = 10.0f;
+    float speed = 5.0f;
     float damage = 1.0f;
-    private IObjectPool<Bullet> managedPool;
+    private IObjectPool<FireBullet> managedPool;
     private bool isReleased = false;
 
     private void Awake()
@@ -30,7 +28,7 @@ public class Bullet : MonoBehaviour
         transform.Translate(direction * Time.fixedDeltaTime * speed);
     }
 
-    public void SetManagedPool(IObjectPool<Bullet> pool)
+    public void SetManagedPool(IObjectPool<FireBullet> pool)
     {
         managedPool = pool;
     }
@@ -38,10 +36,10 @@ public class Bullet : MonoBehaviour
     public void Shoot(Vector3 dir)
     {
         direction = dir;
-        Invoke("DestroyBullet", 5f);
+        Invoke("DestroyFireBullet", 1.5f);
     }
 
-    public void DestroyBullet()
+    public void DestroyFireBullet()
     {
         if (!isReleased)
         {
@@ -54,13 +52,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            DestroyBullet();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }
 
     private void OnDisable()
     {
-        CancelInvoke("DestroyBullet");
+        CancelInvoke("DestroyFireBullet");
     }
 }
