@@ -8,43 +8,60 @@ using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
 {
-    public GameObject saveButton;
-    public GameObject cancelButton;
+
+    public GameObject BackButton;
     public GameObject menuWindow;
     //public GameObject[] settingUIs;
 
-    public bool fullScreen;
-    public Toggle toggle;
+    public bool isVSync;
+    public bool isFullScreen;
+    public Toggle resolution_toggle;
+    public Toggle vSync_toggle;
+    public Slider sound_slider;
     public TMP_Dropdown dropdown;
 
+    //가능한 해상도를 불러와서 주사율만 제거하기 위한 구조체 및 리스트
+    public struct Mod_Resolution
+    {
+        public int width;
+        public int height;
+    }
     public List<Resolution> resolutions = new List<Resolution>();
+    public List<Mod_Resolution> mod_resolutions = new List<Mod_Resolution>();
 
     // Start is called before the first frame update
     void Start()
     {
         InitDropDown();
-        InitToggle();
+        InitResolutionToggle();
+        InitVSyncToggle();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void InitDropDown()
     {
         resolutions.AddRange(Screen.resolutions);
-        //중복제거
-        resolutions = resolutions.Distinct().ToList();
+        foreach (Resolution resolution in resolutions)
+        {
+            if (resolution.width % 16 == 0 && resolution.height % 9 == 0)
+            {
+                Debug.Log(resolution.width / resolution.height);
+                Mod_Resolution mod_Resolution = new Mod_Resolution();
+                mod_Resolution.width = resolution.width;
+                mod_Resolution.height = resolution.height;
+
+                mod_resolutions.Add(mod_Resolution);
+            }
+        }
+        mod_resolutions.Distinct().ToList();
         dropdown.options.Clear();
 
-        for (int i = 0; i < resolutions.Count; i++)
+        for (int i = 0; i < mod_resolutions.Count; i++)
         {
             TMP_Dropdown.OptionData option = new TMP_Dropdown.OptionData
             {
-                text = resolutions[i].width + " x " + resolutions[i].height + " " + resolutions[i].refreshRateRatio + "Hz"
+                text = mod_resolutions[i].width + " x " + mod_resolutions[i].height
             };
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            if (mod_resolutions[i].width == Screen.width && mod_resolutions[i].height == Screen.height) ;
             {
                 dropdown.SetValueWithoutNotify(i);
             }
@@ -58,28 +75,20 @@ public class SettingUI : MonoBehaviour
 
     public void SetResolution(int index)
     {
-        Resolution resolution = resolutions[index];
-        Screen.SetResolution(resolution.width, resolution.height, fullScreen);
+        Mod_Resolution resolution = mod_resolutions[index];
+        Screen.SetResolution(resolution.width, resolution.height, isFullScreen);
     }
 
-    public void InitToggle()
+    public void InitResolutionToggle()
     {
-        fullScreen = Screen.fullScreen;
-        toggle.isOn = fullScreen;
-        toggle.onValueChanged.AddListener(SetFullScreen);
+        isFullScreen = Screen.fullScreen;
+        resolution_toggle.isOn = isFullScreen;
+        resolution_toggle.onValueChanged.AddListener(SetFullScreen);
     }
     public void SetFullScreen(bool fullScreen)
     {
-        this.fullScreen = fullScreen;
+        this.isFullScreen = fullScreen;
         Screen.fullScreen = fullScreen;
-    }
-
-    public void CancelButton()
-    {
-        gameObject.SetActive(false);
-        menuWindow.SetActive(true);
-        Debug.Log(Screen.height + " x " + Screen.width);
-        Debug.Log(Screen.fullScreen);
     }
 
     public void SaveButton()
@@ -90,5 +99,24 @@ public class SettingUI : MonoBehaviour
         Debug.Log(Screen.fullScreen);
     }
 
+    public void InitVSyncToggle()
+    {
+        QualitySettings.vSyncCount = 0;
+        vSync_toggle.isOn = false;
+        isVSync = false;
+        vSync_toggle.onValueChanged.AddListener(SetVSync);
+    }
+    public void SetVSync(bool isVsync)
+    {
+        if (isVSync)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+        Debug.Log(QualitySettings.vSyncCount);
+    }
     
 }

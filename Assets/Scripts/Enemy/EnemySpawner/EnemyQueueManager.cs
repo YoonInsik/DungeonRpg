@@ -177,6 +177,41 @@ namespace SHS
 
         #endregion
 
+        #region 분열 적군 풀링
+
+        [Header("Sniper 풀링")]
+        [SerializeField] GameObject SepertEnemy_prefab;
+
+        [SerializeField] Queue<Enemy> SepertEnemyQueue = new Queue<Enemy>();
+
+        Enemy CreateNewSepertEnemy()
+        {
+            var newObj = Instantiate(SepertEnemy_prefab).GetComponent<Enemy>();
+            newObj.gameObject.SetActive(false);
+            newObj.transform.SetParent(transform);
+            return newObj;
+        }
+
+        public Enemy GetSepertEnemy()
+        {
+            if (instance.SepertEnemyQueue.Count > 0)
+            {
+                var obj = instance.SepertEnemyQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                return obj;
+            }
+            else
+            {
+                var newObj = instance.CreateNewSepertEnemy();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                return newObj;
+            }
+        }
+
+        #endregion
+
         #endregion 
 
     }

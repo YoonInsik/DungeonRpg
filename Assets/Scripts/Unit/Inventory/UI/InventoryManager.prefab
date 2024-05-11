@@ -44,23 +44,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccf3b83ff47ca846a22e49c5024bb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDataList: []
   cooking: []
   meats:
   - meats: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
-    count: 30
+    count: 100
   - meats: {fileID: 11400000, guid: 32b4c9a5a68397f40b8c11381ae27b8d, type: 2}
-    count: 0
+    count: 100
   - meats: {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
-    count: 0
+    count: 100
   - meats: {fileID: 11400000, guid: 6b655c627d7a4b748b1c4dc7bd160b03, type: 2}
-    count: 0
+    count: 100
   - meats: {fileID: 11400000, guid: ccf4cfc3be1b6c04da0380fc32a398e5, type: 2}
-    count: 0
-  - meats: {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
+    count: 100
+  - meats: {fileID: 11400000, guid: db40660cb38926042ab235f851fc31e2, type: 2}
     count: 0
   cookingList:
-  - {fileID: 11400000, guid: 9a5e68b3eb9e6ed4ebe477aec6fb538c, type: 2}
-  - {fileID: 11400000, guid: 7bc57c78aa2fd994e8d0c33ebaefd056, type: 2}
-  - {fileID: 11400000, guid: 3c2bc5e90384a3849853d3dcb6423b2d, type: 2}
+  - {fileID: 5906648262648429137, guid: 06e984d62a19bc74295fdb0987afa4b6, type: 3}
+  - {fileID: 6898126161599734956, guid: 37815067eabd1644bafc85dfb586e069, type: 3}
+  - {fileID: 8895715424016085431, guid: 56a749b350238604eb771ebbbc13cb3a, type: 3}
+  - {fileID: -6482804511541805860, guid: 3e45811ffafd0a642bd18d08599295fa, type: 3}
+  - {fileID: 1370218846243694122, guid: 29df40afec16fd8478470d7f3f9c7365, type: 3}
+  - {fileID: 541183910806401341, guid: 0d3d54c19cf04694faf4d59d7bb92e5c, type: 3}
+  - {fileID: -2627937341232969231, guid: 1726bc6faaad0054f941411468d1eebe, type: 3}
+  - {fileID: -522826067951933942, guid: d4ab5cf64435a884cb9a5a17514c1896, type: 3}
+  - {fileID: 2611565495885856053, guid: 4c66c9c04eac7ef4e8b689192dc4f98b, type: 3}
+  - {fileID: 1243682804624482425, guid: 82720f992510cd84c863d836aed22002, type: 3}
+  - {fileID: -8278781387600382736, guid: eb44090127b399143b96ea215d5e80ba, type: 3}
   player: {fileID: 0}
   statUp: {fileID: 0}

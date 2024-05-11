@@ -17,6 +17,10 @@ namespace SHS
         //변수
         Collider2D m_col;
 
+        [Header("수동조작")]
+        [SerializeField] bool handling_start;
+        [SerializeField] bool Burrow_Skip;
+
         [Header("적 개체 설정")]
         public EnemyStat m_stat;
 
@@ -40,6 +44,12 @@ namespace SHS
                 Start_Burrowing();
             }
 
+            if (Burrow_Skip)
+            {
+                now_burrow = false;
+
+                m_col.enabled = true;
+            }
         }
 
         public void Reset_MyStat(EnemyStat _stat)
@@ -98,7 +108,6 @@ namespace SHS
         [SerializeField] ParticleSystem burrow_par;
         [SerializeField] GameObject burrow_image;
         [SerializeField] GameObject Model;
-        [SerializeField] bool handling_start;
 
         public void Start_Burrowing()
         {
@@ -128,8 +137,13 @@ namespace SHS
             Model.SetActive(true);
         }
 
+        public float Get_NowHP()
+        {
+            return now_hp;
+        }
 
         [Header("죽음")]
+        [SerializeField] bool not_queue;
 
         [Header("고기드랍")]
         [SerializeField] int meat_num;
@@ -140,8 +154,17 @@ namespace SHS
         void Dead()
         {
             //경험치 드랍
-            var exp = ObjectPoolManager.Instance.GetGo("Exp");
-            exp.transform.position = transform.position;
+            if (ObjectPoolManager.Instance != null)
+            {
+                var exp = ObjectPoolManager.Instance.GetGo("Exp");
+                exp.transform.position = transform.position;
+            }
+
+
+            if (GetComponent<EnemyAI_Seperater>() != null)
+            {
+                GetComponent<EnemyAI_Seperater>().Seperate();
+            }
 
             //고기 드랍
             /*
@@ -162,6 +185,9 @@ namespace SHS
 
             Instantiate(ptc_dead, transform.position, Quaternion.identity);
 
+            if (not_queue)
+                return;
+            
             Dead_Resetting();
 
             EnemyDeadCount.instance.Counting();

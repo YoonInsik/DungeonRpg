@@ -60,7 +60,7 @@ public class Inventory : Singleton<Inventory>
                 cooking[i].count++;
                 return;
             }
-            else if (cooking[i].cooking.itemName == cookingList[index].itemName)
+            else if (cooking[i].cooking.name == cookingList[index].name)
             {
                 Debug.Log("same name");
                 cooking[i].count++;
@@ -72,7 +72,14 @@ public class Inventory : Singleton<Inventory>
 
     public void RemoveCookingItem(int index)
     {
-        cooking[index] = new Cooking(null, 0);
+        if (cooking[index].count == 1)
+        {
+            cooking[index] = new Cooking(null,0);
+        }
+        else
+        {
+            cooking[index] = new Cooking(cooking[index].cooking, cooking[index].count - 1);
+        }
     }
 
     public Cooking[] GetCookingItem()
