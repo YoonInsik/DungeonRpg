@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
+
 //using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,14 +29,16 @@ public class CookingItemUI : Singleton<CookingItemUI>
         for (int i = 0; i < cookingInventory.Length; i++)
         {
             Image image = gameObject.transform.GetChild(i).GetChild(0).GetComponent<Image>();
-
+            TextMeshProUGUI itemText = gameObject.transform.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>();
             if (cookingInventory[i].cooking == null)
             {
-                image.sprite = null;               
+                image.sprite = null;
+                itemText.text = null;
             }
             else
             {
                 image.sprite = cookingInventory[i].cooking.GetComponent<SpriteRenderer>().sprite;
+                itemText.text = cookingInventory[i].count.ToString();
             }
         }
     }

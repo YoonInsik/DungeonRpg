@@ -10,17 +10,17 @@ public abstract class CookingItem : MonoBehaviour
     public int HP;
     public int ATK;
     public int DEF;
-    public int Fullness;
-    public int Speed;
-    public int ATKSpeed;
-    public int ATKRange;
-    public int CooldownReduction;
-    public int ATKduration;
-    public int Greed;
-    public int Delicacy;
-    public int Wisdom;
-    public int Temptation;
-    public int buffDuration;
+    public float Fullness;
+    public float Speed;
+    public float ATKSpeed;
+    public float ATKRange;
+    public float CooldownReduction;
+    public float ATKduration;
+    public float Greed;
+    public float Delicacy;
+    public float Wisdom;
+    public float Temptation;
+    public float buffDuration;
 
     //요리 레시피
     [Serializable]

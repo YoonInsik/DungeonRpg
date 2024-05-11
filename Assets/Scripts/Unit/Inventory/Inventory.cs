@@ -72,7 +72,14 @@ public class Inventory : Singleton<Inventory>
 
     public void RemoveCookingItem(int index)
     {
-        cooking[index] = new Cooking(null, 0);
+        if (cooking[index].count == 1)
+        {
+            cooking[index] = new Cooking(null,0);
+        }
+        else
+        {
+            cooking[index] = new Cooking(cooking[index].cooking, cooking[index].count - 1);
+        }
     }
 
     public Cooking[] GetCookingItem()
