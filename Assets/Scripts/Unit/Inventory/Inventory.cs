@@ -60,7 +60,7 @@ public class Inventory : Singleton<Inventory>
                 cooking[i].count++;
                 return;
             }
-            else if (cooking[i].cooking.itemName == cookingList[index].itemName)
+            else if (cooking[i].cooking.name == cookingList[index].name)
             {
                 Debug.Log("same name");
                 cooking[i].count++;

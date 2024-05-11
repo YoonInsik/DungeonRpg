@@ -34,7 +34,7 @@ public class CookingItemUI : Singleton<CookingItemUI>
             }
             else
             {
-                image.sprite = cookingInventory[i].cooking.icon;
+                image.sprite = cookingInventory[i].cooking.GetComponent<SpriteRenderer>().sprite;
             }
         }
     }
@@ -55,9 +55,9 @@ public class CookingItemUI : Singleton<CookingItemUI>
         Debug.Log("Click" + item);
         if(item == null) { return; }
 
-        if(player.Fullness + item.fullness < player.MaxFullness)
+        if(player.Fullness + item.Fullness < player.MaxFullness)
         {
-            player.IncreaseFullness(item.fullness);
+            player.IncreaseFullness(item.Fullness);
             inventory.statUp.IncreaseStat(item);
             inventory.RemoveCookingItem(index);
             AddCookingItemUI();

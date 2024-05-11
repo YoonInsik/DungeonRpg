@@ -8,8 +8,7 @@ using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
 {
-    public GameObject saveButton;
-    public GameObject cancelButton;
+    public GameObject BackButton;
     public GameObject menuWindow;
     //public GameObject[] settingUIs;
 

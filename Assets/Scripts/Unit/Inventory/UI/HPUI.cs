@@ -19,7 +19,7 @@ public class HPUI : MonoBehaviour
     void Update()
     {
         HPText.text = player.HP.ToString();
-        HPBar.localScale = new Vector3(player.HP / player.GetBaseHP(), 1, 1);
+        HPBar.localScale = new Vector3((float)player.HP / player.MaxHP, 1, 1);
         //Debug.Log(player.HP);
     }
 }
