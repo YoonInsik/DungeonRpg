@@ -8,7 +8,7 @@ using UnityEngine;
 public class Inventory : Singleton<Inventory>
 {
     //보유 아이템 리스트
-    [SerializeField] private List<ItemData> itemDataList;
+    public List<PlayerItemData> itemDataList;
 
     //현재 갖고있는 요리아이템 저장
     [SerializeField] private Cooking[] cooking;
@@ -22,7 +22,7 @@ public class Inventory : Singleton<Inventory>
     private void Start()
     {
         cooking = new Cooking[3];
-        itemDataList = new List<ItemData>();
+        itemDataList = new List<PlayerItemData>();
         statUp = UnitManager.Instance.player.GetComponent<CookingStatIncrease>();
         player = UnitManager.Instance.player.GetComponent<Player>();
     }
@@ -93,17 +93,26 @@ public class Inventory : Singleton<Inventory>
     public void AddItemData(ItemData data)
     {
         if (itemDataList.Count > 6) return;
-        if (itemDataList.Contains(data)) return;
 
-        itemDataList.Add(data);
-
-        foreach (Transform child in player.transform)
+        var playerItem = itemDataList.Find(x => x.itemData.Equals(data));
+        if (playerItem is null)
         {
-            if (child.name.Equals(data.itemName))
+            playerItem = new PlayerItemData();
+            playerItem.itemData = data;
+            itemDataList.Add(playerItem);
+
+            foreach (Transform child in player.transform)
             {
-                child.gameObject.SetActive(true);
+                if (child.name.Equals(data.itemName))
+                {
+                    child.gameObject.SetActive(true);
+                    print(child.name);
+                }
             }
         }
+         
+        playerItem.level++;
+        // item damage, stat level up
     }
 }
 
@@ -125,4 +134,10 @@ public struct Cooking
         this.cooking = cooking;
         this.count = count;
     }
+}
+
+public class PlayerItemData
+{
+    public int level;
+    public ItemData itemData;
 }

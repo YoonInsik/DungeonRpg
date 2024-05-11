@@ -14,9 +14,9 @@ public class ItemSelectPanel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemDesc;
     [SerializeField] private ItemData data;
 
-    public void SetUI(int index)
+    public void SetUI(ItemData _data)
     {
-        data = GameManager.Instance.itemDataOptions[index];
+        data = _data;
 
         itemImage.sprite = data.itemImage;
         itemName.text = data.itemName;

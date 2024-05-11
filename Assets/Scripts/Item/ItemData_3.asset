@@ -17,3 +17,10 @@ MonoBehaviour:
   itemName: SixBomb
   itemTag: 2
   itemDesc: "\uC124\uBA85"
+  baseDamage: 0
+  baseCount: 0
+  levelDamages:
+  - 0
+  - 0
+  - 0
+  levelCounts: 

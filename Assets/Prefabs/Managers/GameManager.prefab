@@ -45,6 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b6c74e193f3d14da99e31ea79aa3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDatas:
+  - {fileID: 11400000, guid: 8c50f33d2f4646040ab7a3fbb88555e8, type: 2}
+  - {fileID: 11400000, guid: 230e4cdf7acbd774494667491f2ff85a, type: 2}
+  - {fileID: 11400000, guid: f2aadbc16fcbc9347b3a91dd777329b7, type: 2}
+  - {fileID: 11400000, guid: f51c3ed973e4c7441b2ed3523ce0b3a8, type: 2}
+  itemDataOptions: []
+  levelUpPanel: {fileID: 0}
+  levelUpAmount: 0
 --- !u!114 &7102423766714240894
 MonoBehaviour:
   m_ObjectHideFlags: 0
