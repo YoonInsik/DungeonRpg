@@ -18,13 +18,8 @@ public class LevelUpPanel : MonoBehaviour
         if (GameManager.Instance.levelUpAmount <= 0) return;
         GameManager.Instance.levelUpAmount--;
 
-        GameManager.Instance.SelectLevelUpItems(options.Count);
         background.enabled = true;
-        for (int i = 0; i < options.Count; i++)
-        {
-            options[i].gameObject.SetActive(true);
-            options[i].SetUI(i);
-        }
+        GameManager.Instance.SelectLevelUpItems(options);
     }
 
     public void SetActiveOptions(bool value)

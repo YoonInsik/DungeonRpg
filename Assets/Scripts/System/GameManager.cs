@@ -19,7 +19,6 @@ public class GameManager : Singleton<GameManager>
 
     public CoAction levelUpAction;
     public List<ItemData> itemDatas;
-    public List<ItemData> itemDataOptions;
 
     public LevelUpPanel levelUpPanel;
     public int levelUpAmount;
@@ -67,24 +66,33 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    public void SelectLevelUpItems(int optionNum)
+    public void SelectLevelUpItems(List<ItemSelectPanel> options)
     {
-        if (itemDatas.Count < optionNum) return;
+        var needUpgradeItems = Inventory.Instance.itemDataList
+            .Where(x => x.level < x.itemData.levelDamages.Count())
+            .Select(x => x.itemData).ToList();
+
+        var alreadyHaveItems = Inventory.Instance.itemDataList.Select(x => x.itemData).ToList();
+        var newitems = itemDatas.Except(alreadyHaveItems).ToList();
+        var randomItemPools = newitems.Union(needUpgradeItems).ToList();
+
 
         List<int> indexes = new List<int>();
-        while (indexes.Count < optionNum)
+        while (indexes.Count < 3)
         {
-            var newRandNum = Random.Range(0, itemDatas.Count);
+            if (indexes.Count >= randomItemPools.Count) break;
+
+            var newRandNum = Random.Range(0, randomItemPools.Count);
             if (!indexes.Contains(newRandNum))
             {
                 indexes.Add(newRandNum);
             }
         }
 
-        itemDataOptions.Clear();
-        foreach (var index in indexes)
+        for (int i = 0; i < indexes.Count; i++)
         {
-            itemDataOptions.Add(itemDatas[index]);
+            options[i].gameObject.SetActive(true);
+            options[i].SetUI(randomItemPools[indexes[i]]);
         }
     }
 }

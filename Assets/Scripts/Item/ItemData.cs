@@ -10,6 +10,13 @@ public class ItemData : ScriptableObject
     public string itemName;
     public ItemType itemTag;
     public string itemDesc;
+
+    public float baseDamage;
+    public int baseCount;
+    public float[] levelDamages;
+    public int[] levelCounts;
+
+    //public GameObject prefab;
 }
 
 [System.Flags]

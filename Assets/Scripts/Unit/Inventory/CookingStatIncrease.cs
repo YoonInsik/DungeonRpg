@@ -13,37 +13,9 @@ public class CookingStatIncrease : MonoBehaviour
         cookingInventory = Inventory.Instance.GetCookingItem();
     }
 
+    //요리아이템에 있는 CookingEffect를 실행
     public void IncreaseStat(CookingItem item)
-    {
-        StartCoroutine(Buff(item));
-    }
-
-    IEnumerator Buff(CookingItem item)
-    {
-        StatIncrease(item);
-        if (item.buffDuration > 0)
-        {
-            yield return new WaitForSeconds(item.buffDuration);
-            StatDecrease(item);
-            Debug.Log(item.itemName + item.buffDuration + "초 Buff끝");
-        }
-    }
-
-    public void StatIncrease(CookingItem item)
-    {
-        if (item == null) { Debug.Log("StatUP CookingItem NULL"); }
-        player.ATK += item.ATK;
-        player.speed += item.SPEED;
-        player.HP += item.HP;
-        player.DEF += item.DEF;
-    }
-
-    public void StatDecrease(CookingItem item)
-    {
-        if (item == null) { Debug.Log("StatUP CookingItem NULL"); }
-        player.ATK -= item.ATK;
-        player.speed -= item.SPEED;
-        player.HP -= item.HP;
-        player.DEF -= item.DEF;
+    {   
+        StartCoroutine(item.CookingEffect(player));
     }
 }
