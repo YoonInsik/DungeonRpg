@@ -567,7 +567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: 80}
+  m_AnchoredPosition: {x: -59, y: 80}
   m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &165548732219145215
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 3951741829979823614}
   - component: {fileID: 8661991862092414672}
   m_Layer: 5
-  m_Name: SoundText
+  m_Name: VSyncText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,9 +950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'VSync
-
-'
+  m_text: "\uC218\uC9C1\uB3D9\uAE30\uD654\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 62cc409403882ae46bdf14f435c95ab4, type: 2}
   m_sharedMaterial: {fileID: 429861719840384583, guid: 62cc409403882ae46bdf14f435c95ab4, type: 2}
@@ -1033,7 +1031,7 @@ GameObject:
   - component: {fileID: 944022726399379514}
   - component: {fileID: 4594354013535250378}
   m_Layer: 5
-  m_Name: SoundText
+  m_Name: FullscreenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2008,7 +2006,7 @@ GameObject:
   - component: {fileID: 7462176958407862647}
   - component: {fileID: 3307439061568341535}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: VsyncToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3400,8 +3398,9 @@ MonoBehaviour:
   menuWindow: {fileID: 3620313848005597082}
   isVSync: 0
   isFullScreen: 0
-  resolution_toggle: {fileID: 0}
-  vSync_toggle: {fileID: 0}
+  resolution_toggle: {fileID: 4682295024482810008}
+  vSync_toggle: {fileID: 3307439061568341535}
+  sound_slider: {fileID: 6437605781759867841}
   dropdown: {fileID: 1694485654115293762}
 --- !u!1 &4143537943824135470
 GameObject:
@@ -4052,7 +4051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: -20}
+  m_AnchoredPosition: {x: -59, y: -20}
   m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8951500113855444398
@@ -4930,7 +4929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -58, y: 30}
+  m_AnchoredPosition: {x: -59, y: 30}
   m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7930772370791487632
@@ -5725,7 +5724,7 @@ GameObject:
   - component: {fileID: 4187057019446729810}
   - component: {fileID: 4682295024482810008}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: FullscreenToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6023,8 +6022,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingButton: {fileID: 1875283444073571408}
-  quitButton: {fileID: 0}
-  playButton: {fileID: 0}
+  quitButton: {fileID: 4143537943824135470}
+  continueButton: {fileID: 8759080555693319963}
   menuWindow: {fileID: 3620313848005597082}
   settingUI: {fileID: 4121645611622637673}
 --- !u!1 &7511018193912901114
@@ -6190,7 +6189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.925049, y: 1}
+  m_AnchoredPosition: {x: 8.921875, y: 1}
   m_SizeDelta: {x: 17.850037, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6419889158523334328
