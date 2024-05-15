@@ -7,7 +7,7 @@ public class MenuUI : Singleton<MenuUI>
 {
     public GameObject settingButton;
     public GameObject quitButton;
-    public GameObject playButton;
+    public GameObject continueButton;
     public GameObject menuWindow;
     public GameObject settingUI;
 

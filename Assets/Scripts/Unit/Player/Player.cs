@@ -9,10 +9,13 @@ public class Player : BaseUnit
     private Rigidbody2D rigid;
     public float speed = 3.0f;
 
+    public int MaxHP;
+
     [SerializeField] private float fullness;
     public float Fullness {  get => fullness; }
     private float maxFullness = 100;
     public float MaxFullness {  get { return maxFullness; } }
+    public int fullnessDecreaseAmount = 1;
     public Inventory GetInventory { get => inventory; }
 
     private Inventory inventory;
@@ -33,6 +36,7 @@ public class Player : BaseUnit
         inventory = Inventory.Instance;
         furnaceUI = FurnaceItemUI.Instance.gameObject;
         menuUI = MenuUI.Instance.gameObject;
+        MaxHP = GetBaseHP();
     }
     private void Update()
     {
@@ -95,7 +99,7 @@ public class Player : BaseUnit
         while(fullness > 0)
         {
             yield return new WaitForSeconds(5.0f);
-            fullness -= 5;
+            fullness -= fullnessDecreaseAmount;
             Debug.Log("Decrease Fullness");
         }
     }

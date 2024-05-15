@@ -7,7 +7,6 @@ using UnityEngine.Pool;
 
 public class Bomb : MonoBehaviour
 {
-    Player player;
     float speed = 5.0f;
     Vector3 direction;
     bool isMoving = true;
@@ -17,7 +16,6 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        player = GetComponentInParent<Player>();
     }
 
     private void FixedUpdate()

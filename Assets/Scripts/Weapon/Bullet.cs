@@ -30,9 +30,9 @@ public class Bullet : MonoBehaviour
         transform.Translate(direction * Time.fixedDeltaTime * speed);
     }
 
-    public void SetManagedPool(IObjectPool<Bullet> Pool)
+    public void SetManagedPool(IObjectPool<Bullet> pool)
     {
-        managedPool = Pool;
+        managedPool = pool;
     }
 
     public void Shoot(Vector3 dir)

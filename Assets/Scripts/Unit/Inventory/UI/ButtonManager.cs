@@ -29,7 +29,7 @@ public class ButtonManager : MonoBehaviour
         GameObject button = Instantiate(buttonPrefab, transform);
 
         Image buttonCooking = button.transform.GetChild(0).GetComponent<Image>();
-        if (buttonCooking != null) { buttonCooking.sprite = item.icon; }
+        if (buttonCooking != null) { buttonCooking.sprite = item.GetComponent<SpriteRenderer>().sprite; }
         else { Debug.Log("요리아이템 못찾음"); }
 
         for(int i = 1; i< 5; i++)
