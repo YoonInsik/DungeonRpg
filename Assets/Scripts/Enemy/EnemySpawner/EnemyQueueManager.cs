@@ -179,7 +179,7 @@ namespace SHS
 
         #region 분열 적군 풀링
 
-        [Header("Sniper 풀링")]
+        [Header("Seperater 풀링")]
         [SerializeField] GameObject SepertEnemy_prefab;
 
         [SerializeField] Queue<Enemy> SepertEnemyQueue = new Queue<Enemy>();

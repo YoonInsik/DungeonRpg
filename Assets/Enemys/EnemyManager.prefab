@@ -109,7 +109,8 @@ MonoBehaviour:
     enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     use_customradius: 1
     customradius: {x: 8, y: 12}
-  HandlingStart: 0
+  WaveStart: 0
+  WaveStop: 0
   spawn_cooltime_set: {x: 1, y: 5}
   spawn_radius: {x: 5, y: 9}
   Enemy_Group: []
@@ -197,6 +198,7 @@ MonoBehaviour:
   Enemy_prefab: {fileID: 3781566973384271522, guid: 00e8bffd015477d43a1257d7b5ee58c8, type: 3}
   JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
   SnipeEnemy_prefab: {fileID: 2600698757297207826, guid: 957faba42f8cea64896fbf268b38b56f, type: 3}
+  SepertEnemy_prefab: {fileID: 8354472000812314136, guid: 281030ee9fa8a9c4dbd7e6b48ea5acea, type: 3}
 --- !u!1 &9206763247878906735
 GameObject:
   m_ObjectHideFlags: 0
