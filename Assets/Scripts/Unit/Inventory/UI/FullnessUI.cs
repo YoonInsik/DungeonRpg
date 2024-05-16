@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FullnessUI : MonoBehaviour
 {
     public Player player;
-    public Text fullnessText;
+    public TextMeshProUGUI fullnessText;
     public RectTransform fullnessBar;
 
     // Start is called before the first frame update

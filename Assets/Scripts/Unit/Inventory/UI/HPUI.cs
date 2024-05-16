@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HPUI : MonoBehaviour
 {
     public Player player;
-    public Text HPText;
+    public TextMeshProUGUI HPText;
     public RectTransform HPBar;
     // Start is called before the first frame update
     void Start()
