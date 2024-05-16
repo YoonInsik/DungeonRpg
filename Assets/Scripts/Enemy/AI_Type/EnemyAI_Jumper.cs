@@ -9,10 +9,12 @@ namespace SHS
         //변수
         EnemyStat m_stat;
         Transform player_trns;
+        Enemy m_enemy;
 
         // Start is called before the first frame update
         void Start()
         {
+            m_enemy = GetComponent<Enemy>();
             m_stat = GetComponent<Enemy>().Get_MyStat();
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
         }
@@ -44,6 +46,14 @@ namespace SHS
         // 움직임
         void Move()
         {
+            if (m_enemy.now_burrow)
+                return;
+
+            if (!ptc_dusty.gameObject.activeSelf)
+            {
+                ptc_dusty.gameObject.SetActive(true);
+            }
+
             if (ani_speed <= 0)
             {
                 save_dir = Direction();

@@ -164,6 +164,10 @@ namespace SHS
                     case EnemyType.Sniper:
                         newEnemy = enemyqueue.GetSnipeEnemy();
                         break;
+
+                    case EnemyType.Seperater:
+                        newEnemy = enemyqueue.GetSepertEnemy();
+                        break;
                 }
 
                 newEnemy.Reset_MyStat(set_eg.enemystat);

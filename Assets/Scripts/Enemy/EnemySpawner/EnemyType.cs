@@ -4,7 +4,8 @@ namespace SHS
     {
         Follower,
         Jumper,
-        Sniper
+        Sniper,
+        Seperater
     }
 
 }

@@ -26,7 +26,6 @@ namespace SHS
                 Invoke( "Start", 1f);
                 return;
             }
-
         }
 
         private void Initialize(int initCount)
@@ -36,6 +35,7 @@ namespace SHS
                 EnemyQueue.Enqueue(CreateNewEnemy());
                 JumpEnemyQueue.Enqueue(CreateNewJumpEnemy());
                 SnipeEnemyQueue.Enqueue(CreateNewSnipeEnemy());
+                SepertEnemyQueue.Enqueue(CreateNewSepertEnemy());
             }
         }
 
@@ -64,6 +64,11 @@ namespace SHS
                 //Sniper
                 case EnemyType.Sniper:
                     instance.SnipeEnemyQueue.Enqueue(_enemy);
+                    break;
+
+                //Seperate
+                case EnemyType.Seperater:
+                    instance.SepertEnemyQueue.Enqueue(_enemy);
                     break;
 
             }
@@ -179,7 +184,7 @@ namespace SHS
 
         #region 분열 적군 풀링
 
-        [Header("Sniper 풀링")]
+        [Header("Seperater 풀링")]
         [SerializeField] GameObject SepertEnemy_prefab;
 
         [SerializeField] Queue<Enemy> SepertEnemyQueue = new Queue<Enemy>();
