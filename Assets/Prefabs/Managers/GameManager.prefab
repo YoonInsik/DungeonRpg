@@ -47,10 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatas:
   - {fileID: 11400000, guid: 8c50f33d2f4646040ab7a3fbb88555e8, type: 2}
+  - {fileID: 11400000, guid: 15e04e8dc6b58b14b938799d585c466e, type: 2}
   - {fileID: 11400000, guid: 230e4cdf7acbd774494667491f2ff85a, type: 2}
+  - {fileID: 11400000, guid: 1b8e83117382e1e45a133144cf0b5201, type: 2}
+  - {fileID: 11400000, guid: 1f3513866ff3f3f499f764ba9ad72846, type: 2}
+  - {fileID: 11400000, guid: 2361eac44eccba845a4ee0d6a236f457, type: 2}
+  - {fileID: 11400000, guid: 25320cd51b1fec64fb3c881b653c5bc2, type: 2}
   - {fileID: 11400000, guid: f2aadbc16fcbc9347b3a91dd777329b7, type: 2}
+  - {fileID: 11400000, guid: e0abc4217e5d3624cb669dec43a0a0ce, type: 2}
   - {fileID: 11400000, guid: f51c3ed973e4c7441b2ed3523ce0b3a8, type: 2}
-  itemDataOptions: []
   levelUpPanel: {fileID: 0}
   levelUpAmount: 0
 --- !u!114 &7102423766714240894

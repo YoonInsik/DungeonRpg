@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemData_", menuName = "SO/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public int itemCode;
     public Sprite itemImage;
     public string itemName;
     public ItemType itemTag;
@@ -15,8 +14,6 @@ public class ItemData : ScriptableObject
     public int baseCount;
     public float[] levelDamages;
     public int[] levelCounts;
-
-    //public GameObject prefab;
 }
 
 [System.Flags]

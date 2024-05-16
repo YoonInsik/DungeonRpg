@@ -10,17 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
-  m_Name: ItemData_2
+  m_Name: ItemData_FireGun
   m_EditorClassIdentifier: 
-  itemCode: 2
-  itemImage: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  itemName: Rotation Weapon
+  itemImage: {fileID: 0}
+  itemName: FireGun
   itemTag: 0
-  itemDesc: "\uC124\uBA85"
+  itemDesc: 
   baseDamage: 0
   baseCount: 0
-  levelDamages:
-  - 0
-  - 0
-  - 0
+  levelDamages: []
   levelCounts: 
