@@ -22,6 +22,7 @@ public abstract class CookingItem : MonoBehaviour
     public float Wisdom;
     public float Temptation;
     public float buffDuration;
+
     //요리 레시피
     [Serializable]
     public struct Ingredient
@@ -74,7 +75,7 @@ public abstract class CookingItem : MonoBehaviour
     public void IncreaseHP(Player player, bool isPositive = true)
     {
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
-        Debug.Log(player.PlayerStatLevel.DelicacyLevel +  DelicacyRate);
+    
         int change = isPositive ? MaxHP : -MaxHP;
         player.MaxHP += (int)(change * DelicacyRate);
     }
@@ -89,7 +90,8 @@ public abstract class CookingItem : MonoBehaviour
         int change = isPositive ? ATK : -ATK;
         player.ATK += change + DelicacyRate;
 
-        player.PlayerStatLevel.ATKLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.ATKLevel += Level;
     }
 
     //방어력 증가
@@ -102,7 +104,8 @@ public abstract class CookingItem : MonoBehaviour
         int change = isPositive ? DEF : -DEF;
         player.DEF += change + DelicacyRate;
 
-        player.PlayerStatLevel.DEFLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.DEFLevel += Level;
     }
 
     //포만감 감소량 증가
@@ -123,7 +126,8 @@ public abstract class CookingItem : MonoBehaviour
         float change = isPositive ? Speed : -Speed;
         player.speed += change*DelicacyRate;
 
-        player.PlayerStatLevel.SpeedLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.SpeedLevel += Level;
     }
 
     //투사체 이동,회전속도
@@ -140,7 +144,8 @@ public abstract class CookingItem : MonoBehaviour
 
         }
 
-        player.PlayerStatLevel.ATKSpeedLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.ATKSpeedLevel += Level;
     }
 
     //공격범위,투사체 크기 증가
@@ -157,7 +162,8 @@ public abstract class CookingItem : MonoBehaviour
 
         }
 
-        player.PlayerStatLevel.ATKRangeLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.ATKRangeLevel += Level;
     }
 
     //쿨타임 감소
@@ -174,7 +180,8 @@ public abstract class CookingItem : MonoBehaviour
 
         }
 
-        player.PlayerStatLevel.CooldownReductionLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.CooldownReductionLevel += Level;
     }
 
     //공격이 발동할때 그 공격이 지속되는 시간 증가
@@ -191,7 +198,8 @@ public abstract class CookingItem : MonoBehaviour
 
         }
 
-        player.PlayerStatLevel.ATKdurationLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.ATKdurationLevel += Level;
     }
 
     //스테이지 클리어 후 얻는 재료양 증가
@@ -208,7 +216,8 @@ public abstract class CookingItem : MonoBehaviour
 
         }
 
-        player.PlayerStatLevel.GreedLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.GreedLevel += Level;
     }
 
     //요리섭취시 레벨당 오르는 능력치 증가
@@ -216,7 +225,8 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.DelicacyLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        player.PlayerStatLevel.DelicacyLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.DelicacyLevel += Level;
     }
 
     //획득하는 경험치 획득량 증가
@@ -224,16 +234,12 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.WisdomLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        if (isPositive == true)
-        {
+        float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1f : (1f + (float)player.PlayerStatLevel.DelicacyLevel / 10);
 
-        }
-        else
-        {
+        
 
-        }
-
-        player.PlayerStatLevel.WisdomLevel++;
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.WisdomLevel += Level;
     }
 
     //전투중 경험치 보석, 아이템을 획득하는 범위가 증가
@@ -246,11 +252,7 @@ public abstract class CookingItem : MonoBehaviour
         float change = isPositive ? Temptation / 2 : -Temptation / 2;
         player.GetComponent<ItemTemptation>().range += change * DelicacyRate;
 
-        player.PlayerStatLevel.TemptationLevel++;
-    }
-
-    public void MaxLevelCheck(Player player)
-    {
-        
+        int Level = isPositive ? 1 : -1;
+        player.PlayerStatLevel.TemptationLevel += Level;
     }
 }
