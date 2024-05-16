@@ -36,7 +36,7 @@ public class Rotation : MonoBehaviour
             ReAct();
 
         }
-        //transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
     }
 
     void Activation()
@@ -47,7 +47,7 @@ public class Rotation : MonoBehaviour
             box.transform.parent = transform;
             Vector3 angle = Vector3.forward * 360 * i / count;
             box.transform.Rotate(angle);
-            box.transform.Translate(box.transform.up * 1.5f, Space.World);
+            box.transform.Translate(box.transform.up * 1.5f);
         }
     }
 
