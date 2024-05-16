@@ -26,7 +26,7 @@ public class Player : BaseUnit
 
     public Vector2 newPos;
     private Rigidbody2D rigid;
-
+    [SerializeField] private Animator animator;
     public float speed = 3.0f;
     public int MaxHP;
     [SerializeField] private float fullness;
@@ -57,6 +57,17 @@ public class Player : BaseUnit
     {
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
+
+        if (Mathf.Approximately(newPos.x, 0) && Mathf.Approximately(newPos.y, 0))
+        {
+            animator.SetBool("isMove", false);
+        }
+        else
+        {
+            animator.SetBool("isMove", true);
+        }
+        animator.SetFloat("MoveX", newPos.x);
+        animator.SetFloat("MoveY", newPos.y);
 
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
