@@ -33,11 +33,13 @@ public class CookingItemUI : Singleton<CookingItemUI>
             if (cookingInventory[i].cooking == null)
             {
                 image.sprite = null;
+                image.color = new Color(1, 1, 1, 0);
                 itemText.text = null;
             }
             else
             {
                 image.sprite = cookingInventory[i].cooking.GetComponent<SpriteRenderer>().sprite;
+                image.color = new Color(1, 1, 1, 1);
                 itemText.text = cookingInventory[i].count.ToString();
             }
         }
