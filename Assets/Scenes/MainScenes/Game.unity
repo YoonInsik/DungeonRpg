@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &267096039 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2759456230946035897, guid: 65f38078d75215946899582020ce30a2, type: 3}
-  m_PrefabInstance: {fileID: 2087987329}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b1c53c572a703741849a5da4e07edfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &601303168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -847,7 +836,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5121035749249144330, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2011771713}
   m_SourcePrefab: {fileID: 100100000, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
 --- !u!1 &2011771712 stripped
 GameObject:
@@ -866,16 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a60e6bfd5376742a31661be1acb4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy_prefab: {fileID: 0}
-  JumpEnemy_prefab: {fileID: 0}
-  spawn_cooltime_set: 0
-  spawn_radius: 25
-  spawn_radius_ran: {x: 0.1, y: 0.5}
-  spawn_cooltime: 0
-  make_jumper: 0
-  Enemy_Group: []
-  group_num: 0
-  group_make: 0
 --- !u!1001 &2087987329
 PrefabInstance:
   m_ObjectHideFlags: 0
