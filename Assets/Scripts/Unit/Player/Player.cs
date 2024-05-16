@@ -69,12 +69,6 @@ public class Player : BaseUnit
         animator.SetFloat("MoveX", newPos.x);
         animator.SetFloat("MoveY", newPos.y);
 
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            furnaceUI.SetActive(!FurnaceUIopen);
-            FurnaceUIopen = !FurnaceUIopen;
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
             {
