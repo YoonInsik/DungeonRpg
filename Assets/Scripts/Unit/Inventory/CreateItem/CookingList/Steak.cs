@@ -7,6 +7,6 @@ public class Steak : CookingItem
 {
     public override void AddEffect(Player player)
     {
-        HPRecovery(player);
+        IncreaseHP(player);
     }
 }

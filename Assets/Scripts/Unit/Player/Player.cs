@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,12 +6,29 @@ using UnityEngine;
 
 public class Player : BaseUnit
 {
+    [Serializable]
+    public struct StatLevel
+    {
+        public int ATKLevel;
+        public int DEFLevel;
+        public int SpeedLevel;
+        public int ATKSpeedLevel;
+        public int ATKRangeLevel;
+        public int CooldownReductionLevel;
+        public int ATKdurationLevel;
+        public int GreedLevel;
+        public int DelicacyLevel;
+        public int WisdomLevel;
+        public int TemptationLevel;
+        public int StatMaxLevel;
+    }
+    public StatLevel PlayerStatLevel = new StatLevel();
+
     public Vector2 newPos;
     private Rigidbody2D rigid;
+
     public float speed = 3.0f;
-
     public int MaxHP;
-
     [SerializeField] private float fullness;
     public float Fullness {  get => fullness; }
     private float maxFullness = 100;
@@ -19,9 +37,7 @@ public class Player : BaseUnit
     public Inventory GetInventory { get => inventory; }
 
     private Inventory inventory;
-    private GameObject furnaceUI;
     private GameObject menuUI;
-    private bool FurnaceUIopen;
     private bool MenuUIopen;
     public Scanner scanner;
 
@@ -34,7 +50,6 @@ public class Player : BaseUnit
     {
         base.Start();
         inventory = Inventory.Instance;
-        furnaceUI = FurnaceItemUI.Instance.gameObject;
         menuUI = MenuUI.Instance.gameObject;
         MaxHP = GetBaseHP();
     }
@@ -42,12 +57,6 @@ public class Player : BaseUnit
     {
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            furnaceUI.SetActive(!FurnaceUIopen);
-            FurnaceUIopen = !FurnaceUIopen;
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
@@ -66,21 +75,21 @@ public class Player : BaseUnit
         rigid.MovePosition((newPos.normalized * speed * Time.fixedDeltaTime) + rigid.position);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Meat"))
-        {
-            MeatItem meat = collision.gameObject.GetComponent<ItemImplement>().item;
+    //public void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Meat"))
+    //    {
+    //        MeatItem meat = collision.gameObject.GetComponent<ItemImplement>().item;
 
-            if (meat != null)
-            {
-                inventory.AddMeat(meat);
-                Debug.Log(meat.name);
-            }
+    //        if (meat != null)
+    //        {
+    //            inventory.AddMeat(meat);
+    //            Debug.Log(meat.name);
+    //        }
 
-            Destroy(collision.gameObject);
-        }
-    }
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
 
     public void IncreaseFullness(float amount)
     {

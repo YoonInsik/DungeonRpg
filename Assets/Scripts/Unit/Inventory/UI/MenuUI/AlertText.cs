@@ -51,7 +51,5 @@ public class AlertText : MonoBehaviour
         TextMeshProUGUI alertText = textPrefab.GetComponent<TextMeshProUGUI>();
         alertText.text = text;
         Instantiate(textPrefab, gameObject.transform);
-
-        Debug.Log("alert text");
     }
 }
