@@ -97,12 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052947bef43903d48857ff417cb1ba94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 0
-  HP: 20
+  MaxHP: 20
+  HP: 0
   ATK: 0
   DEF: 0
   Fullness: 10
   Speed: 0
+  ATKSpeed: 0
   ATKRange: 0
   CooldownReduction: 0
   ATKduration: 0
@@ -111,6 +112,7 @@ MonoBehaviour:
   Wisdom: 0
   Temptation: 0
   buffDuration: 0
+  DelicacyRate: 0
   recipe:
   - ingredient: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
     amount: 3

@@ -6,7 +6,7 @@ public class Mille_FeuilleNabe : CookingItem
 {
     public override void AddEffect(Player player)
     {
-        HPRecovery(player);
+        IncreaseHP(player);
         IncreaseGreed(player);
         IncreaseTemptation(player);
         IncreaseDelicacy(player);

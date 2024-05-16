@@ -103,6 +103,7 @@ MonoBehaviour:
   DEF: 2
   Fullness: 60
   Speed: 0
+  ATKSpeed: 0
   ATKRange: 0
   CooldownReduction: 0
   ATKduration: 0
@@ -110,7 +111,7 @@ MonoBehaviour:
   Delicacy: 0
   Wisdom: 0
   Temptation: 0
-  buffDuration: 30
+  buffDuration: 60
   recipe:
   - ingredient: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
     amount: 6

@@ -57,3 +57,6 @@ TagManager:
   - name: Projectile
     uniqueID: 341373097
     locked: 0
+  - name: Furnace
+    uniqueID: 3954267875
+    locked: 0

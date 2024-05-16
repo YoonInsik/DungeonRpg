@@ -19,6 +19,7 @@ public class Inventory : Singleton<Inventory>
 
     public Player player;
     public CookingStatIncrease statUp;
+    public AlertText alertText;
     private void Start()
     {
         cooking = new Cooking[3];
@@ -27,29 +28,28 @@ public class Inventory : Singleton<Inventory>
         player = UnitManager.Instance.player.GetComponent<Player>();
     }
 
-    public void AddMeat(MeatItem meat)
-    {
-        switch (meat.itemName)
-        {
-            case "beef":
-                meats[0].count++;
-               break;
-            case "pork":
-                meats[1].count++;
-                break;
-            case "chicken":
-                meats[2].count++;
-                break;
-            default:
-                Debug.Log("can't add meat");
-                break;
-        }
-    }
+    //public void AddMeat(MeatItem meat)
+    //{
+    //    switch (meat.itemName)
+    //    {
+    //        case "beef":
+    //            meats[0].count++;
+    //           break;
+    //        case "pork":
+    //            meats[1].count++;
+    //            break;
+    //        case "chicken":
+    //            meats[2].count++;
+    //            break;
+    //        default:
+    //            Debug.Log("can't add meat");
+    //            break;
+    //    }
+    //}
 
     public void AddCookingItem(CookingItem item)
     {
         int index = cookingList.IndexOf(item);
-        Debug.Log(index);
     
         for (int i = 0; i < cooking.Length; i++)
         {
@@ -57,17 +57,17 @@ public class Inventory : Singleton<Inventory>
             {
                 Debug.Log("비었다");
                 cooking[i].cooking = cookingList[index];
-                cooking[i].count++;
+                cooking[i].count += 1;
                 return;
             }
             else if (cooking[i].cooking.name == cookingList[index].name)
             {
                 Debug.Log("same name");
-                cooking[i].count++;
+                cooking[i].count += 1;
                 return;
             }
         }
-        Debug.Log("더 이상 아이템을 추가할 수 없습니다.");
+        alertText.InstantiateAlert("더 이상 아이템을 추가할 수 없습니다.");
     }
 
     public void RemoveCookingItem(int index)

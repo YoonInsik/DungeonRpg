@@ -40,14 +40,15 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
         {
             for (int i = 0; i < meats.Length; i++)
             {
+                Debug.Log(meats.Length);
                 if (meats[i].meats.itemName == ingredient.ingredient.itemName)
                 {
                     meats[i].count -= ingredient.amount;
-                    inventory.AddCookingItem(item);
-                    Debug.Log("아이템추가완료");
-                    CookingItemUI.AddCookingItemUI();
                 }
             }
         }
+        inventory.AddCookingItem(item);
+        Debug.Log("아이템추가완료");
+        CookingItemUI.AddCookingItemUI();
     }
 }
