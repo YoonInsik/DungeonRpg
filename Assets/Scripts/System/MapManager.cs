@@ -120,6 +120,7 @@ public class MapManager : Singleton<MapManager>
 
             chunkItem.DrawChunk();
             chunkItem.SetChunkDelegate();
+            chunkItem.SetActiveDoorTilemap(false);
             if (moveChunkPos == playerChunkPos) curChunk = chunkItem;
 
             SetChunkUI(chunkItem, moveChunkPos, playerChunkPos);

@@ -16,7 +16,7 @@ public class TilemapVisualizer : MonoBehaviour
             for (int y = 0; y < MapManager.CHUNKSIZE; y++)
             {
                 //PaintSingleTileLocal(tilemap, dict[GameManager.Instance.Stage].floorTile, new Vector2Int(x - MapManager.HALFCHUNKSIZE, y - MapManager.HALFCHUNKSIZE));
-                PaintSingleTileLocal(tilemap, dict[0].floorTile, new Vector2Int(x - MapManager.HALFCHUNKSIZE, y - MapManager.HALFCHUNKSIZE));
+                PaintSingleTileLocal(tilemap, dict[GameManager.Instance.Stage % dict.Count].floorTile, new Vector2Int(x - MapManager.HALFCHUNKSIZE, y - MapManager.HALFCHUNKSIZE));
             }
         }
     }

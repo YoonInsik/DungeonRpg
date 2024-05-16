@@ -56,7 +56,9 @@ public class Chunk : MonoBehaviour
     {
         // �� ����
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
-        MapManager.Instance.SetActiveNextChunkUI(true);
+        MapManager.Instance.SetActiveNextChunkUI(false);
+
+
 
         yield break;
     }
