@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Player : BaseUnit
@@ -36,6 +37,8 @@ public class Player : BaseUnit
     public int fullnessDecreaseAmount = 1;
     public Inventory GetInventory { get => inventory; }
 
+    public GameObject furnaceSpawnPoint;
+    public GameObject furnace;
     private Inventory inventory;
     private GameObject menuUI;
     private bool MenuUIopen;
@@ -74,6 +77,7 @@ public class Player : BaseUnit
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
             {
+                InstantiateFurnace();
                 MenuUI.Instance.openMenuUI();
             }
             else
@@ -87,22 +91,6 @@ public class Player : BaseUnit
     {
         rigid.MovePosition((newPos.normalized * speed * Time.fixedDeltaTime) + rigid.position);
     }
-
-    //public void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Meat"))
-    //    {
-    //        MeatItem meat = collision.gameObject.GetComponent<ItemImplement>().item;
-
-    //        if (meat != null)
-    //        {
-    //            inventory.AddMeat(meat);
-    //            Debug.Log(meat.name);
-    //        }
-
-    //        Destroy(collision.gameObject);
-    //    }
-    //}
 
     public void IncreaseFullness(float amount)
     {
@@ -129,5 +117,11 @@ public class Player : BaseUnit
     public int GetBaseHP()
     {
         return baseStat.baseHP;
+    }
+
+    public void InstantiateFurnace()
+    {
+        Instantiate(furnace, furnaceSpawnPoint.transform.position, Quaternion.identity);
+        FurnaceItemUI.Instance.gameObject.SetActive(true);
     }
 }

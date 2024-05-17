@@ -556,8 +556,8 @@ Transform:
   m_GameObject: {fileID: 7937814287585493957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.86, y: 0.154, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.526, y: 0.422, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6848612850421539637}
@@ -841,6 +841,8 @@ MonoBehaviour:
   MaxHP: 0
   fullness: 10
   fullnessDecreaseAmount: 1
+  furnaceSpawnPoint: {fileID: 7937814287585493957}
+  furnace: {fileID: 4124677026070218316, guid: 42d43dc87027e124bad0fb21a980026c, type: 3}
   scanner: {fileID: 0}
 --- !u!114 &-4915718632643405504
 MonoBehaviour:

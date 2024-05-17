@@ -93,6 +93,9 @@ public class Chunk : MonoBehaviour
         GameManager.Instance.levelUpPanel.PopUpLevelUpPanel();
         yield return new WaitUntil(() => GameManager.Instance.levelUpAmount > 0);
 
+        // 요리를 할 화로 생성 및 UI 활성화
+        UnitManager.Instance.player.InstantiateFurnace();
+
         // �� ����
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
         MapManager.Instance.SetActiveNextChunkUI(true);
