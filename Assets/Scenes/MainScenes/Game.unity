@@ -175,30 +175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InventoryManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6067845925578071256, guid: a4efd8182f597fa40bc19501f46dffa5, type: 3}
-      propertyPath: meats.Array.data[0].count
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067845925578071256, guid: a4efd8182f597fa40bc19501f46dffa5, type: 3}
-      propertyPath: meats.Array.data[1].count
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067845925578071256, guid: a4efd8182f597fa40bc19501f46dffa5, type: 3}
-      propertyPath: meats.Array.data[2].count
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067845925578071256, guid: a4efd8182f597fa40bc19501f46dffa5, type: 3}
-      propertyPath: meats.Array.data[3].count
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067845925578071256, guid: a4efd8182f597fa40bc19501f46dffa5, type: 3}
-      propertyPath: meats.Array.data[4].count
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6067845925578071256, guid: a4efd8182f597fa40bc19501f46dffa5, type: 3}
-      propertyPath: meats.Array.data[5].count
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
