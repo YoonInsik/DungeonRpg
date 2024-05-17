@@ -433,6 +433,53 @@ MonoBehaviour:
   rocketPrefab: {fileID: 5449412888901744861, guid: a4720a94573d2e144ade7014081e4667, type: 3}
   interval: 1
   player: {fileID: 0}
+--- !u!1 &6429464474548935021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3242216409450974539}
+  - component: {fileID: 8298187081536002774}
+  m_Layer: 0
+  m_Name: DemonGun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3242216409450974539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429464474548935021}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6848612850421539637}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8298187081536002774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6429464474548935021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eca71343ecbb414081909c5b0e52fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  demonBulletPrefab: {fileID: 8568008880193441046, guid: c704db940e7585b4c86807bd53085685, type: 3}
+  interval: 0.2
+  player: {fileID: 0}
 --- !u!1 &7302046511152267712
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +747,7 @@ Transform:
   - {fileID: 2009903641357339376}
   - {fileID: 499021671312013823}
   - {fileID: 8894688657307186361}
+  - {fileID: 3242216409450974539}
   - {fileID: 5070518458743744084}
   - {fileID: 5511963602861282137}
   - {fileID: 2284478594889425011}
