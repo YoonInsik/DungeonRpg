@@ -36,6 +36,7 @@ Transform:
   - {fileID: 1098491396608121020}
   - {fileID: 1423660660788697214}
   - {fileID: 1723757869451859570}
+  - {fileID: 5634490640735358742}
   m_Father: {fileID: 3599781369368886302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234927679099175585
@@ -54,7 +55,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3934318693061344662
 Transform:
   m_ObjectHideFlags: 0
@@ -109,7 +110,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169804769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 0.35283017, b: 0.35283017, a: 1}
@@ -138,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5809092917992239012
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169804769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 0.35283017, b: 0.35283017, a: 1}
@@ -222,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8761124861423983859
 Transform:
   m_ObjectHideFlags: 0
@@ -277,10 +278,94 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169804769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 1, g: 0.35283017, b: 0.35283017, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &3350745513008343221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5634490640735358742}
+  - component: {fileID: 2634141068195889276}
+  m_Layer: 0
+  m_Name: Chicken
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5634490640735358742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350745513008343221}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6659180776580548805}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2634141068195889276
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350745513008343221}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1169804769
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300050, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10136,11 +10221,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1264236075
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 38a35493298b4c64e9eb36eba88cff45, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.36992234, b: 0.10669278, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10163,7 +10248,7 @@ GameObject:
   - component: {fileID: 2924581199071168474}
   - component: {fileID: 3618635734377456246}
   - component: {fileID: 3894921452088084960}
-  - component: {fileID: 2785609813531141676}
+  - component: {fileID: 2346738249260604925}
   m_Layer: 31
   m_Name: Enemy_DemoModel_Boss_A
   m_TagString: Enemy
@@ -10202,6 +10287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379506eba5a9819448f952f853e52367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handling_start: 1
+  Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: a249df200a1408e4a803ff5442fdd115, type: 2}
   now_hp: 0
   ptc_damaged: {fileID: 2300603720260369357}
@@ -10211,7 +10298,7 @@ MonoBehaviour:
   burrow_par: {fileID: 3658437427428767348}
   burrow_image: {fileID: 5943169859917277486}
   Model: {fileID: 25062135863041347}
-  handling_start: 1
+  not_queue: 0
   meat_num: 0
   meatdrop_rate: 33
 --- !u!114 &2924581199071168474
@@ -10278,14 +10365,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &2785609813531141676
-BoxCollider2D:
+--- !u!60 &2346738249260604925
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8252344685491696695}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -10310,7 +10397,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -10320,9 +10407,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.3, y: 0.9}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.4806961, y: 0.115193844}
+      - {x: -1.45666, y: -1.0272208}
+      - {x: -0.90378743, y: -1.3868493}
+      - {x: -0.008104742, y: -1.3958781}
+      - {x: 0.9327683, y: -0.30652326}
+      - {x: 0.9566888, y: 0.35831094}
+      - {x: 1.4270437, y: 0.85512793}
+      - {x: 1.0106342, y: 1.2115197}
+      - {x: 0.46715403, y: 0.6787638}
+      - {x: -0.08348864, y: 1.202492}
+      - {x: -0.9359281, y: 0.11941564}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &2522167031877330104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10399,6 +10497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot
       objectReference: {fileID: 0}
+    - target: {fileID: 2931599777171156985, guid: 6babded354a0947f5816d671762d9241, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3153237701342574865, guid: 6babded354a0947f5816d671762d9241, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10452,6 +10554,10 @@ PrefabInstance:
     - target: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
       propertyPath: m_Name
       value: Drumstick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3178786104909440173, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
       propertyPath: m_LocalScale.x
@@ -10535,6 +10641,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drumstick (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3178786104909440173, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.456461
@@ -10616,6 +10726,10 @@ PrefabInstance:
     - target: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
       propertyPath: m_Name
       value: Drumstick (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834595618098478615, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3178786104909440173, guid: d1e3a6c529e9c4ecc9260a8dcbc4e6bc, type: 3}
       propertyPath: m_LocalScale.x

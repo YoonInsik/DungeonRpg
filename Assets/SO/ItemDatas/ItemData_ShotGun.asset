@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
   m_Name: ItemData_ShotGun
   m_EditorClassIdentifier: 
-  itemCode: 0
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -491584399, guid: 00bba1b813b7ed249bfa2c46ac61dd33, type: 3}
   itemName: ShotGun
   itemTag: 0
-  itemDesc: 
+  itemDesc: "\uCD1D\uC54C\uC744 \uC5EC\uB7EC \uBC1C \uC3D8\uB294 \uBB34\uAE30."
   baseDamage: 0
   baseCount: 0
   levelDamages:
