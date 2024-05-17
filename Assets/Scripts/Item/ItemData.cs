@@ -8,6 +8,7 @@ public class ItemData : ScriptableObject
     public Sprite itemImage;
     public string itemName;
     public ItemType itemTag;
+    [TextArea]
     public string itemDesc;
 
     public float baseDamage;
@@ -19,7 +20,7 @@ public class ItemData : ScriptableObject
 [System.Flags]
 public enum ItemType 
 { 
-    Weapon,  
-    Ingrediant,
-    Dish,
+    무기,  
+    재료,
+    음식,
 }

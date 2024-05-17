@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
   m_Name: ItemData_FireGun
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 2087251308, guid: 00bba1b813b7ed249bfa2c46ac61dd33, type: 3}
   itemName: FireGun
   itemTag: 0
-  itemDesc: 
+  itemDesc: "\uBD88\uC744 \uBFDC\uB294 \uBB34\uAE30"
   baseDamage: 0
   baseCount: 0
   levelDamages: []

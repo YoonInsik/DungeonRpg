@@ -1,0 +1,730 @@
+fileFormatVersion: 2
+guid: 00bba1b813b7ed249bfa2c46ac61dd33
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 541
+        width: 139
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9df111be3921bd4082d30ef176ee2e9
+      internalID: 1256602429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_1
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 541
+        width: 139
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9cbe59457856e4798b6553a23d3f74
+      internalID: 341049281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 541
+        width: 139
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a126cd287b9c71f4592d7b86fa789653
+      internalID: 672239755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_3
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 541
+        width: 138
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986b9de532a430745a3a719d258cb86e
+      internalID: -1417641107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_4
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 541
+        width: 139
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cd6c95ebf70d142a99cd2de7be2531
+      internalID: 199822423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_5
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 541
+        width: 139
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094ec2be0b98a0b4ca09b90903856395
+      internalID: 2087251308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_6
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 541
+        width: 138
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edd7aef69e1426244998276997efb8bf
+      internalID: -849362062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_7
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 384
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ecb1ca14318544e8af771d94e3b541
+      internalID: -1901281793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_8
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 384
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714c1bb1362b59d4d8aea0f34ec2a6e0
+      internalID: -139824123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_9
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 384
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0f5468e8e9b7e439cb09201956d8b7
+      internalID: -934927061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_10
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 384
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a2b0c1ed90b3242a89e15c2df88eb8
+      internalID: -121453404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_11
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 384
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb9f577f735fa6409a7830153d22b6f
+      internalID: -1513984691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_12
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 384
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41578a14737005c44985149885d9eecc
+      internalID: -825157505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_13
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 384
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a303c2374420b774e87bd8708aa679bc
+      internalID: -88032168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_14
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 226
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b865bddd5d7b7bf409a5041863213f1a
+      internalID: -514071508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_15
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 226
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5266fe5dea22c445963f73fd03efed7
+      internalID: -574276097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_16
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 226
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7206af22ac065a04da0a5c4beb5ca8f2
+      internalID: -402920146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_17
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 226
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34b546b3716d0ea469b79765af034a56
+      internalID: -234404716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_18
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 226
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0f5722fc8b220408e3b84b089a159f
+      internalID: -491584399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_19
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 226
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aca437ca05db344cbc498f55c71b025
+      internalID: -1672130773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_20
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 226
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6cb9b149e89d74d99cdad3e852e0f5
+      internalID: -1837595389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_21
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 68
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df01e1ed6b5b3748b7ba4a0c0250152
+      internalID: -224239320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_22
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 68
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f67114ea7c5a740b0dddffe29df40d
+      internalID: -458057976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_23
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 68
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b679c050c05ff04f85a4329463e4c17
+      internalID: 740302960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_24
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 68
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c5018fe65f558419d78a9bdd66f009
+      internalID: 1980550518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_25
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 68
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62cc8798acd313048af4f79af69e8172
+      internalID: -108413917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_26
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 68
+        width: 139
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f800138a409ab45a7a6d2eb515664c
+      internalID: 616612230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_27
+      rect:
+        serializedVersion: 2
+        x: 1082
+        y: 68
+        width: 138
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959052f424ce714418605a4c64d226a0
+      internalID: 587028628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_0: 1256602429
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_1: 341049281
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_10: -121453404
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_11: -1513984691
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_12: -825157505
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_13: -88032168
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_14: -514071508
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_15: -574276097
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_16: -402920146
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_17: -234404716
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_18: -491584399
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_19: -1672130773
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_2: 672239755
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_20: -1837595389
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_21: -224239320
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_22: -458057976
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_23: 740302960
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_24: 1980550518
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_25: -108413917
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_26: 616612230
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_27: 587028628
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_3: -1417641107
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_4: 199822423
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_5: 2087251308
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_6: -849362062
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_7: -1901281793
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_8: -139824123
+      metal_slug_weapons__png__by_aukaicraftlv_dcmpg04_9: -934927061
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

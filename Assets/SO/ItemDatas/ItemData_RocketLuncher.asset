@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
   m_Name: ItemData_RocketLuncher
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
+  itemImage: {fileID: -234404716, guid: 00bba1b813b7ed249bfa2c46ac61dd33, type: 3}
   itemName: RocketLuncher
   itemTag: 0
-  itemDesc: 
+  itemDesc: "\uBC1C\uC0AC \uC18D\uB3C4\uB294 \uB290\uB9AC\uC9C0\uB9CC \uD53C\uACA9
+    \uBC94\uC704\uAC00 \uB113\uC740 \uB85C\uCF13 \uB7F0\uCCD0."
   baseDamage: 0
   baseCount: 0
   levelDamages: []

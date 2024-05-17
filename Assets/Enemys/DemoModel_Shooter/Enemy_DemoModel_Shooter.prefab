@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379506eba5a9819448f952f853e52367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handling_start: 0
+  Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: 70c487f5ea4aeaf43aa498c5c7f26c07, type: 2}
   now_hp: 0
   ptc_damaged: {fileID: 8727313913295923320}
@@ -116,7 +118,7 @@ MonoBehaviour:
   burrow_par: {fileID: 8454574681784485539}
   burrow_image: {fileID: 6039329443234848779}
   Model: {fileID: 3478975643931949422}
-  handling_start: 0
+  not_queue: 0
   meat_num: 0
   meatdrop_rate: 33
 --- !u!114 &4063271551220625829
@@ -326,7 +328,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169804769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.92996264, g: 0, b: 1, a: 1}
@@ -493,11 +495,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1264236075
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 38a35493298b4c64e9eb36eba88cff45, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.36992234, b: 0.10669278, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
