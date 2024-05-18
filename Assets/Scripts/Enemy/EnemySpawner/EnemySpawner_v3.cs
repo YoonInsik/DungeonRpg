@@ -53,6 +53,8 @@ namespace SHS
         {
             wave_count = 0;
 
+            int r_value = Random.Range(1, 10);
+
             while (wave_count < wave_maxcount)
             {
                 wave_count++;
@@ -64,7 +66,7 @@ namespace SHS
                 {
                     default:
 
-                        switch (Random.Range(1, 10))
+                        switch (r_value)
                         {
                             default: set_eg = wave_r_1; break;
 
@@ -111,7 +113,7 @@ namespace SHS
 
                         set_eg = wave1_eg;
 
-                        if (wave_count == 5)
+                        if (wave_count == 4)
                         {
                             Debug.Log("보스 생성");
                             sp_enemyspawn.BossSpawn(101);
@@ -251,9 +253,9 @@ namespace SHS
                 yield return new Null();
             }
         }
-            #endregion
+        #endregion
 
-            [Space(10)]
+        [Space(10)]
 
         #region 트리거 | 그룹생성
 

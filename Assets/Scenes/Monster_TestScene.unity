@@ -270,43 +270,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5121035749249144330, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 207167754}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
 --- !u!4 &207167752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3150142965865985267, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
   m_PrefabInstance: {fileID: 207167751}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &207167753 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5121035749249144330, guid: 571180ab3f7b3cf43a0fc130e21bb38c, type: 3}
-  m_PrefabInstance: {fileID: 207167751}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &207167754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207167753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a60e6bfd5376742a31661be1acb4df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enemy_prefab: {fileID: 8965473975303667378, guid: da46822e42e05fa4a925cdabe4c78ed0, type: 3}
-  JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
-  spawn_cooltime_set: 1
-  spawn_radius: 10
-  spawn_radius_ran: {x: 0.1, y: 0.5}
-  spawn_cooltime: 0
-  make_jumper: 0
-  Enemy_Group: []
-  group_num: 0
-  group_make: 0
 --- !u!1001 &251133262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -745,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave_maxcount
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave_r_1.Array.size
@@ -867,6 +837,10 @@ PrefabInstance:
       propertyPath: wave_r_9.Array.data[1].enemystat
       value: 
       objectReference: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: wave1_eg.Array.data[0].enemyscale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave2_eg.Array.data[1].enemyscale
       value: 2
@@ -1348,6 +1322,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
+  newPos: {x: 0, y: 0}
+  animator: {fileID: 0}
+  speed: 3
+  MaxHP: 0
+  fullness: 0
+  fullnessDecreaseAmount: 1
+  furnaceSpawnPoint: {fileID: 0}
+  furnace: {fileID: 0}
+  scanner: {fileID: 0}
   PlayerStatLevel:
     ATKLevel: 0
     DEFLevel: 0
@@ -1361,15 +1344,7 @@ MonoBehaviour:
     WisdomLevel: 0
     TemptationLevel: 0
     StatMaxLevel: 0
-  newPos: {x: 0, y: 0}
-  animator: {fileID: 0}
-  speed: 3
-  MaxHP: 0
-  fullness: 0
-  fullnessDecreaseAmount: 1
-  furnaceSpawnPoint: {fileID: 0}
-  furnace: {fileID: 0}
-  scanner: {fileID: 0}
+  pause: 0
 --- !u!1001 &1416116957
 PrefabInstance:
   m_ObjectHideFlags: 0
