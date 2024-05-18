@@ -113,12 +113,14 @@ public class Inventory : Singleton<Inventory>
                 if (child.name.Equals(data.itemName))
                 {
                     child.gameObject.SetActive(true);
+                    playerItem.itemInstance = child.gameObject.GetComponent<WeaponBase>();
                     print(child.name);
                 }
             }
         }
          
         playerItem.level++;
+        playerItem.itemInstance.LevelUp();
         // item damage, stat level up
     }
 }
@@ -143,8 +145,10 @@ public struct Cooking
     }
 }
 
+[Serializable]
 public class PlayerItemData
 {
     public int level;
     public ItemData itemData;
+    public WeaponBase itemInstance;
 }
