@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9300ec1d2197684e9adc0f081327650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponLevel: 1
+  baseDamage: 0
 --- !u!1 &1321390562270255215
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,9 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8459460b61c88c439b7bf38783e66d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  weaponCount: 0
-  damage: 0
+  weaponLevel: 1
+  baseDamage: 0
   bulletPrefab: {fileID: 7568423540850013808, guid: a3ac659cacb558e4282b1e75ba670506, type: 3}
   interval: 0.4
   player: {fileID: 0}
@@ -249,9 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa361461868d6545ba003da82c7afb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  weaponCount: 0
-  damage: 0
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
   interval: 0.2
   player: {fileID: 77546499729760189}
@@ -524,9 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f740f220bb0d7b4c990488a28afebab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  weaponCount: 0
-  damage: 0
+  weaponLevel: 1
+  baseDamage: 0
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
   interval: 0.6
   player: {fileID: 0}
@@ -720,8 +717,9 @@ GameObject:
   - component: {fileID: 3287185988363618621}
   - component: {fileID: 283592353888735667}
   - component: {fileID: 1674477493026826942}
+  - component: {fileID: 8192583701319066614}
   - component: {fileID: 5507801869601646988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -822,6 +820,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
+  newPos: {x: 0, y: 0}
+  animator: {fileID: 5507801869601646988}
+  speed: 3
+  MaxHP: 0
+  fullness: 10
+  fullnessDecreaseAmount: 1
+  furnaceSpawnPoint: {fileID: 7937814287585493957}
+  furnace: {fileID: 4124677026070218316, guid: 42d43dc87027e124bad0fb21a980026c, type: 3}
+  scanner: {fileID: 0}
   PlayerStatLevel:
     ATKLevel: 0
     DEFLevel: 0
@@ -835,15 +842,6 @@ MonoBehaviour:
     WisdomLevel: 0
     TemptationLevel: 0
     StatMaxLevel: 5
-  newPos: {x: 0, y: 0}
-  animator: {fileID: 5507801869601646988}
-  speed: 3
-  MaxHP: 0
-  fullness: 10
-  fullnessDecreaseAmount: 1
-  furnaceSpawnPoint: {fileID: 7937814287585493957}
-  furnace: {fileID: 4124677026070218316, guid: 42d43dc87027e124bad0fb21a980026c, type: 3}
-  scanner: {fileID: 0}
 --- !u!114 &-4915718632643405504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +900,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.37748826}
@@ -962,6 +960,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483648
   nearestTarget: {fileID: 0}
+--- !u!114 &8192583701319066614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425863989313729109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684a61bac154f654483c081a7b52f529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHp: 0
+  NowHp: 0
+  damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
 --- !u!95 &5507801869601646988
 Animator:
   serializedVersion: 5
@@ -1027,9 +1040,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09afc5ca4bfd4944fabda61254f9ae3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  weaponCount: 0
-  damage: 0
+  weaponLevel: 1
+  baseDamage: 0
   mirrorMirrorBulletPrefab: {fileID: 2226564827405449263, guid: 582d395bb45240a4ea5248b639b34d83, type: 3}
   interval: 0.5
   player: {fileID: 0}
