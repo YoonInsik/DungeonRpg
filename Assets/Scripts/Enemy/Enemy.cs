@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -35,7 +36,7 @@ namespace SHS
             m_col = GetComponent<Collider2D>();
             m_col.enabled = false;
 
-            now_hp = m_stat.hp;
+            now_hp = m_stat.hp + m_stat.hp_scaling * EnemySpawner_v3.Instance.Get_WaveLevel();
 
             now_burrow = true;
 
@@ -56,7 +57,7 @@ namespace SHS
         {
             m_stat = _stat;
 
-            now_hp = m_stat.hp;
+            now_hp = m_stat.hp + m_stat.hp_scaling * EnemySpawner_v3.Instance.Get_WaveLevel();
         }
 
         public EnemyStat Get_MyStat()
@@ -153,26 +154,29 @@ namespace SHS
 
         void Dead()
         {
-            //경험치 드랍
-            if (ObjectPoolManager.Instance != null)
-            {
-                var exp = ObjectPoolManager.Instance.GetGo("Exp");
-                exp.transform.position = transform.position;
-            }
-
 
             if (GetComponent<EnemyAI_Seperater>() != null)
             {
                 GetComponent<EnemyAI_Seperater>().Seperate();
             }
 
+            Vector3 _dir = new Vector3( Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), 0f);
+
+            //경험치 드랍
+            if (ObjectPoolManager.Instance != null)
+            {
+                var exp = ObjectPoolManager.Instance.GetGo("Exp");
+                exp.transform.position = transform.position + _dir;
+            }
+
             //고기 드랍
-            /*
             if (Random.Range(0, 100) < meatdrop_rate)
             {
-                Instantiate(MapManager.Instance.CurChunk.data.dropTable[0].item, transform.position, Quaternion.identity);
+                GameObject target = Instantiate(MapManager.Instance.CurChunk.data.dropTable[0].item, transform.position, Quaternion.identity);
+
+                target.transform.position = transform.position + _dir * -1f;
             }
-            */
+
 
 
             // if (Random.Range(0, 100) < meatdrop_rate)
@@ -186,7 +190,10 @@ namespace SHS
             Instantiate(ptc_dead, transform.position, Quaternion.identity);
 
             if (not_queue)
+            {
+                Destroy(gameObject);
                 return;
+            }
             
             Dead_Resetting();
 
@@ -194,5 +201,20 @@ namespace SHS
             EnemyQueueManager.ReturnObject(this);
         
         }
+        /*
+        IEnumerator Drop_Move(GameObject _target, Vector3 _dir)
+        {
+            float a = 0.5f;
+
+            while(a > 0)
+            {
+                a -= Time.deltaTime;
+
+                _target.transform.Translate(_dir.normalized * Time.deltaTime);
+
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+        }
+        */
     }
 }

@@ -64,15 +64,54 @@ namespace SHS
                 {
                     default:
 
-                        Debug.LogError("할당된 웨이브가 없습니다.");
+                        switch (Random.Range(1, 10))
+                        {
+                            default: set_eg = wave_r_1; break;
 
-                        yield break;
+                            case 1:
+                                set_eg = wave_r_1;
+                                break;
+
+                            case 2:
+                                set_eg = wave_r_2;
+                                break;
+
+                            case 3:
+                                set_eg = wave_r_3;
+                                break;
+
+                            case 4:
+                                set_eg = wave_r_4;
+                                break;
+
+                            case 5:
+                                set_eg = wave_r_5;
+                                break;
+
+                            case 6:
+                                set_eg = wave_r_6;
+                                break;
+
+                            case 7:
+                                set_eg = wave_r_7;
+                                break;
+
+                            case 8:
+                                set_eg = wave_r_8;
+                                break;
+
+                            case 9:
+                                set_eg = wave_r_9;
+                                break;
+                        }
+
+                        break;
 
                     case 1:
 
                         set_eg = wave1_eg;
 
-                        if (wave_count == 6)
+                        if (wave_count == 5)
                         {
                             Debug.Log("보스 생성");
                             sp_enemyspawn.BossSpawn(101);
@@ -113,8 +152,21 @@ namespace SHS
         [Header("Part 2")]
         [SerializeField] EnemyGroup[] wave2_eg;
 
+        [Header("Part Random")]
+        [SerializeField] EnemyGroup[] wave_r_1;
+        [SerializeField] EnemyGroup[] wave_r_2;
+        [SerializeField] EnemyGroup[] wave_r_3;
+        [SerializeField] EnemyGroup[] wave_r_4;
+        [SerializeField] EnemyGroup[] wave_r_5;
+        [SerializeField] EnemyGroup[] wave_r_6;
+        [SerializeField] EnemyGroup[] wave_r_7;
+        [SerializeField] EnemyGroup[] wave_r_8;
+        [SerializeField] EnemyGroup[] wave_r_9;
 
-
+        public int Get_WaveLevel()
+        {
+            return wave_level;
+        }
 
         #region 소환 설정
 

@@ -10287,7 +10287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379506eba5a9819448f952f853e52367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handling_start: 1
+  handling_start: 0
   Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: a249df200a1408e4a803ff5442fdd115, type: 2}
   now_hp: 0
@@ -10298,9 +10298,9 @@ MonoBehaviour:
   burrow_par: {fileID: 3658437427428767348}
   burrow_image: {fileID: 5943169859917277486}
   Model: {fileID: 25062135863041347}
-  not_queue: 0
+  not_queue: 1
   meat_num: 0
-  meatdrop_rate: 33
+  meatdrop_rate: 100
 --- !u!114 &2924581199071168474
 MonoBehaviour:
   m_ObjectHideFlags: 0
