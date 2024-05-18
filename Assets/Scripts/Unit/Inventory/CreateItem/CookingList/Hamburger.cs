@@ -10,13 +10,10 @@ public class Hamburger : CookingItem
         AddEffect(player);
         float elapsedtime = 0f;
 
-        Debug.Log(buffDuration);
-        Debug.Log(HP);
         while (elapsedtime < buffDuration)
         {
             if (!player.pause)
             {
-                Debug.Log(elapsedtime);
                 HPRecovery(player);
                 elapsedtime++;
             }
