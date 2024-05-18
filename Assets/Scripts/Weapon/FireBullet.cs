@@ -2,20 +2,21 @@ using SHS;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Pool;
 
-public class FireBullet : MonoBehaviour
+public class FireBullet : WeaponBase
 {
     Player player;
     public Vector3 direction;
     float speed = 5.0f;
-    float damage = 1.0f;
     private IObjectPool<FireBullet> managedPool;
     private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        baseDamage = 1.0f;
     }
 
     private void OnEnable()
@@ -52,6 +53,7 @@ public class FireBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

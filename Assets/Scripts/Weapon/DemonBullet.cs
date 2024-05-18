@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class DemonBullet : MonoBehaviour
+public class DemonBullet : WeaponBase
 {
     Player player;
     public Vector3 direction;
     float speed = 10.0f;
-    float damage = 1.0f;
     private IObjectPool<DemonBullet> managedPool;
     private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        baseDamage = 3.0f;
     }
 
     private void OnEnable()
@@ -53,6 +53,7 @@ public class DemonBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             DestroyDemonBullet();
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
             LifeSteal();
         }

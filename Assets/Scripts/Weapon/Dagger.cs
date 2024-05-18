@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dagger : MonoBehaviour
+public class Dagger : WeaponBase
 {
     public enum DaggerState
     {
@@ -18,9 +18,13 @@ public class Dagger : MonoBehaviour
 
     float speed = 30.0f;
     float attackDistance = 25.0f;
-    float damage = 3.0f;
     private Vector3 attackPosition;
     private bool isReturning = false;
+
+    private void Awake()
+    {
+        baseDamage = 3.0f;
+    }
 
     void Start()
     {
@@ -111,6 +115,7 @@ public class Dagger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boom : MonoBehaviour
+public class Boom : WeaponBase
 {
-    float damage = 1.0f;
+    private void Awake()
+    {
+        baseDamage = 10.0f;
+    }
 
     private void Update()
     {
@@ -16,6 +19,7 @@ public class Boom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

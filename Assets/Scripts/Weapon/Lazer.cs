@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Lazer : MonoBehaviour
+public class Lazer : WeaponBase
 {
     Player player;
     public Vector3 direction;
     float speed = 10.0f;
-    float damage = 1.0f;
     private IObjectPool<Lazer> managedPool;
     private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        baseDamage = 6.0f;
     }
 
     private void OnEnable()
@@ -54,6 +54,7 @@ public class Lazer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }
