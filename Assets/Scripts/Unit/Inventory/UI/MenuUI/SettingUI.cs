@@ -94,7 +94,6 @@ public class SettingUI : MonoBehaviour
     public void SaveButton()
     {
         gameObject.SetActive(false);
-        menuWindow.SetActive(true);
         Debug.Log(Screen.width + " x " + Screen.height);
         Debug.Log(Screen.fullScreen);
     }

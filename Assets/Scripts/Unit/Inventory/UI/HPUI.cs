@@ -8,7 +8,7 @@ public class HPUI : MonoBehaviour
 {
     public Player player;
     public TextMeshProUGUI HPText;
-    public RectTransform HPBar;
+    public Slider HPBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class HPUI : MonoBehaviour
     void Update()
     {
         HPText.text = player.HP.ToString();
-        HPBar.localScale = new Vector3((float)player.HP / player.MaxHP, 1, 1);
+        HPBar.value = (float)player.HP / player.MaxHP;
         //Debug.Log(player.HP);
     }
 }
