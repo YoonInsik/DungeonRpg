@@ -9,7 +9,7 @@ public class FullnessUI : MonoBehaviour
 {
     public Player player;
     public TextMeshProUGUI fullnessText;
-    public RectTransform fullnessBar;
+    public Slider fullnessBar;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,6 @@ public class FullnessUI : MonoBehaviour
     void Update()
     {
         fullnessText.text = player.Fullness.ToString();
-        fullnessBar.localScale = new Vector3(player.Fullness / player.MaxFullness, 1, 1);
+        fullnessBar.value = player.Fullness / player.MaxFullness;
     }
 }

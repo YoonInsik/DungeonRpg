@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   HPText: {fileID: 5854974060749378626}
-  HPBar: {fileID: 55801060481014452}
+  HPBar: {fileID: 7253165460852952429}
 --- !u!114 &7253165460852952429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5601,7 +5601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   fullnessText: {fileID: 7226380924732663902}
-  fullnessBar: {fileID: 9032479769164108459}
+  fullnessBar: {fileID: 4485210571443020955}
 --- !u!114 &4485210571443020955
 MonoBehaviour:
   m_ObjectHideFlags: 0
