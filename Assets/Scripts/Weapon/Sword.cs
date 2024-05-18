@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Must;
 using static UnityEngine.GraphicsBuffer;
 
-public class Sword : MonoBehaviour
+public class Sword : WeaponBase
 {
     public enum SwordState
     {
@@ -22,10 +22,13 @@ public class Sword : MonoBehaviour
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
-    float damage = 10.0f;
     private Vector3 attackPosition;
     private bool isReturning = false;
 
+    private void Awake()
+    {
+        baseDamage = 10.0f;
+    }
     void Start()
     {
         // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
@@ -115,6 +118,7 @@ public class Sword : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

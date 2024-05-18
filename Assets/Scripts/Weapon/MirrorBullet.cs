@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class MirrorBullet : MonoBehaviour
+public class MirrorBullet : WeaponBase
 {
     Player player;
     public Vector3 direction;
     float speed = 10.0f;
-    float damage = 1.0f;
     private IObjectPool<MirrorBullet> managedPool;
     private IObjectPool<Bullet> bulletPool;
     private bool isReleased = false;
@@ -19,6 +18,7 @@ public class MirrorBullet : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 30);
+        baseDamage = 1.0f;
     }
 
     private void OnEnable()
@@ -57,6 +57,7 @@ public class MirrorBullet : MonoBehaviour
         {
             DestroyMirrorBullet(); // ÃÑ¾Ë ¹ÝÈ¯
             SpawnNormalBullets(); // ÀÏ¹Ý ÃÑ¾Ë »ý¼º
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

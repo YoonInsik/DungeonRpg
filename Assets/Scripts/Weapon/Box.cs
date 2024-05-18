@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Box : MonoBehaviour
+public class Box : WeaponBase
 {
-    float damage = 1.0f;
     float elapsedTime = 0.0f;
     float interval = 3.5f;
 
     private IObjectPool<Box> managedPool;
+
+    private void Awake()
+    {
+        baseDamage = 3.0f;
+    }
 
     private void Update()
     {
@@ -36,6 +40,7 @@ public class Box : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

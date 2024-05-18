@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pusher : MonoBehaviour
+public class Pusher : WeaponBase
 {
     public enum PusherState
     {
@@ -18,11 +18,14 @@ public class Pusher : MonoBehaviour
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
-    float damage = 10.0f;
     float knockbackForce = 5.0f; // 밀어내는 힘
     private Vector3 attackPosition;
     private bool isReturning = false;
 
+    private void Awake()
+    {
+        baseDamage = 5.0f;
+    }
     void Start()
     {
         // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
@@ -117,6 +120,7 @@ public class Pusher : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // 적에게 데미지 적용
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
 
             // 적을 밀어내기

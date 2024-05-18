@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElectricField : MonoBehaviour
+public class ElectricField : WeaponBase
 {
-    float damage = 1.0f;
     float interval = 0.5f;
     float elapsedTime = 0.0f;
 
     private List<Collider2D> enemys = new List<Collider2D>();
 
+    private void Awake()
+    {
+        baseDamage = 1.0f;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -43,6 +46,7 @@ public class ElectricField : MonoBehaviour
             {
                 foreach (Collider2D collision in enemys)
                 {
+                    float damage = CalculateDamage();
                     collision.GetComponent<Enemy>().Damaged(damage);
                 }
             }

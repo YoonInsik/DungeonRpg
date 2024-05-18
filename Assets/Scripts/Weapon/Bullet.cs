@@ -6,18 +6,18 @@ using UnityEngine.UIElements;
 using UnityEngine.Pool;
 using SHS;
 
-public class Bullet : MonoBehaviour
+public class Bullet : WeaponBase
 {
     Player player;
     public Vector3 direction;
     float speed = 10.0f;
-    float damage = 1.0f;
     private IObjectPool<Bullet> managedPool;
     private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        baseDamage = 5.0f;
     }
 
     private void OnEnable()
@@ -55,6 +55,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             DestroyBullet();
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DemonSword : MonoBehaviour
+public class DemonSword : WeaponBase
 {
     public enum DemonSwordState
     {
@@ -18,10 +18,13 @@ public class DemonSword : MonoBehaviour
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
-    float damage = 10.0f;
     private Vector3 attackPosition;
     private bool isReturning = false;
 
+    private void Awake()
+    {
+        baseDamage = 7.0f;
+    }
     void Start()
     {
         // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
@@ -111,6 +114,7 @@ public class DemonSword : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
             LifeSteal();
         }
