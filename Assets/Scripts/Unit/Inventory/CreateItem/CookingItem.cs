@@ -44,7 +44,6 @@ public abstract class CookingItem : MonoBehaviour
             while (elapsedtime < buffDuration)
             {
                 if (!player.pause) elapsedtime++;
-
                 yield return new WaitForSeconds(1f);
             }
             EndEffect(player);

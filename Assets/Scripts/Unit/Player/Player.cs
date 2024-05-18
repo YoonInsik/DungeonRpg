@@ -10,6 +10,7 @@ public class Player : BaseUnit
     public Vector2 newPos;
     private Rigidbody2D rigid;
     [SerializeField] private Animator animator;
+
     public float speed = 3.0f;
     public int MaxHP;
     [SerializeField] private float fullness;
@@ -17,6 +18,7 @@ public class Player : BaseUnit
     private float maxFullness = 100;
     public float MaxFullness {  get { return maxFullness; } }
     public int fullnessDecreaseAmount = 1;
+
     public Inventory GetInventory { get => inventory; }
 
     public GameObject furnaceSpawnPoint;
@@ -59,7 +61,6 @@ public class Player : BaseUnit
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
             {
-                InstantiateFurnace();
                 MenuUI.Instance.openMenuUI();
             }
             else
@@ -128,7 +129,8 @@ public class Player : BaseUnit
     }
     public StatLevel PlayerStatLevel = new StatLevel();
 
-    //[NonSerialized]
+    //요리아이템 버프 지속이 멈춰야 되는 타이밍 판단
+    [NonSerialized]
     public bool pause = false;
     
     public float WIsdomDelicacy()
