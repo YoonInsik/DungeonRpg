@@ -20,10 +20,18 @@ public class Furnace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isIn == true && Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            OpenFurnaceUI();
+            furnaceUI.SetActive(false);
+            if (isIn )
+            {
+                OpenFurnaceUI();
+            }
         }
+        //if (isIn == true && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    OpenFurnaceUI();
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -40,7 +48,7 @@ public class Furnace : MonoBehaviour
         if (collision.GetComponent<Player>() == player)
         {
             isIn = false;
-            furnaceUI.SetActive(false);
+            //furnaceUI.SetActive(false);
         }   
     }
 

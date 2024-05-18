@@ -11,8 +11,8 @@ public class GameManager : Singleton<GameManager>
 
     public const int MAXSTAGE = 5;
     
-    public int Exp { get; private set; }
-    public int MaxExp { get { return (Level + 3) * (Level + 3); } }
+    public float Exp { get; private set; }
+    public float MaxExp { get { return (Level + 3) * (Level + 3); } }
     public int Level { get; private set; }
     public float Timer { get; private set; }
     public int Stage { get; private set; }
@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
         MapManager.Instance.CurChunk.InvokeEvent();
     }
 
-    public void UpdateEXP(int amount)
+    public void UpdateEXP(float amount)
     {
         Exp += amount;
 

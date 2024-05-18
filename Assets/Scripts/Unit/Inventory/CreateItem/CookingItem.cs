@@ -85,7 +85,7 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.ATKLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        int DelicacyRate = player.PlayerStatLevel.DelicacyLevel;
+        int DelicacyRate = player.PlayerStatLevel.DelicacyLevel*10;
 
         int change = isPositive ? ATK : -ATK;
         player.ATK += change + DelicacyRate;
@@ -99,7 +99,7 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.DEFLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        int DelicacyRate = player.PlayerStatLevel.DelicacyLevel;
+        int DelicacyRate = player.PlayerStatLevel.DelicacyLevel*10;
 
         int change = isPositive ? DEF : -DEF;
         player.DEF += change + DelicacyRate;
@@ -232,11 +232,7 @@ public abstract class CookingItem : MonoBehaviour
     //È¹µæÇÏ´Â °æÇèÄ¡ È¹µæ·® Áõ°¡
     public void IncreaseWisdom(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.WisdomLevel >= player.PlayerStatLevel.StatMaxLevel) return;
-
-        float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1f : (1f + (float)player.PlayerStatLevel.DelicacyLevel / 10);
-
-        
+        if (player.PlayerStatLevel.WisdomLevel >= player.PlayerStatLevel.StatMaxLevel) return;  
 
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.WisdomLevel += Level;
