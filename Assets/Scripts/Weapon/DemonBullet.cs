@@ -55,17 +55,12 @@ public class DemonBullet : WeaponBase
             DestroyDemonBullet();
             float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
-            LifeSteal();
+            player.HP += Mathf.RoundToInt(damage * 0.1f);
         }
     }
 
     private void OnDisable()
     {
         CancelInvoke("DestroyDemonBullet");
-    }
-
-    void LifeSteal()
-    {
-
     }
 }

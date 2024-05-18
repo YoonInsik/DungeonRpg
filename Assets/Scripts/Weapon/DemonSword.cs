@@ -116,11 +116,7 @@ public class DemonSword : WeaponBase
         {
             float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
-            LifeSteal();
+            player.HP += Mathf.RoundToInt(damage * 0.1f);
         }
-    }
-
-    void LifeSteal()
-    {
     }
 }
