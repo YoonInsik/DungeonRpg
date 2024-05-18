@@ -15,6 +15,8 @@ public class Chunk : MonoBehaviour
     private delegate IEnumerator ChunkDelegate();
     private ChunkDelegate chunkEvent;
 
+    public List<GameObject> droppedObjList;
+
     public void DrawChunk()
     {
         MapManager.Instance.tilemapVisualizer.PaintTiles(floorTilemap);
@@ -55,6 +57,7 @@ public class Chunk : MonoBehaviour
     public IEnumerator StartChunkEvent()
     {
         // �� ����
+        droppedObjList = new List<GameObject>();
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
         MapManager.Instance.SetActiveNextChunkUI(true);
 
@@ -64,6 +67,7 @@ public class Chunk : MonoBehaviour
     public IEnumerator NormalChunkEvent()
     {
         // �� �ݱ�
+        droppedObjList = new List<GameObject>();
         MapManager.Instance.CurChunk.SetActiveDoorTilemap(true);
         MapManager.Instance.SetActiveNextChunkUI(false);
 
@@ -93,6 +97,11 @@ public class Chunk : MonoBehaviour
             SHS.EnemySpawner.ReturnObject(enemy);
         }
         UnitManager.Instance.enemies.Clear();
+
+        foreach (var obj in droppedObjList)
+        {
+            obj.GetComponent<Poolable>().ReleaseObject();
+        }
 
         // �� Ŭ���� ����
         GameManager.Instance.levelUpPanel.PopUpLevelUpPanel();

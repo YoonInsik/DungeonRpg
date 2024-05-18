@@ -166,6 +166,7 @@ namespace SHS
             if (ObjectPoolManager.Instance != null)
             {
                 var exp = ObjectPoolManager.Instance.GetGo("Exp");
+                MapManager.Instance.CurChunk.droppedObjList.Add(exp);
                 exp.transform.position = transform.position + _dir;
             }
 
@@ -173,6 +174,7 @@ namespace SHS
             if (Random.Range(0, 100) < meatdrop_rate)
             {
                 GameObject target = Instantiate(MapManager.Instance.CurChunk.data.dropTable[0].item, transform.position, Quaternion.identity);
+                MapManager.Instance.CurChunk.droppedObjList.Add(target);
 
                 target.transform.position = transform.position + _dir * -1f;
             }
