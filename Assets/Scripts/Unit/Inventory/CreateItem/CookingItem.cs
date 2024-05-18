@@ -55,13 +55,13 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //적용될 아이템 효과
-    public abstract void AddEffect(Player player);
+    protected abstract void AddEffect(Player player);
     //버프지속시간이 있을 시 적용된 효과 제거
-    public virtual void EndEffect(Player player) { }
+    protected virtual void EndEffect(Player player) { }
 
 
     //체력 회복
-    public virtual void HPRecovery(Player player, bool RecoveryFull = false)
+    protected virtual void HPRecovery(Player player, bool RecoveryFull = false)
     {
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
 
@@ -76,7 +76,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //최대 체력 증가
-    public virtual void IncreaseHP(Player player, bool isPositive = true)
+    protected virtual void IncreaseHP(Player player, bool isPositive = true)
     {
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
     
@@ -85,7 +85,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격력 증가
-    public virtual void IncreaseATK(Player player, bool isPositive = true)
+    protected virtual void IncreaseATK(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -99,7 +99,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //방어력 증가
-    public virtual void IncreaseDEF(Player player, bool isPositive = true)
+    protected virtual void IncreaseDEF(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.DEFLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -113,14 +113,14 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //포만감 감소량 증가
-    public virtual void IncreaseFullnessDecrease(Player player, bool isPositive = true)
+    protected virtual void IncreaseFullnessDecrease(Player player, bool isPositive = true)
     {
         int change = isPositive ? 1 : - 1;
         player.fullnessDecreaseAmount += change;
     }
 
     //이동속도 증가
-    public virtual void IncreaseSpeed(Player player, bool isPositive = true)
+    protected virtual void IncreaseSpeed(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.SpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -135,7 +135,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //투사체 이동,회전속도
-    public virtual void IncreaseATKSpeed(Player player, bool isPositive = true)
+    protected virtual void IncreaseATKSpeed(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKSpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -153,7 +153,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격범위,투사체 크기 증가
-    public virtual void IncreaseATKRange(Player player, bool isPositive = true)
+    protected virtual void IncreaseATKRange(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKRangeLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -171,7 +171,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //쿨타임 감소
-    public virtual void IncreaseCooldownReduction(Player player, bool isPositive = true)
+    protected virtual void IncreaseCooldownReduction(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.CooldownReductionLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -189,7 +189,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격이 발동할때 그 공격이 지속되는 시간 증가
-    public virtual void IncreaseATKDuration(Player player, bool isPositive = true)
+    protected virtual void IncreaseATKDuration(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKdurationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -207,7 +207,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //스테이지 클리어 후 얻는 재료양 증가
-    public virtual void IncreaseGreed(Player player , bool isPositive = true)
+    protected virtual void IncreaseGreed(Player player , bool isPositive = true)
     {
         if (player.PlayerStatLevel.GreedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -225,7 +225,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //요리섭취시 레벨당 오르는 능력치 증가
-    public virtual void IncreaseDelicacy(Player player, bool isPositive = true)
+    protected virtual void IncreaseDelicacy(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.DelicacyLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -234,7 +234,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //획득하는 경험치 획득량 증가
-    public virtual void IncreaseWisdom(Player player, bool isPositive = true)
+    protected virtual void IncreaseWisdom(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.WisdomLevel >= player.PlayerStatLevel.StatMaxLevel) return;  
 
@@ -243,7 +243,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //전투중 경험치 보석, 아이템을 획득하는 범위가 증가
-    public virtual void IncreaseTemptation(Player player, bool isPositive = true)
+    protected virtual void IncreaseTemptation(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.TemptationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -256,7 +256,7 @@ public abstract class CookingItem : MonoBehaviour
         player.PlayerStatLevel.TemptationLevel += Level;
     }
 
-    public void IncreaseAll(Player player, bool isPositive = true)
+    protected void IncreaseAll(Player player, bool isPositive = true)
     {
         IncreaseATK(player, isPositive);
         IncreaseDEF(player, isPositive);

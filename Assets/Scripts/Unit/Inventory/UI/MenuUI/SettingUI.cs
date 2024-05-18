@@ -21,13 +21,13 @@ public class SettingUI : MonoBehaviour
     public TMP_Dropdown dropdown;
 
     //가능한 해상도를 불러와서 주사율만 제거하기 위한 구조체 및 리스트
-    public struct Mod_Resolution
+    private struct Mod_Resolution
     {
         public int width;
         public int height;
     }
-    public List<Resolution> resolutions = new List<Resolution>();
-    public List<Mod_Resolution> mod_resolutions = new List<Mod_Resolution>();
+    private List<Resolution> resolutions = new List<Resolution>();
+    private List<Mod_Resolution> mod_resolutions = new List<Mod_Resolution>();
 
     // Start is called before the first frame update
     void Start()

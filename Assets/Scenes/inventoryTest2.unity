@@ -1014,17 +1014,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
---- !u!114 &1404378439 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6450117429874962598, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-  m_PrefabInstance: {fileID: 1690531894}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e11b9de818546fe49b9f1ed0fb0b37e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1673853158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1102,26 +1091,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 465847189680495020, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 465847189680495020, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1404378439}
-    - target: {fileID: 465847189680495020, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Quitbutton
-      objectReference: {fileID: 0}
-    - target: {fileID: 465847189680495020, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuUI, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2039613273681328915, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0000076293945
-      objectReference: {fileID: 0}
     - target: {fileID: 2349001833990019319, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1178,20 +1147,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7623535092237698046, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8576388984899448329, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8576388984899448329, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8576388984899448329, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
-      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9032479769164108459, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}

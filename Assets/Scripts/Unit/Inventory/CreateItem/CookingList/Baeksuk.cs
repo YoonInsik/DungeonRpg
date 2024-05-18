@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Baeksuk : CookingItem
 {
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseATKSpeed(player);
         player.PlayerStatLevel.StatMaxLevel += 1;

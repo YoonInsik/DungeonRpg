@@ -20,7 +20,7 @@ public class Hamburger : CookingItem
             yield return new WaitForSeconds(1f);
         }
     }
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseSpeed(player);
         Debug.Log("ÇÜ¹ö°Å Àû¿ë");
