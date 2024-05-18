@@ -70,7 +70,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d6503ce1e2c4b47abf65064c5f03e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropPrefabs:
-  - {fileID: 2609902746980998286, guid: 0bc9899dc52e0954891740f554ba08d4, type: 3}
-  - {fileID: 5962074900016059063, guid: 43819022cac4b334896136092b323823, type: 3}
-  - {fileID: 6743010594544568794, guid: 58110963515ec28489b1f508eb975274, type: 3}
+  dropItems:
+  - {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
+  - {fileID: 11400000, guid: db40660cb38926042ab235f851fc31e2, type: 2}
+  - {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
+  - {fileID: 11400000, guid: 32b4c9a5a68397f40b8c11381ae27b8d, type: 2}
+  - {fileID: 11400000, guid: 6b655c627d7a4b748b1c4dc7bd160b03, type: 2}
+  - {fileID: 11400000, guid: ccf4cfc3be1b6c04da0380fc32a398e5, type: 2}

@@ -112,12 +112,13 @@ public class MapManager : Singleton<MapManager>
             {
                 chunkItem.transform.Translate(new Vector2(moveVec.x, moveVec.y) * CHUNKSIZE * 3);
             }
-            SetChunkData(chunkItem);
 
             Vector2Int moveChunkPos = new Vector2Int(
                 Mathf.RoundToInt(chunkItem.transform.position.x / CHUNKSIZE),
                 Mathf.RoundToInt(chunkItem.transform.position.y / CHUNKSIZE));
 
+            if (moveChunkPos != playerChunkPos)
+                SetChunkData(chunkItem);
             chunkItem.DrawChunk();
             chunkItem.SetChunkDelegate();
             chunkItem.SetActiveDoorTilemap(false);

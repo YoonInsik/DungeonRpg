@@ -11,7 +11,7 @@ public class DropTableUI : MonoBehaviour
     {
         for (int i = 0; i < droptable.Count; i++)
         {
-            dropItemImages[i].sprite = droptable[i].item.GetComponent<ItemImplement>().item.icon;
+            dropItemImages[i].sprite = droptable[i].item.icon;
             dropItemImages[i].gameObject.SetActive(true);
         }
         for (int i = droptable.Count; i < dropItemImages.Count; i++)

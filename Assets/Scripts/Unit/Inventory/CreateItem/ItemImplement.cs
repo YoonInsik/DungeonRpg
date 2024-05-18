@@ -11,18 +11,19 @@ public class ItemImplement : BaseItem
     {
         if (item != null && image != null)
         {
-            image.sprite = item.icon;
+            SetImage();
         }
     }
 
+    public void SetImage()
+    {
+        image.sprite = item.icon;
+    }
 
     protected override void Contact()
     {
-        MeatItem meat = gameObject.GetComponent<ItemImplement>().item;
-        if (meat != null)
-        {
-            Inventory.Instance.AddMeat(meat);
-            Destroy(gameObject);
-        }
+        Inventory.Instance.AddMeat(item);
+        MapManager.Instance.CurChunk.droppedObjList.Remove(gameObject);
+        ReleaseObject();
     }
 }
