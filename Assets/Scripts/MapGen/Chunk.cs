@@ -92,10 +92,14 @@ public class Chunk : MonoBehaviour
         //  ----> ���̺갡 ������� �� ���̺� ũ��(�ð��� �ֱ⿡ ���� ����) ������ �־� ���� ������ ��� ��. ���� ���Ͱ� ���� �ÿ��� ���� ������ ��������.
 
         // �� ���� �Լ�
-        foreach (var enemy in UnitManager.Instance.enemies)
+        /*
+        foreach (var enemy in EnemyQueueManager.instance.EnemyQueue)
         {
-            SHS.EnemySpawner.ReturnObject(enemy);
+            EnemyQueueManager.ReturnObject(enemy);
         }
+        EnemyQueueManager에서 정리하게 명령
+        */
+        EnemyQueueManager.instance.ClearMonster();
         UnitManager.Instance.enemies.Clear();
 
         foreach (var obj in droppedObjList)

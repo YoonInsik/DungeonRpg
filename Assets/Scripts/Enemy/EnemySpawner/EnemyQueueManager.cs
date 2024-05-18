@@ -39,6 +39,18 @@ namespace SHS
             }
         }
 
+        public void ClearMonster()
+        {
+            GameObject[] Activated_enemys = GameObject.FindGameObjectsWithTag("Enemy");
+
+            for(int i = 0; i< Activated_enemys.Length; i++)
+            {
+                if (Activated_enemys[i].transform.parent == null)
+                    ReturnObject(Activated_enemys[i].GetComponent<Enemy>());
+            }
+
+        }
+
         public static void ReturnObject(Enemy _enemy)
         {
             _enemy.gameObject.SetActive(false);
@@ -82,7 +94,7 @@ namespace SHS
         [Header("Follower 풀링")]
         [SerializeField] GameObject Enemy_prefab;
 
-        [SerializeField] Queue<Enemy> EnemyQueue = new Queue<Enemy>();
+        public Queue<Enemy> EnemyQueue = new Queue<Enemy>();
 
         Enemy CreateNewEnemy()
         {
@@ -117,7 +129,7 @@ namespace SHS
         [Header("Jumper 풀링")]
         [SerializeField] GameObject JumpEnemy_prefab;
 
-        [SerializeField] Queue<Enemy> JumpEnemyQueue = new Queue<Enemy>();
+        public Queue<Enemy> JumpEnemyQueue = new Queue<Enemy>();
 
         Enemy CreateNewJumpEnemy()
         {
@@ -152,7 +164,7 @@ namespace SHS
         [Header("Sniper 풀링")]
         [SerializeField] GameObject SnipeEnemy_prefab;
 
-        [SerializeField] Queue<Enemy> SnipeEnemyQueue = new Queue<Enemy>();
+        public Queue<Enemy> SnipeEnemyQueue = new Queue<Enemy>();
 
         Enemy CreateNewSnipeEnemy()
         {
@@ -187,7 +199,7 @@ namespace SHS
         [Header("Seperater 풀링")]
         [SerializeField] GameObject SepertEnemy_prefab;
 
-        [SerializeField] Queue<Enemy> SepertEnemyQueue = new Queue<Enemy>();
+        public Queue<Enemy> SepertEnemyQueue = new Queue<Enemy>();
 
         Enemy CreateNewSepertEnemy()
         {
