@@ -76,7 +76,7 @@ public class Player : BaseUnit
 
     public void IncreaseFullness(float amount)
     {
-        if (fullness + amount > maxFullness)
+        if (fullness + amount >= maxFullness)
         {
             fullness = maxFullness;
         }
@@ -128,6 +128,8 @@ public class Player : BaseUnit
     }
     public StatLevel PlayerStatLevel = new StatLevel();
 
+    //[NonSerialized]
+    public bool pause = false;
     
     public float WIsdomDelicacy()
     {

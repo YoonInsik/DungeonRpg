@@ -70,6 +70,8 @@ public class Chunk : MonoBehaviour
         // �����
         var decreaseFullnessCo = StartCoroutine(UnitManager.Instance.player.DecreaseFullness());
 
+        // 요리 버프 지속시간 시작
+        UnitManager.Instance.player.pause = false;
         // ���� �ݺ� ��ȯ
         //var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
         //  ----> EnemySpawner_v3�� ���̺� ����� ���� �Է�
@@ -79,6 +81,9 @@ public class Chunk : MonoBehaviour
 
         // �ð� ����
         StopCoroutine(decreaseFullnessCo);
+
+        // 요리 버프 지속 일시 정지
+        UnitManager.Instance.player.pause = true;
         //StopCoroutine(enemySpawnCo);
         //  ----> ���̺갡 ������� �� ���̺� ũ��(�ð��� �ֱ⿡ ���� ����) ������ �־� ���� ������ ��� ��. ���� ���Ͱ� ���� �ÿ��� ���� ������ ��������.
 
