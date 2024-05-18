@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Udon : CookingItem
 {
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseTemptation(player);
     }

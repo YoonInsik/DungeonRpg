@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: bossIngredient
   m_EditorClassIdentifier: 
   itemName: bossIngredient
-  icon: {fileID: 927338625, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  icon: {fileID: 21300000, guid: ca6bda2ef5c808d4583d6b3c3e01f1d3, type: 3}

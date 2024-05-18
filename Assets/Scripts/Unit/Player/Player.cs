@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditorInternal;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class Player : BaseUnit
@@ -106,11 +107,10 @@ public class Player : BaseUnit
     {
         Instantiate(furnace, furnaceSpawnPoint.transform.position, Quaternion.identity);
         FurnaceItemUI.Instance.gameObject.SetActive(true);
+        furnace.GetComponent<Furnace>().isIn = true;
     }
 
-
-
-//플레이어 스탯 관련
+    //플레이어 스탯 관련
     [Serializable]
     public struct StatLevel
     {
@@ -135,10 +135,18 @@ public class Player : BaseUnit
     
     public float WIsdomDelicacy()
     {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 5);
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
         float Wisdom = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.WisdomLevel / 5);
 
         return DelicacyRate * Wisdom;
+    }
+
+    public float GreedDelicacy()
+    {
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
+        float Greed = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.GreedLevel / 5);
+
+        return DelicacyRate * Greed;
     }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mille_FeuilleNabe : CookingItem
 {
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseHP(player);
         IncreaseGreed(player);

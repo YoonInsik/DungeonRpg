@@ -28,24 +28,17 @@ public class Inventory : Singleton<Inventory>
         player = UnitManager.Instance.player.GetComponent<Player>();
     }
 
-    //public void AddMeat(MeatItem meat)
-    //{
-    //    switch (meat.itemName)
-    //    {
-    //        case "beef":
-    //            meats[0].count++;
-    //           break;
-    //        case "pork":
-    //            meats[1].count++;
-    //            break;
-    //        case "chicken":
-    //            meats[2].count++;
-    //            break;
-    //        default:
-    //            Debug.Log("can't add meat");
-    //            break;
-    //    }
-    //}
+    public void AddMeat(MeatItem meat)
+    {
+        for(int i = 0; i < meats.Length; i++)
+        {
+            if (meat.itemName.Equals(meats[i].meats.itemName))
+            {
+                Debug.Log(meat);
+                meats[i].count++;
+            }
+        }
+    }
 
     public void AddCookingItem(CookingItem item)
     {

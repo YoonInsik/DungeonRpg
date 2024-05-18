@@ -22,7 +22,7 @@ public class ItemTemptation: MonoBehaviour
         exp = Physics2D.OverlapCircleAll(player.transform.position, range);
         foreach(Collider2D col in exp)
         {
-            if (col.CompareTag("Exp")){
+            if (col.CompareTag("Exp") || col.CompareTag("Meat")){
                 float distance = Vector2.Distance(player.transform.position, col.transform.position);
                 if(distance < range)
                 {
