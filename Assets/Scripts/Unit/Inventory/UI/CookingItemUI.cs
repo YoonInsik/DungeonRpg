@@ -61,7 +61,7 @@ public class CookingItemUI : Singleton<CookingItemUI>
         Debug.Log("Click" + item);
         if(item == null) { return; }
 
-        if(player.Fullness + item.Fullness < player.MaxFullness)
+        if(player.Fullness + item.Fullness <= player.MaxFullness)
         {
             player.IncreaseFullness(item.Fullness);
             inventory.statUp.IncreaseStat(item);

@@ -35,14 +35,19 @@ public abstract class CookingItem : MonoBehaviour
 
 
     //요리 아이템 효과 적용
-    public IEnumerator CookingEffect(Player player)
+    public virtual IEnumerator CookingEffect(Player player)
     {
+        float elapsedtime = 0f;
         AddEffect(player);
         if (buffDuration != 0)
         {
-            yield return new WaitForSeconds(buffDuration);
+            while (elapsedtime < buffDuration)
+            {
+                if (!player.pause) elapsedtime++;
+
+                yield return new WaitForSeconds(1f);
+            }
             EndEffect(player);
-            Debug.Log(name + " " + buffDuration + "초 Buff끝");
         }
         else
         {
@@ -57,7 +62,7 @@ public abstract class CookingItem : MonoBehaviour
 
 
     //체력 회복
-    public void HPRecovery(Player player, bool RecoveryFull = false)
+    public virtual void HPRecovery(Player player, bool RecoveryFull = false)
     {
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
 
@@ -72,7 +77,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //최대 체력 증가
-    public void IncreaseHP(Player player, bool isPositive = true)
+    public virtual void IncreaseHP(Player player, bool isPositive = true)
     {
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
     
@@ -81,7 +86,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격력 증가
-    public void IncreaseATK(Player player, bool isPositive = true)
+    public virtual void IncreaseATK(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -95,7 +100,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //방어력 증가
-    public void IncreaseDEF(Player player, bool isPositive = true)
+    public virtual void IncreaseDEF(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.DEFLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -109,14 +114,14 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //포만감 감소량 증가
-    public void IncreaseFullnessDecrease(Player player, bool isPositive = true)
+    public virtual void IncreaseFullnessDecrease(Player player, bool isPositive = true)
     {
         int change = isPositive ? 1 : - 1;
         player.fullnessDecreaseAmount += change;
     }
 
     //이동속도 증가
-    public void IncreaseSpeed(Player player, bool isPositive = true)
+    public virtual void IncreaseSpeed(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.SpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -131,7 +136,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //투사체 이동,회전속도
-    public void IncreaseATKSpeed(Player player, bool isPositive = true)
+    public virtual void IncreaseATKSpeed(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKSpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -149,7 +154,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격범위,투사체 크기 증가
-    public void IncreaseATKRange(Player player, bool isPositive = true)
+    public virtual void IncreaseATKRange(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKRangeLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -167,7 +172,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //쿨타임 감소
-    public void IncreaseCooldownReduction(Player player, bool isPositive = true)
+    public virtual void IncreaseCooldownReduction(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.CooldownReductionLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -185,7 +190,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격이 발동할때 그 공격이 지속되는 시간 증가
-    public void IncreaseATKDuration(Player player, bool isPositive = true)
+    public virtual void IncreaseATKDuration(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKdurationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -203,7 +208,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //스테이지 클리어 후 얻는 재료양 증가
-    public void IncreaseGreed(Player player , bool isPositive = true)
+    public virtual void IncreaseGreed(Player player , bool isPositive = true)
     {
         if (player.PlayerStatLevel.GreedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -221,7 +226,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //요리섭취시 레벨당 오르는 능력치 증가
-    public void IncreaseDelicacy(Player player, bool isPositive = true)
+    public virtual void IncreaseDelicacy(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.DelicacyLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -230,7 +235,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //획득하는 경험치 획득량 증가
-    public void IncreaseWisdom(Player player, bool isPositive = true)
+    public virtual void IncreaseWisdom(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.WisdomLevel >= player.PlayerStatLevel.StatMaxLevel) return;  
 
@@ -239,7 +244,7 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //전투중 경험치 보석, 아이템을 획득하는 범위가 증가
-    public void IncreaseTemptation(Player player, bool isPositive = true)
+    public virtual void IncreaseTemptation(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.TemptationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -250,5 +255,20 @@ public abstract class CookingItem : MonoBehaviour
 
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.TemptationLevel += Level;
+    }
+
+    public void IncreaseAll(Player player, bool isPositive = true)
+    {
+        IncreaseATK(player, isPositive);
+        IncreaseDEF(player, isPositive);
+        IncreaseSpeed(player, isPositive);
+        IncreaseATKSpeed(player, isPositive);
+        IncreaseATKRange(player, isPositive);
+        IncreaseATKDuration(player, isPositive);
+        IncreaseCooldownReduction(player, isPositive);
+        IncreaseGreed(player, isPositive);
+        IncreaseDelicacy(player, isPositive);
+        IncreaseWisdom(player, isPositive);
+        IncreaseTemptation(player, isPositive);
     }
 }

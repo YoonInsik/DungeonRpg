@@ -40,7 +40,6 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
         {
             for (int i = 0; i < meats.Length; i++)
             {
-                Debug.Log(meats.Length);
                 if (meats[i].meats.itemName == ingredient.ingredient.itemName)
                 {
                     meats[i].count -= ingredient.amount;
