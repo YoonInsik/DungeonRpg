@@ -13,7 +13,7 @@ public class ExpSlider : MonoBehaviour
     }
 
     void LateUpdate() {
-        slider.value = GameManager.Instance.Exp;
-        slider.maxValue = GameManager.Instance.MaxExp;
+        slider.value = (int)GameManager.Instance.Exp;
+        slider.maxValue = (int)GameManager.Instance.MaxExp;
     }
 }

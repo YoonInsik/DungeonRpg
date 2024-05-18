@@ -7,24 +7,6 @@ using UnityEngine;
 
 public class Player : BaseUnit
 {
-    [Serializable]
-    public struct StatLevel
-    {
-        public int ATKLevel;
-        public int DEFLevel;
-        public int SpeedLevel;
-        public int ATKSpeedLevel;
-        public int ATKRangeLevel;
-        public int CooldownReductionLevel;
-        public int ATKdurationLevel;
-        public int GreedLevel;
-        public int DelicacyLevel;
-        public int WisdomLevel;
-        public int TemptationLevel;
-        public int StatMaxLevel;
-    }
-    public StatLevel PlayerStatLevel = new StatLevel();
-
     public Vector2 newPos;
     private Rigidbody2D rigid;
     [SerializeField] private Animator animator;
@@ -124,4 +106,35 @@ public class Player : BaseUnit
         Instantiate(furnace, furnaceSpawnPoint.transform.position, Quaternion.identity);
         FurnaceItemUI.Instance.gameObject.SetActive(true);
     }
+
+
+
+//플레이어 스탯 관련
+    [Serializable]
+    public struct StatLevel
+    {
+        public int ATKLevel;
+        public int DEFLevel;
+        public int SpeedLevel;
+        public int ATKSpeedLevel;
+        public int ATKRangeLevel;
+        public int CooldownReductionLevel;
+        public int ATKdurationLevel;
+        public int GreedLevel;
+        public int DelicacyLevel;
+        public int WisdomLevel;
+        public int TemptationLevel;
+        public int StatMaxLevel;
+    }
+    public StatLevel PlayerStatLevel = new StatLevel();
+
+    
+    public float WIsdomDelicacy()
+    {
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 5);
+        float Wisdom = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.WisdomLevel / 5);
+
+        return DelicacyRate * Wisdom;
+    }
+
 }
