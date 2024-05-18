@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Caprese : CookingItem
 {
-    public override void IncreaseATK(Player player, bool isPositive = true)
+    protected override void IncreaseATK(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
@@ -17,7 +17,7 @@ public class Caprese : CookingItem
         player.PlayerStatLevel.ATKLevel += Level;
     }
 
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseSpeed(player);
         IncreaseATK(player);

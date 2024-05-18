@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jeyuk_bokkeum : CookingItem
 {
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseATK(player);
     }

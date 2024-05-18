@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jokbal : CookingItem
 {
-    public override void AddEffect(Player player)
+    protected override void AddEffect(Player player)
     {
         IncreaseWisdom(player);
         IncreaseATKRange(player);

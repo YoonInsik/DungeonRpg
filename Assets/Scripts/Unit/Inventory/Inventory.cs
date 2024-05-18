@@ -28,24 +28,17 @@ public class Inventory : Singleton<Inventory>
         player = UnitManager.Instance.player.GetComponent<Player>();
     }
 
-    //public void AddMeat(MeatItem meat)
-    //{
-    //    switch (meat.itemName)
-    //    {
-    //        case "beef":
-    //            meats[0].count++;
-    //           break;
-    //        case "pork":
-    //            meats[1].count++;
-    //            break;
-    //        case "chicken":
-    //            meats[2].count++;
-    //            break;
-    //        default:
-    //            Debug.Log("can't add meat");
-    //            break;
-    //    }
-    //}
+    public void AddMeat(MeatItem meat)
+    {
+        for(int i = 0; i < meats.Length; i++)
+        {
+            if (meat.itemName.Equals(meats[i].meats.itemName))
+            {
+                Debug.Log(meat);
+                meats[i].count++;
+            }
+        }
+    }
 
     public void AddCookingItem(CookingItem item)
     {
@@ -113,12 +106,14 @@ public class Inventory : Singleton<Inventory>
                 if (child.name.Equals(data.itemName))
                 {
                     child.gameObject.SetActive(true);
+                    playerItem.itemInstance = child.gameObject.GetComponent<WeaponBase>();
                     print(child.name);
                 }
             }
         }
          
         playerItem.level++;
+        playerItem.itemInstance.LevelUp();
         // item damage, stat level up
     }
 }
@@ -143,8 +138,10 @@ public struct Cooking
     }
 }
 
+[Serializable]
 public class PlayerItemData
 {
     public int level;
     public ItemData itemData;
+    public WeaponBase itemInstance;
 }

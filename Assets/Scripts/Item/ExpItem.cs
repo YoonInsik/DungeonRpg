@@ -11,7 +11,6 @@ public class ExpItem : BaseItem
     {
         //Debug.Log("경험치 습득");
         GameManager.Instance.UpdateEXP(expAmount*UnitManager.Instance.player.WIsdomDelicacy());
-        Debug.Log(expAmount * UnitManager.Instance.player.WIsdomDelicacy());
         ReleaseObject();
     }
 }

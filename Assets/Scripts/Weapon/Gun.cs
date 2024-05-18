@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
-public class Gun : MonoBehaviour
+public class Gun : WeaponBase
 {
     public GameObject bulletPrefab;
     public float interval = 0.2f;

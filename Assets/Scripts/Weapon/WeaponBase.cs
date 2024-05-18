@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    public int weaponLevel = 1;
+    public int weaponLevel = 0;
     public float baseDamage;
 
     public float CalculateDamage()
