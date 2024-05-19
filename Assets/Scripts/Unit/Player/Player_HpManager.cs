@@ -7,6 +7,12 @@ public class Player_HpManager : MonoBehaviour
 {
     public static Player_HpManager instance;
 
+    Player m_player;
+
+    [Header("수치확인용")]
+    [SerializeField] int check_maxhp;
+    [SerializeField] int check_nowhp;
+
     [Header("연결")]
     [SerializeField] Player_SpriteColorControl player_scc;
 
@@ -17,27 +23,26 @@ public class Player_HpManager : MonoBehaviour
 
     private void Start()
     {
-        NowHp = MaxHp = GetComponent<Player>().GetBaseHP();
+        m_player = GetComponent<Player>();
 
-
+        check_maxhp = check_nowhp = m_player.MaxHP;
     }
-
-
-    [Header("체력 - 확인용")]
-    [SerializeField] int MaxHp;
-    [SerializeField] int NowHp;
-
+    /*
     public int Get_NowHp()
     {
         return NowHp;
     }
+    */
 
     //회복
     public void Recovery(int _heal)
     {
-        NowHp += _heal;
+        m_player.HP += _heal;
 
-        NowHp = Mathf.Clamp(NowHp, 0, MaxHp);
+        m_player.HP = Mathf.Clamp(m_player.HP, 0, m_player.MaxHP);
+
+        check_nowhp = m_player.HP;
+        check_maxhp = m_player.MaxHP;
     }
 
     [Header("피해")]
@@ -47,7 +52,7 @@ public class Player_HpManager : MonoBehaviour
     //피해
     public void Damaged(int _damage)
     {
-        NowHp -= _damage;
+        m_player.HP -= _damage;
 
         GameObject ds = Instantiate(damagescale);
         ds.transform.position = transform.position + Vector3.up * 1f;
@@ -58,7 +63,10 @@ public class Player_HpManager : MonoBehaviour
         damamged_sound[Random.Range(0, damamged_sound.Length)].Play();
         player_scc.Damaged_Red();
 
-        if (NowHp <= 0)
+        check_nowhp = m_player.HP;
+        check_maxhp = m_player.MaxHP;
+
+        if (m_player.HP <= 0)
         {
             Dead();
         }
