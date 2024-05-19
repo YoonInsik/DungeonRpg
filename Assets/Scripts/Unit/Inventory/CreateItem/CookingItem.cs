@@ -90,7 +90,6 @@ public abstract class CookingItem : MonoBehaviour
         if (player.PlayerStatLevel.ATKLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
         int DelicacyRate = player.PlayerStatLevel.DelicacyLevel*10;
-
         int change = isPositive ? ATK : -ATK;
         player.ATK += change + DelicacyRate;
 
@@ -104,7 +103,6 @@ public abstract class CookingItem : MonoBehaviour
         if (player.PlayerStatLevel.DEFLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
         int DelicacyRate = player.PlayerStatLevel.DelicacyLevel*10;
-
         int change = isPositive ? DEF : -DEF;
         player.DEF += change + DelicacyRate;
 
@@ -126,7 +124,6 @@ public abstract class CookingItem : MonoBehaviour
 
         //미식에 따른 수치 적용
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1f : (1f + (float)player.PlayerStatLevel.DelicacyLevel / 10);
-
         float change = isPositive ? Speed : -Speed;
         player.speed += change*DelicacyRate;
 
@@ -139,15 +136,6 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.ATKSpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        if (isPositive == true)
-        {
-
-        }
-        else
-        {
-
-        }
-
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.ATKSpeedLevel += Level;
     }
@@ -156,15 +144,6 @@ public abstract class CookingItem : MonoBehaviour
     protected virtual void IncreaseATKRange(Player player, bool isPositive = true)
     {
         if (player.PlayerStatLevel.ATKRangeLevel >= player.PlayerStatLevel.StatMaxLevel) return;
-
-        if (isPositive == true)
-        {
-
-        }
-        else
-        {
-
-        }
 
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.ATKRangeLevel += Level;
@@ -175,15 +154,6 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.CooldownReductionLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        if (isPositive == true)
-        {
-
-        }
-        else
-        {
-
-        }
-
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.CooldownReductionLevel += Level;
     }
@@ -193,15 +163,6 @@ public abstract class CookingItem : MonoBehaviour
     {
         if (player.PlayerStatLevel.ATKdurationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        if (isPositive == true)
-        {
-
-        }
-        else
-        {
-
-        }
-
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.ATKdurationLevel += Level;
     }
@@ -210,15 +171,6 @@ public abstract class CookingItem : MonoBehaviour
     protected virtual void IncreaseGreed(Player player , bool isPositive = true)
     {
         if (player.PlayerStatLevel.GreedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
-
-        if (isPositive == true)
-        {
-
-        }
-        else
-        {
-
-        }
 
         int Level = isPositive ? 1 : -1;
         player.PlayerStatLevel.GreedLevel += Level;
@@ -248,7 +200,6 @@ public abstract class CookingItem : MonoBehaviour
         if (player.PlayerStatLevel.TemptationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
         float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1f : (1f + (float)player.PlayerStatLevel.DelicacyLevel / 10);
-
         float change = isPositive ? Temptation / 2 : -Temptation / 2;
         player.GetComponent<ItemTemptation>().range += change * DelicacyRate;
 

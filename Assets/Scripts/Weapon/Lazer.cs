@@ -25,7 +25,7 @@ public class Lazer : WeaponBase
 
     private void FixedUpdate()
     {
-        transform.Translate(direction * speed * Time.fixedDeltaTime, Space.World);
+        transform.Translate(direction * speed * Time.fixedDeltaTime * player.ATKSpeedDelicacy(), Space.World);
     }
 
     public void SetManagedPool(IObjectPool<Lazer> pool)

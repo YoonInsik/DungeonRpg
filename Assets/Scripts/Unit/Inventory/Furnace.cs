@@ -21,6 +21,7 @@ public class Furnace : MonoBehaviour
     void Update()
     {
         OpenFurnaceUI();
+        CheckDestory();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -54,6 +55,15 @@ public class Furnace : MonoBehaviour
             {
                 furnaceUI.SetActive(false);
             }
+        }
+    }
+
+    // 방을 넘어가면 원래 있던게 사라짐
+    public void CheckDestory()
+    {
+        if(player.pause == false)
+        {
+            Destroy(gameObject);
         }
     }
 }

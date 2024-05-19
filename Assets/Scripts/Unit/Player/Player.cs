@@ -21,12 +21,16 @@ public class Player : BaseUnit
     public int fullnessDecreaseAmount = 1;
 
     public Inventory GetInventory { get => inventory; }
+    [Header ("화로") ]
 
     public GameObject furnaceSpawnPoint;
     public GameObject furnace;
+
     private Inventory inventory;
     private GameObject menuUI;
     private bool MenuUIopen;
+
+    [Header ("스캐너")]
     public Scanner scanner;
 
     public void Awake()
@@ -110,23 +114,8 @@ public class Player : BaseUnit
         furnace.GetComponent<Furnace>().isIn = true;
     }
 
-    //플레이어 스탯 관련
-    [Serializable]
-    public struct StatLevel
-    {
-        public int ATKLevel;
-        public int DEFLevel;
-        public int SpeedLevel;
-        public int ATKSpeedLevel;
-        public int ATKRangeLevel;
-        public int CooldownReductionLevel;
-        public int ATKdurationLevel;
-        public int GreedLevel;
-        public int DelicacyLevel;
-        public int WisdomLevel;
-        public int TemptationLevel;
-        public int StatMaxLevel;
-    }
+    
+    [Header("플레이어 스탯 레벨")]
     public StatLevel PlayerStatLevel = new StatLevel();
 
     //요리아이템 버프 지속이 멈춰야 되는 타이밍 판단
@@ -149,4 +138,47 @@ public class Player : BaseUnit
         return DelicacyRate * Greed;
     }
 
+    public float ATKSpeedDelicacy()
+    {
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
+        float ATKSpeed = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKSpeedLevel / 5);
+
+        return DelicacyRate * ATKSpeed;
+    }
+
+    public float ATKCooldownDelicacy()
+    {
+        //3%, 7%씩 쿨타임 감소
+        float DelicacyRate = 1 - (UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel * 0.03f);
+        float CooldownReduction = 1 - (UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel * 0.07f);
+
+        return DelicacyRate * CooldownReduction;
+    }
+
+    public float ATKRangeDelicacy()
+    {
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
+        float ATKRange = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKRangeLevel / 5);
+
+        return DelicacyRate * ATKRange;
+    }
+
+
+    //플레이어 스탯 레벨
+    [Serializable]
+    public struct StatLevel
+    {
+        public int ATKLevel;
+        public int DEFLevel;
+        public int SpeedLevel;
+        public int ATKSpeedLevel;
+        public int ATKRangeLevel;
+        public int CooldownReductionLevel;
+        public int ATKdurationLevel;
+        public int GreedLevel;
+        public int DelicacyLevel;
+        public int WisdomLevel;
+        public int TemptationLevel;
+        public int StatMaxLevel;
+    }
 }

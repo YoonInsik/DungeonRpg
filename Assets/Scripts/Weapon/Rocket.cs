@@ -28,7 +28,7 @@ public class Rocket : MonoBehaviour
         if (isMoving)
         {
             // 로켓이 전역 좌표계를 기준으로 움직이도록 설정
-            transform.Translate(direction * speed * Time.fixedDeltaTime, Space.World);
+            transform.Translate(direction * speed * Time.fixedDeltaTime * player.ATKSpeedDelicacy(), Space.World);
         }
     }
 
