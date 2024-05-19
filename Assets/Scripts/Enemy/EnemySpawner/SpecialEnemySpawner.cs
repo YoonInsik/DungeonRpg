@@ -81,7 +81,7 @@ namespace SHS
             Vector2 randomPosition = Random.insideUnitCircle;
             Vector3 ranpos_v3 = new Vector3(randomPosition.x, randomPosition.y, 0).normalized;
 
-            Instantiate(_boss, player_trns.transform.position + ranpos_v3 * Random.Range(spawn_radius.x, spawn_radius.y), Quaternion.identity).GetComponent<Enemy>().Start_Burrowing(); ;
+            Instantiate(_boss, MapManager.Instance.CurChunk.transform.position, Quaternion.identity).GetComponent<Enemy>().Start_Burrowing(); ;
 
         }
 
