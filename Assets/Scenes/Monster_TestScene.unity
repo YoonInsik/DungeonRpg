@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave1_eg.Array.data[0].enemystat
       value: 
-      objectReference: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      objectReference: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave2_eg.Array.data[0].enemystat
       value: 
@@ -839,7 +839,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave1_eg.Array.data[0].enemyscale
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave2_eg.Array.data[1].enemyscale

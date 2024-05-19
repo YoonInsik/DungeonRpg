@@ -10,6 +10,7 @@ namespace SHS
         EnemyStat m_stat;
         Transform player_trns;
         Enemy m_enemy;
+        Animator m_ani;
 
         // Start is called before the first frame update
         void Start()
@@ -17,11 +18,24 @@ namespace SHS
             m_enemy = GetComponent<Enemy>();
             m_stat = GetComponent<Enemy>().Get_MyStat();
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
+            m_ani = GetComponent<Animator>();
         }
 
+        [SerializeField] bool now_active;
         // Update is called once per frame
         void Update()
         {
+            if (m_enemy.now_burrow && now_active)
+            {
+                now_active = false;
+                m_ani.SetTrigger("end");
+            }
+            else if(!m_enemy.now_burrow && !now_active)
+            {
+                now_active = true;
+                m_ani.SetTrigger("goon");
+            }
+
             Move();
         }
 
@@ -33,10 +47,20 @@ namespace SHS
             return dir.normalized;
         }
 
+        [Header("¼Ò¸®")]
+        [SerializeField] AudioSource jump_audio;
+        [SerializeField] AudioSource land_audio;
+
+        void Ani_Jump()
+        {
+            jump_audio.Play();
+        }
+
         [SerializeField] ParticleSystem ptc_dusty;
         void Ani_Dusty()
         {
             ptc_dusty.Play();
+            land_audio.Play();
         }
 
 

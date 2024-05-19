@@ -7,6 +7,9 @@ public class Player_HpManager : MonoBehaviour
 {
     public static Player_HpManager instance;
 
+    [Header("연결")]
+    [SerializeField] Player_SpriteColorControl player_scc;
+
     private void Awake()
     {
         instance = this;
@@ -39,6 +42,7 @@ public class Player_HpManager : MonoBehaviour
 
     [Header("피해")]
     [SerializeField] GameObject damagescale;
+    [SerializeField] AudioSource[] damamged_sound;
 
     //피해
     public void Damaged(int _damage)
@@ -50,6 +54,9 @@ public class Player_HpManager : MonoBehaviour
         ds.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8f + Vector2.right * Random.Range(-5f, 5f), ForceMode2D.Impulse);
         ds.GetComponent<TextMeshPro>().color = Color.red;
         ds.GetComponent<TextMeshPro>().text = _damage.ToString();
+
+        damamged_sound[Random.Range(0, damamged_sound.Length)].Play();
+        player_scc.Damaged_Red();
 
         if (NowHp <= 0)
         {
