@@ -3,28 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pusher : WeaponBase
+public class IceSword : WeaponBase
 {
-    public enum PusherState
+    public enum IceSwordState
     {
         Wait,
         Attack
     }
 
-    public PusherState currentState = PusherState.Wait;
+    public IceSwordState currentState = IceSwordState.Wait;
 
     public Player player; // Player 타입으로 player 변수 선언
-    public Vector3 offset = new Vector3(1, 0.4f, 0); // 플레이어로부터의 상대적 위치
+    public Vector3 offset = new Vector3(0, 2, 0); // 플레이어로부터의 상대적 위치
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
-    float knockbackForce = 5.0f; // 밀어내는 힘
     private Vector3 attackPosition;
     private bool isReturning = false;
 
     private void Awake()
     {
-        baseDamage = 5.0f;
+        baseDamage = 10.0f;
     }
     void Start()
     {
@@ -34,34 +33,30 @@ public class Pusher : WeaponBase
         {
             player = playerObject.GetComponent<Player>();
         }
+
     }
 
     void Update()
     {
-        if (player != null && player.scanner.nearestTarget != null)
+        if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
 
-            if (distanceSqr <= attackDistance * attackDistance)
+            if (distanceSqr <= attackDistance)
             {
-                currentState = PusherState.Attack;
+                currentState = IceSwordState.Attack;
             }
             else
             {
-                currentState = PusherState.Wait;
+                currentState = IceSwordState.Wait;
             }
         }
-        else
-        {
-            currentState = PusherState.Wait;
-        }
-
         switch (currentState)
         {
-            case PusherState.Wait:
+            case IceSwordState.Wait:
                 HandleWaiting();
                 break;
-            case PusherState.Attack:
+            case IceSwordState.Attack:
                 HandleAttack();
                 break;
         }
@@ -109,7 +104,7 @@ public class Pusher : WeaponBase
                 if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
                 {
                     isReturning = false; // 공격 종료
-                    currentState = PusherState.Wait;
+                    currentState = IceSwordState.Wait;
                 }
             }
         }
@@ -119,17 +114,20 @@ public class Pusher : WeaponBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // 적에게 데미지 적용
             float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
 
-            // 적을 밀어내기
-            Rigidbody2D enemyRigidbody = collision.GetComponent<Rigidbody2D>();
-            if (enemyRigidbody != null)
-            {
-                Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                enemyRigidbody.AddForce(knockbackDirection * knockbackForce * 0.1f, ForceMode2D.Impulse);
-            }
+            // 적의 속도 감소
+            StartCoroutine(ReduceEnemySpeed(collision, 0.5f, 2.0f)); // 속도를 50%로 줄이고, 2초 동안 지속
         }
+    }
+
+    private IEnumerator ReduceEnemySpeed(Collider2D enemyCollider, float reductionFactor, float duration)
+    {
+        EnemyStat enemyStat = enemyCollider.GetComponent<Enemy>().Get_MyStat();
+        float originalSpeed = enemyStat.speed;
+        enemyStat.speed *= reductionFactor; // 적의 속도 감소
+        yield return new WaitForSeconds(duration);
+        enemyStat.speed = originalSpeed; // 원래 속도로 복원
     }
 }
