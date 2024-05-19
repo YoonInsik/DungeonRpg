@@ -5089,6 +5089,7 @@ MonoBehaviour:
   burrow_par: {fileID: 0}
   burrow_image: {fileID: 0}
   Model: {fileID: 8567339453928395358}
+  burrow_time: {x: 3, y: 5}
   not_queue: 1
   meat_num: 0
   meatdrop_rate: 33

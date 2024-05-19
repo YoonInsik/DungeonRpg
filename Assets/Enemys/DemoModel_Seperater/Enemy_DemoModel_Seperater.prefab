@@ -4988,7 +4988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4158588162443503171
 Transform:
   m_ObjectHideFlags: 0
@@ -5315,6 +5315,7 @@ MonoBehaviour:
   burrow_par: {fileID: 7233492307901320205}
   burrow_image: {fileID: 3888202460133349335}
   Model: {fileID: 4072400544633643035}
+  burrow_time: {x: 3, y: 5}
   not_queue: 0
   meat_num: 0
   meatdrop_rate: 33
