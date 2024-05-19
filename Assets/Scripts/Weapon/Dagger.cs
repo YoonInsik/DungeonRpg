@@ -87,7 +87,7 @@ public class Dagger : WeaponBase
                 // 공격 위치 계산
                 attackPosition = player.scanner.nearestTarget.position;
                 // 적을 향해 이동
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
 
                 // 적에게 도달했는지 확인
                 if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
@@ -99,7 +99,7 @@ public class Dagger : WeaponBase
             {
                 // 플레이어 기준 원래 위치로 돌아가기
                 Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
 
                 // 원래 위치에 도달했는지 확인
                 if (Vector3.Distance(transform.position, originalPosition) < 0.1f)

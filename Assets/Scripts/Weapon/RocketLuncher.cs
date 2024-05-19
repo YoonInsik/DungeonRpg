@@ -21,7 +21,7 @@ public class RocketLuncher : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > interval)
+        if (elapsedTime > interval * player.ATKCooldownDelicacy())
         {
             elapsedTime = 0.0f;
             Fire();

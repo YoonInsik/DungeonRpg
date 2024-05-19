@@ -63,6 +63,7 @@ public class Furnace : MonoBehaviour
     {
         if(player.pause == false)
         {
+            furnaceUI.SetActive(false);
             Destroy(gameObject);
         }
     }
