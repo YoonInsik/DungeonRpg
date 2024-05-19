@@ -12,10 +12,12 @@ public class DemonBullet : WeaponBase
     private IObjectPool<DemonBullet> managedPool;
     private bool isReleased = false;
 
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
         baseDamage = 3.0f;
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -36,6 +38,7 @@ public class DemonBullet : WeaponBase
     public void Shoot(Vector3 dir)
     {
         direction = dir;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyDemonBullet", 5f);
     }
 

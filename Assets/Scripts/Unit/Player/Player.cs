@@ -160,8 +160,8 @@ public class Player : BaseUnit
     //공격범위
     public float ATKRangeDelicacy()
     {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
-        float ATKRange = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKRangeLevel / 5);
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 12);
+        float ATKRange = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKRangeLevel / 6);
 
         return DelicacyRate * ATKRange;
     }

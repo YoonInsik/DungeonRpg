@@ -6,6 +6,7 @@ public abstract class WeaponBase : MonoBehaviour
 {
     public int weaponLevel = 0;
     public float baseDamage;
+    public Vector2 attackScale;
 
     public float CalculateDamage()
     {

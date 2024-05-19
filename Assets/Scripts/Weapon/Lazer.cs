@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class Lazer : WeaponBase
 {
@@ -16,6 +17,7 @@ public class Lazer : WeaponBase
     {
         player = FindObjectOfType<Player>();
         baseDamage = 6.0f;
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -36,6 +38,7 @@ public class Lazer : WeaponBase
     public void Shoot(Vector3 direction)
     {
         this.direction = direction; // 방향을 저장
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // 스프라이트가 바라볼 각도 조정
         Invoke("DestroyLazer", 2.0f); // 2초 후 로켓 파괴

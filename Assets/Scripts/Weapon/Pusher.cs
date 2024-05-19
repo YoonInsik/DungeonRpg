@@ -25,6 +25,7 @@ public class Pusher : WeaponBase
     private void Awake()
     {
         baseDamage = 5.0f;
+        attackScale = transform.localScale;
     }
     void Start()
     {
@@ -69,6 +70,7 @@ public class Pusher : WeaponBase
 
     void HandleWaiting()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player != null)
         {
             transform.position = player.transform.position + offset;

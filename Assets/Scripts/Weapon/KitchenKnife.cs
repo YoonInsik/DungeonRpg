@@ -24,6 +24,7 @@ public class KitchenKnife : WeaponBase
     private void Awake()
     {
         baseDamage = 5.0f;
+        attackScale = transform.localScale;
     }
     void Start()
     {
@@ -38,6 +39,7 @@ public class KitchenKnife : WeaponBase
 
     void Update()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;

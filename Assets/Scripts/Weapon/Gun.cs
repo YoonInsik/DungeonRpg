@@ -40,6 +40,8 @@ public class Gun : WeaponBase
         //var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
         var bullet = pool.Get();
         bullet.transform.position = transform.position + dir.normalized;
+        bullet.transform.localScale = bullet.transform.localScale * player.ATKRangeDelicacy();
+        Debug.Log(bullet.transform.localScale);
         bullet.Shoot(dir.normalized);
     }
 
