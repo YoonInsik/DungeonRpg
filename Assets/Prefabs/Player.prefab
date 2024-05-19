@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9300ec1d2197684e9adc0f081327650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 230e4cdf7acbd774494667491f2ff85a, type: 2}
   attackScale: {x: 0, y: 0}
 --- !u!1 &1321390562270255215
 GameObject:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e23707affc725540a1c618164813f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 1f3513866ff3f3f499f764ba9ad72846, type: 2}
   attackScale: {x: 0, y: 0}
   lazerPrefab: {fileID: 1636170739950463132, guid: 71b2d8ff8d95611449a1850ede5d6337, type: 3}
 --- !u!1 &2377876634223653547
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8459460b61c88c439b7bf38783e66d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 15e04e8dc6b58b14b938799d585c466e, type: 2}
   attackScale: {x: 0, y: 0}
   bulletPrefab: {fileID: 7568423540850013808, guid: a3ac659cacb558e4282b1e75ba670506, type: 3}
 --- !u!1 &2625320803032681135
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa361461868d6545ba003da82c7afb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 8c50f33d2f4646040ab7a3fbb88555e8, type: 2}
   attackScale: {x: 0, y: 0}
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
 --- !u!1 &2837180890651661470
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56a270c35e8842a4c98ec9286c30854e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 1b8e83117382e1e45a133144cf0b5201, type: 2}
   attackScale: {x: 0, y: 0}
   fireBulletPrefab: {fileID: 3037064483787453600, guid: bee431b0057aabd46b3d085522ee232d, type: 3}
 --- !u!1 &4228791712346815432
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18aa58f9d25850e4082ab3a6bf849f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 25320cd51b1fec64fb3c881b653c5bc2, type: 2}
   attackScale: {x: 0, y: 0}
   rocketPrefab: {fileID: 5449412888901744861, guid: a4720a94573d2e144ade7014081e4667, type: 3}
 --- !u!1 &6429464474548935021
@@ -827,9 +827,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eca71343ecbb414081909c5b0e52fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 9b698a499d931a9418fcb53025c525c3, type: 2}
   attackScale: {x: 0, y: 0}
-  demonBulletPrefab: {fileID: 8568008880193441046, guid: c704db940e7585b4c86807bd53085685, type: 3}
+  demonBulletPrefab: {fileID: 8568008880193441046, guid: eb28c1eebf94e344986459e17cbe5a05, type: 3}
 --- !u!1 &7231631594474721012
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f740f220bb0d7b4c990488a28afebab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: e0abc4217e5d3624cb669dec43a0a0ce, type: 2}
   attackScale: {x: 0, y: 0}
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
 --- !u!1 &7937814287585493957
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef3fddc34657a74ba8cdf63784bfae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: f51c3ed973e4c7441b2ed3523ce0b3a8, type: 2}
   attackScale: {x: 0, y: 0}
   bombPrefab: {fileID: 6384489442529545078, guid: 5e44a50a6f18d674e9e4b98246d71a5c, type: 3}
 --- !u!1 &8270095401963109470
@@ -1097,10 +1097,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd3ad2c40b5da141a7bdd2744757a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: f2aadbc16fcbc9347b3a91dd777329b7, type: 2}
   attackScale: {x: 0, y: 0}
   BoxPrefab: {fileID: 2755591109072037396, guid: 576e02df30bcaf343a6d3e664c8ce72f, type: 3}
-  attackScale: {x: 0, y: 0}
 --- !u!1 &8425863989313729109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09afc5ca4bfd4944fabda61254f9ae3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: 2361eac44eccba845a4ee0d6a236f457, type: 2}
   attackScale: {x: 0, y: 0}
   mirrorMirrorBulletPrefab: {fileID: 2226564827405449263, guid: 582d395bb45240a4ea5248b639b34d83, type: 3}
 --- !u!1 &9104478758168605860

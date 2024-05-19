@@ -14,7 +14,6 @@ public class Rotation : WeaponBase
 
     float rotateSpeed = 180.0f;
     float count = 3;
-    public Vector2 attackScale;
 
     private void Awake()
     {
