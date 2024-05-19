@@ -511,6 +511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2625320803032681135, guid: 166ed6760b2eb384382bef78ec0baa9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6848612850421539637, guid: 166ed6760b2eb384382bef78ec0baa9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -967,6 +971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89816dd3c131cdc46bc37ff6d5b6bda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponLevel: 0
+  baseDamage: 0
   currentState: 0
   player: {fileID: 0}
   offset: {x: 1, y: 0, z: 0}
@@ -1084,6 +1090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66137a24c9461248b9c1482431089c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponLevel: 0
+  baseDamage: 0
   currentState: 0
   player: {fileID: 1597137495}
   offset: {x: 1, y: 0, z: 0}
@@ -1310,6 +1318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31b24e5187028d40830ca41f04329f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponLevel: 0
+  baseDamage: 0
   currentState: 0
   player: {fileID: 0}
   offset: {x: 1, y: 0, z: 0}
@@ -1460,6 +1470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3111da65eb142b4e94ab3522a334e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponLevel: 0
+  baseDamage: 0
   currentState: 0
   player: {fileID: 0}
   offset: {x: -1, y: 0, z: 0}
@@ -1632,6 +1644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2645d0880f5778a499ad63a266903f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponLevel: 0
+  baseDamage: 0
   currentState: 0
   player: {fileID: 0}
   offset: {x: 1, y: 0, z: 0}

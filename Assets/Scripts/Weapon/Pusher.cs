@@ -128,7 +128,7 @@ public class Pusher : WeaponBase
             if (enemyRigidbody != null)
             {
                 Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                enemyRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+                enemyRigidbody.AddForce(knockbackDirection * knockbackForce * 0.1f, ForceMode2D.Impulse);
             }
         }
     }

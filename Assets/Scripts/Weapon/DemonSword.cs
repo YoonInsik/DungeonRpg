@@ -14,7 +14,7 @@ public class DemonSword : WeaponBase
     public DemonSwordState currentState = DemonSwordState.Wait;
 
     public Player player; // Player 타입으로 player 변수 선언
-    public Vector3 offset = new Vector3(1, 0, 0); // 플레이어로부터의 상대적 위치
+    public Vector3 offset = new Vector3(-0.5f, 0.866f, 0); // 플레이어로부터의 상대적 위치
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
