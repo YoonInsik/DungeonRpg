@@ -109,12 +109,13 @@ namespace SHS
         [SerializeField] ParticleSystem burrow_par;
         [SerializeField] GameObject burrow_image;
         [SerializeField] GameObject Model;
+        [SerializeField] Vector2 burrow_time = new Vector2(3f, 5f);
 
         public void Start_Burrowing()
         {
             burrow_par.Play();
 
-            Invoke("Burrow_End", Random.Range(3f, 5f));
+            Invoke("Burrow_End", Random.Range(burrow_time.x, burrow_time.y));
         }
 
         public void Dead_Resetting()
