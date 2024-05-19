@@ -23,7 +23,7 @@ public class ShotGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > interval)
+        if(elapsedTime > interval * player.ATKCooldownDelicacy())
         {
             elapsedTime = 0.0f;
             Fire();

@@ -159,13 +159,13 @@ public abstract class CookingItem : MonoBehaviour
     }
 
     //공격이 발동할때 그 공격이 지속되는 시간 증가
-    protected virtual void IncreaseATKDuration(Player player, bool isPositive = true)
-    {
-        if (player.PlayerStatLevel.ATKdurationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+    //protected virtual void IncreaseATKDuration(Player player, bool isPositive = true)
+    //{
+    //    if (player.PlayerStatLevel.ATKdurationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
 
-        int Level = isPositive ? 1 : -1;
-        player.PlayerStatLevel.ATKdurationLevel += Level;
-    }
+    //    int Level = isPositive ? 1 : -1;
+    //    player.PlayerStatLevel.ATKdurationLevel += Level;
+    //}
 
     //스테이지 클리어 후 얻는 재료양 증가
     protected virtual void IncreaseGreed(Player player , bool isPositive = true)
@@ -214,7 +214,7 @@ public abstract class CookingItem : MonoBehaviour
         IncreaseSpeed(player, isPositive);
         IncreaseATKSpeed(player, isPositive);
         IncreaseATKRange(player, isPositive);
-        IncreaseATKDuration(player, isPositive);
+        //IncreaseATKDuration(player, isPositive);
         IncreaseCooldownReduction(player, isPositive);
         IncreaseGreed(player, isPositive);
         IncreaseDelicacy(player, isPositive);

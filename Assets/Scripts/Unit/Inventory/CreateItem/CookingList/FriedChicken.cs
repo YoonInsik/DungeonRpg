@@ -6,5 +6,6 @@ public class FriedChicken : CookingItem
 {
     protected override void AddEffect(Player player)
     {
+        IncreaseATKSpeed(player);
     }
 }

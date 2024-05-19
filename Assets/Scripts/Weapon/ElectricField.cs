@@ -40,7 +40,7 @@ public class ElectricField : WeaponBase
     {
         elapsedTime += Time.deltaTime;
 
-        if(elapsedTime > interval)
+        if(elapsedTime > interval * UnitManager.Instance.player.ATKCooldownDelicacy())
         {
             if(enemys != null)
             {

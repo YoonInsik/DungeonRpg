@@ -30,13 +30,13 @@ public class Rotation : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > interval)
+        if(elapsedTime > interval * UnitManager.Instance.player.ATKCooldownDelicacy())
         {
             elapsedTime = 0.0f;
             ReAct();
 
         }
-        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime * UnitManager.Instance.player.ATKSpeedDelicacy());
     }
 
     void Activation()
