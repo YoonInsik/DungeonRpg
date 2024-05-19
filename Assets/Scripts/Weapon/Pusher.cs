@@ -14,7 +14,7 @@ public class Pusher : WeaponBase
     public PusherState currentState = PusherState.Wait;
 
     public Player player; // Player 타입으로 player 변수 선언
-    public Vector3 offset = new Vector3(0.5f, 0.866f, 0); // 플레이어로부터의 상대적 위치
+    public Vector3 offset = new Vector3(1, 0.4f, 0); // 플레이어로부터의 상대적 위치
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
@@ -25,6 +25,7 @@ public class Pusher : WeaponBase
     private void Awake()
     {
         baseDamage = 5.0f;
+        attackScale = transform.localScale;
     }
     void Start()
     {
@@ -69,6 +70,7 @@ public class Pusher : WeaponBase
 
     void HandleWaiting()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player != null)
         {
             transform.position = player.transform.position + offset;
@@ -128,7 +130,7 @@ public class Pusher : WeaponBase
             if (enemyRigidbody != null)
             {
                 Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                enemyRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+                enemyRigidbody.AddForce(knockbackDirection * knockbackForce * 0.1f, ForceMode2D.Impulse);
             }
         }
     }

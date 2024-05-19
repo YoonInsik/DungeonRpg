@@ -14,7 +14,7 @@ public class KitchenKnife : WeaponBase
     public KnifeState currentState = KnifeState.Wait;
 
     public Player player; // Player 타입으로 player 변수 선언
-    public Vector3 offset = new Vector3(1, 0, 0); // 플레이어로부터의 상대적 위치
+    public Vector3 offset = new Vector3(0, -1, 0); // 플레이어로부터의 상대적 위치
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
@@ -24,6 +24,7 @@ public class KitchenKnife : WeaponBase
     private void Awake()
     {
         baseDamage = 5.0f;
+        attackScale = transform.localScale;
     }
     void Start()
     {
@@ -38,6 +39,7 @@ public class KitchenKnife : WeaponBase
 
     void Update()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;

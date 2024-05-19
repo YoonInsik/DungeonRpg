@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class Rotation : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class Rotation : MonoBehaviour
     float interval = 5.0f;
     float rotateSpeed = 180.0f;
     float count = 3;
-    
+    public Vector2 attackScale;
 
     private void Awake()
     {
+        attackScale = BoxPrefab.transform.localScale;
         pool = new ObjectPool<Box>(CreateBox, OnGetBox, OnReleaseBox, OnDestroyBox, maxSize:10);
     }
 
@@ -69,6 +71,8 @@ public class Rotation : MonoBehaviour
     private void OnGetBox(Box box)
     {
         box.gameObject.SetActive(true);
+        box.transform.localScale = attackScale * UnitManager.Instance.player.ATKRangeDelicacy();
+
     }
 
     private void OnReleaseBox(Box box)

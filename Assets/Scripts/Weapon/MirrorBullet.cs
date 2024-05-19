@@ -19,6 +19,7 @@ public class MirrorBullet : WeaponBase
         player = FindObjectOfType<Player>();
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 30);
         baseDamage = 1.0f;
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -39,6 +40,7 @@ public class MirrorBullet : WeaponBase
     public void Shoot(Vector3 dir)
     {
         direction = dir;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyMirrorBullet", 5f);
     }
 

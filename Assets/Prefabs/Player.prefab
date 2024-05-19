@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLevel: 1
   baseDamage: 0
+  attackScale: {x: 0, y: 0}
 --- !u!1 &1321390562270255215
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLevel: 1
   baseDamage: 0
+  attackScale: {x: 0, y: 0}
   bulletPrefab: {fileID: 7568423540850013808, guid: a3ac659cacb558e4282b1e75ba670506, type: 3}
   interval: 0.4
   player: {fileID: 0}
@@ -284,6 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLevel: 0
   baseDamage: 0
+  attackScale: {x: 0, y: 0}
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
   interval: 0.2
   player: {fileID: 77546499729760189}
@@ -925,6 +928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLevel: 1
   baseDamage: 0
+  attackScale: {x: 0, y: 0}
   bulletPrefab: {fileID: 5008906955580926200, guid: 0973a5972d1583b4ca9b0ac87106971c, type: 3}
   interval: 0.6
   player: {fileID: 0}
@@ -1102,6 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoxPrefab: {fileID: 2755591109072037396, guid: 576e02df30bcaf343a6d3e664c8ce72f, type: 3}
+  attackScale: {x: 0, y: 0}
 --- !u!1 &8425863989313729109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1243,6 @@ MonoBehaviour:
     ATKSpeedLevel: 0
     ATKRangeLevel: 0
     CooldownReductionLevel: 0
-    ATKdurationLevel: 0
     GreedLevel: 0
     DelicacyLevel: 0
     WisdomLevel: 0
@@ -1447,6 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponLevel: 1
   baseDamage: 0
+  attackScale: {x: 0, y: 0}
   mirrorMirrorBulletPrefab: {fileID: 2226564827405449263, guid: 582d395bb45240a4ea5248b639b34d83, type: 3}
   interval: 0.5
   player: {fileID: 0}

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 0
   HP: 0
-  ATK: 0
+  ATK: 1
   DEF: 0
   Fullness: 0
   Speed: 0

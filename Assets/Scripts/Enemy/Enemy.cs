@@ -174,7 +174,6 @@ namespace SHS
             }
 
             meatdrop_rate = meatdrop_rate * UnitManager.Instance.player.GreedDelicacy();
-            Debug.Log(meatdrop_rate);
             //고기 드랍
             if (Random.Range(0, 100) < meatdrop_rate)
             {

@@ -1,24 +1,20 @@
 using SHS;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using static UnityEngine.GraphicsBuffer;
 
-public class Sword : WeaponBase
+public class IceSword : WeaponBase
 {
-    public enum SwordState
+    public enum IceSwordState
     {
         Wait,
         Attack
     }
 
-    public SwordState currentState = SwordState.Wait;
+    public IceSwordState currentState = IceSwordState.Wait;
 
     public Player player; // Player 타입으로 player 변수 선언
-    public Vector3 offset = new Vector3(1, 0, 0); // 플레이어로부터의 상대적 위치
+    public Vector3 offset = new Vector3(0, 2, 0); // 플레이어로부터의 상대적 위치
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
@@ -27,7 +23,6 @@ public class Sword : WeaponBase
 
     private void Awake()
     {
-        attackScale = transform.localScale;
         baseDamage = 10.0f;
     }
     void Start()
@@ -43,26 +38,25 @@ public class Sword : WeaponBase
 
     void Update()
     {
-        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
-            
-            if(distanceSqr <= attackDistance)
+
+            if (distanceSqr <= attackDistance)
             {
-                currentState = SwordState.Attack;
+                currentState = IceSwordState.Attack;
             }
             else
             {
-                currentState = SwordState.Wait;
+                currentState = IceSwordState.Wait;
             }
         }
         switch (currentState)
         {
-            case SwordState.Wait:
+            case IceSwordState.Wait:
                 HandleWaiting();
                 break;
-            case SwordState.Attack:
+            case IceSwordState.Attack:
                 HandleAttack();
                 break;
         }
@@ -74,7 +68,7 @@ public class Sword : WeaponBase
         {
             transform.position = player.transform.position + offset;
 
-            if(player.scanner.nearestTarget != null)
+            if (player.scanner.nearestTarget != null)
             {
                 Vector3 direction = player.scanner.nearestTarget.position - transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -110,7 +104,7 @@ public class Sword : WeaponBase
                 if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
                 {
                     isReturning = false; // 공격 종료
-                    currentState = SwordState.Wait;
+                    currentState = IceSwordState.Wait;
                 }
             }
         }
@@ -122,6 +116,18 @@ public class Sword : WeaponBase
         {
             float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
+
+            // 적의 속도 감소
+            StartCoroutine(ReduceEnemySpeed(collision, 0.5f, 2.0f)); // 속도를 50%로 줄이고, 2초 동안 지속
         }
+    }
+
+    private IEnumerator ReduceEnemySpeed(Collider2D enemyCollider, float reductionFactor, float duration)
+    {
+        EnemyStat enemyStat = enemyCollider.GetComponent<Enemy>().Get_MyStat();
+        float originalSpeed = enemyStat.speed;
+        enemyStat.speed *= reductionFactor; // 적의 속도 감소
+        yield return new WaitForSeconds(duration);
+        enemyStat.speed = originalSpeed; // 원래 속도로 복원
     }
 }
