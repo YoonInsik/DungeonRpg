@@ -1190,6 +1190,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
+      propertyPath: objectInfos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
+      propertyPath: objectInfos.Array.data[1].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
+      propertyPath: objectInfos.Array.data[1].perfab
+      value: 
+      objectReference: {fileID: 2609902746980998286, guid: 0bc9899dc52e0954891740f554ba08d4, type: 3}
+    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
+      propertyPath: objectInfos.Array.data[1].objectName
+      value: DropItem
+      objectReference: {fileID: 0}
     - target: {fileID: 8860665990349964333, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
       propertyPath: m_Name
       value: ObjectPoolManager

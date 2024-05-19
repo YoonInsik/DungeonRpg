@@ -176,10 +176,13 @@ namespace SHS
             //고기 드랍
             if (Random.Range(0, 100) < meatdrop_rate)
             {
-                GameObject target = Instantiate(MapManager.Instance.CurChunk.data.dropTable[0].item, transform.position, Quaternion.identity);
-                MapManager.Instance.CurChunk.droppedObjList.Add(target);
+                var dropItem = ObjectPoolManager.Instance.GetGo("DropItem");
+                var itemImplement = dropItem.GetComponent<ItemImplement>();
+                itemImplement.item = MapManager.Instance.CurChunk.data.dropTable[0].item;
+                itemImplement.SetImage();
+                MapManager.Instance.CurChunk.droppedObjList.Add(dropItem);
 
-                target.transform.position = transform.position + _dir * -1f;
+                dropItem.transform.position = transform.position + _dir * -1f;
             }
 
 

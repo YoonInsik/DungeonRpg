@@ -4,10 +4,10 @@ using UnityEngine;
 public class DropData
 {
     public string name;
-    public GameObject item;
+    public MeatItem item;
     public float dropRate;
 
-    public DropData(string name, GameObject item, float dropRate)
+    public DropData(string name, MeatItem item, float dropRate)
     {
         this.name = name;
         this.item = item;

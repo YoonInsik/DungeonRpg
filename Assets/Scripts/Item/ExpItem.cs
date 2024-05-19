@@ -11,6 +11,7 @@ public class ExpItem : BaseItem
     {
         //Debug.Log("경험치 습득");
         GameManager.Instance.UpdateEXP(expAmount*UnitManager.Instance.player.WIsdomDelicacy());
+        MapManager.Instance.CurChunk.droppedObjList.Remove(gameObject);
         ReleaseObject();
     }
 }
