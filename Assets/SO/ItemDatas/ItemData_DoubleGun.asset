@@ -16,7 +16,10 @@ MonoBehaviour:
   itemName: DoubleGun
   itemTag: 0
   itemDesc: 
-  baseDamage: 0
-  baseCount: 0
-  levelDamages: []
-  levelCounts: 
+  interval: 1.2
+  speed: 10
+  range: 5
+  levelDamages:
+  - 12
+  - 20
+  - 30

@@ -7,16 +7,13 @@ using UnityEngine.Pool;
 
 public class Bomb : MonoBehaviour
 {
+    float damage;
     float speed = 5.0f;
     Vector3 direction;
     bool isMoving = true;
     bool isReturned = false;
 
     private IObjectPool<Bomb> managedPool;
-
-    private void Start()
-    {
-    }
 
     private void FixedUpdate()
     {
@@ -26,9 +23,11 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    public void Shoot(Vector3 dir)
+    public void Shoot(Vector3 dir, float _damage, float _speed)
     {
         direction = dir;
+        damage = _damage;
+        speed = _speed;
         isMoving = true;
         isReturned = false;
         Invoke("DestroyBomb", 2.0f);
@@ -74,6 +73,7 @@ public class Bomb : MonoBehaviour
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(true);
+            child.GetComponent<Boom>().damage = damage;
         }
     }
 }

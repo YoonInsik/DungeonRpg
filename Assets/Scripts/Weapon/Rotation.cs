@@ -6,16 +6,13 @@ using UnityEngine.Pool;
 using System;
 using UnityEngine.Rendering;
 
-public class Rotation : MonoBehaviour
+public class Rotation : WeaponBase
 {
     public GameObject BoxPrefab;
     private IObjectPool<Box> pool;
 
-    float elapsedTime = 0.0f;
-    float interval = 5.0f;
     float rotateSpeed = 180.0f;
     float count = 3;
-    
 
     private void Awake()
     {
@@ -30,7 +27,7 @@ public class Rotation : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > interval)
+        if(elapsedTime > data.interval)
         {
             elapsedTime = 0.0f;
             ReAct();

@@ -16,10 +16,10 @@ MonoBehaviour:
   itemName: ShotGun
   itemTag: 0
   itemDesc: "\uCD1D\uC54C\uC744 \uC5EC\uB7EC \uBC1C \uC3D8\uB294 \uBB34\uAE30."
-  baseDamage: 0
-  baseCount: 0
+  interval: 1.37
+  speed: 10
+  range: 5
   levelDamages:
-  - 0
-  - 0
-  - 0
-  levelCounts: 
+  - 4
+  - 8
+  - 12

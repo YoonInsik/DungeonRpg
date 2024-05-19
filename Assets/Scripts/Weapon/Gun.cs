@@ -8,9 +8,6 @@ using UnityEngine.UIElements;
 public class Gun : WeaponBase
 {
     public GameObject bulletPrefab;
-    public float interval = 0.2f;
-    float elapsedTime = 0.0f;
-    public Player player;
 
     private IObjectPool<Bullet> pool;
 
@@ -23,9 +20,8 @@ public class Gun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > interval)
+        if(elapsedTime > data.interval)
         {
-            elapsedTime = 0.0f;
             Fire();
         }
     }
@@ -37,10 +33,16 @@ public class Gun : WeaponBase
 
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
+
+        if (dir.magnitude > data.range)
+            return;
+
         //var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
         var bullet = pool.Get();
-        bullet.transform.position = transform.position + dir.normalized;
-        bullet.Shoot(dir.normalized);
+        bullet.transform.position = transform.position;
+        bullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
+
+        elapsedTime = 0.0f;
     }
 
     private Bullet CreateBullet()

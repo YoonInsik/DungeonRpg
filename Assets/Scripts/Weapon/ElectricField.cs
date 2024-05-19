@@ -5,15 +5,8 @@ using UnityEngine;
 
 public class ElectricField : WeaponBase
 {
-    float interval = 0.5f;
-    float elapsedTime = 0.0f;
-
     private List<Collider2D> enemys = new List<Collider2D>();
 
-    private void Awake()
-    {
-        baseDamage = 1.0f;
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -40,7 +33,7 @@ public class ElectricField : WeaponBase
     {
         elapsedTime += Time.deltaTime;
 
-        if(elapsedTime > interval)
+        if(elapsedTime > data.interval)
         {
             if(enemys != null)
             {

@@ -4,13 +4,10 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
-public class SixBomb : MonoBehaviour
+public class SixBomb : WeaponBase
 {
     public GameObject bombPrefab;
-    float interval = 2.0f;
-    float elapsedTime = 0.0f;
     int count = 6;
-    Player player;
 
     private IObjectPool<Bomb> pool;
 
@@ -23,15 +20,23 @@ public class SixBomb : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > interval)
+        if (elapsedTime > data.interval)
         {
-            elapsedTime = 0.0f;
             Fire();
         }
     }
 
     void Fire()
     {
+        if (!player.scanner.nearestTarget)
+            return;
+
+        Vector3 targetPos = player.scanner.nearestTarget.position;
+        Vector3 range = targetPos - transform.position;
+
+        if (range.magnitude > data.range)
+            return;
+
         for (int i = 0; i < count; i++)
         {
             var bomb = pool.Get();
@@ -42,8 +47,10 @@ public class SixBomb : MonoBehaviour
             bomb.transform.rotation = Quaternion.Euler(0, 0, angle);
 
             Vector3 dir = bomb.transform.up;
-            bomb.Shoot(dir);
+            bomb.Shoot(dir, CalculateDamage(), data.speed);
         }
+            
+        elapsedTime = 0.0f;
     }
 
     private Bomb CreateBomb()

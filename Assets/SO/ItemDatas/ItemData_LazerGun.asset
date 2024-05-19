@@ -16,7 +16,10 @@ MonoBehaviour:
   itemName: LazerGun
   itemTag: 0
   itemDesc: "\uC9C1\uC120\uD615 \uB808\uC774\uC800 \uBB34\uAE30."
-  baseDamage: 0
-  baseCount: 0
-  levelDamages: []
-  levelCounts: 
+  interval: 0.5
+  speed: 10
+  range: 10
+  levelDamages:
+  - 10
+  - 20
+  - 30

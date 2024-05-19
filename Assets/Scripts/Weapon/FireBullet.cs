@@ -5,18 +5,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Pool;
 
-public class FireBullet : WeaponBase
+public class FireBullet : MonoBehaviour
 {
     Player player;
-    public Vector3 direction;
+    Vector3 direction;
+    float damage = 0;
     float speed = 5.0f;
+
     private IObjectPool<FireBullet> managedPool;
     private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
-        baseDamage = 1.0f;
     }
 
     private void OnEnable()
@@ -34,10 +35,12 @@ public class FireBullet : WeaponBase
         managedPool = pool;
     }
 
-    public void Shoot(Vector3 dir)
+    public void Shoot(Vector3 dir, float _damage, float _speed)
     {
         direction = dir;
-        Invoke("DestroyFireBullet", 1.5f);
+        damage = _damage;
+        speed = _speed;
+        Invoke("DestroyBullet", 5f);
     }
 
     public void DestroyFireBullet()
@@ -53,7 +56,6 @@ public class FireBullet : WeaponBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

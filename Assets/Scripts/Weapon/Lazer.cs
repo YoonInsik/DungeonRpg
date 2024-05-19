@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Lazer : WeaponBase
+public class Lazer : MonoBehaviour
 {
     Player player;
-    public Vector3 direction;
+    Vector3 direction;
+    float damage = 0;
     float speed = 10.0f;
+
     private IObjectPool<Lazer> managedPool;
     private bool isReleased = false;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
-        baseDamage = 6.0f;
     }
 
     private void OnEnable()
@@ -33,9 +34,11 @@ public class Lazer : WeaponBase
         managedPool = pool;
     }
 
-    public void Shoot(Vector3 direction)
+    public void Shoot(Vector3 dir, float _damage, float _speed)
     {
-        this.direction = direction; // 방향을 저장
+        damage = _damage;
+        speed = _speed;
+        direction = dir; // 방향을 저장
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // 스프라이트가 바라볼 각도 조정
         Invoke("DestroyLazer", 2.0f); // 2초 후 로켓 파괴
@@ -54,7 +57,6 @@ public class Lazer : WeaponBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }

@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class DemonGun : MonoBehaviour
+public class DemonGun : WeaponBase
 {
     public GameObject demonBulletPrefab;
-    public float interval = 0.2f;
-    float elapsedTime = 0.0f;
-    public Player player;
 
     private IObjectPool<DemonBullet> pool;
 
@@ -21,9 +18,8 @@ public class DemonGun : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > interval)
+        if (elapsedTime > data.interval)
         {
-            elapsedTime = 0.0f;
             Fire();
         }
     }
@@ -38,7 +34,9 @@ public class DemonGun : MonoBehaviour
         //var demonBullet = Instantiate(demonBulletPrefab, transform.position, Quaternion.identity).GetComponent<DemonBullet>();
         var demonBullet = pool.Get();
         demonBullet.transform.position = transform.position + dir.normalized;
-        demonBullet.Shoot(dir.normalized);
+        demonBullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
+            
+        elapsedTime = 0.0f;
     }
 
     private DemonBullet CreateDemonBullet()

@@ -193,6 +193,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
+      propertyPath: startWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f3513866ff3f3f499f764ba9ad72846, type: 2}
+    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
       propertyPath: levelUpPanel
       value: 
       objectReference: {fileID: 2088550850}

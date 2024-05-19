@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class DemonBullet : WeaponBase
+public class DemonBullet : MonoBehaviour
 {
     Player player;
-    public Vector3 direction;
+    Vector3 direction;
+    float damage;
     float speed = 10.0f;
     private IObjectPool<DemonBullet> managedPool;
     private bool isReleased = false;
@@ -15,7 +16,6 @@ public class DemonBullet : WeaponBase
     private void Awake()
     {
         player = FindObjectOfType<Player>();
-        baseDamage = 3.0f;
     }
 
     private void OnEnable()
@@ -33,9 +33,11 @@ public class DemonBullet : WeaponBase
         managedPool = pool;
     }
 
-    public void Shoot(Vector3 dir)
+    public void Shoot(Vector3 dir, float _damage, float _speed)
     {
         direction = dir;
+        damage = _damage;
+        speed = _speed;
         Invoke("DestroyDemonBullet", 5f);
     }
 
@@ -53,7 +55,6 @@ public class DemonBullet : WeaponBase
         if (collision.gameObject.CompareTag("Enemy"))
         {
             DestroyDemonBullet();
-            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
             player.HP += Mathf.RoundToInt(damage * 0.1f);
         }

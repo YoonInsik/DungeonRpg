@@ -8,9 +8,6 @@ using UnityEngine.UIElements;
 public class MirrorGun : WeaponBase
 {
     public GameObject mirrorMirrorBulletPrefab;
-    public float interval = 0.2f;
-    float elapsedTime = 0.0f;
-    public Player player;
 
     private IObjectPool<MirrorBullet> pool;
 
@@ -23,9 +20,8 @@ public class MirrorGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > interval)
+        if(elapsedTime > data.interval)
         {
-            elapsedTime = 0.0f;
             Fire();
         }
     }
@@ -37,10 +33,16 @@ public class MirrorGun : WeaponBase
 
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
+
+        if (dir.magnitude > data.range)
+            return;
+
         //var mirrorMirrorBullet = Instantiate(mirrorMirrorBulletPrefab, transform.position, Quaternion.identity).GetComponent<MirrorBullet>();
         var mirrorMirrorBullet = pool.Get();
         mirrorMirrorBullet.transform.position = transform.position + dir.normalized;
-        mirrorMirrorBullet.Shoot(dir.normalized);
+        mirrorMirrorBullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
+
+        elapsedTime = 0.0f;
     }
 
     private MirrorBullet CreateMirrorBullet()

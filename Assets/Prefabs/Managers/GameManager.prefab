@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2aadbc16fcbc9347b3a91dd777329b7, type: 2}
   - {fileID: 11400000, guid: e0abc4217e5d3624cb669dec43a0a0ce, type: 2}
   - {fileID: 11400000, guid: f51c3ed973e4c7441b2ed3523ce0b3a8, type: 2}
+  - {fileID: 11400000, guid: 9b698a499d931a9418fcb53025c525c3, type: 2}
   levelUpPanel: {fileID: 0}
   levelUpAmount: 0
 --- !u!114 &7102423766714240894

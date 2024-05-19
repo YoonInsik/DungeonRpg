@@ -16,7 +16,10 @@ MonoBehaviour:
   itemName: FireGun
   itemTag: 0
   itemDesc: "\uBD88\uC744 \uBFDC\uB294 \uBB34\uAE30"
-  baseDamage: 0
-  baseCount: 0
-  levelDamages: []
-  levelCounts: 
+  interval: 1
+  speed: 5
+  range: 5
+  levelDamages:
+  - 10
+  - 20
+  - 30

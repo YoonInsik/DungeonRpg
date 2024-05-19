@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class RocketLuncher : MonoBehaviour
+public class RocketLuncher : WeaponBase
 {
     public GameObject rocketPrefab;
-    public float interval = 1.0f;
-    float elapsedTime = 0.0f;
-    public Player player;
 
     private IObjectPool<Rocket> pool;
 
@@ -21,9 +18,8 @@ public class RocketLuncher : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > interval)
+        if (elapsedTime > data.interval)
         {
-            elapsedTime = 0.0f;
             Fire();
         }
     }
@@ -37,7 +33,9 @@ public class RocketLuncher : MonoBehaviour
         Vector3 dir = (targetPos - transform.position).normalized; // 목표 방향 정규화
         var rocket = pool.Get();
         rocket.transform.position = transform.position; // 로켓 위치 설정
-        rocket.Shoot(dir); // 로켓에 방향 전달
+        rocket.Shoot(dir, CalculateDamage(), data.speed);
+
+        elapsedTime = 0.0f;
     }
 
     private Rocket CreateRocket()

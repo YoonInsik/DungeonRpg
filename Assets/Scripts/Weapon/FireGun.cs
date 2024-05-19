@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class FireGun : MonoBehaviour
+public class FireGun : WeaponBase
 {
     public GameObject fireBulletPrefab;
-    public float interval = 1.0f;
-    float elapsedTime = 0.0f;
-    public Player player;
 
     private IObjectPool<FireBullet> pool;
 
@@ -21,9 +18,8 @@ public class FireGun : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > interval)
+        if (elapsedTime > data.interval)
         {
-            elapsedTime = 0.0f;
             Fire();
         }
     }
@@ -35,10 +31,16 @@ public class FireGun : MonoBehaviour
 
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
+
+        if (dir.magnitude > data.range)
+            return;
+
         //var fireBullet = Instantiate(fireBulletPrefab, transform.position, Quaternion.identity).GetComponent<FireBullet>();
         var fireBullet = pool.Get();
         fireBullet.transform.position = transform.position + dir.normalized;
-        fireBullet.Shoot(dir.normalized);
+        fireBullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
+
+        elapsedTime = 0.0f;
     }
 
     private FireBullet CreateFireBullet()

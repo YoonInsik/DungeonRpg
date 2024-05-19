@@ -17,7 +17,10 @@ MonoBehaviour:
   itemTag: 0
   itemDesc: "\uBC1C\uC0AC \uC18D\uB3C4\uB294 \uB290\uB9AC\uC9C0\uB9CC \uD53C\uACA9
     \uBC94\uC704\uAC00 \uB113\uC740 \uB85C\uCF13 \uB7F0\uCCD0."
-  baseDamage: 0
-  baseCount: 0
-  levelDamages: []
-  levelCounts: 
+  interval: 1
+  speed: 5
+  range: 5
+  levelDamages:
+  - 15
+  - 20
+  - 25

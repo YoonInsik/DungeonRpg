@@ -11,10 +11,11 @@ public class ItemData : ScriptableObject
     [TextArea]
     public string itemDesc;
 
-    public float baseDamage;
-    public int baseCount;
+    public float interval;
+    public float speed;
+    public float range;
+
     public float[] levelDamages;
-    public int[] levelCounts;
 }
 
 [System.Flags]

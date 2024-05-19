@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class MirrorBullet : WeaponBase
+public class MirrorBullet : MonoBehaviour
 {
     Player player;
-    public Vector3 direction;
+    Vector3 direction;
+    float damage = 0;
     float speed = 10.0f;
+
     private IObjectPool<MirrorBullet> managedPool;
     private IObjectPool<Bullet> bulletPool;
     private bool isReleased = false;
@@ -18,7 +20,6 @@ public class MirrorBullet : WeaponBase
     {
         player = FindObjectOfType<Player>();
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 30);
-        baseDamage = 1.0f;
     }
 
     private void OnEnable()
@@ -36,9 +37,11 @@ public class MirrorBullet : WeaponBase
         managedPool = Pool;
     }
 
-    public void Shoot(Vector3 dir)
+    public void Shoot(Vector3 dir, float _damage, float _speed)
     {
         direction = dir;
+        damage = _damage;
+        speed = _speed;
         Invoke("DestroyMirrorBullet", 5f);
     }
 
@@ -57,7 +60,6 @@ public class MirrorBullet : WeaponBase
         {
             DestroyMirrorBullet(); // ÃÑ¾Ë ¹ÝÈ¯
             SpawnNormalBullets(); // ÀÏ¹Ý ÃÑ¾Ë »ý¼º
-            float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }
@@ -81,7 +83,7 @@ public class MirrorBullet : WeaponBase
         //Bullet bulletComponent = bulletObject.GetComponent<Bullet>();
         var bullet = bulletPool.Get();
         bullet.transform.position = transform.position + direction.normalized;
-        bullet.Shoot(direction.normalized);
+        bullet.Shoot(direction.normalized, damage, speed);
     }
 
     private void OnDisable()

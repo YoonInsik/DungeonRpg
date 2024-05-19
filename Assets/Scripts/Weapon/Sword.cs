@@ -25,10 +25,6 @@ public class Sword : WeaponBase
     private Vector3 attackPosition;
     private bool isReturning = false;
 
-    private void Awake()
-    {
-        baseDamage = 10.0f;
-    }
     void Start()
     {
         // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.

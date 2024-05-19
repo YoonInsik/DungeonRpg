@@ -4,22 +4,15 @@ using UnityEngine;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    public int weaponLevel = 0;
-    public float baseDamage;
+    public ItemData data;
+
+    protected Player player;
+    protected int weaponLevel = 0;
+    protected float elapsedTime = 0.0f;
 
     public float CalculateDamage()
     {
-        switch (weaponLevel)
-        {
-            case 1:
-                return baseDamage;
-            case 2:
-                return baseDamage * 1.5f;
-            case 3:
-                return baseDamage * 2.0f;
-            default:
-                return baseDamage;
-        }
+        return data.levelDamages[weaponLevel - 1];
     }
 
     public void LevelUp()
