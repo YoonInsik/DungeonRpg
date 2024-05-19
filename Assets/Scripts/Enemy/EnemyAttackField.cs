@@ -9,25 +9,12 @@ namespace SHS
     {
         //인스턴스
         Player_HpManager pd;
-        Enemy m_enemy;
+        [SerializeField] Enemy m_enemy;
+
 
         private void Start()
         {
             pd = Player_HpManager.instance;
-
-            if (transform.parent.GetComponent<Enemy>() != null)
-            {
-                m_enemy = transform.parent.GetComponent<Enemy>();
-            }
-            else if (transform.parent.parent.GetComponent<Enemy>() != null)
-            {
-                m_enemy = transform.parent.parent.GetComponent<Enemy>();
-            }
-            else
-            {
-                m_enemy = new Enemy();
-                m_enemy.now_burrow = false;
-            }
         }
 
         [Header("공격 세팅")]
@@ -49,7 +36,7 @@ namespace SHS
 
             if (can_attack && !m_enemy.now_burrow)
             {
-                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), 1f, player_layer))
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y), attack_radius, player_layer))
                 {
                     attack_cooltime = attack_cooltime_set;
                     pd.Damaged(m_enemy.m_stat.damage + m_enemy.m_stat.damage_scaling * (EnemySpawner_v3.Instance.Get_WaveLevel() - 1));

@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060b1fb210fe1e2499bc1a9f176939a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemy: {fileID: 3012537867053781655}
   can_attack: 1
   player_layer:
     serializedVersion: 2
@@ -372,6 +373,7 @@ MonoBehaviour:
   burrow_par: {fileID: 8278640438249516507}
   burrow_image: {fileID: 464953203832741208}
   Model: {fileID: 8699135335027346946}
+  burrow_time: {x: 3, y: 5}
   not_queue: 0
   meat_num: 0
   meatdrop_rate: 33

@@ -5021,6 +5021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060b1fb210fe1e2499bc1a9f176939a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemy: {fileID: 7223417367860355827}
   can_attack: 0
   player_layer:
     serializedVersion: 2
