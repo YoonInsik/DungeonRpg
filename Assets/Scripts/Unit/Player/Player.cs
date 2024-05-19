@@ -49,11 +49,6 @@ public class Player : BaseUnit
     }
     private void Update()
     {
-        if(HP<= 0)
-        {
-            return;
-        }
-
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
 
@@ -82,6 +77,12 @@ public class Player : BaseUnit
     }
     void FixedUpdate()
     {
+        if (HP <= 0)
+        {
+            rigid.MovePosition(rigid.position);
+            return;
+        }
+
         rigid.MovePosition((newPos.normalized * speed * Time.fixedDeltaTime) + rigid.position);
     }
 

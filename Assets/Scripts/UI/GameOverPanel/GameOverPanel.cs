@@ -18,12 +18,13 @@ public class GameOverPanel : MonoBehaviour
 
     public void Object_On(bool clear)
     {
-        if(clear)
+        go_Panel.SetActive(true);
+
+        if (clear)
             panel_ani.SetTrigger("clear");
         else
             panel_ani.SetTrigger("gameover");
 
-        go_Panel.SetActive(true);
     }
 
     public void Btn_Retry()
