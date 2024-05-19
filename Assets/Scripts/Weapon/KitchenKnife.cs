@@ -23,7 +23,6 @@ public class KitchenKnife : WeaponBase
 
     private void Awake()
     {
-        baseDamage = 5.0f;
         attackScale = transform.localScale;
     }
     void Start()

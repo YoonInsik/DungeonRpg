@@ -11,6 +11,7 @@ public class FireBullet : MonoBehaviour
     Vector3 direction;
     float damage = 0;
     float speed = 5.0f;
+    Vector3 attackScale;
 
     private IObjectPool<FireBullet> managedPool;
     private bool isReleased = false;

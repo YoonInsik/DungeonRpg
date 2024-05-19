@@ -12,6 +12,7 @@ public class DemonBullet : MonoBehaviour
     float speed = 10.0f;
     private IObjectPool<DemonBullet> managedPool;
     private bool isReleased = false;
+    Vector3 attackScale;
 
 
     private void Awake()

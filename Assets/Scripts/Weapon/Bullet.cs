@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     Vector3 direction;
     float damage = 0;
     float speed = 10.0f;
+    Vector3 attackScale;
     
     private IObjectPool<Bullet> managedPool;
     private bool isReleased = false;

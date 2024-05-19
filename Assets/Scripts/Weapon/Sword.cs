@@ -28,7 +28,6 @@ public class Sword : WeaponBase
     private void Awake()
     {
         attackScale = transform.localScale;
-        baseDamage = 10.0f;
     }
     void Start()
     {

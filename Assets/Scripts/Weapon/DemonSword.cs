@@ -23,7 +23,6 @@ public class DemonSword : WeaponBase
 
     private void Awake()
     {
-        baseDamage = 7.0f;
         attackScale = transform.localScale;
     }
     void Start()

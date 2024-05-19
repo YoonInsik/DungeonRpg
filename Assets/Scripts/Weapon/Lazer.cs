@@ -11,6 +11,7 @@ public class Lazer : MonoBehaviour
     Vector3 direction;
     float damage = 0;
     float speed = 10.0f;
+    Vector3 attackScale;
 
     private IObjectPool<Lazer> managedPool;
     private bool isReleased = false;
