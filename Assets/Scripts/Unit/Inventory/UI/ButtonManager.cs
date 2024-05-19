@@ -53,6 +53,9 @@ public class ButtonManager : MonoBehaviour
         }
 
         button.GetComponent<Button>().onClick.AddListener(() => ButtonClick(item));
+
+        //SHS Á¤º¸
+        button.GetComponent<CookingButton_Info>().Set_Text(item.info_txt);
     }
 
     public void ButtonClick(CookingItem item)
