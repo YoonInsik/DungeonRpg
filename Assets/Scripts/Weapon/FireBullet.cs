@@ -17,6 +17,7 @@ public class FireBullet : WeaponBase
     {
         player = FindObjectOfType<Player>();
         baseDamage = 1.0f;
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -37,6 +38,7 @@ public class FireBullet : WeaponBase
     public void Shoot(Vector3 dir)
     {
         direction = dir;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyFireBullet", 1.5f);
     }
 

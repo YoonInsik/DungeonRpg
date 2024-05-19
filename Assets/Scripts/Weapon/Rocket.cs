@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
     Vector3 direction;
     bool isMoving = true;
     bool isReturned = false;
-
+    private Vector2 attackScale;
     private IObjectPool<Rocket> managedPool;
 
     private void Start()
@@ -21,6 +21,7 @@ public class Rocket : MonoBehaviour
         {
             player = playerObject.GetComponent<Player>();
         }
+        attackScale = transform.localScale;
     }
 
     private void FixedUpdate()
@@ -35,6 +36,7 @@ public class Rocket : MonoBehaviour
     public void Shoot(Vector3 direction)
     {
         this.direction = direction; // 방향을 저장
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // 스프라이트가 바라볼 각도 조정
         isMoving = true;

@@ -13,6 +13,7 @@ public class ElectricField : WeaponBase
     private void Awake()
     {
         baseDamage = 1.0f;
+        attackScale = gameObject.transform.localScale;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,8 +40,9 @@ public class ElectricField : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
+        transform.localScale = attackScale * UnitManager.Instance.player.ATKRangeDelicacy();
 
-        if(elapsedTime > interval * UnitManager.Instance.player.ATKCooldownDelicacy())
+        if (elapsedTime > interval * UnitManager.Instance.player.ATKCooldownDelicacy())
         {
             if(enemys != null)
             {

@@ -18,6 +18,7 @@ public class Bullet : WeaponBase
     {
         player = FindObjectOfType<Player>();
         baseDamage = 5.0f;
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -38,6 +39,7 @@ public class Bullet : WeaponBase
     public void Shoot(Vector3 dir)
     {
         direction = dir;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyBullet", 5f);
     }
 

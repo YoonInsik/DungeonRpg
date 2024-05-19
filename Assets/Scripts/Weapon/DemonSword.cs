@@ -24,6 +24,7 @@ public class DemonSword : WeaponBase
     private void Awake()
     {
         baseDamage = 7.0f;
+        attackScale = transform.localScale;
     }
     void Start()
     {
@@ -38,6 +39,7 @@ public class DemonSword : WeaponBase
 
     void Update()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;

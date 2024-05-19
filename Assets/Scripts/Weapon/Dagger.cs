@@ -24,6 +24,7 @@ public class Dagger : WeaponBase
     private void Awake()
     {
         baseDamage = 3.0f;
+        attackScale = transform.localScale;
     }
 
     void Start()
@@ -39,6 +40,7 @@ public class Dagger : WeaponBase
 
     void Update()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
@@ -68,7 +70,6 @@ public class Dagger : WeaponBase
         if (player != null)
         {
             transform.position = player.transform.position + offset;
-
             if (player.scanner.nearestTarget != null)
             {
                 Vector3 direction = player.scanner.nearestTarget.position - transform.position;

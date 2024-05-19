@@ -27,6 +27,7 @@ public class Sword : WeaponBase
 
     private void Awake()
     {
+        attackScale = transform.localScale;
         baseDamage = 10.0f;
     }
     void Start()
@@ -42,7 +43,8 @@ public class Sword : WeaponBase
 
     void Update()
     {
-        if(player.scanner.nearestTarget != null)
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
+        if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
             
