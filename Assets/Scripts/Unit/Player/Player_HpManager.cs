@@ -52,6 +52,11 @@ public class Player_HpManager : MonoBehaviour
     //피해
     public void Damaged(int _damage)
     {
+        if (m_player.HP <= 0)
+        {
+            return;
+        }
+
         m_player.HP -= _damage;
 
         GameObject ds = Instantiate(damagescale);
@@ -75,7 +80,7 @@ public class Player_HpManager : MonoBehaviour
     //죽음처리
     void Dead()
     {
-
+        GameOverPanel.instance.Object_On(false);
     }
 
 }

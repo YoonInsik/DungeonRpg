@@ -49,6 +49,11 @@ public class Player : BaseUnit
     }
     private void Update()
     {
+        if(HP<= 0)
+        {
+            return;
+        }
+
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
 
