@@ -41,7 +41,7 @@ public class Chunk : MonoBehaviour
                 chunkEvent = StartChunkEvent;
                 break;
             case ChunkType.Boss:
-                chunkEvent = NormalChunkEvent;
+                chunkEvent = BossChunkEvent;
                 break;
             case ChunkType.Normal:
                 chunkEvent = NormalChunkEvent;
@@ -82,10 +82,62 @@ public class Chunk : MonoBehaviour
         EnemySpawner_v3.Instance.MakeWave();
 
         yield return StartCoroutine(GameManager.Instance.StartTimer(30));
+        if (UnitManager.Instance.player.HP <= 0)
+            yield break;
 
         // �ð� ����
         StopCoroutine(decreaseFullnessCo);
         
+
+        // 요리 버프 지속 일시 정지
+        UnitManager.Instance.player.pause = true;
+        //StopCoroutine(enemySpawnCo);
+        //  ----> ���̺갡 ������� �� ���̺� ũ��(�ð��� �ֱ⿡ ���� ����) ������ �־� ���� ������ ��� ��. ���� ���Ͱ� ���� �ÿ��� ���� ������ ��������.
+
+        EnemyQueueManager.instance.ClearMonster();
+        UnitManager.Instance.enemies.Clear();
+
+        foreach (var obj in droppedObjList)
+        {
+            obj.GetComponent<Poolable>().ReleaseObject();
+        }
+
+        // �� Ŭ���� ����
+        GameManager.Instance.levelUpPanel.PopUpLevelUpPanel();
+        yield return new WaitUntil(() => GameManager.Instance.levelUpAmount <= 0);
+
+        // 요리를 할 화로 생성 및 UI 활성화
+        UnitManager.Instance.player.InstantiateFurnace();
+
+        // �� ����
+        MapManager.Instance.CurChunk.SetActiveDoorTilemap(false);
+        MapManager.Instance.SetActiveNextChunkUI(true);
+    }
+
+    public IEnumerator BossChunkEvent()
+    {
+        // �� �ݱ�
+        droppedObjList = new List<GameObject>();
+        MapManager.Instance.CurChunk.SetActiveDoorTilemap(true);
+        MapManager.Instance.SetActiveNextChunkUI(false);
+
+        // �����
+        var decreaseFullnessCo = StartCoroutine(UnitManager.Instance.player.DecreaseFullness());
+
+        // 요리 버프 지속시간 시작
+        UnitManager.Instance.player.pause = false;
+        // ���� �ݺ� ��ȯ
+        //var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
+        //  ----> EnemySpawner_v3�� ���̺� ����� ���� �Է�
+        EnemySpawner_v3.Instance.MakeWave();
+
+        yield return StartCoroutine(GameManager.Instance.StartTimer(30));
+        if (UnitManager.Instance.player.HP <= 0)
+            yield break;
+
+        // �ð� ����
+        StopCoroutine(decreaseFullnessCo);
+
 
         // 요리 버프 지속 일시 정지
         UnitManager.Instance.player.pause = true;
