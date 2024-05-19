@@ -165,6 +165,8 @@ public class Player : BaseUnit
 
         return DelicacyRate * ATKRange;
     }
+    
+    
 
     //지속시간
     //public float ATKDurationDelicacy()

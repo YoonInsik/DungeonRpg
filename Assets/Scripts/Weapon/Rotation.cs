@@ -50,7 +50,6 @@ public class Rotation : MonoBehaviour
             Vector3 angle = Vector3.forward * 360 * i / count;
             box.transform.Rotate(angle);
             box.transform.Translate(box.transform.up * 1.5f);
-          
         }
     }
 
