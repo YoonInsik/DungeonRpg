@@ -30,9 +30,6 @@ public class GameManager : Singleton<GameManager>
 
         UnitManager.Instance.SpawnPlayer(Vector2Int.zero);
         MapManager.Instance.InitMap();
-
-        GameObject foundObject = GameObject.Find("kitchenknife");
-        kitchenKnife = foundObject.GetComponent<KitchenKnife>();
     }
 
     private void Init() {
@@ -64,6 +61,7 @@ public class GameManager : Singleton<GameManager>
         {
             amount = amount * 1.2f;
         }
+        //Debug.Log("Gain EXP: " + amount);
         Exp += amount;
 
         if (Exp >= MaxExp) {
