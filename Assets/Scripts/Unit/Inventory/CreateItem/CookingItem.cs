@@ -24,6 +24,10 @@ public abstract class CookingItem : MonoBehaviour
     public int Temptation;
     public float buffDuration;
 
+    //SHS 정보
+    [Multiline(4)]
+    public string info_txt;
+
     //요리 레시피
     [Serializable]
     public struct Ingredient
