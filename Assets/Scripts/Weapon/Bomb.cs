@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.Translate(direction * speed * Time.fixedDeltaTime);
+            transform.Translate(direction * speed * Time.fixedDeltaTime * UnitManager.Instance.player.ATKSpeedDelicacy());
         }
     }
 

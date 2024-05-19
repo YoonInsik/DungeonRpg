@@ -26,7 +26,7 @@ public class FireBullet : WeaponBase
 
     private void FixedUpdate()
     {
-        transform.Translate(direction * Time.fixedDeltaTime * speed);
+        transform.Translate(direction * Time.fixedDeltaTime * speed * player.ATKSpeedDelicacy());
     }
 
     public void SetManagedPool(IObjectPool<FireBullet> pool)

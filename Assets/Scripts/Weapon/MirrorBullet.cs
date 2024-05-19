@@ -28,7 +28,7 @@ public class MirrorBullet : WeaponBase
 
     private void FixedUpdate()
     {
-        transform.Translate(direction * Time.fixedDeltaTime * speed);
+        transform.Translate(direction * Time.fixedDeltaTime * speed * player.ATKSpeedDelicacy());
     }
 
     public void SetManagedPool(IObjectPool<MirrorBullet> Pool)

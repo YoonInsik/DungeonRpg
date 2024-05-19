@@ -85,6 +85,7 @@ public class Chunk : MonoBehaviour
 
         // �ð� ����
         StopCoroutine(decreaseFullnessCo);
+        
 
         // 요리 버프 지속 일시 정지
         UnitManager.Instance.player.pause = true;
