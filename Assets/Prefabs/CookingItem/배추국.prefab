@@ -105,7 +105,7 @@ MonoBehaviour:
   Speed: 2
   ATKSpeed: 0
   ATKRange: 0
-  CooldownReduction: 0
+  CooldownReduction: 1
   ATKduration: 0
   Greed: 0
   Delicacy: 0

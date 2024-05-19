@@ -14,12 +14,13 @@ public class MirrorBullet : MonoBehaviour
     private IObjectPool<MirrorBullet> managedPool;
     private IObjectPool<Bullet> bulletPool;
     private bool isReleased = false;
-    public GameObject normalBulletPrefab; // ÀÏ¹Ý ÃÑ¾ËÀÇ ÇÁ¸®ÆÕÀ» ÂüÁ¶
+    public GameObject normalBulletPrefab; // ï¿½Ï¹ï¿½ ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet, maxSize: 30);
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -42,6 +43,7 @@ public class MirrorBullet : MonoBehaviour
         direction = dir;
         damage = _damage;
         speed = _speed;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyMirrorBullet", 5f);
     }
 
@@ -49,8 +51,8 @@ public class MirrorBullet : MonoBehaviour
     {
         if (!isReleased)
         {
-            managedPool.Release(this); // ÃÑ¾ËÀ» Ç®·Î ¹ÝÈ¯
-            isReleased = true; // ÀÌ¹Ì ¹ÝÈ¯µÈ »óÅÂ·Î Ç¥½Ã
+            managedPool.Release(this); // ï¿½Ñ¾ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½È¯
+            isReleased = true; // ï¿½Ì¹ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ Ç¥ï¿½ï¿½
         }
     }
 
@@ -58,19 +60,19 @@ public class MirrorBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            DestroyMirrorBullet(); // ÃÑ¾Ë ¹ÝÈ¯
-            SpawnNormalBullets(); // ÀÏ¹Ý ÃÑ¾Ë »ý¼º
+            DestroyMirrorBullet(); // ï¿½Ñ¾ï¿½ ï¿½ï¿½È¯
+            SpawnNormalBullets(); // ï¿½Ï¹ï¿½ ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
             collision.GetComponent<Enemy>().Damaged(damage);
         }
     }
 
     void SpawnNormalBullets()
     {
-        // ÇÃ·¹ÀÌ¾î ¹æÇâÀ¸·Î ÀÏ¹Ý ÃÑ¾Ë ¹ß»ç
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¹ï¿½ ï¿½Ñ¾ï¿½ ï¿½ß»ï¿½
         Vector3 reflectionDirection = (player.transform.position - transform.position).normalized;
         InstantiateAndShoot(normalBulletPrefab, reflectionDirection);
 
-        // ¾ç¿·À¸·Î ÀÏ¹Ý ÃÑ¾Ë Ãß°¡ »ý¼º
+        // ï¿½ç¿·ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¹ï¿½ ï¿½Ñ¾ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
         Vector3 sideDirectionRight = Quaternion.Euler(0, 0, 15) * reflectionDirection;
         Vector3 sideDirectionLeft = Quaternion.Euler(0, 0, -15) * reflectionDirection;
         InstantiateAndShoot(normalBulletPrefab, sideDirectionRight);

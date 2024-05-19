@@ -10,6 +10,8 @@ public abstract class WeaponBase : MonoBehaviour
     protected int weaponLevel = 0;
     protected float elapsedTime = 0.0f;
 
+    public Vector2 attackScale;
+
     public float CalculateDamage()
     {
         return data.levelDamages[weaponLevel - 1];

@@ -138,6 +138,7 @@ public class Player : BaseUnit
         return DelicacyRate * Greed;
     }
 
+    //투사체 속도
     public float ATKSpeedDelicacy()
     {
         float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
@@ -146,23 +147,35 @@ public class Player : BaseUnit
         return DelicacyRate * ATKSpeed;
     }
 
+    //공격 간 시간
     public float ATKCooldownDelicacy()
     {
         //3%, 7%씩 쿨타임 감소
         float DelicacyRate = 1 - (UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel * 0.03f);
-        float CooldownReduction = 1 - (UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel * 0.07f);
+        float CooldownReduction = 1 - (UnitManager.Instance.player.PlayerStatLevel.CooldownReductionLevel * 0.07f);
 
         return DelicacyRate * CooldownReduction;
     }
 
+    //공격범위
     public float ATKRangeDelicacy()
     {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
-        float ATKRange = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKRangeLevel / 5);
+        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 12);
+        float ATKRange = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKRangeLevel / 6);
 
         return DelicacyRate * ATKRange;
     }
+    
+    
 
+    //지속시간
+    //public float ATKDurationDelicacy()
+    //{
+    //    float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
+    //    float statLevel = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKdurationLevel / 5);
+
+    //    return DelicacyRate * statLevel;
+    //}
 
     //플레이어 스탯 레벨
     [Serializable]
@@ -174,7 +187,7 @@ public class Player : BaseUnit
         public int ATKSpeedLevel;
         public int ATKRangeLevel;
         public int CooldownReductionLevel;
-        public int ATKdurationLevel;
+        //public int ATKdurationLevel;
         public int GreedLevel;
         public int DelicacyLevel;
         public int WisdomLevel;

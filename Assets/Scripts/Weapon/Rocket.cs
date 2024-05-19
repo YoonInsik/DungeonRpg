@@ -12,7 +12,7 @@ public class Rocket : MonoBehaviour
     Vector3 direction;
     bool isMoving = true;
     bool isReturned = false;
-
+    private Vector2 attackScale;
     private IObjectPool<Rocket> managedPool;
 
     public Boom boom;
@@ -24,13 +24,14 @@ public class Rocket : MonoBehaviour
         {
             player = playerObject.GetComponent<Player>();
         }
+        attackScale = transform.localScale;
     }
 
     private void FixedUpdate()
     {
         if (isMoving)
         {
-            // ·ÎÄÏÀÌ Àü¿ª ÁÂÇ¥°è¸¦ ±âÁØÀ¸·Î ¿òÁ÷ÀÌµµ·Ï ¼³Á¤
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½è¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             transform.Translate(direction * speed * Time.fixedDeltaTime * player.ATKSpeedDelicacy(), Space.World);
         }
     }
@@ -40,11 +41,12 @@ public class Rocket : MonoBehaviour
         direction = dir;
         boom.damage = _damage;
         speed = _speed;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // ½ºÇÁ¶óÀÌÆ®°¡ ¹Ù¶óº¼ °¢µµ Á¶Á¤
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ù¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         isMoving = true;
         isReturned = false;
-        Invoke("DestroyRocket", 2.0f); // 2ÃÊ ÈÄ ·ÎÄÏ ÆÄ±«
+        Invoke("DestroyRocket", 2.0f); // 2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
     }
 
     public void SetManagedPool(IObjectPool<Rocket> pool)

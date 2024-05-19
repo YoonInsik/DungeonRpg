@@ -18,7 +18,7 @@ public class FireGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval)
+        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
         {
             Fire();
         }

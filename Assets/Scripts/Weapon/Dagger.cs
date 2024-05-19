@@ -13,17 +13,22 @@ public class Dagger : WeaponBase
 
     public DaggerState currentState = DaggerState.Wait;
 
-    public Player player; // Player Å¸ÀÔÀ¸·Î player º¯¼ö ¼±¾ð
-    public Vector3 offset = new Vector3(-1, 0, 0); // ÇÃ·¹ÀÌ¾î·ÎºÎÅÍÀÇ »ó´ëÀû À§Ä¡
+    public Player player; // Player Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ player ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public Vector3 offset = new Vector3(-1, 0, 0); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
     float speed = 30.0f;
     float attackDistance = 25.0f;
     private Vector3 attackPosition;
     private bool isReturning = false;
 
+    private void Awake()
+    {
+        attackScale = transform.localScale;
+    }
+
     void Start()
     {
-        // ÇÃ·¹ÀÌ¾î °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ÅÂ±×¸¦ ÅëÇØ Ã£°í, Player ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿É´Ï´Ù.
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½, Player ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½.
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject != null)
         {
@@ -34,6 +39,7 @@ public class Dagger : WeaponBase
 
     void Update()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player.scanner.nearestTarget != null)
         {
             float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
@@ -63,7 +69,6 @@ public class Dagger : WeaponBase
         if (player != null)
         {
             transform.position = player.transform.position + offset;
-
             if (player.scanner.nearestTarget != null)
             {
                 Vector3 direction = player.scanner.nearestTarget.position - transform.position;
@@ -79,27 +84,27 @@ public class Dagger : WeaponBase
         {
             if (!isReturning)
             {
-                // °ø°Ý À§Ä¡ °è»ê
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
                 attackPosition = player.scanner.nearestTarget.position;
-                // ÀûÀ» ÇâÇØ ÀÌµ¿
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime);
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
 
-                // Àû¿¡°Ô µµ´ÞÇß´ÂÁö È®ÀÎ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
                 if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
                 {
-                    isReturning = true; // ¿ø·¡ À§Ä¡·Î µ¹¾Æ°¡±â
+                    isReturning = true; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
                 }
             }
             else
             {
-                // ÇÃ·¹ÀÌ¾î ±âÁØ ¿ø·¡ À§Ä¡·Î µ¹¾Æ°¡±â
+                // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
                 Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
 
-                // ¿ø·¡ À§Ä¡¿¡ µµ´ÞÇß´ÂÁö È®ÀÎ
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
                 if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
                 {
-                    isReturning = false; // °ø°Ý Á¾·á
+                    isReturning = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     currentState = DaggerState.Wait;
                 }
             }

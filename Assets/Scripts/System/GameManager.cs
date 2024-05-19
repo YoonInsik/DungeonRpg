@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     public List<ItemData> itemDatas;
 
     public LevelUpPanel levelUpPanel;
+    public KitchenKnife kitchenKnife;
     public int levelUpAmount;
 
     void Start()
@@ -29,6 +30,9 @@ public class GameManager : Singleton<GameManager>
 
         UnitManager.Instance.SpawnPlayer(Vector2Int.zero);
         MapManager.Instance.InitMap();
+
+        GameObject foundObject = GameObject.Find("kitchenknife");
+        kitchenKnife = foundObject.GetComponent<KitchenKnife>();
     }
 
     private void Init() {
@@ -56,6 +60,10 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateEXP(float amount)
     {
+        if (kitchenKnife.gameObject.activeSelf)
+        {
+            amount = amount * 1.2f;
+        }
         Exp += amount;
 
         if (Exp >= MaxExp) {

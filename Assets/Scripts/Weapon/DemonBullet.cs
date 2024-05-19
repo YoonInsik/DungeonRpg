@@ -13,9 +13,11 @@ public class DemonBullet : MonoBehaviour
     private IObjectPool<DemonBullet> managedPool;
     private bool isReleased = false;
 
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -38,6 +40,7 @@ public class DemonBullet : MonoBehaviour
         direction = dir;
         damage = _damage;
         speed = _speed;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyDemonBullet", 5f);
     }
 

@@ -63,3 +63,6 @@ TagManager:
   - name: Furnace
     uniqueID: 3954267875
     locked: 0
+  - name: DamageFont
+    uniqueID: 2228791077
+    locked: 0

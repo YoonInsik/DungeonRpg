@@ -20,7 +20,7 @@ public class Gun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > data.interval)
+        if(elapsedTime > data.interval * player.ATKCooldownDelicacy())
         {
             Fire();
         }
@@ -39,7 +39,9 @@ public class Gun : WeaponBase
 
         //var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
         var bullet = pool.Get();
-        bullet.transform.position = transform.position;
+        bullet.transform.position = transform.position + dir.normalized;
+        bullet.transform.localScale = bullet.transform.localScale * player.ATKRangeDelicacy();
+        Debug.Log(bullet.transform.localScale);
         bullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
 
         elapsedTime = 0.0f;

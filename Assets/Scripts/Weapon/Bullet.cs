@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -41,6 +42,7 @@ public class Bullet : MonoBehaviour
         direction = dir;
         damage = _damage;
         speed = _speed;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         Invoke("DestroyBullet", 5f);
     }
 

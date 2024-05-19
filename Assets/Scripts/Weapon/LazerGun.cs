@@ -18,7 +18,7 @@ public class LazerGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval)
+        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
         {
             Fire();
         }
@@ -30,13 +30,13 @@ public class LazerGun : WeaponBase
             return;
 
         Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = (targetPos - transform.position).normalized; // ¸ñÇ¥ ¹æÇâ Á¤±ÔÈ­
+        Vector3 dir = (targetPos - transform.position).normalized; // ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­
 
         if (dir.magnitude > data.range)
             return;
 
         var lazer = pool.Get();
-        lazer.transform.position = transform.position; // ·ÎÄÏ À§Ä¡ ¼³Á¤
+        lazer.transform.position = transform.position; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
         lazer.Shoot(dir.normalized, CalculateDamage(), data.speed);
 
         elapsedTime = 0.0f;

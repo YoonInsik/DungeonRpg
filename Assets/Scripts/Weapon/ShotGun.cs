@@ -20,7 +20,7 @@ public class ShotGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > data.interval)
+        if(elapsedTime > data.interval * player.ATKCooldownDelicacy())
         {
             Fire();
         }
@@ -37,12 +37,12 @@ public class ShotGun : WeaponBase
         if (dir.magnitude > data.range)
             return;
 
-        // ÃÑ¾ËÀ» ¹ß»çÇÏ´Â ±âº» ¹æÇâ ¼³Á¤
-        FireBullet(dir.normalized); // ±âº» ¹æÇâÀ¸·Î ÃÑ¾Ë ¹ß»ç
+        // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï´ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        FireBullet(dir.normalized); // ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ ï¿½ß»ï¿½
 
-        // ÃÑ¾ËÀ» Ãß°¡·Î ¾ç¿·À¸·Î 15µµ¾¿ ¹ß»ç
-        FireBullet(Quaternion.Euler(0, 0, 10) * dir.normalized); // ¿À¸¥ÂÊ 15µµ
-        FireBullet(Quaternion.Euler(0, 0, -10) * dir.normalized); // ¿ÞÂÊ 15µµ
+        // ï¿½Ñ¾ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ç¿·ï¿½ï¿½ï¿½ï¿½ 15ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+        FireBullet(Quaternion.Euler(0, 0, 10) * dir.normalized); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 15ï¿½ï¿½
+        FireBullet(Quaternion.Euler(0, 0, -10) * dir.normalized); // ï¿½ï¿½ï¿½ï¿½ 15ï¿½ï¿½
         
         elapsedTime = 0.0f;
     }

@@ -13,18 +13,23 @@ public class Pusher : WeaponBase
 
     public PusherState currentState = PusherState.Wait;
 
-    public Player player; // Player Å¸ÀÔÀ¸·Î player º¯¼ö ¼±¾ð
-    public Vector3 offset = new Vector3(0.5f, 0.866f, 0); // ÇÃ·¹ÀÌ¾î·ÎºÎÅÍÀÇ »ó´ëÀû À§Ä¡
+    public Player player; // Player Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ player ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public Vector3 offset = new Vector3(1, 0.4f, 0); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
 
     float speed = 10.0f;
     float attackDistance = 25.0f;
-    float knockbackForce = 5.0f; // ¹Ð¾î³»´Â Èû
+    float knockbackForce = 5.0f; // ï¿½Ð¾î³»ï¿½ï¿½ ï¿½ï¿½
     private Vector3 attackPosition;
     private bool isReturning = false;
 
+    private void Awake()
+    {
+        baseDamage = 5.0f;
+        attackScale = transform.localScale;
+    }
     void Start()
     {
-        // ÇÃ·¹ÀÌ¾î °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ÅÂ±×¸¦ ÅëÇØ Ã£°í, Player ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿É´Ï´Ù.
+        // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½, Player ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½.
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject != null)
         {
@@ -65,6 +70,7 @@ public class Pusher : WeaponBase
 
     void HandleWaiting()
     {
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         if (player != null)
         {
             transform.position = player.transform.position + offset;
@@ -84,27 +90,27 @@ public class Pusher : WeaponBase
         {
             if (!isReturning)
             {
-                // °ø°Ý À§Ä¡ °è»ê
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½
                 attackPosition = player.scanner.nearestTarget.position;
-                // ÀûÀ» ÇâÇØ ÀÌµ¿
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime);
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
 
-                // Àû¿¡°Ô µµ´ÞÇß´ÂÁö È®ÀÎ
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
                 if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
                 {
-                    isReturning = true; // ¿ø·¡ À§Ä¡·Î µ¹¾Æ°¡±â
+                    isReturning = true; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
                 }
             }
             else
             {
-                // ÇÃ·¹ÀÌ¾î ±âÁØ ¿ø·¡ À§Ä¡·Î µ¹¾Æ°¡±â
+                // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
                 Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
 
-                // ¿ø·¡ À§Ä¡¿¡ µµ´ÞÇß´ÂÁö È®ÀÎ
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
                 if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
                 {
-                    isReturning = false; // °ø°Ý Á¾·á
+                    isReturning = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     currentState = PusherState.Wait;
                 }
             }
@@ -115,16 +121,16 @@ public class Pusher : WeaponBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Àû¿¡°Ô µ¥¹ÌÁö Àû¿ë
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
 
-            // ÀûÀ» ¹Ð¾î³»±â
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾î³»ï¿½ï¿½
             Rigidbody2D enemyRigidbody = collision.GetComponent<Rigidbody2D>();
             if (enemyRigidbody != null)
             {
                 Vector2 knockbackDirection = (collision.transform.position - transform.position).normalized;
-                enemyRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+                enemyRigidbody.AddForce(knockbackDirection * knockbackForce * 0.1f, ForceMode2D.Impulse);
             }
         }
     }

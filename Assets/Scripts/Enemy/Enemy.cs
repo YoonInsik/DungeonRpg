@@ -74,19 +74,21 @@ namespace SHS
         public void Damaged(float _damage)
         {
             if (now_burrow)
-                return; 
-
-            now_hp -= _damage;
-            if (now_hp <= 0)
-            {
-                Dead();
                 return;
-            }
+
             GameObject ds = Instantiate(damagescale);
             ds.transform.position = transform.position;
             ds.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 8f + Vector2.right * Random.Range(-5f, 5f), ForceMode2D.Impulse);
             ds.GetComponent<TextMeshPro>().text = _damage.ToString();
             ptc_damaged.Play();
+
+            now_hp -= _damage;
+
+            if (now_hp <= 0)
+            {
+                Dead();
+                return;
+            }
         }
 
         /* 작동 안됨, 오브젝트가 비활성화되면서 꺼지는듯, 직접 파괴시킴
@@ -172,7 +174,6 @@ namespace SHS
             }
 
             meatdrop_rate = meatdrop_rate * UnitManager.Instance.player.GreedDelicacy();
-            Debug.Log(meatdrop_rate);
             //고기 드랍
             if (Random.Range(0, 100) < meatdrop_rate)
             {

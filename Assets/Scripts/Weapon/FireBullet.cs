@@ -18,6 +18,7 @@ public class FireBullet : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -41,6 +42,8 @@ public class FireBullet : MonoBehaviour
         damage = _damage;
         speed = _speed;
         Invoke("DestroyBullet", 5f);
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
+        Invoke("DestroyFireBullet", 1.5f);
     }
 
     public void DestroyFireBullet()

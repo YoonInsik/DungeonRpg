@@ -7,6 +7,10 @@ public class ElectricField : WeaponBase
 {
     private List<Collider2D> enemys = new List<Collider2D>();
 
+    private void Awake()
+    {
+        attackScale = gameObject.transform.localScale;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -32,8 +36,9 @@ public class ElectricField : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
+        transform.localScale = attackScale * UnitManager.Instance.player.ATKRangeDelicacy();
 
-        if(elapsedTime > data.interval)
+        if (elapsedTime > data.interval * UnitManager.Instance.player.ATKCooldownDelicacy())
         {
             if(enemys != null)
             {

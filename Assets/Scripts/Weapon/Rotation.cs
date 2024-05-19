@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class Rotation : WeaponBase
 {
@@ -13,9 +14,11 @@ public class Rotation : WeaponBase
 
     float rotateSpeed = 180.0f;
     float count = 3;
+    public Vector2 attackScale;
 
     private void Awake()
     {
+        attackScale = BoxPrefab.transform.localScale;
         pool = new ObjectPool<Box>(CreateBox, OnGetBox, OnReleaseBox, OnDestroyBox, maxSize:10);
     }
 
@@ -27,13 +30,13 @@ public class Rotation : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > data.interval)
+        if(elapsedTime > data.interval * UnitManager.Instance.player.ATKCooldownDelicacy())
         {
             elapsedTime = 0.0f;
             ReAct();
 
         }
-        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime * UnitManager.Instance.player.ATKSpeedDelicacy());
     }
 
     void Activation()
@@ -66,6 +69,8 @@ public class Rotation : WeaponBase
     private void OnGetBox(Box box)
     {
         box.gameObject.SetActive(true);
+        box.transform.localScale = attackScale * UnitManager.Instance.player.ATKRangeDelicacy();
+
     }
 
     private void OnReleaseBox(Box box)

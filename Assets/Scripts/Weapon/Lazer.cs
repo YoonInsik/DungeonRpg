@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UIElements;
 
 public class Lazer : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class Lazer : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        attackScale = transform.localScale;
     }
 
     private void OnEnable()
@@ -38,10 +40,11 @@ public class Lazer : MonoBehaviour
     {
         damage = _damage;
         speed = _speed;
-        direction = dir; // ¹æÇâÀ» ÀúÀå
+        direction = dir; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // ½ºÇÁ¶óÀÌÆ®°¡ ¹Ù¶óº¼ °¢µµ Á¶Á¤
-        Invoke("DestroyLazer", 2.0f); // 2ÃÊ ÈÄ ·ÎÄÏ ÆÄ±«
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ù¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        Invoke("DestroyLazer", 2.0f); // 2ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
     }
 
     public void DestroyLazer()

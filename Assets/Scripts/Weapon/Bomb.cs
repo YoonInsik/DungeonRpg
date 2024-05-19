@@ -12,8 +12,14 @@ public class Bomb : MonoBehaviour
     Vector3 direction;
     bool isMoving = true;
     bool isReturned = false;
+    Vector2 attackScale;
 
     private IObjectPool<Bomb> managedPool;
+
+    private void Start()
+    {
+        attackScale = transform.localScale;
+    }
 
     private void FixedUpdate()
     {
@@ -28,6 +34,7 @@ public class Bomb : MonoBehaviour
         direction = dir;
         damage = _damage;
         speed = _speed;
+        transform.localScale = attackScale * UnitManager.Instance.player.ATKRangeDelicacy();
         isMoving = true;
         isReturned = false;
         Invoke("DestroyBomb", 2.0f);
