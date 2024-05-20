@@ -64,11 +64,14 @@ public abstract class CookingItem : MonoBehaviour
     //버프지속시간이 있을 시 적용된 효과 제거
     protected virtual void EndEffect(Player player) { }
 
+    
 
     //체력 회복
     protected virtual void HPRecovery(Player player, bool RecoveryFull = false)
     {
-        float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
+        Dictionary<string, int> dict = player.StatLevels;
+
+        float DelicacyRate = (dict["DelicacyLevel"] == 0) ? 1 : (1 + (float)dict["DelicacyLevel"] / 10);
 
         if (player.HP + HP >= player.MaxHP || RecoveryFull == true)
         {
@@ -83,8 +86,10 @@ public abstract class CookingItem : MonoBehaviour
     //최대 체력 증가
     protected virtual void IncreaseHP(Player player, bool isPositive = true)
     {
-        float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1 : (1 + (float)player.PlayerStatLevel.DelicacyLevel / 10);
-    
+        Dictionary<string, int> dict = player.StatLevels;
+
+        float DelicacyRate = (dict["DelicacyLevel"] == 0) ? 1 : (1 + (float)dict["DelicacyLevel"] / 10);
+
         int change = isPositive ? MaxHP : -MaxHP;
         player.MaxHP += (int)(change * DelicacyRate);
     }
@@ -92,48 +97,30 @@ public abstract class CookingItem : MonoBehaviour
     //공격력 증가
     protected virtual void IncreaseATK(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.ATKLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["ATKLevel"] >= dict["StatMaxLevel"]) return;
 
-        int DelicacyRate = player.PlayerStatLevel.DelicacyLevel*10;
-        int change;
-
+        int DelicacyRate = dict["DelicacyLevel"]*10;
+       
         // 더할 레벨
         int Level = isPositive ? ATK : -ATK;
+        int change = ApplyAtkDefSpeed(dict, "ATKLevel", Level);
 
-        if (player.PlayerStatLevel.ATKLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.ATKLevel = player.PlayerStatLevel.StatMaxLevel;
-            change = player.PlayerStatLevel.StatMaxLevel - player.PlayerStatLevel.ATKLevel;
-        }
-        else
-        {
-            player.PlayerStatLevel.ATKLevel += Level;
-            change = Level;
-        }
         player.ATK += change * DelicacyRate;
     }
 
     //방어력 증가
     protected virtual void IncreaseDEF(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.DEFLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["DEFLevel"] >= dict["StatMaxLevel"]) return;
 
-        int DelicacyRate = player.PlayerStatLevel.DelicacyLevel*10;
-        int change;
+        int DelicacyRate = dict["DelicacyLevel"]*10;
 
         // 더할 레벨
         int Level = isPositive ? DEF : -DEF;
+        int change = ApplyAtkDefSpeed(dict, "DEFLevel", Level);
 
-        if (player.PlayerStatLevel.DEFLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.DEFLevel = player.PlayerStatLevel.StatMaxLevel;
-            change = player.PlayerStatLevel.StatMaxLevel - player.PlayerStatLevel.DEFLevel;
-        }
-        else
-        {
-            player.PlayerStatLevel.DEFLevel += Level;
-            change = Level;
-        }
         player.DEF += change * DelicacyRate;
     }
 
@@ -147,68 +134,51 @@ public abstract class CookingItem : MonoBehaviour
     //이동속도 증가
     protected virtual void IncreaseSpeed(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.SpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["SpeedLevel"] >= dict["StatMaxLevel"]) return;
 
-        //미식에 따른 수치 적용
-        float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1f : (1f + (float)player.PlayerStatLevel.DelicacyLevel / 10);
-        int change;
+        //DelicacyLevel에 따른 수치 적용
+        float DelicacyRate = (dict["DelicacyLevel"] == 0) ? 1f : (1 + (float)dict["DelicacyLevel"] / 10);
 
         // 더할 레벨
         int Level = isPositive ? Speed : -Speed;
-
-        if (player.PlayerStatLevel.SpeedLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.SpeedLevel = player.PlayerStatLevel.StatMaxLevel;
-            change = player.PlayerStatLevel.StatMaxLevel - player.PlayerStatLevel.SpeedLevel;
-        }
-        else
-        {
-            player.PlayerStatLevel.SpeedLevel += Level;
-            change = Level;
-        }
+        int change = ApplyAtkDefSpeed(dict, "SpeedLevel", Level);
+     
         player.speed += change * DelicacyRate;
     }
 
     //투사체 이동,회전속도
     protected virtual void IncreaseATKSpeed(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.ATKSpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["ATKSpeedLevel"] >= dict["StatMaxLevel"]) return;
 
-        int Level = isPositive ? 1 : -1;
+        int Level = isPositive ? ATKSpeed : ATKSpeed;
 
-        if (player.PlayerStatLevel.ATKSpeedLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.ATKSpeedLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.ATKSpeedLevel += Level;
+        ApplyOtherStat(dict, "ATKSpeedLevel", Level);
     }
 
     //공격범위,투사체 크기 증가
     protected virtual void IncreaseATKRange(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.ATKRangeLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["ATKRangeLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = isPositive ? ATKRange : -ATKRange;
 
-        if (player.PlayerStatLevel.ATKRangeLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.ATKRangeLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.ATKRangeLevel += Level;
+        ApplyOtherStat(dict, "ATKRangeLevel", Level);
+        
     }
 
     //쿨타임 감소
     protected virtual void IncreaseCooldownReduction(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.CooldownReductionLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["CooldownReductionLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = isPositive ? CooldownReduction : -CooldownReduction ;
 
-        if (player.PlayerStatLevel.CooldownReductionLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.CooldownReductionLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.CooldownReductionLevel += Level;
+        ApplyOtherStat(dict, "CooldownReductionLevel", Level);
     }
 
     //공격이 발동할때 그 공격이 지속되는 시간 증가
@@ -223,66 +193,58 @@ public abstract class CookingItem : MonoBehaviour
     //스테이지 클리어 후 얻는 재료양 증가
     protected virtual void IncreaseGreed(Player player , bool isPositive = true)
     {
-        if (player.PlayerStatLevel.GreedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["GreedLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = isPositive ? Greed : -Greed;
 
 
-        if (player.PlayerStatLevel.GreedLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.GreedLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.GreedLevel += Level;
+        ApplyOtherStat(dict, "GreedLevel", Level);
     }
 
     //요리섭취시 레벨당 오르는 능력치 증가
     protected virtual void IncreaseDelicacy(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.DelicacyLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["DelicacyLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = isPositive ? Delicacy : -Delicacy;
 
-        if (player.PlayerStatLevel.DelicacyLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.DelicacyLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.DelicacyLevel += Level;
+        ApplyOtherStat(dict, "DelicacyLevel", Level);
     }
-
+        
     //획득하는 경험치 획득량 증가
     protected virtual void IncreaseWisdom(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.WisdomLevel >= player.PlayerStatLevel.StatMaxLevel) return;  
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["WisdomLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = isPositive ? Wisdom : -Wisdom;
 
-        if (player.PlayerStatLevel.WisdomLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.WisdomLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.WisdomLevel += Level;
+        ApplyOtherStat(dict, "WisdomLevel", Level);
     }
 
     //전투중 경험치 보석, 아이템을 획득하는 범위가 증가
     protected virtual void IncreaseTemptation(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.TemptationLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["TemptationLevel"] >= dict["StatMaxLevel"]) return;
 
-        float DelicacyRate = (player.PlayerStatLevel.DelicacyLevel == 0) ? 1f : (1f + (float)player.PlayerStatLevel.DelicacyLevel / 10);
+        float DelicacyRate = (dict["DelicacyLevel"] == 0) ? 1f : (1f + (float)dict["DelicacyLevel"] / 10);
 
         //더해야될 레벨
         int Level = isPositive ? Temptation : Temptation;
 
         float change;
 
-        if (player.PlayerStatLevel.TemptationLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
+        if (dict["TemptationLevel"] + Level >= dict["StatMaxLevel"])
         {
-            player.PlayerStatLevel.TemptationLevel = player.PlayerStatLevel.StatMaxLevel;
-            change = (player.PlayerStatLevel.StatMaxLevel - player.PlayerStatLevel.TemptationLevel) / 2;
+            dict["TemptationLevel"] = dict["StatMaxLevel"];
+            change = (dict["StatMaxLevel"] - dict["TemptationLevel"]) / 2;
         }
         else
         {
-            player.PlayerStatLevel.TemptationLevel += Level;
+            dict["TemptationLevel"] += Level;
             change = Level / 2;
         }
         player.GetComponent<ItemTemptation>().range += change * DelicacyRate;
@@ -301,5 +263,33 @@ public abstract class CookingItem : MonoBehaviour
         IncreaseDelicacy(player, isPositive);
         IncreaseWisdom(player, isPositive);
         IncreaseTemptation(player, isPositive);
+    }
+
+    public int ApplyAtkDefSpeed(Dictionary<string, int> dict, String statName, int level)
+    {
+        int change;
+        if (dict[statName] + level >= dict["StatMaxLevel"])
+        {
+            dict[statName] = dict["StatMaxLevel"];
+            change = dict["StatMaxLevel"] - dict[statName];
+        }
+        else
+        {
+            dict[statName] += level;
+            change = level;
+        }
+
+        return change;
+    }
+
+    public void ApplyOtherStat(Dictionary<string, int> dict, string statName, int level)
+    {
+        if (dict[statName] + level >= dict["StatMaxLevel"])
+        {
+            dict[statName] = dict["StatMaxLevel"];
+        }
+        else dict[statName] += level;
+
+        Debug.Log(dict[statName]+ " " + level + " " + dict["StatMaxLevel"]);
     }
 }

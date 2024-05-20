@@ -6,7 +6,9 @@ public class Baeksuk : CookingItem
 {
     protected override void AddEffect(Player player)
     {
+        Dictionary<string, int> dict = player.StatLevels;
+
         IncreaseATKSpeed(player);
-        player.PlayerStatLevel.StatMaxLevel += 1;
+        dict["StatMaxLevel"] += 1;
     }
 }
