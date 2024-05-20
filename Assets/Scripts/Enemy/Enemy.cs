@@ -4,7 +4,6 @@ using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
-using static UnityEditor.PlayerSettings;
 
 namespace SHS
 {
