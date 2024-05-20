@@ -1212,6 +1212,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7019197899724624185, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019197899724624185, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019197899724624185, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019197899724624185, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7623535092237698046, guid: 6480526bb03f9a14ba05d068024c1af9, type: 3}
       propertyPath: m_Value
       value: 1
@@ -1443,6 +1459,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6626502373418582695, guid: 65f38078d75215946899582020ce30a2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 461.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6779981391228913011, guid: 65f38078d75215946899582020ce30a2, type: 3}
       propertyPath: m_Name
       value: UI
@@ -1550,22 +1570,6 @@ PrefabInstance:
     - target: {fileID: 5083642803478605915, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
-      propertyPath: objectInfos.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
-      propertyPath: objectInfos.Array.data[1].count
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
-      propertyPath: objectInfos.Array.data[1].perfab
-      value: 
-      objectReference: {fileID: 2609902746980998286, guid: 0bc9899dc52e0954891740f554ba08d4, type: 3}
-    - target: {fileID: 5449567293044585825, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
-      propertyPath: objectInfos.Array.data[1].objectName
-      value: DropItem
       objectReference: {fileID: 0}
     - target: {fileID: 8860665990349964333, guid: 69ec6a7c85680eb49a5122f3efbdf01b, type: 3}
       propertyPath: m_Name

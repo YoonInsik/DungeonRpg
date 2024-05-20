@@ -48,3 +48,6 @@ MonoBehaviour:
   - objectName: Exp
     perfab: {fileID: 1222971009289658863, guid: b498f33b5c4c45949902108fe6ee4f68, type: 3}
     count: 10
+  - objectName: DropItem
+    perfab: {fileID: 2609902746980998286, guid: 0bc9899dc52e0954891740f554ba08d4, type: 3}
+    count: 10

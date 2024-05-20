@@ -147,7 +147,7 @@ public class MapManager : Singleton<MapManager>
             leftChunkText.text = chunkItem.data.StringChunkType;
             leftChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
-        else
+        else if ((moveChunkPos - playerChunkPos) == Vector2Int.up)
         {
             upChunkText.text = chunkItem.data.StringChunkType;
             upChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
