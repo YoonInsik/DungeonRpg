@@ -46,6 +46,7 @@ public class Furnace : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("E´©¸§");
             if (isIn)
             {
                 bool isOpen = furnaceUI.activeSelf;

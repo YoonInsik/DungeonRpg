@@ -106,12 +106,12 @@ MonoBehaviour:
   ATKSpeed: 0
   ATKRange: 0
   CooldownReduction: 1
-  ATKduration: 0
   Greed: 0
   Delicacy: 0
   Wisdom: 3
   Temptation: 0
   buffDuration: 120
+  info_txt: 
   recipe:
   - ingredient: {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
     amount: 6

@@ -63,6 +63,7 @@ public class Player : BaseUnit
         animator.SetFloat("MoveX", newPos.x);
         animator.SetFloat("MoveY", newPos.y);
 
+
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
             {
@@ -73,6 +74,18 @@ public class Player : BaseUnit
                 menuUI.SetActive(false);
             }
             MenuUIopen = !MenuUIopen;
+        }
+
+        // 스탯 UI 관련
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            GameObject statUI = StatUI.Instance.gameObject;
+            bool isActive;
+
+            isActive = statUI.activeSelf ? false : true;
+            
+            statUI.SetActive(isActive);
+            StatUI.Instance.GetComponent<StatUI>().UpdateCell();
         }
     }
     void FixedUpdate()
@@ -122,33 +135,33 @@ public class Player : BaseUnit
 
     
     [Header("플레이어 스탯 레벨")]
-    public StatLevel PlayerStatLevel = new StatLevel();
+    //public StatLevel PlayerStatLevel = new StatLevel();
 
     //요리아이템 버프 지속이 멈춰야 되는 타이밍 판단
-    [NonSerialized]
+    //[NonSerialized]
     public bool pause = false;
     
     public float WIsdomDelicacy()
     {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
-        float Wisdom = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.WisdomLevel / 5);
+        float DelicacyRate = (1 + (float)StatLevels["DelicacyLevel"] / 10);
+        float Wisdom = (1 + (float)StatLevels["WisdomLevel"] / 5);
 
         return DelicacyRate * Wisdom;
     }
 
     public float GreedDelicacy()
     {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
-        float Greed = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.GreedLevel / 5);
+        float DelicacyRate = (1 + (float)StatLevels["DelicacyLevel"] / 10);
+        float Greed = (1 + (float)StatLevels["GreedLevel"] / 5);
 
         return DelicacyRate * Greed;
     }
 
     //투사체 속도
     public float ATKSpeedDelicacy()
-    {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
-        float ATKSpeed = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKSpeedLevel / 5);
+    { 
+        float DelicacyRate = (1 + (float)StatLevels["DelicacyLevel"] / 10);
+        float ATKSpeed = (1 + (float)StatLevels["ATKSpeedLevel"] / 5);
 
         return DelicacyRate * ATKSpeed;
     }
@@ -157,8 +170,8 @@ public class Player : BaseUnit
     public float ATKCooldownDelicacy()
     {
         //3%, 7%씩 쿨타임 감소
-        float DelicacyRate = 1 - (UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel * 0.03f);
-        float CooldownReduction = 1 - (UnitManager.Instance.player.PlayerStatLevel.CooldownReductionLevel * 0.07f);
+        float DelicacyRate = 1 - (StatLevels["DelicacyLevel"] * 0.03f);
+        float CooldownReduction = 1 - (StatLevels["CooldownReductionLevel"] * 0.07f);
 
         return DelicacyRate * CooldownReduction;
     }
@@ -166,13 +179,13 @@ public class Player : BaseUnit
     //공격범위
     public float ATKRangeDelicacy()
     {
-        float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 12);
-        float ATKRange = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKRangeLevel / 6);
+        float DelicacyRate = (1 + (float)StatLevels["DelicacyLevel"] / 12);
+        float ATKRange = (1 + (float)StatLevels["ATKRangeLevel"] / 6);
 
         return DelicacyRate * ATKRange;
     }
-    
-    
+
+
 
     //지속시간
     //public float ATKDurationDelicacy()
@@ -184,20 +197,38 @@ public class Player : BaseUnit
     //}
 
     //플레이어 스탯 레벨
-    [Serializable]
-    public struct StatLevel
+    //[Serializable]
+    //public class StatLevel
+    //{
+    //    public int ATKLevel;
+    //    public int DEFLevel;
+    //    public int SpeedLevel;
+    //    public int ATKSpeedLevel;
+    //    public int ATKRangeLevel;
+    //    public int CooldownReductionLevel;
+    //    //public int ATKdurationLevel;
+    //    public int GreedLevel;
+    //    public int DelicacyLevel;
+    //    public int WisdomLevel;
+    //    public int TemptationLevel;
+    //    public int StatMaxLevel;  
+    //}
+
+    //[SerializeField] public SerializedDictionary<string, int> StatLevels;
+    [SerializeField]
+    public Dictionary<string, int> StatLevels = new Dictionary<string, int>
     {
-        public int ATKLevel;
-        public int DEFLevel;
-        public int SpeedLevel;
-        public int ATKSpeedLevel;
-        public int ATKRangeLevel;
-        public int CooldownReductionLevel;
-        //public int ATKdurationLevel;
-        public int GreedLevel;
-        public int DelicacyLevel;
-        public int WisdomLevel;
-        public int TemptationLevel;
-        public int StatMaxLevel;
-    }
+       { "ATKLevel", 0 },
+       { "DEFLevel", 0 },
+       { "SpeedLevel", 0 },
+       { "ATKSpeedLevel", 0 },
+       { "ATKRangeLevel", 0},
+       { "CooldownReductionLevel", 0 },
+       { "GreedLevel", 0 },
+       { "DelicacyLevel", 0 },
+       { "WisdomLevel", 0 },
+       { "TemptationLevel", 0 },
+       { "StatMaxLevel", 5 }
+    };
+
 }

@@ -103,7 +103,7 @@ MonoBehaviour:
   DEF: 0
   Fullness: 10
   Speed: 0
-  ATKSpeed: 0
+  ATKSpeed: 1
   ATKRange: 0
   CooldownReduction: 0
   Greed: 0

@@ -12,14 +12,11 @@ public class Udon : CookingItem
 
     protected override void IncreaseCooldownReduction(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.CooldownReductionLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["CooldownReductionLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = Random.Range(1, 3);
 
-        if (player.PlayerStatLevel.CooldownReductionLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.CooldownReductionLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.CooldownReductionLevel += Level;
+        ApplyOtherStat(dict, "CooldownReductionLevel", Level);
     }
 }

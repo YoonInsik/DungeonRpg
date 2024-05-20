@@ -1222,25 +1222,14 @@ MonoBehaviour:
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
   newPos: {x: 0, y: 0}
   animator: {fileID: 5507801869601646988}
-  speed: 4.5
+  speed: 3
   MaxHP: 0
   fullness: 10
   fullnessDecreaseAmount: 1
   furnaceSpawnPoint: {fileID: 7937814287585493957}
   furnace: {fileID: 4124677026070218316, guid: 42d43dc87027e124bad0fb21a980026c, type: 3}
   scanner: {fileID: 0}
-  PlayerStatLevel:
-    ATKLevel: 0
-    DEFLevel: 0
-    SpeedLevel: 0
-    ATKSpeedLevel: 0
-    ATKRangeLevel: 0
-    CooldownReductionLevel: 0
-    GreedLevel: 0
-    DelicacyLevel: 0
-    WisdomLevel: 0
-    TemptationLevel: 0
-    StatMaxLevel: 5
+  pause: 1
 --- !u!114 &3896529685970072328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,6 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6235b653972a834c87ce2d57ea9ef19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!61 &3287185988363618621
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1370,9 +1360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684a61bac154f654483c081a7b52f529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  check_maxhp: 0
+  check_nowhp: 0
   player_scc: {fileID: 1216851011834990549}
-  MaxHp: 0
-  NowHp: 0
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
   damamged_sound:
   - {fileID: 4518047138836528428}
