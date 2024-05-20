@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1313532719, guid: 852a12315efe02d43808b0da6e93824a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f7ac2c58a9209f409dbfec80e393535, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,12 +106,12 @@ MonoBehaviour:
   ATKSpeed: 0
   ATKRange: 0
   CooldownReduction: 0
-  ATKduration: 0
   Greed: 0
   Delicacy: 0
   Wisdom: 0
   Temptation: 0
   buffDuration: 60
+  info_txt: 
   recipe:
   - ingredient: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
     amount: 6
