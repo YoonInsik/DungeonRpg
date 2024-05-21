@@ -15,6 +15,6 @@ MonoBehaviour:
   enemytype: 2
   hp: 7
   hp_scaling: 3
-  speed: 0.5
+  speed: 2
   damage: 8
   damage_scaling: 4

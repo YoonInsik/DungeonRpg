@@ -84,7 +84,7 @@ namespace SHS
             }
             else
             {
-                transform.Translate(m_stat.speed * ani_speed * save_dir * Time.deltaTime);
+                transform.Translate(m_enemy.now_speed * ani_speed * save_dir * Time.deltaTime);
             }
         }
 

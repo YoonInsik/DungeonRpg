@@ -5,21 +5,12 @@ using UnityEngine;
 
 public class DemonSword : WeaponBase
 {
-    public enum DemonSwordState
-    {
-        Wait,
-        Attack
-    }
+    public SwordState currentState = SwordState.Scan;
 
-    public DemonSwordState currentState = DemonSwordState.Wait;
-
-    public Player player; // Player Ÿ������ player ���� ����
     public Vector3 offset = new Vector3(-1, 1, 0); // �÷��̾�κ����� ����� ��ġ
 
-    float speed = 10.0f;
-    float attackDistance = 25.0f;
-    private Vector3 attackPosition;
-    private bool isReturning = false;
+    private Vector3 direction;
+    private Vector3 originalPosition;
 
     private void Awake()
     {
@@ -33,33 +24,38 @@ public class DemonSword : WeaponBase
         {
             player = playerObject.GetComponent<Player>();
         }
-
     }
 
     void Update()
     {
         transform.localScale = attackScale * player.ATKRangeDelicacy();
-        if (player.scanner.nearestTarget != null)
-        {
-            float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
 
-            if (distanceSqr <= attackDistance)
-            {
-                currentState = DemonSwordState.Attack;
-            }
-            else
-            {
-                currentState = DemonSwordState.Wait;
-            }
-        }
         switch (currentState)
         {
-            case DemonSwordState.Wait:
+            case global::SwordState.Scan:
                 HandleWaiting();
+                HandleScanning();
                 break;
-            case DemonSwordState.Attack:
+            case global::SwordState.Attack:
                 HandleAttack();
                 break;
+            case global::SwordState.Return:
+                HandleReturning();
+                break;
+        }
+    }
+
+    void HandleScanning()
+    {
+        if (player.scanner.nearestTarget != null)
+        {
+            float distance = (player.scanner.nearestTarget.position - player.transform.position).magnitude;
+
+            if (distance <= data.range)
+            {
+                // ���� ��ġ ���
+                currentState = global::SwordState.Attack;
+            }
         }
     }
 
@@ -71,43 +67,43 @@ public class DemonSword : WeaponBase
 
             if (player.scanner.nearestTarget != null)
             {
-                Vector3 direction = player.scanner.nearestTarget.position - transform.position;
+                direction = (player.scanner.nearestTarget.position - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
     }
 
     void HandleAttack()
     {
-        if (player != null && player.scanner.nearestTarget != null)
+        transform.parent = null;
+
+        originalPosition = player.transform.position + offset;
+        Vector3 attackPosition = originalPosition + direction * data.range;
+
+        // ���� ���� �̵�
+        transform.position = Vector3.MoveTowards(transform.position, attackPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // ������ �����ߴ��� Ȯ��
+        if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
         {
-            if (!isReturning)
-            {
-                // ���� ��ġ ���
-                attackPosition = player.scanner.nearestTarget.position;
-                // ���� ���� �̵�
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+            currentState = global::SwordState.Return; // ���� ��ġ�� ���ư���
+        }
+    }
 
-                // ������ �����ߴ��� Ȯ��
-                if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
-                {
-                    isReturning = true; // ���� ��ġ�� ���ư���
-                }
-            }
-            else
-            {
-                // �÷��̾� ���� ���� ��ġ�� ���ư���
-                Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+    void HandleReturning()
+    {
+        transform.parent = player.transform;
 
-                // ���� ��ġ�� �����ߴ��� Ȯ��
-                if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
-                {
-                    isReturning = false; // ���� ����
-                    currentState = DemonSwordState.Wait;
-                }
-            }
+        originalPosition = player.transform.position + offset;
+
+        // �÷��̾� ���� ���� ��ġ�� ���ư���
+        transform.position = Vector3.MoveTowards(transform.position, originalPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // ���� ��ġ�� �����ߴ��� Ȯ��
+        if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
+        {
+            currentState = global::SwordState.Scan;
         }
     }
 

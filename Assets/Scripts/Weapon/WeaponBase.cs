@@ -22,3 +22,10 @@ public abstract class WeaponBase : MonoBehaviour
         weaponLevel++;
     }
 }
+
+public enum SwordState
+{
+    Scan,
+    Attack,
+    Return
+}

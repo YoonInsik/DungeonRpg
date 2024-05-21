@@ -47,7 +47,7 @@ namespace SHS
         // ¿òÁ÷ÀÓ
         void Move()
         {
-            m_rigid.velocity = m_stat.speed * Direction();
+            m_rigid.velocity = m_enemy.now_speed * Direction();
 
             remain = Vector2.Distance(player_trns.position, transform.position);
 

@@ -66,7 +66,7 @@ namespace SHS
                 StartCoroutine(Sniping());
             }
             else
-                m_rigid.velocity = m_stat.speed * Direction();
+                m_rigid.velocity = m_enemy.now_speed * Direction();
 
         }
 

@@ -25,6 +25,8 @@ namespace SHS
         public EnemyStat m_stat;
 
         [SerializeField] float now_hp;
+        public float now_speed { get => m_stat.speed * speedMultiply; }
+        public float speedMultiply = 1;
 
         private void Start()
         {
@@ -36,7 +38,7 @@ namespace SHS
             m_col.enabled = false;
 
             now_hp = m_stat.hp + m_stat.hp_scaling * EnemySpawner_v3.Instance.Get_WaveLevel();
-
+            speedMultiply = 1;
             now_burrow = true;
 
             if (handling_start)

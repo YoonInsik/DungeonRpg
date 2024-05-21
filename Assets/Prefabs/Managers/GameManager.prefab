@@ -57,7 +57,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e0abc4217e5d3624cb669dec43a0a0ce, type: 2}
   - {fileID: 11400000, guid: f51c3ed973e4c7441b2ed3523ce0b3a8, type: 2}
   - {fileID: 11400000, guid: 9b698a499d931a9418fcb53025c525c3, type: 2}
+  - {fileID: 11400000, guid: 9752e6706bc20a34d8af75bd0d7f8b20, type: 2}
+  - {fileID: 11400000, guid: 675223625e12db646af53cf8ca3e3625, type: 2}
+  - {fileID: 11400000, guid: 01fc4a0a7f369294fa0d8d1b852ca471, type: 2}
+  - {fileID: 11400000, guid: e1168d542d94b244a9a9e0094539f21b, type: 2}
+  - {fileID: 11400000, guid: 8d3d9f664d8622c46be1ca5139bc184c, type: 2}
   levelUpPanel: {fileID: 0}
+  kitchenKnife: {fileID: 0}
   levelUpAmount: 0
 --- !u!114 &7102423766714240894
 MonoBehaviour:

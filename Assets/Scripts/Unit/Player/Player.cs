@@ -42,7 +42,7 @@ public class Player : BaseUnit
         menuUI = MenuUI.Instance.gameObject;
         MaxHP = GetBaseHP();
 
-        inventory.AddItemData(GameManager.Instance.itemDatas[0]);
+        inventory.AddItemData(GameManager.Instance.itemDatas[16]);
     }
     private void Update()
     {
