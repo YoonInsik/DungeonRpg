@@ -151,7 +151,7 @@ namespace SHS
         [SerializeField] bool not_queue;
 
         [Header("고기드랍")]
-        [SerializeField] int meat_num;
+        [SerializeField] MeatItem customMeatItem;
         [Range(0, 100)]
         [SerializeField] float meatdrop_rate;
 
@@ -180,7 +180,12 @@ namespace SHS
             {
                 var dropItem = ObjectPoolManager.Instance.GetGo("DropItem");
                 var itemImplement = dropItem.GetComponent<ItemImplement>();
-                itemImplement.item = MapManager.Instance.CurChunk.data.dropTable[0].item;
+
+                if (customMeatItem == null)
+                    itemImplement.item = MapManager.Instance.CurChunk.data.dropTable[0].item;
+                else
+                    itemImplement.item = customMeatItem;
+
                 itemImplement.SetImage();
                 MapManager.Instance.CurChunk.droppedObjList.Add(dropItem);
 

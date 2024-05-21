@@ -15180,6 +15180,7 @@ MonoBehaviour:
   Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: a249df200a1408e4a803ff5442fdd115, type: 2}
   now_hp: 0
+  speedMultiply: 1
   ptc_damaged: {fileID: 2300603720260369357}
   ptc_dead: {fileID: 2581989396275217483, guid: 9eda5d2dc0b199b44a7fa9efc49e62e0, type: 3}
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
@@ -15189,7 +15190,7 @@ MonoBehaviour:
   Model: {fileID: 25062135863041347}
   burrow_time: {x: 5, y: 5}
   not_queue: 1
-  meat_num: 0
+  customMeatItem: {fileID: 11400000, guid: db40660cb38926042ab235f851fc31e2, type: 2}
   meatdrop_rate: 100
 --- !u!114 &2924581199071168474
 MonoBehaviour:
