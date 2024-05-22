@@ -3890,6 +3890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackButton: {fileID: 7466246021739145686}
   menuWindow: {fileID: 3620313848005597082}
+  AudioMixer: {fileID: 24100000, guid: 4f9f79d575086b249bd72dafad048149, type: 2}
   isVSync: 0
   isFullScreen: 0
   resolution_toggle: {fileID: 4682295024482810008}
@@ -7391,10 +7392,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 8421032626466321369}
   m_HandleRect: {fileID: 8868051110631967734}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
