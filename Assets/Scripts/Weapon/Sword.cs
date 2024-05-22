@@ -7,8 +7,6 @@ public class Sword : WeaponBase
 {
     [SerializeField] private SwordState currentState = SwordState.Scan;
 
-    public Vector3 offset = new Vector3(1, 0, 0); // �÷��̾�κ����� ����� ��ġ
-
     private Vector3 direction;
     private Vector3 originalPosition;
 

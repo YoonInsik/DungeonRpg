@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-//using static UnityEditor.Progress;
 
 public class Inventory : Singleton<Inventory>
 {
@@ -17,6 +15,8 @@ public class Inventory : Singleton<Inventory>
 
     [SerializeField] private List<CookingItem> cookingList;
 
+    [SerializeField] private List<List<Vector2>> weaponPositionsList;
+
     public Player player;
     public CookingStatIncrease statUp;
     public AlertText alertText;
@@ -26,6 +26,48 @@ public class Inventory : Singleton<Inventory>
         itemDataList = new List<PlayerItemData>();
         statUp = UnitManager.Instance.player.GetComponent<CookingStatIncrease>();
         player = UnitManager.Instance.player.GetComponent<Player>();
+
+        weaponPositionsList = new List<List<Vector2>>();
+        weaponPositionsList.Add(new List<Vector2>
+        { // one weapon
+            new Vector2(0, 0.1f)
+        });
+        weaponPositionsList.Add(new List<Vector2>
+        { // two weapon
+            new Vector2(0.5f, 0.1f),
+            new Vector2(-0.5f, 0.1f)
+        });
+        weaponPositionsList.Add(new List<Vector2>
+        { // three weapon
+            new Vector2(0.5f, 0.1f),
+            new Vector2(-0.5f,0.1f),
+            new Vector2(0, 1f)
+        });
+        weaponPositionsList.Add(new List<Vector2>
+        { // four weapon
+            new Vector2(0.5f, 0.1f),
+            new Vector2(-0.5f,0.1f),
+            new Vector2(0.5f, 1),
+            new Vector2(-0.5f,1)
+
+        });
+        weaponPositionsList.Add(new List<Vector2>
+        { // five weapon
+            new Vector2(0.5f, -0.1f),
+            new Vector2(-0.5f, -0.1f),
+            new Vector2(0.8f, 0.5f),
+            new Vector2(-0.8f, 0.5f),
+            new Vector2(0, 1f)
+        });
+        weaponPositionsList.Add(new List<Vector2>
+        { // six weapon
+            new Vector2(0.5f, -0.1f),
+            new Vector2(-0.5f, -0.1f),
+            new Vector2(0.8f, 0.5f),
+            new Vector2(-0.8f, 0.5f),
+            new Vector2(0.5f, 1f),
+            new Vector2(-0.5f, 1f)
+        });
     }
 
     public void AddMeat(MeatItem meat)
@@ -107,6 +149,7 @@ public class Inventory : Singleton<Inventory>
                 {
                     child.gameObject.SetActive(true);
                     playerItem.itemInstance = child.gameObject.GetComponent<WeaponBase>();
+                    RepositionWeapons();
                     print(child.name);
                 }
             }
@@ -115,6 +158,16 @@ public class Inventory : Singleton<Inventory>
         playerItem.level++;
         playerItem.itemInstance.LevelUp();
         // item damage, stat level up
+    }
+
+    private void RepositionWeapons()
+    {
+        var positions = weaponPositionsList[itemDataList.Count - 1];
+
+        for (int index = 0; index < itemDataList.Count; index++)
+        {
+            itemDataList[index].itemInstance.offset = positions[index];
+        }
     }
 }
 

@@ -193,10 +193,6 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: startWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 1f3513866ff3f3f499f764ba9ad72846, type: 2}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
       propertyPath: kitchenKnife
       value: 
       objectReference: {fileID: 11400000, guid: 675223625e12db646af53cf8ca3e3625, type: 2}
@@ -204,38 +200,6 @@ PrefabInstance:
       propertyPath: levelUpPanel
       value: 
       objectReference: {fileID: 2088550850}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: itemDatas.Array.data[16]
-      value: 
-      objectReference: {fileID: 11400000, guid: 10805982e4f27e746bd825d48a07c9fd, type: 2}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: meleeWeapons.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8851647500036418646, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

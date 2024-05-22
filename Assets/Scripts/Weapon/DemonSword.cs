@@ -7,8 +7,6 @@ public class DemonSword : WeaponBase
 {
     public SwordState currentState = SwordState.Scan;
 
-    public Vector3 offset = new Vector3(-1, 1, 0); // �÷��̾�κ����� ����� ��ġ
-
     private Vector3 direction;
     private Vector3 originalPosition;
 

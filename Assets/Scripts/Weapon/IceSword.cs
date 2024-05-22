@@ -6,8 +6,6 @@ public class IceSword : WeaponBase
 {
     public SwordState currentState = SwordState.Scan;
 
-    public Vector3 offset = new Vector3(0, 2, 0); // 플레이어로부터의 상대적 위치
-
     private Vector3 direction;
     private Vector3 originalPosition;
 
