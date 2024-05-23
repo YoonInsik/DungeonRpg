@@ -46,6 +46,7 @@ public class FurnaceItemUI : Singleton<FurnaceItemUI>
                 }
             }
         }
+        SoundManager.Instance.PlayCooking();
         inventory.AddCookingItem(item);
         Debug.Log("아이템추가완료");
         CookingItemUI.AddCookingItemUI();

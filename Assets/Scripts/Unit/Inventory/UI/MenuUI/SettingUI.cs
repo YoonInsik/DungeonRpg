@@ -13,7 +13,7 @@ public class SettingUI : MonoBehaviour
     public GameObject BackButton;
     public GameObject menuWindow;
     public AudioMixer AudioMixer;
-    float volume;
+
     //public GameObject[] settingUIs;
 
     public bool isVSync;
@@ -40,14 +40,12 @@ public class SettingUI : MonoBehaviour
         InitVSyncToggle();
 
         sound_slider.onValueChanged.AddListener(SetVolume);
-        //AudioMixer.GetFloat("GameVolume", out volume);
-        //Debug.Log(volume);
-        //sound_slider.value = Mathf.Log10(volume) * 20;
     }
 
     public void SetVolume(float volume)
     {
-        AudioMixer.SetFloat("GameVolume", Mathf.Log10(volume) * 20);
+        AudioListener.volume = volume;
+        //AudioMixer.SetFloat("GameVolume", Mathf.Log10(volume) * 20);
         Debug.Log(volume);
     }
 
