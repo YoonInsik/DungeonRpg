@@ -8,6 +8,7 @@ public class DemonGun : WeaponBase
     public GameObject demonBulletPrefab;
 
     private IObjectPool<DemonBullet> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -18,24 +19,33 @@ public class DemonGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = targetPos - transform.position;
-        //var demonBullet = Instantiate(demonBulletPrefab, transform.position, Quaternion.identity).GetComponent<DemonBullet>();
         var demonBullet = pool.Get();
-        demonBullet.transform.position = transform.position + dir.normalized;
-        demonBullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
-            
+        demonBullet.transform.position = transform.position + direction.normalized;
+        demonBullet.transform.localScale = demonBullet.transform.localScale * player.ATKRangeDelicacy();
+        demonBullet.Shoot(direction.normalized, CalculateDamage(), data.speed);
+
         elapsedTime = 0.0f;
     }
 

@@ -102,8 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 9752e6706bc20a34d8af75bd0d7f8b20, type: 2}
   attackScale: {x: 0, y: 0}
-  currentState: 0
   offset: {x: 1, y: 0, z: 0}
+  currentState: 0
 --- !u!50 &5281523264092540214
 Rigidbody2D:
   serializedVersion: 4

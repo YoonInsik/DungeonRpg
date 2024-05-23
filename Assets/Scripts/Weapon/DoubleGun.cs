@@ -8,6 +8,7 @@ public class DoubleGun : WeaponBase
     public GameObject bulletPrefab;
 
     private IObjectPool<Bullet> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -18,28 +19,33 @@ public class DoubleGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = targetPos - transform.position;
-
-        if (dir.magnitude > data.range)
-            return;
-
-        //var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
         var bullet = pool.Get();
-        bullet.transform.position = transform.position + dir.normalized;
-        bullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
-            
+        bullet.transform.position = transform.position + direction.normalized;
+        bullet.transform.localScale = bullet.transform.localScale * player.ATKRangeDelicacy();
+        bullet.Shoot(direction.normalized, CalculateDamage(), data.speed);
+
         elapsedTime = 0.0f;
     }
 

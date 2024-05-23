@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: levelUpPanel
       value: 
       objectReference: {fileID: 2088550850}
+    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
+      propertyPath: itemDatas.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d3d9f664d8622c46be1ca5139bc184c, type: 2}
     - target: {fileID: 8851647500036418646, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

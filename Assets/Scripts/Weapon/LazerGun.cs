@@ -8,6 +8,7 @@ public class LazerGun : WeaponBase
     public GameObject lazerPrefab;
 
     private IObjectPool<Lazer> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -18,26 +19,32 @@ public class LazerGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
-
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = (targetPos - transform.position).normalized; // ��ǥ ���� ����ȭ
-
-        if (dir.magnitude > data.range)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
         var lazer = pool.Get();
         lazer.transform.position = transform.position; // ���� ��ġ ����
-        lazer.Shoot(dir.normalized, CalculateDamage(), data.speed);
+        lazer.transform.localScale = lazer.transform.localScale * player.ATKRangeDelicacy();
+        lazer.Shoot(direction.normalized, CalculateDamage(), data.speed);
 
         elapsedTime = 0.0f;
     }

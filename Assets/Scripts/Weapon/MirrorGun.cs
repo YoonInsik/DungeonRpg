@@ -10,6 +10,7 @@ public class MirrorGun : WeaponBase
     public GameObject mirrorMirrorBulletPrefab;
 
     private IObjectPool<MirrorBullet> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -20,27 +21,32 @@ public class MirrorGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = targetPos - transform.position;
-
-        if (dir.magnitude > data.range)
-            return;
-
-        //var mirrorMirrorBullet = Instantiate(mirrorMirrorBulletPrefab, transform.position, Quaternion.identity).GetComponent<MirrorBullet>();
         var mirrorMirrorBullet = pool.Get();
-        mirrorMirrorBullet.transform.position = transform.position + dir.normalized;
-        mirrorMirrorBullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
+        mirrorMirrorBullet.transform.position = transform.position + direction.normalized;
+        mirrorMirrorBullet.transform.localScale = mirrorMirrorBullet.transform.localScale * player.ATKRangeDelicacy();
+        mirrorMirrorBullet.Shoot(direction.normalized, CalculateDamage(), data.speed);
 
         elapsedTime = 0.0f;
     }

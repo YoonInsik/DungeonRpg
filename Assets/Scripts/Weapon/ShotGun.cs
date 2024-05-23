@@ -10,6 +10,7 @@ public class ShotGun : WeaponBase
     public GameObject bulletPrefab;
 
     private IObjectPool<Bullet> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -20,29 +21,34 @@ public class ShotGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if(elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
-
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = targetPos - transform.position;
-
-        if (dir.magnitude > data.range)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
         // �Ѿ��� �߻��ϴ� �⺻ ���� ����
-        FireBullet(dir.normalized); // �⺻ �������� �Ѿ� �߻�
+        FireBullet(direction.normalized); // �⺻ �������� �Ѿ� �߻�
 
         // �Ѿ��� �߰��� �翷���� 15���� �߻�
-        FireBullet(Quaternion.Euler(0, 0, 10) * dir.normalized); // ������ 15��
-        FireBullet(Quaternion.Euler(0, 0, -10) * dir.normalized); // ���� 15��
+        FireBullet(Quaternion.Euler(0, 0, 10) * direction.normalized); // ������ 15��
+        FireBullet(Quaternion.Euler(0, 0, -10) * direction.normalized); // ���� 15��
         
         elapsedTime = 0.0f;
     }
@@ -51,6 +57,7 @@ public class ShotGun : WeaponBase
     {
         var bullet = pool.Get();
         bullet.transform.position = transform.position + direction;
+        bullet.transform.localScale = bullet.transform.localScale * player.ATKRangeDelicacy();
         bullet.Shoot(direction, CalculateDamage(), data.speed);
     }
 
