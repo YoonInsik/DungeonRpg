@@ -1965,6 +1965,7 @@ MonoBehaviour:
   check_maxhp: 0
   check_nowhp: 0
   player_scc: {fileID: 1216851011834990549}
+  grave: {fileID: 3100519699200575949, guid: 0e6c2bc79e0840f4191d4ef626a07e09, type: 3}
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
   damamged_sound:
   - {fileID: 4518047138836528428}

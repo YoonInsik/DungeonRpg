@@ -16,6 +16,9 @@ public class Player_HpManager : MonoBehaviour
     [Header("연결")]
     [SerializeField] Player_SpriteColorControl player_scc;
 
+    [Header("죽을 시 소환")]
+    [SerializeField] GameObject grave;
+
     private void Awake()
     {
         instance = this;
@@ -89,6 +92,8 @@ public class Player_HpManager : MonoBehaviour
     void Dead()
     {
         GameOverPanel.instance.Object_On(false);
+        Destroy(gameObject);
+        Instantiate(grave, gameObject.transform.position, Quaternion.identity);
     }
 
 }
