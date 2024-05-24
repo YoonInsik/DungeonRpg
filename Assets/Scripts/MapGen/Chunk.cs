@@ -74,6 +74,9 @@ public class Chunk : MonoBehaviour
         // �����
         var decreaseFullnessCo = StartCoroutine(UnitManager.Instance.player.DecreaseFullness());
 
+        // 체력 재생
+        var recoveryCo = StartCoroutine(Player_HpManager.instance.RecoveryPerSec(1));
+
         // 요리 버프 지속시간 시작
         UnitManager.Instance.player.pause = false;
         // ���� �ݺ� ��ȯ
@@ -86,13 +89,16 @@ public class Chunk : MonoBehaviour
             yield break;
 
         // �ð� ����
-        StopCoroutine(decreaseFullnessCo);
+        if (decreaseFullnessCo != null)
+            StopCoroutine(decreaseFullnessCo);
         
 
         // 요리 버프 지속 일시 정지
         UnitManager.Instance.player.pause = true;
         //StopCoroutine(enemySpawnCo);
         //  ----> ���̺갡 ������� �� ���̺� ũ��(�ð��� �ֱ⿡ ���� ����) ������ �־� ���� ������ ��� ��. ���� ���Ͱ� ���� �ÿ��� ���� ������ ��������.
+
+        StopCoroutine(recoveryCo);
 
         EnemyQueueManager.instance.ClearMonster();
         UnitManager.Instance.enemies.Clear();

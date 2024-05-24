@@ -44,6 +44,14 @@ public class Player_HpManager : MonoBehaviour
         check_nowhp = m_player.HP;
         check_maxhp = m_player.MaxHP;
     }
+    public IEnumerator RecoveryPerSec(int _heal)
+    {
+        while (true)
+        {
+            Recovery(_heal);
+            yield return new WaitForSeconds(3);
+        }
+    }
 
     [Header("ÇÇÇØ")]
     [SerializeField] GameObject damagescale;

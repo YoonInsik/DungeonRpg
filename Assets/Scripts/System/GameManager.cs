@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
         var kitchenKnifeInInventory = Inventory.Instance.itemDataList.Find(i => i.itemData == kitchenKnife);
         if (kitchenKnifeInInventory != null)
         {
-            amount = amount * 1.2f;
+            amount = amount * 1.5f;
         }
         Debug.Log("Gain EXP: " + amount);
         Exp += amount;

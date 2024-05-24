@@ -16,17 +16,12 @@ public class KitchenKnife : WeaponBase
     }
     void Start()
     {
-        // �÷��̾� ���� ������Ʈ�� �±׸� ���� ã��, Player ������Ʈ�� �����ɴϴ�.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
-
+        player = GetComponentInParent<Player>();
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
 
         switch (currentState)
@@ -52,8 +47,10 @@ public class KitchenKnife : WeaponBase
 
             if (distance <= data.range)
             {
-                // ���� ��ġ ���
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
                 currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
             }
         }
     }

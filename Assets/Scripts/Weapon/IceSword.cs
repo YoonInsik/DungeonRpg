@@ -11,20 +11,13 @@ public class IceSword : WeaponBase
 
     private void Awake()
     {
+        player = GetComponentInParent<Player>();
         attackScale = transform.localScale;
-    }
-    void Start()
-    {
-        // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
 
         switch (currentState)
@@ -50,7 +43,10 @@ public class IceSword : WeaponBase
 
             if (distance <= data.range)
             {
-                currentState = global::SwordState.Attack;
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
+                currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
             }
         }
     }

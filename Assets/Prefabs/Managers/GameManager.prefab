@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1168d542d94b244a9a9e0094539f21b, type: 2}
   - {fileID: 11400000, guid: 8d3d9f664d8622c46be1ca5139bc184c, type: 2}
   levelUpPanel: {fileID: 0}
-  kitchenKnife: {fileID: 0}
+  kitchenKnife: {fileID: 11400000, guid: 675223625e12db646af53cf8ca3e3625, type: 2}
   levelUpAmount: 0
 --- !u!114 &7102423766714240894
 MonoBehaviour:

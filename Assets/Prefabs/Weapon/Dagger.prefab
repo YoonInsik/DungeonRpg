@@ -102,9 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 01fc4a0a7f369294fa0d8d1b852ca471, type: 2}
   attackScale: {x: 0, y: 0}
-  currentState: 0
-  player: {fileID: 0}
   offset: {x: -1, y: 0, z: 0}
+  currentState: 0
 --- !u!50 &1242539233396973760
 Rigidbody2D:
   serializedVersion: 4
@@ -164,8 +163,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 0.24}
+  m_Offset: {x: 0.42427695, y: -0.00000005057775}
+  m_Size: {x: 0.9315766, y: 0.2400039}
   m_Direction: 1
 --- !u!1 &7276093119738633330
 GameObject:

@@ -16,18 +16,14 @@ public class Sword : WeaponBase
     }
     void Start()
     {
-        // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
+        player = GetComponentInParent<Player>();
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
-        
+
         switch (currentState)
         {
             case SwordState.Scan:
@@ -51,7 +47,10 @@ public class Sword : WeaponBase
 
             if (distance <= data.range)
             {
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
                 currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
             }
         }
     }

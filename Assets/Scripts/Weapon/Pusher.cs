@@ -17,12 +17,8 @@ public class Pusher : WeaponBase
     }
     void Start()
     {
-        // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
+        player = GetComponentInParent<Player>();
+
     }
 
     void Update()

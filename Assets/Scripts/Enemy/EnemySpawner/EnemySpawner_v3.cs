@@ -56,8 +56,10 @@ namespace SHS
 
             int r_value = Random.Range(1, 10);
 
-            while (wave_count < wave_maxcount)
+            while (GameManager.Instance.Timer > 5)
             {
+                Debug.Log($"{wave_count} < {wave_maxcount}");
+
                 wave_count++;
 
                 EnemyGroup[] set_eg;
@@ -101,7 +103,7 @@ namespace SHS
                 //5초마다 생성
                 yield return new WaitForSeconds(5f);
             }
-
+            Debug.Log($"{wave_level} 웨이브 종료");
             wave_level++;
 
         }
@@ -109,7 +111,7 @@ namespace SHS
         [Header("웨이브 설정")]
         [SerializeField] int wave_level;
         [SerializeField] int wave_count;
-        [SerializeField] int wave_maxcount { get => GameManager.Instance.Stage * 5; }
+        [SerializeField] int wave_maxcount { get => 3 + GameManager.Instance.Stage * 2 - 1; }
 
         [Header("Part 1")]  //하급몬스터1(1/5/10), 30초후 엘리트몬스터1 (150/5/1)
         [SerializeField] EnemyGroup[] wave1_eg;

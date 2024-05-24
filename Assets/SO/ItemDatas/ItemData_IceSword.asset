@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
   m_Name: ItemData_IceSword
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 607831742, guid: 6eb16e372762d6b4cb708c44ebfab931, type: 3}
   itemName: IceSword
   itemTag: 0
-  itemDesc: 
+  itemDesc: "\uD0C0\uACA9\uD558\uBA74 \uB290\uB9AC\uAC8C\uD558\uB294 \uAC80."
   interval: 1
-  speed: 10
-  range: 10
+  speed: 8
+  range: 2.8
   levelDamages:
-  - 0
-  - 20
-  - 30
+  - 6
+  - 12
+  - 18

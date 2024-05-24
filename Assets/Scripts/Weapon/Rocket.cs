@@ -6,26 +6,15 @@ using UnityEngine.Pool;
 
 public class Rocket : MonoBehaviour
 {
-    Player player;
-    float damage = 0;
+    public Player player;
     float speed = 10.0f;
     Vector3 direction;
     bool isMoving = true;
     bool isReturned = false;
-    private Vector2 attackScale;
+    public Vector2 attackScale;
     private IObjectPool<Rocket> managedPool;
 
     public Boom boom;
-
-    private void Start()
-    {
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
-        attackScale = transform.localScale;
-    }
 
     private void FixedUpdate()
     {
@@ -42,6 +31,7 @@ public class Rocket : MonoBehaviour
         boom.damage = _damage;
         speed = _speed;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle - 90); // ��������Ʈ�� �ٶ� ���� ����
         isMoving = true;

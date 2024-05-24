@@ -9,23 +9,18 @@ public class Dagger : WeaponBase
 
     private Vector3 direction;
     private Vector3 originalPosition;
+    private Collider2D col;
 
     private void Awake()
     {
+        player = GetComponentInParent<Player>();
         attackScale = transform.localScale;
-    }
-    void Start()
-    {
-        // �÷��̾� ���� ������Ʈ�� �±׸� ���� ã��, Player ������Ʈ�� �����ɴϴ�.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
+        col = GetComponent<Collider2D>();
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
 
         switch (currentState)
@@ -51,8 +46,10 @@ public class Dagger : WeaponBase
 
             if (distance <= data.range)
             {
-                // ���� ��ġ ���
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
                 currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
             }
         }
     }
@@ -75,6 +72,7 @@ public class Dagger : WeaponBase
     void HandleAttack()
     {
         transform.parent = null;
+        col.enabled = true;
 
         originalPosition = player.transform.position + offset;
         Vector3 attackPosition = originalPosition + direction * data.range;
@@ -92,6 +90,7 @@ public class Dagger : WeaponBase
     void HandleReturning()
     {
         transform.parent = player.transform;
+        col.enabled = false;
 
         originalPosition = player.transform.position + offset;
 

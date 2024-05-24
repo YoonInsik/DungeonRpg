@@ -186,8 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 675223625e12db646af53cf8ca3e3625, type: 2}
   attackScale: {x: 0, y: 0}
-  currentState: 0
   offset: {x: 1, y: 0, z: 0}
+  currentState: 0
 --- !u!50 &6072932786380522838
 Rigidbody2D:
   serializedVersion: 4
@@ -247,6 +247,6 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.34, y: 0}
   m_Size: {x: 1, y: 0.17}
   m_Direction: 1

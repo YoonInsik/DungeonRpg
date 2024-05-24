@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Jumper
   m_EditorClassIdentifier: 
   enemytype: 1
-  hp: 30
-  hp_scaling: 10
-  speed: 2
+  hp: 20
+  hp_scaling: 5
+  speed: 2.5
   damage: 6
-  damage_scaling: 2
+  damage_scaling: 3

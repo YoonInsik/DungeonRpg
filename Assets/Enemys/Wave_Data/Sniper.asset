@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   enemytype: 2
-  hp: 7
-  hp_scaling: 3
+  hp: 3
+  hp_scaling: 2
   speed: 2
-  damage: 8
-  damage_scaling: 4
+  damage: 3
+  damage_scaling: 2

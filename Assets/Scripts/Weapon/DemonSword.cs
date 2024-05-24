@@ -16,16 +16,13 @@ public class DemonSword : WeaponBase
     }
     void Start()
     {
-        // �÷��̾� ���� ������Ʈ�� �±׸� ���� ã��, Player ������Ʈ�� �����ɴϴ�.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
+        player = GetComponentInParent<Player>();
+
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
 
         switch (currentState)
@@ -51,8 +48,10 @@ public class DemonSword : WeaponBase
 
             if (distance <= data.range)
             {
-                // ���� ��ġ ���
-                currentState = global::SwordState.Attack;
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
+                currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
             }
         }
     }
@@ -111,7 +110,7 @@ public class DemonSword : WeaponBase
         {
             float damage = CalculateDamage();
             collision.GetComponent<Enemy>().Damaged(damage);
-            player.HP += Mathf.RoundToInt(damage * 0.1f);
+            Player_HpManager.instance.Recovery((int)(damage * 0.1f));
         }
     }
 }

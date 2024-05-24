@@ -193,10 +193,6 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
-      propertyPath: kitchenKnife
-      value: 
-      objectReference: {fileID: 11400000, guid: 675223625e12db646af53cf8ca3e3625, type: 2}
-    - target: {fileID: 5034163853111809620, guid: 20a3a4e6fab9ff2489151282e87d720e, type: 3}
       propertyPath: levelUpPanel
       value: 
       objectReference: {fileID: 2088550850}
@@ -788,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: wave1_eg.Array.data[1].enemystat
@@ -824,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[2].enemyGroup.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[3].enemyGroup.Array.size
@@ -832,11 +828,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[1].enemyGroup.Array.size
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: hardEnemyGroupList.Array.data[2].enemyGroup.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[0].enemyGroup.Array.data[0].enemystat
@@ -868,27 +868,27 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[0].enemyGroup.Array.data[0].enemyscale
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[0].enemyGroup.Array.data[1].enemyscale
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[1].enemyGroup.Array.data[0].enemyscale
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[1].enemyGroup.Array.data[1].enemyscale
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[2].enemyGroup.Array.data[0].enemyscale
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[2].enemyGroup.Array.data[1].enemyscale
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: enemyGroupList.Array.data[2].enemyGroup.Array.data[2].enemyscale
@@ -901,7 +901,7 @@ PrefabInstance:
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.data[1].enemystat
       value: 
-      objectReference: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
+      objectReference: {fileID: 11400000, guid: f4bfc06fac87b824f874ee1f704379ff, type: 2}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.data[2].enemystat
       value: 
@@ -919,20 +919,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f4bfc06fac87b824f874ee1f704379ff, type: 2}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: hardEnemyGroupList.Array.data[2].enemyGroup.Array.data[0].enemystat
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: hardEnemyGroupList.Array.data[2].enemyGroup.Array.data[1].enemystat
+      value: 
+      objectReference: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.data[0].enemyscale
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.data[1].enemyscale
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.data[2].enemyscale
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[1].enemyGroup.Array.data[0].enemyscale
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[1].enemyGroup.Array.data[1].enemyscale
@@ -941,6 +949,18 @@ PrefabInstance:
     - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
       propertyPath: hardEnemyGroupList.Array.data[1].enemyGroup.Array.data[2].enemyscale
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: hardEnemyGroupList.Array.data[2].enemyGroup.Array.data[0].enemyscale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: hardEnemyGroupList.Array.data[2].enemyGroup.Array.data[1].enemyscale
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832374557906566969, guid: 0241c74797fc81e4e83125d7f2e6e760, type: 3}
+      propertyPath: hardEnemyGroupList.Array.data[0].enemyGroup.Array.data[1].use_customradius
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

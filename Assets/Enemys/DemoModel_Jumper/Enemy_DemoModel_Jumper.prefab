@@ -4853,9 +4853,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 341373097
+  m_SortingLayer: 5
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5026,7 +5026,7 @@ MonoBehaviour:
   player_layer:
     serializedVersion: 2
     m_Bits: 1024
-  attack_radius: 3
+  attack_radius: 2.8
   attack_cooltime_set: 1
   attack_cooltime: 0
 --- !u!1 &1412445946102151597
@@ -14855,8 +14855,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 341373097
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -19743,8 +19743,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 341373097
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 4
   m_MeshDistribution: 0
@@ -20238,7 +20238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351059488532938539}
   - component: {fileID: 7223417367860355827}
-  - component: {fileID: 5624309334464034055}
+  - component: {fileID: 4696096069550243430}
   - component: {fileID: 1188273396287115161}
   - component: {fileID: 7085772465283313024}
   - component: {fileID: 4766813758510810837}
@@ -20285,6 +20285,7 @@ MonoBehaviour:
   Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: 3eb161c73099dd641b036c102a1f043c, type: 2}
   now_hp: 0
+  speedMultiply: 1
   ptc_damaged: {fileID: 4899996643852966262}
   ptc_dead: {fileID: 2581989396275217483, guid: 9eda5d2dc0b199b44a7fa9efc49e62e0, type: 3}
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
@@ -20294,10 +20295,10 @@ MonoBehaviour:
   Model: {fileID: 6711882665319521072}
   burrow_time: {x: 3, y: 5}
   not_queue: 0
-  meat_num: 1
+  customMeatItem: {fileID: 0}
   meatdrop_rate: 100
---- !u!58 &5624309334464034055
-CircleCollider2D:
+--- !u!70 &4696096069550243430
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -20328,9 +20329,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2
+  m_Offset: {x: -0.013243938, y: -0.18982573}
+  m_Size: {x: 2.5804234, y: 1.7328385}
+  m_Direction: 1
 --- !u!50 &1188273396287115161
 Rigidbody2D:
   serializedVersion: 4
