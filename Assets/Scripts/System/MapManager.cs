@@ -134,22 +134,22 @@ public class MapManager : Singleton<MapManager>
     {
         if ((moveChunkPos - playerChunkPos) == Vector2Int.right)
         {
-            rightChunkText.text = chunkItem.data.StringChunkType;
+            //rightChunkText.text = chunkItem.data.StringChunkType;
             rightChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
         else if ((moveChunkPos - playerChunkPos) == Vector2Int.down)
         {
-            downChunkText.text = chunkItem.data.StringChunkType;
+            //downChunkText.text = chunkItem.data.StringChunkType;
             downChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
         else if ((moveChunkPos - playerChunkPos) == Vector2Int.left)
         {
-            leftChunkText.text = chunkItem.data.StringChunkType;
+            //leftChunkText.text = chunkItem.data.StringChunkType;
             leftChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
         else if ((moveChunkPos - playerChunkPos) == Vector2Int.up)
         {
-            upChunkText.text = chunkItem.data.StringChunkType;
+            //upChunkText.text = chunkItem.data.StringChunkType;
             upChunkDropTableUI.SetDropItemImages(chunkItem.data.dropTable);
         }
     }
