@@ -17,6 +17,6 @@ public class BaechuGuk : CookingItem
 
         int Level = Random.Range(1, 3);
 
-        ApplyOtherStat(dict, "투사체속도", Level);
+        ApplyOtherStat(dict, "ATKSpeedLevel", Level);
     }
 }
