@@ -81,7 +81,7 @@ public class Chunk : MonoBehaviour
         //  ----> EnemySpawner_v3�� ���̺� ����� ���� �Է�
         EnemySpawner_v3.Instance.MakeWave();
 
-        yield return StartCoroutine(GameManager.Instance.StartTimer(30));
+        yield return StartCoroutine(GameManager.Instance.StartTimer(25 + 5 * GameManager.Instance.Stage));
         if (UnitManager.Instance.player.HP <= 0)
             yield break;
 

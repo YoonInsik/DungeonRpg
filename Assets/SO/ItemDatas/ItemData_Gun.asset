@@ -18,9 +18,9 @@ MonoBehaviour:
   itemDesc: "\uAE30\uBCF8 \uBB34\uAE30. \uC57D\uD558\uC9C0\uB9CC \uACF5\uACA9\uC18D\uB3C4\uAC00
     \uBE60\uB974\uB2E4."
   interval: 0.8
-  speed: 15
-  range: 7
+  speed: 12
+  range: 4.5
   levelDamages:
-  - 12
-  - 20
-  - 30
+  - 8
+  - 14
+  - 25

@@ -96,12 +96,8 @@ MonoBehaviour:
   wave_count: 0
   wave_maxcount: 5
   wave1_eg:
-  - enemyscale: 4
+  - enemyscale: 5
     enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
-    use_customradius: 0
-    customradius: {x: 0, y: 0}
-  - enemyscale: 1
-    enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
   wave2_eg:

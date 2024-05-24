@@ -25,5 +25,6 @@ public class ItemSelectPanel : MonoBehaviour
     public void SelectItem()
     {
         UnitManager.Instance.player.GetInventory.AddItemData(data);
+        GameManager.Instance.levelUpAmount--;
     }
 }

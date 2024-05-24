@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -65,65 +66,27 @@ namespace SHS
                 switch (wave_level)
                 {
                     default:
-
-                        switch (r_value)
-                        {
-                            default: set_eg = wave_r_1; break;
-
-                            case 1:
-                                set_eg = wave_r_1;
-                                break;
-
-                            case 2:
-                                set_eg = wave_r_2;
-                                break;
-
-                            case 3:
-                                set_eg = wave_r_3;
-                                break;
-
-                            case 4:
-                                set_eg = wave_r_4;
-                                break;
-
-                            case 5:
-                                set_eg = wave_r_5;
-                                break;
-
-                            case 6:
-                                set_eg = wave_r_6;
-                                break;
-
-                            case 7:
-                                set_eg = wave_r_7;
-                                break;
-
-                            case 8:
-                                set_eg = wave_r_8;
-                                break;
-
-                            case 9:
-                                set_eg = wave_r_9;
-                                break;
-                        }
-
+                    case 1:
+                        set_eg = wave1_eg;
                         break;
 
-                    case 1:
+                    case 2:
+                    case 3:
+                        set_eg = enemyGroupList[Random.Range(0, enemyGroupList.Count)].enemyGroup;
+                        break;
 
-                        set_eg = wave1_eg;
+                    case 4:
+                        set_eg = hardEnemyGroupList[Random.Range(0, hardEnemyGroupList.Count)].enemyGroup;
+                        break;
 
-                        if (wave_count == 4)
+                    case 5:
+                        set_eg = hardEnemyGroupList[Random.Range(0, hardEnemyGroupList.Count)].enemyGroup;
+
+                        if (wave_count == 1)
                         {
                             Debug.Log("보스 생성");
                             sp_enemyspawn.BossSpawn(101);
                         }
-
-                        break;
-
-                    case 2:
-
-                        set_eg = wave2_eg;
 
                         break;
                 }
@@ -146,7 +109,7 @@ namespace SHS
         [Header("웨이브 설정")]
         [SerializeField] int wave_level;
         [SerializeField] int wave_count;
-        [SerializeField] int wave_maxcount = 12;
+        [SerializeField] int wave_maxcount { get => GameManager.Instance.Stage * 5; }
 
         [Header("Part 1")]  //하급몬스터1(1/5/10), 30초후 엘리트몬스터1 (150/5/1)
         [SerializeField] EnemyGroup[] wave1_eg;
@@ -164,6 +127,8 @@ namespace SHS
         [SerializeField] EnemyGroup[] wave_r_7;
         [SerializeField] EnemyGroup[] wave_r_8;
         [SerializeField] EnemyGroup[] wave_r_9;
+        [SerializeField] List<ListEnemyGroup> enemyGroupList;
+        [SerializeField] List<ListEnemyGroup> hardEnemyGroupList;
 
         public int Get_WaveLevel()
         {
@@ -308,4 +273,11 @@ namespace SHS
 
         }
     }
+
+    [System.Serializable]
+    public class ListEnemyGroup
+    {
+        public EnemyGroup[] enemyGroup;
+    }
 }
+
