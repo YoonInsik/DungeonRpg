@@ -222,6 +222,14 @@ namespace SHS
                     case EnemyType.Seperater:
                         newEnemy = enemyqueue.GetSepertEnemy();
                         break;
+
+                    case EnemyType.Shotgun:
+                        newEnemy = enemyqueue.GetShotgunEnemy();
+                        break;
+
+                    case EnemyType.Skater:
+                        newEnemy = enemyqueue.GetSkaterEnemy();
+                        break;
                 }
 
                 newEnemy.Reset_MyStat(set_eg.enemystat);

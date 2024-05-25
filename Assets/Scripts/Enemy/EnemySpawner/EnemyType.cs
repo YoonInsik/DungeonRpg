@@ -5,7 +5,9 @@ namespace SHS
         Follower,
         Jumper,
         Sniper,
-        Seperater
+        Seperater,
+        Shotgun,
+        Skater
     }
 
 }

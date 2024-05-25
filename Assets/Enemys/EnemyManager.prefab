@@ -288,6 +288,8 @@ MonoBehaviour:
   JumpEnemy_prefab: {fileID: 7893593093487636591, guid: 718e3c6ae88c3774299d02ac116682ce, type: 3}
   SnipeEnemy_prefab: {fileID: 2600698757297207826, guid: 957faba42f8cea64896fbf268b38b56f, type: 3}
   SepertEnemy_prefab: {fileID: 8354472000812314136, guid: 281030ee9fa8a9c4dbd7e6b48ea5acea, type: 3}
+  ShotgunEnemy_prefab: {fileID: 2600698757297207826, guid: 1040fa2176b834e49ba2fb8d386d5deb, type: 3}
+  SkaterEnemy_prefab: {fileID: 7302849041828497277, guid: 0d576982642693744a8d24c4b079e486, type: 3}
 --- !u!1 &9206763247878906735
 GameObject:
   m_ObjectHideFlags: 0

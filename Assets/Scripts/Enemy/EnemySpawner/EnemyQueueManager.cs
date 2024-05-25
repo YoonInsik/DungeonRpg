@@ -36,6 +36,7 @@ namespace SHS
                 JumpEnemyQueue.Enqueue(CreateNewJumpEnemy());
                 SnipeEnemyQueue.Enqueue(CreateNewSnipeEnemy());
                 SepertEnemyQueue.Enqueue(CreateNewSepertEnemy());
+                ShotgunEnemyQueue.Enqueue(CreateNewShotgunEnemy());
             }
         }
 
@@ -81,6 +82,11 @@ namespace SHS
                 //Seperate
                 case EnemyType.Seperater:
                     instance.SepertEnemyQueue.Enqueue(_enemy);
+                    break;
+
+                //Shotgun
+                case EnemyType.Shotgun:
+                    instance.ShotgunEnemyQueue.Enqueue(_enemy);
                     break;
 
             }
@@ -221,6 +227,76 @@ namespace SHS
             else
             {
                 var newObj = instance.CreateNewSepertEnemy();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                return newObj;
+            }
+        }
+
+        #endregion
+
+        #region 샷건 적군 풀링
+
+        [Header("Shotgun 풀링")]
+        [SerializeField] GameObject ShotgunEnemy_prefab;
+
+        public Queue<Enemy> ShotgunEnemyQueue = new Queue<Enemy>();
+
+        Enemy CreateNewShotgunEnemy()
+        {
+            var newObj = Instantiate(ShotgunEnemy_prefab).GetComponent<Enemy>();
+            newObj.gameObject.SetActive(false);
+            newObj.transform.SetParent(transform);
+            return newObj;
+        }
+
+        public Enemy GetShotgunEnemy()
+        {
+            if (instance.ShotgunEnemyQueue.Count > 0)
+            {
+                var obj = instance.ShotgunEnemyQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                return obj;
+            }
+            else
+            {
+                var newObj = instance.CreateNewShotgunEnemy();
+                newObj.gameObject.SetActive(true);
+                newObj.transform.SetParent(null);
+                return newObj;
+            }
+        }
+
+        #endregion
+
+        #region 스케이팅 적군 풀링
+
+        [Header("Shotgun 풀링")]
+        [SerializeField] GameObject SkaterEnemy_prefab;
+
+        public Queue<Enemy> SkaterEnemyQueue = new Queue<Enemy>();
+
+        Enemy CreateNewSkaterEnemy()
+        {
+            var newObj = Instantiate(SkaterEnemy_prefab).GetComponent<Enemy>();
+            newObj.gameObject.SetActive(false);
+            newObj.transform.SetParent(transform);
+            return newObj;
+        }
+
+        public Enemy GetSkaterEnemy()
+        {
+            if (instance.SkaterEnemyQueue.Count > 0)
+            {
+                var obj = instance.SkaterEnemyQueue.Dequeue();
+                obj.transform.SetParent(null);
+                obj.gameObject.SetActive(true);
+                return obj;
+            }
+            else
+            {
+                var newObj = instance.CreateNewSkaterEnemy();
                 newObj.gameObject.SetActive(true);
                 newObj.transform.SetParent(null);
                 return newObj;

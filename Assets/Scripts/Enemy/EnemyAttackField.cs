@@ -9,7 +9,7 @@ namespace SHS
     {
         //인스턴스
         Player_HpManager pd;
-        [SerializeField] Enemy m_enemy;
+        public Enemy m_enemy;
 
 
         private void Start()
@@ -19,6 +19,7 @@ namespace SHS
 
         [Header("공격 세팅")]
         [SerializeField] bool can_attack;
+        [SerializeField] bool will_destroy;
         [SerializeField] LayerMask player_layer;
         [SerializeField] float attack_radius = 1f;
         [SerializeField] float attack_cooltime_set;
@@ -40,6 +41,11 @@ namespace SHS
                 {
                     attack_cooltime = attack_cooltime_set;
                     pd.Damaged(m_enemy.m_stat.damage + m_enemy.m_stat.damage_scaling * (EnemySpawner_v3.Instance.Get_WaveLevel() - 1));
+
+                    if (will_destroy)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
         }

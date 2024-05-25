@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3470250729703146760}
   - component: {fileID: 2668374047802407582}
   - component: {fileID: 8757689464893971799}
+  - component: {fileID: 8230434412198199453}
   m_Layer: 31
   m_Name: Smash_Effect
   m_TagString: Untagged
@@ -26,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978451001831070056}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.23, y: 0.52, z: -0.024272291}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4118300753952949217}
@@ -69,6 +70,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy_time: 0.55
+--- !u!114 &8230434412198199453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978451001831070056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060b1fb210fe1e2499bc1a9f176939a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemy: {fileID: 0}
+  can_attack: 1
+  player_layer:
+    serializedVersion: 2
+    m_Bits: 1024
+  attack_radius: 1
+  attack_cooltime_set: 50
+  attack_cooltime: 0
 --- !u!1 &1329366584620938695
 GameObject:
   m_ObjectHideFlags: 0
