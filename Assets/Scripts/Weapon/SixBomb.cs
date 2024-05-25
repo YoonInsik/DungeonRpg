@@ -10,6 +10,7 @@ public class SixBomb : WeaponBase
     int count = 6;
 
     private IObjectPool<Bomb> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -20,27 +21,33 @@ public class SixBomb : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
-
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 range = targetPos - transform.position;
-
-        if (range.magnitude > data.range)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
         for (int i = 0; i < count; i++)
         {
             var bomb = pool.Get();
             bomb.transform.parent = null;
+            bomb.transform.localScale = bomb.transform.localScale * player.ATKRangeDelicacy();
             bomb.transform.position = transform.position;
 
             float angle = 180 * i / count;

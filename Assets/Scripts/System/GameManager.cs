@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
     public List<ItemData> itemDatas;
 
     public LevelUpPanel levelUpPanel;
-    public KitchenKnife kitchenKnife;
+    public ItemData kitchenKnife;
     public int levelUpAmount;
 
     void Start()
@@ -57,11 +57,12 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateEXP(float amount)
     {
-        if (kitchenKnife.gameObject.activeSelf)
+        var kitchenKnifeInInventory = Inventory.Instance.itemDataList.Find(i => i.itemData == kitchenKnife);
+        if (kitchenKnifeInInventory != null)
         {
-            amount = amount * 1.2f;
+            amount = amount * 1.5f;
         }
-        //Debug.Log("Gain EXP: " + amount);
+        Debug.Log("Gain EXP: " + amount);
         Exp += amount;
 
         if (Exp >= MaxExp) {

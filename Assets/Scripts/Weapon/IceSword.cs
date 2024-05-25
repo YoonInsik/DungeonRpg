@@ -1,60 +1,53 @@
 using SHS;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class IceSword : WeaponBase
 {
-    public enum IceSwordState
+    public SwordState currentState = SwordState.Scan;
+
+    private Vector3 direction;
+    private Vector3 originalPosition;
+
+    private void Awake()
     {
-        Wait,
-        Attack
-    }
-
-    public IceSwordState currentState = IceSwordState.Wait;
-
-    public Player player; // Player 타입으로 player 변수 선언
-    public Vector3 offset = new Vector3(0, 2, 0); // 플레이어로부터의 상대적 위치
-
-    float speed = 10.0f;
-    float attackDistance = 25.0f;
-    private Vector3 attackPosition;
-    private bool isReturning = false;
-
-    void Start()
-    {
-        // 플레이어 게임 오브젝트를 태그를 통해 찾고, Player 컴포넌트를 가져옵니다.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
-
+        player = GetComponentInParent<Player>();
+        attackScale = transform.localScale;
     }
 
     void Update()
     {
-        if (player.scanner.nearestTarget != null)
-        {
-            float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
+        elapsedTime += Time.deltaTime;
+        transform.localScale = attackScale * player.ATKRangeDelicacy();
 
-            if (distanceSqr <= attackDistance)
-            {
-                currentState = IceSwordState.Attack;
-            }
-            else
-            {
-                currentState = IceSwordState.Wait;
-            }
-        }
         switch (currentState)
         {
-            case IceSwordState.Wait:
+            case global::SwordState.Scan:
                 HandleWaiting();
+                HandleScanning();
                 break;
-            case IceSwordState.Attack:
+            case global::SwordState.Attack:
                 HandleAttack();
                 break;
+            case global::SwordState.Return:
+                HandleReturning();
+                break;
+        }
+    }
+
+    void HandleScanning()
+    {
+        if (player.scanner.nearestTarget != null)
+        {
+            float distance = (player.scanner.nearestTarget.position - player.transform.position).magnitude;
+
+            if (distance <= data.range)
+            {
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
+                currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
+            }
         }
     }
 
@@ -66,43 +59,44 @@ public class IceSword : WeaponBase
 
             if (player.scanner.nearestTarget != null)
             {
-                Vector3 direction = player.scanner.nearestTarget.position - transform.position;
+                direction = (player.scanner.nearestTarget.position - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
     }
 
     void HandleAttack()
     {
-        if (player != null && player.scanner.nearestTarget != null)
+        transform.parent = null;
+
+        // 공격 위치 계산
+        originalPosition = player.transform.position + offset;
+        Vector3 attackPosition = originalPosition + direction * data.range;
+
+        // 적을 향해 이동
+        transform.position = Vector3.MoveTowards(transform.position, attackPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // 적에게 도달했는지 확인
+        if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
         {
-            if (!isReturning)
-            {
-                // 공격 위치 계산
-                attackPosition = player.scanner.nearestTarget.position;
-                // 적을 향해 이동
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+            currentState = global::SwordState.Return; // 원래 위치로 돌아가기
+        }
+    }
 
-                // 적에게 도달했는지 확인
-                if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
-                {
-                    isReturning = true; // 원래 위치로 돌아가기
-                }
-            }
-            else
-            {
-                // 플레이어 기준 원래 위치로 돌아가기
-                Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+    void HandleReturning()
+    {
+        transform.parent = player.transform;
 
-                // 원래 위치에 도달했는지 확인
-                if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
-                {
-                    isReturning = false; // 공격 종료
-                    currentState = IceSwordState.Wait;
-                }
-            }
+        originalPosition = player.transform.position + offset;
+
+        // 플레이어 기준 원래 위치로 돌아가기
+        transform.position = Vector3.MoveTowards(transform.position, originalPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // 원래 위치에 도달했는지 확인
+        if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
+        {
+            currentState = SwordState.Scan;
         }
     }
 
@@ -120,10 +114,12 @@ public class IceSword : WeaponBase
 
     private IEnumerator ReduceEnemySpeed(Collider2D enemyCollider, float reductionFactor, float duration)
     {
-        EnemyStat enemyStat = enemyCollider.GetComponent<Enemy>().Get_MyStat();
-        float originalSpeed = enemyStat.speed;
-        enemyStat.speed *= reductionFactor; // 적의 속도 감소
-        yield return new WaitForSeconds(duration);
-        enemyStat.speed = originalSpeed; // 원래 속도로 복원
+        Enemy enemyStat = enemyCollider.GetComponent<Enemy>();
+        if (enemyStat.speedMultiply != 0)
+        {
+            enemyStat.speedMultiply = reductionFactor; // 적의 속도 감소
+            yield return new WaitForSeconds(duration);
+            enemyStat.speedMultiply = 1; // 원래 속도로 복원
+        }
     }
 }

@@ -41,4 +41,13 @@ public class SceneChangeManager : PersistentSingleton<SceneChangeManager>
             fadeImg.blocksRaycasts = false;
         });
     }
+
+    public void GameExit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }

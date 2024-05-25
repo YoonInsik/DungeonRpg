@@ -8,6 +8,7 @@ public class FireGun : WeaponBase
     public GameObject fireBulletPrefab;
 
     private IObjectPool<FireBullet> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -18,27 +19,32 @@ public class FireGun : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = targetPos - transform.position;
-
-        if (dir.magnitude > data.range)
-            return;
-
-        //var fireBullet = Instantiate(fireBulletPrefab, transform.position, Quaternion.identity).GetComponent<FireBullet>();
         var fireBullet = pool.Get();
-        fireBullet.transform.position = transform.position + dir.normalized;
-        fireBullet.Shoot(dir.normalized, CalculateDamage(), data.speed);
+        fireBullet.transform.position = transform.position + direction.normalized;
+        fireBullet.transform.localScale = fireBullet.transform.localScale * player.ATKRangeDelicacy();
+        fireBullet.Shoot(direction.normalized, CalculateDamage(), data.speed);
 
         elapsedTime = 0.0f;
     }

@@ -11,6 +11,7 @@ public abstract class WeaponBase : MonoBehaviour
     protected float elapsedTime = 0.0f;
 
     public Vector2 attackScale;
+    public Vector3 offset;
 
     public float CalculateDamage()
     {
@@ -21,4 +22,11 @@ public abstract class WeaponBase : MonoBehaviour
     {
         weaponLevel++;
     }
+}
+
+public enum SwordState
+{
+    Scan,
+    Attack,
+    Return
 }

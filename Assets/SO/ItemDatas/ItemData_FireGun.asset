@@ -20,6 +20,6 @@ MonoBehaviour:
   speed: 5
   range: 5
   levelDamages:
-  - 10
-  - 20
-  - 30
+  - 5
+  - 8
+  - 11

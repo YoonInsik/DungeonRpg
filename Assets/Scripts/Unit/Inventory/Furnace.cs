@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class Furnace : MonoBehaviour
@@ -46,6 +45,7 @@ public class Furnace : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("E´©¸§");
             if (isIn)
             {
                 bool isOpen = furnaceUI.activeSelf;

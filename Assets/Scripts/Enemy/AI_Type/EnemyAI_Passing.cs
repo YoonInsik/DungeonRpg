@@ -9,6 +9,7 @@ namespace SHS
         //변수
         EnemyStat m_stat;
         Transform player_trns;
+        Enemy m_enemy;
 
         [Header("움직임 설정")]
         [SerializeField] Vector2 setting_dir;
@@ -18,6 +19,7 @@ namespace SHS
         {
             m_stat = GetComponent<Enemy>().Get_MyStat();
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
+            m_enemy = GetComponent<Enemy>();
         }
 
         // Update is called once per frame
@@ -37,7 +39,7 @@ namespace SHS
         // 움직임
         void Move()
         {
-            transform.Translate(m_stat.speed * Direction() * Time.deltaTime);
+            transform.Translate(m_enemy.now_speed * Direction() * Time.deltaTime);
         }
     }
 

@@ -12,14 +12,11 @@ public class BaechuGuk : CookingItem
 
     protected override void IncreaseATKSpeed(Player player, bool isPositive = true)
     {
-        if (player.PlayerStatLevel.ATKSpeedLevel >= player.PlayerStatLevel.StatMaxLevel) return;
+        Dictionary<string, int> dict = player.StatLevels;
+        if (dict["ATKSpeedLevel"] >= dict["StatMaxLevel"]) return;
 
         int Level = Random.Range(1, 3);
 
-        if (player.PlayerStatLevel.ATKSpeedLevel + Level >= player.PlayerStatLevel.StatMaxLevel)
-        {
-            player.PlayerStatLevel.ATKSpeedLevel = player.PlayerStatLevel.StatMaxLevel;
-        }
-        else player.PlayerStatLevel.ATKSpeedLevel += Level;
+        ApplyOtherStat(dict, "ATKSpeedLevel", Level);
     }
 }

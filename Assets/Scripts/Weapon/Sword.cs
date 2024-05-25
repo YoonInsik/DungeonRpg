@@ -1,29 +1,14 @@
 using SHS;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using static UnityEngine.GraphicsBuffer;
 
 public class Sword : WeaponBase
 {
-    public enum SwordState
-    {
-        Wait,
-        Attack
-    }
+    [SerializeField] private SwordState currentState = SwordState.Scan;
 
-    public SwordState currentState = SwordState.Wait;
-
-    public Player player; // Player Ÿ������ player ���� ����
-    public Vector3 offset = new Vector3(1, 0, 0); // �÷��̾�κ����� ����� ��ġ
-
-    float speed = 10.0f;
-    float attackDistance = 25.0f;
-    private Vector3 attackPosition;
-    private bool isReturning = false;
+    private Vector3 direction;
+    private Vector3 originalPosition;
 
     private void Awake()
     {
@@ -31,39 +16,42 @@ public class Sword : WeaponBase
     }
     void Start()
     {
-        // �÷��̾� ���� ������Ʈ�� �±׸� ���� ã��, Player ������Ʈ�� �����ɴϴ�.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
-
+        player = GetComponentInParent<Player>();
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
-        if (player.scanner.nearestTarget != null)
-        {
-            float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
-            
-            if(distanceSqr <= attackDistance)
-            {
-                currentState = SwordState.Attack;
-            }
-            else
-            {
-                currentState = SwordState.Wait;
-            }
-        }
+
         switch (currentState)
         {
-            case SwordState.Wait:
+            case SwordState.Scan:
                 HandleWaiting();
+                HandleScanning();
                 break;
             case SwordState.Attack:
                 HandleAttack();
                 break;
+            case SwordState.Return:
+                HandleReturning();
+                break;
+        }
+    }
+
+    void HandleScanning()
+    {
+        if (player.scanner.nearestTarget != null)
+        {
+            float distance = (player.scanner.nearestTarget.position - player.transform.position).magnitude;
+
+            if (distance <= data.range)
+            {
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
+                currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
+            }
         }
     }
 
@@ -75,43 +63,44 @@ public class Sword : WeaponBase
 
             if(player.scanner.nearestTarget != null)
             {
-                Vector3 direction = player.scanner.nearestTarget.position - transform.position;
+                direction = (player.scanner.nearestTarget.position - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
     }
 
     void HandleAttack()
     {
-        if (player != null && player.scanner.nearestTarget != null)
+        transform.parent = null;
+
+        // 공격 위치 계산
+        originalPosition = player.transform.position + offset;
+        Vector3 attackPosition = originalPosition + direction * data.range;
+
+        // 적을 향해 이동
+        transform.position = Vector3.MoveTowards(transform.position, attackPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // 적에게 도달했는지 확인
+        if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
         {
-            if (!isReturning)
-            {
-                // ���� ��ġ ���
-                attackPosition = player.scanner.nearestTarget.position;
-                // ���� ���� �̵�
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+            currentState = SwordState.Return; // 원래 위치로 돌아가기
+        }
+    }
 
-                // ������ �����ߴ��� Ȯ��
-                if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
-                {
-                    isReturning = true; // ���� ��ġ�� ���ư���
-                }
-            }
-            else
-            {
-                // �÷��̾� ���� ���� ��ġ�� ���ư���
-                Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+    void HandleReturning()
+    {
+        transform.parent = player.transform;
 
-                // ���� ��ġ�� �����ߴ��� Ȯ��
-                if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
-                {
-                    isReturning = false; // ���� ����
-                    currentState = SwordState.Wait;
-                }
-            }
+        originalPosition = player.transform.position + offset;
+
+        // 플레이어 기준 원래 위치로 돌아가기
+        transform.position = Vector3.MoveTowards(transform.position, originalPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // 원래 위치에 도달했는지 확인
+        if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
+        {
+            currentState = SwordState.Scan;
         }
     }
 
@@ -119,8 +108,7 @@ public class Sword : WeaponBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            float damage = CalculateDamage();
-            collision.GetComponent<Enemy>().Damaged(damage);
+            collision.GetComponent<Enemy>().Damaged(CalculateDamage());
         }
     }
 }

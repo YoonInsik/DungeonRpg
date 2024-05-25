@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
   m_Name: ItemData_DoubleGun
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 232001032, guid: 8863623b45531f3438cf538ddf8220c7, type: 3}
   itemName: DoubleGun
   itemTag: 0
   itemDesc: 
-  interval: 1.2
+  interval: 1.4
   speed: 10
-  range: 5
+  range: 4
   levelDamages:
-  - 12
-  - 20
+  - 18
+  - 24
   - 30

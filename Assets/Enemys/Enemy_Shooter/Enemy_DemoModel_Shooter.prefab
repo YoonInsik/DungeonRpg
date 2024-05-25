@@ -88,6 +88,7 @@ MonoBehaviour:
   Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: 70c487f5ea4aeaf43aa498c5c7f26c07, type: 2}
   now_hp: 0
+  speedMultiply: 1
   ptc_damaged: {fileID: 8727313913295923320}
   ptc_dead: {fileID: 2581989396275217483, guid: 9eda5d2dc0b199b44a7fa9efc49e62e0, type: 3}
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
@@ -97,7 +98,7 @@ MonoBehaviour:
   Model: {fileID: 3478975643931949422}
   burrow_time: {x: 3, y: 5}
   not_queue: 0
-  meat_num: 0
+  customMeatItem: {fileID: 0}
   meatdrop_rate: 33
 --- !u!114 &4063271551220625829
 MonoBehaviour:
@@ -5341,9 +5342,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1264236075
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -10370,9 +10371,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1169804769
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0

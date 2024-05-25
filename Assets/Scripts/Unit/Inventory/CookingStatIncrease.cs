@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class CookingStatIncrease : MonoBehaviour
 {
-    [NonSerialized] public Player player;
+    //[NonSerialized] 
+    public Player player;
+
     // Start is called before the first frame update
     void Start()
     { 

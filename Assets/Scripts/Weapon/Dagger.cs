@@ -5,62 +5,52 @@ using UnityEngine;
 
 public class Dagger : WeaponBase
 {
-    public enum DaggerState
-    {
-        Wait,
-        Attack
-    }
+    public SwordState currentState = SwordState.Scan;
 
-    public DaggerState currentState = DaggerState.Wait;
-
-    public Player player; // Player Ÿ������ player ���� ����
-    public Vector3 offset = new Vector3(-1, 0, 0); // �÷��̾�κ����� ����� ��ġ
-
-    float speed = 30.0f;
-    float attackDistance = 25.0f;
-    private Vector3 attackPosition;
-    private bool isReturning = false;
+    private Vector3 direction;
+    private Vector3 originalPosition;
+    private Collider2D col;
 
     private void Awake()
     {
+        player = GetComponentInParent<Player>();
         attackScale = transform.localScale;
-    }
-
-    void Start()
-    {
-        // �÷��̾� ���� ������Ʈ�� �±׸� ���� ã��, Player ������Ʈ�� �����ɴϴ�.
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
-
+        col = GetComponent<Collider2D>();
     }
 
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         transform.localScale = attackScale * player.ATKRangeDelicacy();
-        if (player.scanner.nearestTarget != null)
-        {
-            float distanceSqr = (player.scanner.nearestTarget.position - transform.position).sqrMagnitude;
 
-            if (distanceSqr <= attackDistance)
-            {
-                currentState = DaggerState.Attack;
-            }
-            else
-            {
-                currentState = DaggerState.Wait;
-            }
-        }
         switch (currentState)
         {
-            case DaggerState.Wait:
+            case SwordState.Scan:
                 HandleWaiting();
+                HandleScanning();
                 break;
-            case DaggerState.Attack:
+            case SwordState.Attack:
                 HandleAttack();
                 break;
+            case SwordState.Return:
+                HandleReturning();
+                break;
+        }
+    }
+
+    void HandleScanning()
+    {
+        if (player.scanner.nearestTarget != null)
+        {
+            float distance = (player.scanner.nearestTarget.position - player.transform.position).magnitude;
+
+            if (distance <= data.range)
+            {
+                if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
+
+                currentState = SwordState.Attack;
+                elapsedTime = 0.0f;
+            }
         }
     }
 
@@ -69,45 +59,48 @@ public class Dagger : WeaponBase
         if (player != null)
         {
             transform.position = player.transform.position + offset;
+
             if (player.scanner.nearestTarget != null)
             {
-                Vector3 direction = player.scanner.nearestTarget.position - transform.position;
+                direction = (player.scanner.nearestTarget.position - transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
     }
 
     void HandleAttack()
     {
-        if (player != null && player.scanner.nearestTarget != null)
+        transform.parent = null;
+        col.enabled = true;
+
+        originalPosition = player.transform.position + offset;
+        Vector3 attackPosition = originalPosition + direction * data.range;
+
+        // ���� ���� �̵�
+        transform.position = Vector3.MoveTowards(transform.position, attackPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // ������ �����ߴ��� Ȯ��
+        if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
         {
-            if (!isReturning)
-            {
-                // ���� ��ġ ���
-                attackPosition = player.scanner.nearestTarget.position;
-                // ���� ���� �̵�
-                transform.position = Vector3.MoveTowards(transform.position, attackPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+            currentState = SwordState.Return; // ���� ��ġ�� ���ư���
+        }
+    }
 
-                // ������ �����ߴ��� Ȯ��
-                if (Vector3.Distance(transform.position, attackPosition) < 0.1f)
-                {
-                    isReturning = true; // ���� ��ġ�� ���ư���
-                }
-            }
-            else
-            {
-                // �÷��̾� ���� ���� ��ġ�� ���ư���
-                Vector3 originalPosition = player.transform.position + offset;
-                transform.position = Vector3.MoveTowards(transform.position, originalPosition, speed * Time.deltaTime * player.ATKSpeedDelicacy());
+    void HandleReturning()
+    {
+        transform.parent = player.transform;
+        col.enabled = false;
 
-                // ���� ��ġ�� �����ߴ��� Ȯ��
-                if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
-                {
-                    isReturning = false; // ���� ����
-                    currentState = DaggerState.Wait;
-                }
-            }
+        originalPosition = player.transform.position + offset;
+
+        // �÷��̾� ���� ���� ��ġ�� ���ư���
+        transform.position = Vector3.MoveTowards(transform.position, originalPosition, data.speed * Time.deltaTime * player.ATKSpeedDelicacy());
+
+        // ���� ��ġ�� �����ߴ��� Ȯ��
+        if (Vector3.Distance(transform.position, originalPosition) < 0.1f)
+        {
+            currentState = SwordState.Scan;
         }
     }
 
@@ -115,8 +108,7 @@ public class Dagger : WeaponBase
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            float damage = CalculateDamage();
-            collision.GetComponent<Enemy>().Damaged(damage);
+            collision.GetComponent<Enemy>().Damaged(CalculateDamage());
         }
     }
 }

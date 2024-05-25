@@ -16,6 +16,9 @@ public class Player_HpManager : MonoBehaviour
     [Header("연결")]
     [SerializeField] Player_SpriteColorControl player_scc;
 
+    [Header("죽을 시 소환")]
+    [SerializeField] GameObject grave;
+
     private void Awake()
     {
         instance = this;
@@ -43,6 +46,14 @@ public class Player_HpManager : MonoBehaviour
 
         check_nowhp = m_player.HP;
         check_maxhp = m_player.MaxHP;
+    }
+    public IEnumerator RecoveryPerSec(int _heal)
+    {
+        while (true)
+        {
+            Recovery(_heal);
+            yield return new WaitForSeconds(3);
+        }
     }
 
     [Header("피해")]
@@ -81,6 +92,8 @@ public class Player_HpManager : MonoBehaviour
     void Dead()
     {
         GameOverPanel.instance.Object_On(false);
+        Destroy(gameObject);
+        Instantiate(grave, gameObject.transform.position, Quaternion.identity);
     }
 
 }

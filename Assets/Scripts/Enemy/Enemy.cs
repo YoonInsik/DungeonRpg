@@ -4,7 +4,6 @@ using System.Data;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Pool;
-using static UnityEditor.PlayerSettings;
 
 namespace SHS
 {
@@ -26,6 +25,8 @@ namespace SHS
         public EnemyStat m_stat;
 
         [SerializeField] float now_hp;
+        public float now_speed { get => m_stat.speed * speedMultiply; }
+        public float speedMultiply = 1;
 
         private void Start()
         {
@@ -37,7 +38,7 @@ namespace SHS
             m_col.enabled = false;
 
             now_hp = m_stat.hp + m_stat.hp_scaling * EnemySpawner_v3.Instance.Get_WaveLevel();
-
+            speedMultiply = 1;
             now_burrow = true;
 
             if (handling_start)
@@ -150,7 +151,7 @@ namespace SHS
         [SerializeField] bool not_queue;
 
         [Header("고기드랍")]
-        [SerializeField] int meat_num;
+        [SerializeField] MeatItem customMeatItem;
         [Range(0, 100)]
         [SerializeField] float meatdrop_rate;
 
@@ -179,7 +180,12 @@ namespace SHS
             {
                 var dropItem = ObjectPoolManager.Instance.GetGo("DropItem");
                 var itemImplement = dropItem.GetComponent<ItemImplement>();
-                itemImplement.item = MapManager.Instance.CurChunk.data.dropTable[0].item;
+
+                if (customMeatItem == null)
+                    itemImplement.item = MapManager.Instance.CurChunk.data.dropTable[0].item;
+                else
+                    itemImplement.item = customMeatItem;
+
                 itemImplement.SetImage();
                 MapManager.Instance.CurChunk.droppedObjList.Add(dropItem);
 

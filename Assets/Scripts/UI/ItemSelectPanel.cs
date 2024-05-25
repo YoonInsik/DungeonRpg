@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Events;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ItemSelectPanel : MonoBehaviour
@@ -27,5 +25,6 @@ public class ItemSelectPanel : MonoBehaviour
     public void SelectItem()
     {
         UnitManager.Instance.player.GetInventory.AddItemData(data);
+        GameManager.Instance.levelUpAmount--;
     }
 }

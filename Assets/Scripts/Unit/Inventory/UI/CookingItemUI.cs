@@ -67,6 +67,8 @@ public class CookingItemUI : Singleton<CookingItemUI>
             inventory.statUp.IncreaseStat(item);
             inventory.RemoveCookingItem(index);
             AddCookingItemUI();
+            SoundManager.Instance.PlayCookingEat();
+            StatUI.Instance.GetComponent<StatUI>().UpdateCell();
         }
         else
         {

@@ -318,7 +318,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6659180776580548805}
@@ -363,7 +363,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1169804769
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300050, guid: 142ff8784e552734f9d6a895491d0ae8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -15274,7 +15274,7 @@ GameObject:
   - component: {fileID: 2924581199071168474}
   - component: {fileID: 3618635734377456246}
   - component: {fileID: 3894921452088084960}
-  - component: {fileID: 2346738249260604925}
+  - component: {fileID: 1125386568590322235}
   m_Layer: 31
   m_Name: Enemy_DemoModel_Boss_A
   m_TagString: Enemy
@@ -15319,6 +15319,7 @@ MonoBehaviour:
   Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: a249df200a1408e4a803ff5442fdd115, type: 2}
   now_hp: 0
+  speedMultiply: 1
   ptc_damaged: {fileID: 2300603720260369357}
   ptc_dead: {fileID: 2581989396275217483, guid: 9eda5d2dc0b199b44a7fa9efc49e62e0, type: 3}
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
@@ -15328,7 +15329,7 @@ MonoBehaviour:
   Model: {fileID: 25062135863041347}
   burrow_time: {x: 5, y: 5}
   not_queue: 1
-  meat_num: 0
+  customMeatItem: {fileID: 11400000, guid: db40660cb38926042ab235f851fc31e2, type: 2}
   meatdrop_rate: 100
 --- !u!114 &2924581199071168474
 MonoBehaviour:
@@ -15403,8 +15404,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &2346738249260604925
-PolygonCollider2D:
+--- !u!58 &1125386568590322235
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15436,30 +15437,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.9144033, y: 0.18976505}
-      - {x: -0.94407094, y: -0.6335468}
-      - {x: -0.07479459, y: -0.799625}
-      - {x: 0.28256822, y: -0.48486292}
-      - {x: 0.59975445, y: -0.2039876}
-      - {x: 0.6272042, y: 0.1953902}
-      - {x: 0.9051374, y: 0.5301737}
-      - {x: 0.6926836, y: 0.8030438}
-      - {x: 0.46715403, y: 0.6787638}
-      - {x: 0.37376705, y: 0.44323218}
-      - {x: -0.05327019, y: 0.83449346}
-      - {x: -0.6851353, y: 0.035226867}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Radius: 0.57
 --- !u!1001 &2522167031877330104
 PrefabInstance:
   m_ObjectHideFlags: 0

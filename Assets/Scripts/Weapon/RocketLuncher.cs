@@ -8,6 +8,7 @@ public class RocketLuncher : WeaponBase
     public GameObject rocketPrefab;
 
     private IObjectPool<Rocket> pool;
+    private Vector3 direction;
 
     private void Awake()
     {
@@ -18,22 +19,34 @@ public class RocketLuncher : WeaponBase
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime > data.interval * player.ATKCooldownDelicacy())
+        transform.position = player.transform.position + offset;
+
+        if (player?.scanner?.nearestTarget == null) return;
+        direction = player.scanner.nearestTarget.position - transform.position;
+
+        if (direction.magnitude <= data.range)
         {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
             Fire();
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
         }
     }
 
     void Fire()
     {
-        if (!player.scanner.nearestTarget)
-            return;
+        if (elapsedTime < data.interval * player.ATKCooldownDelicacy()) return;
 
-        Vector3 targetPos = player.scanner.nearestTarget.position;
-        Vector3 dir = (targetPos - transform.position).normalized; // ��ǥ ���� ����ȭ
         var rocket = pool.Get();
-        rocket.transform.position = transform.position; // ���� ��ġ ����
-        rocket.Shoot(dir, CalculateDamage(), data.speed);
+        rocket.player = player;
+        rocket.attackScale = rocket.transform.localScale;
+        rocket.transform.position = transform.position + direction.normalized; // ���� ��ġ ����
+        rocket.transform.localScale = rocket.transform.localScale * player.ATKRangeDelicacy();
+        rocket.Shoot(direction, CalculateDamage(), data.speed);
 
         elapsedTime = 0.0f;
     }

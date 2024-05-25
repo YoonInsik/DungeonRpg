@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859b2965580b71d43b1290532b37f2e4, type: 3}
   m_Name: ItemData_Gun
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: e77f5ed44d0a77d43898ae9d0872e5f3, type: 3}
+  itemImage: {fileID: -281454264, guid: 8863623b45531f3438cf538ddf8220c7, type: 3}
   itemName: Gun
   itemTag: 0
   itemDesc: "\uAE30\uBCF8 \uBB34\uAE30. \uC57D\uD558\uC9C0\uB9CC \uACF5\uACA9\uC18D\uB3C4\uAC00
     \uBE60\uB974\uB2E4."
-  interval: 1.2
-  speed: 10
-  range: 5
+  interval: 0.8
+  speed: 12
+  range: 4.5
   levelDamages:
-  - 12
+  - 8
+  - 14
   - 20
-  - 30

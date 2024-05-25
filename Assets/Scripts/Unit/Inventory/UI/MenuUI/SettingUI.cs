@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
@@ -11,6 +12,8 @@ public class SettingUI : MonoBehaviour
 
     public GameObject BackButton;
     public GameObject menuWindow;
+    public AudioMixer AudioMixer;
+
     //public GameObject[] settingUIs;
 
     public bool isVSync;
@@ -35,6 +38,15 @@ public class SettingUI : MonoBehaviour
         InitDropDown();
         InitResolutionToggle();
         InitVSyncToggle();
+
+        sound_slider.onValueChanged.AddListener(SetVolume);
+    }
+
+    public void SetVolume(float volume)
+    {
+        AudioListener.volume = volume;
+        //AudioMixer.SetFloat("GameVolume", Mathf.Log10(volume) * 20);
+        Debug.Log(volume);
     }
 
     public void InitDropDown()
