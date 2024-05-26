@@ -4,6 +4,7 @@ using System.Dynamic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class ButtonManager : MonoBehaviour
     public GameObject buttonPrefab;
     public List<CookingItem> cookingItems;
     public FurnaceItemUI FurnaceItemUI;
+    public ScrollRect scrollRect;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +34,12 @@ public class ButtonManager : MonoBehaviour
         if (buttonCooking != null) { buttonCooking.sprite = item.GetComponent<SpriteRenderer>().sprite; }
         else { Debug.Log("요리아이템 못찾음"); }
 
-        for(int i = 1; i< 5; i++)
+        for (int i = 1; i < 5; i++)
         {
-            if(i-1 < item.recipe.Count)
+            if (i - 1 < item.recipe.Count)
             {
                 Image image1 = button.transform.GetChild(i).GetComponent<Image>();
-                image1.sprite = item.recipe[i-1].ingredient.icon;
+                image1.sprite = item.recipe[i - 1].ingredient.icon;
 
                 if (button.transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>() != null)
                 {
@@ -49,7 +51,6 @@ public class ButtonManager : MonoBehaviour
             {
                 button.transform.GetChild(i).gameObject.SetActive(false);
             }
-           
         }
 
         button.GetComponent<Button>().onClick.AddListener(() => ButtonClick(item));
