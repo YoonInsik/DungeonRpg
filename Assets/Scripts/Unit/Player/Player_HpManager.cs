@@ -16,8 +16,8 @@ public class Player_HpManager : MonoBehaviour
     [Header("¿¬°á")]
     [SerializeField] Player_SpriteColorControl player_scc;
 
-    [Header("Á×À» ½Ã ¼ÒÈ¯")]
-    [SerializeField] GameObject grave;
+    [Header("Á×À» ½Ã ¹Ù²î´Â ¹«´ý")]
+    [SerializeField] Sprite grave;
 
     private void Awake()
     {
@@ -92,8 +92,9 @@ public class Player_HpManager : MonoBehaviour
     void Dead()
     {
         GameOverPanel.instance.Object_On(false);
-        Destroy(gameObject);
-        Instantiate(grave, gameObject.transform.position, Quaternion.identity);
+        m_player.GetComponent<Animator>().enabled = false;
+        m_player.isDead = true;
+        m_player.gameObject.GetComponent<SpriteRenderer>().sprite = grave;
     }
 
 }

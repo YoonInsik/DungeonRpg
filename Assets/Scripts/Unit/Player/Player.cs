@@ -18,6 +18,9 @@ public class Player : BaseUnit
     public int fullnessDecreaseAmount = 1;
 
     public Inventory GetInventory { get => inventory; }
+
+    [NonSerialized] public bool isDead = false;
+
     [Header ("화로") ]
 
     public GameObject furnaceSpawnPoint;
@@ -49,9 +52,13 @@ public class Player : BaseUnit
         //inventory.AddItemData(GameManager.Instance.itemDatas[15]);
         //inventory.AddItemData(GameManager.Instance.itemDatas[5]);
 
+        HP = 1;
+
     }
     private void Update()
-    {
+    {   
+        if(isDead) return;
+
         newPos.x = Input.GetAxisRaw("Horizontal");
         newPos.y = Input.GetAxisRaw("Vertical");
 
@@ -66,7 +73,7 @@ public class Player : BaseUnit
         animator.SetFloat("MoveX", newPos.x);
         animator.SetFloat("MoveY", newPos.y);
 
-
+        // 메뉴 UI 
         if (Input.GetKeyDown(KeyCode.Escape)){
             if (!MenuUIopen)
             {
@@ -138,10 +145,9 @@ public class Player : BaseUnit
 
     
     [Header("플레이어 스탯 레벨")]
-    //public StatLevel PlayerStatLevel = new StatLevel();
 
     //요리아이템 버프 지속이 멈춰야 되는 타이밍 판단
-    //[NonSerialized]
+    [NonSerialized]
     public bool pause = false;
     
     public float WIsdomDelicacy()
@@ -188,36 +194,6 @@ public class Player : BaseUnit
         return DelicacyRate * ATKRange;
     }
 
-
-
-    //지속시간
-    //public float ATKDurationDelicacy()
-    //{
-    //    float DelicacyRate = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.DelicacyLevel / 10);
-    //    float statLevel = (1 + (float)UnitManager.Instance.player.PlayerStatLevel.ATKdurationLevel / 5);
-
-    //    return DelicacyRate * statLevel;
-    //}
-
-    //플레이어 스탯 레벨
-    //[Serializable]
-    //public class StatLevel
-    //{
-    //    public int ATKLevel;
-    //    public int DEFLevel;
-    //    public int SpeedLevel;
-    //    public int ATKSpeedLevel;
-    //    public int ATKRangeLevel;
-    //    public int CooldownReductionLevel;
-    //    //public int ATKdurationLevel;
-    //    public int GreedLevel;
-    //    public int DelicacyLevel;
-    //    public int WisdomLevel;
-    //    public int TemptationLevel;
-    //    public int StatMaxLevel;  
-    //}
-
-    //[SerializeField] public SerializedDictionary<string, int> StatLevels;
     [SerializeField]
     public Dictionary<string, int> StatLevels = new Dictionary<string, int>
     {
@@ -233,5 +209,4 @@ public class Player : BaseUnit
        { "TemptationLevel", 0 },
        { "StatMaxLevel", 5 }
     };
-
 }
