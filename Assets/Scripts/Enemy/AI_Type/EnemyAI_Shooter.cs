@@ -7,7 +7,6 @@ namespace SHS
     public class EnemyAI_Shooter : MonoBehaviour
     {
         //º¯¼ö
-        EnemyStat m_stat;
         Transform player_trns;
         Rigidbody2D m_rigid;
         Enemy m_enemy;
@@ -17,7 +16,6 @@ namespace SHS
         void Start()
         {
             m_enemy = GetComponent<Enemy>();
-            m_stat = GetComponent<Enemy>().Get_MyStat();
             m_rigid = GetComponent<Rigidbody2D>();
             player_trns = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -28,6 +26,12 @@ namespace SHS
         {
             if (m_enemy.now_burrow)
                 return;
+
+            if(m_enemy.Get_NowHP() <= 0 && save_attack != null)
+            {
+                Destroy(save_attack);
+                save_attack = null;
+            }
 
             Move();
         }
@@ -76,15 +80,20 @@ namespace SHS
         [SerializeField] float snipe_time;
         [SerializeField] GameObject snipe_attackgroup;
 
+        GameObject save_attack;
+
         IEnumerator Sniping()
         {
             now_attack = true;
 
-            GameObject C = Instantiate(snipe_attackgroup, attack_center);
-            C.transform.parent = null;
-            C.GetComponentInChildren<EnemyAttackBullet>().damamge = m_enemy.m_stat.damage + m_enemy.m_stat.damage_scaling * (EnemySpawner_v3.Instance.Get_WaveLevel() - 1);
+            save_attack = Instantiate(snipe_attackgroup, attack_center);
+            save_attack.transform.parent = null;
+            save_attack.GetComponentInChildren<EnemyAttackBullet>().damamge = m_enemy.m_stat.damage + m_enemy.m_stat.damage_scaling * (EnemySpawner_v3.Instance.Get_WaveLevel() - 1);
 
             yield return new WaitForSeconds(snipe_time);
+
+            if(save_attack != null)
+                save_attack = null;
 
             now_attack = false;
         }
