@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,6 +34,7 @@ public class CookingButton_Info : MonoBehaviour, IScrollHandler
         Info.SetActive(false);
     }
 
+    // 버튼 위에서 스크롤 인식
     public void OnScroll(PointerEventData eventData)
     {
         scrollRect.OnScroll(eventData);

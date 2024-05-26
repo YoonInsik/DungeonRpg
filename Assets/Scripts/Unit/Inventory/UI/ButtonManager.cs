@@ -34,7 +34,7 @@ public class ButtonManager : MonoBehaviour
         if (buttonCooking != null) { buttonCooking.sprite = item.GetComponent<SpriteRenderer>().sprite; }
         else { Debug.Log("요리아이템 못찾음"); }
 
-        for (int i = 1; i < 5; i++)
+        for (int i = 1; i < 4; i++)
         {
             if (i - 1 < item.recipe.Count)
             {

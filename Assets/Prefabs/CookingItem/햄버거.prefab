@@ -111,7 +111,8 @@ MonoBehaviour:
   Wisdom: 0
   Temptation: 0
   buffDuration: 60
-  info_txt: 
+  info_txt: "[\uD584\uBC84\uAC70]\n\uC774\uB3D9\uC18D\uB3C4 1 \uC99D\uAC00 (\uC9C0\uC18D),
+    \n\uCD08\uB2F9 \uCCB4\uB825 1 \uD68C\uBCF5 (1\uBD84)"
   recipe:
   - ingredient: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
     amount: 3
