@@ -19,7 +19,8 @@ public class Player : BaseUnit
 
     public Inventory GetInventory { get => inventory; }
 
-    [NonSerialized] public bool isDead = false;
+    //[NonSerialized] 
+    public bool isDead = false;
 
     [Header ("È­·Î") ]
 

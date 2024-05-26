@@ -63,10 +63,7 @@ public class Player_HpManager : MonoBehaviour
     //피해
     public void Damaged(int _damage)
     {
-        if (m_player.HP <= 0)
-        {
-            return;
-        }
+        if (m_player.isDead) return;
 
         m_player.HP -= _damage;
 
@@ -92,9 +89,16 @@ public class Player_HpManager : MonoBehaviour
     void Dead()
     {
         GameOverPanel.instance.Object_On(false);
+
+        //죽을 시, 무덤으로 변경
         m_player.GetComponent<Animator>().enabled = false;
         m_player.isDead = true;
-        m_player.gameObject.GetComponent<SpriteRenderer>().sprite = grave;
+        m_player.GetComponent<SpriteRenderer>().sprite = grave;
+
+        for(int i=0; i<m_player.transform.childCount; i++)
+        {
+            m_player.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
 }
