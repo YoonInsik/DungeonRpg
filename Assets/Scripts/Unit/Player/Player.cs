@@ -53,8 +53,6 @@ public class Player : BaseUnit
         //inventory.AddItemData(GameManager.Instance.itemDatas[15]);
         //inventory.AddItemData(GameManager.Instance.itemDatas[5]);
 
-        HP = 1;
-
     }
     private void Update()
     {   

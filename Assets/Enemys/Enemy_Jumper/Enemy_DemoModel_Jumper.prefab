@@ -5023,6 +5023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemy: {fileID: 7223417367860355827}
   can_attack: 0
+  will_destroy: 0
   player_layer:
     serializedVersion: 2
     m_Bits: 1024
@@ -9882,9 +9883,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1264236075
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -19743,9 +19744,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 341373097
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: 1169804769
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0

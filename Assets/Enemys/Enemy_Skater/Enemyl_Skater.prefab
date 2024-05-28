@@ -380,8 +380,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1169804769
-  m_SortingLayer: 4
+  m_SortingLayerID: 341373097
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.5105429, b: 0, a: 1}
@@ -443,6 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_enemy: {fileID: 1510211160621949504}
   can_attack: 1
+  will_destroy: 0
   player_layer:
     serializedVersion: 2
     m_Bits: 1024
@@ -5302,9 +5303,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1169804769
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -10190,9 +10191,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1264236075
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -10281,6 +10282,7 @@ MonoBehaviour:
   Burrow_Skip: 0
   m_stat: {fileID: 11400000, guid: 8c1aa8f230017da4a81b1bfdca905d10, type: 2}
   now_hp: 0
+  speedMultiply: 1
   ptc_damaged: {fileID: 2136298198778967960}
   ptc_dead: {fileID: 2581989396275217483, guid: 9eda5d2dc0b199b44a7fa9efc49e62e0, type: 3}
   damagescale: {fileID: 3959681849084889837, guid: 540642b30716cd24fbad63c0df550c3c, type: 3}
@@ -10290,7 +10292,7 @@ MonoBehaviour:
   Model: {fileID: 1285617759418019604}
   burrow_time: {x: 3, y: 5}
   not_queue: 0
-  meat_num: 0
+  customMeatItem: {fileID: 0}
   meatdrop_rate: 33
 --- !u!114 &1107249606624955126
 MonoBehaviour:
