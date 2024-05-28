@@ -50,12 +50,11 @@ public class Player : BaseUnit
         MaxHP = GetBaseHP();
 
         inventory.AddItemData(GameManager.Instance.itemDatas[0]);
-        //inventory.AddItemData(GameManager.Instance.itemDatas[12]);
-        //inventory.AddItemData(GameManager.Instance.itemDatas[13]);
-        //inventory.AddItemData(GameManager.Instance.itemDatas[14]);
-        //inventory.AddItemData(GameManager.Instance.itemDatas[15]);
+        //inventory.AddItemData(GameManager.Instance.itemDatas[1]);
+        //inventory.AddItemData(GameManager.Instance.itemDatas[2]);
+        //inventory.AddItemData(GameManager.Instance.itemDatas[3]);
+        //inventory.AddItemData(GameManager.Instance.itemDatas[4]);
         //inventory.AddItemData(GameManager.Instance.itemDatas[5]);
-
     }
     private void Update()
     {   

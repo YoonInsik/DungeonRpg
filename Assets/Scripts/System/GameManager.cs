@@ -80,9 +80,17 @@ public class GameManager : Singleton<GameManager>
             .Select(x => x.itemData).ToList();
 
         var alreadyHaveItems = Inventory.Instance.itemDataList.Select(x => x.itemData).ToList();
-        var newitems = itemDatas.Except(alreadyHaveItems).ToList();
-        var randomItemPools = newitems.Union(needUpgradeItems).ToList();
-
+        
+        List<ItemData> randomItemPools;
+        if (alreadyHaveItems.Count < 6)
+        {
+            var newitems = itemDatas.Except(alreadyHaveItems).ToList();
+            randomItemPools = newitems.Union(needUpgradeItems).ToList();
+        }
+        else
+        {
+            randomItemPools = needUpgradeItems;
+        }
 
         List<int> indexes = new List<int>();
         while (indexes.Count < 3)
