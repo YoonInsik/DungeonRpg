@@ -15,7 +15,7 @@ public class MenuUI : Singleton<MenuUI>
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         //settingButton.GetComponent<Button>().onClick.AddListener(SettingButton);
     }
 
@@ -26,10 +26,16 @@ public class MenuUI : Singleton<MenuUI>
         menuWindow.SetActive(true);
     }
 
+    // start 씬에서의 설정버튼
     public void openSettingUI()
     {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
         settingUI.SetActive(true);
+        if (menuWindow.activeSelf)
+        {
+            Debug.Log("UI열림");
+        }
+        Debug.Log(menuWindow.activeSelf.ToString());
     }
 
     public void SettingButton()
