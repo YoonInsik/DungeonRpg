@@ -43,7 +43,10 @@ public class Player : BaseUnit
     {
         base.Start();
         inventory = Inventory.Instance;
+
         menuUI = MenuUI.Instance.gameObject;
+        MenuUI.Instance.gameObject.SetActive(false);
+
         MaxHP = GetBaseHP();
 
         inventory.AddItemData(GameManager.Instance.itemDatas[0]);
