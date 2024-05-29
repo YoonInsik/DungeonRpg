@@ -44,20 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccf3b83ff47ca846a22e49c5024bb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDataList: []
   cooking: []
   meats:
   - meats: {fileID: 11400000, guid: 5e84408e715171942b7fa0f2c1d7125f, type: 2}
-    count: 30
+    count: 5
   - meats: {fileID: 11400000, guid: 32b4c9a5a68397f40b8c11381ae27b8d, type: 2}
-    count: 30
+    count: 5
   - meats: {fileID: 11400000, guid: c092304dcd4d3904585d4b3cb84316d5, type: 2}
-    count: 30
+    count: 5
   - meats: {fileID: 11400000, guid: 6b655c627d7a4b748b1c4dc7bd160b03, type: 2}
-    count: 30
+    count: 5
   - meats: {fileID: 11400000, guid: ccf4cfc3be1b6c04da0380fc32a398e5, type: 2}
-    count: 30
+    count: 5
   - meats: {fileID: 11400000, guid: db40660cb38926042ab235f851fc31e2, type: 2}
-    count: 30
+    count: 0
   cookingList:
   - {fileID: 5906648262648429137, guid: 06e984d62a19bc74295fdb0987afa4b6, type: 3}
   - {fileID: 6898126161599734956, guid: 37815067eabd1644bafc85dfb586e069, type: 3}

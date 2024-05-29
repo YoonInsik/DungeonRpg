@@ -58,8 +58,6 @@ namespace SHS
 
             while (GameManager.Instance.Timer > 5)
             {
-                Debug.Log($"{wave_count} < {wave_maxcount}");
-
                 wave_count++;
 
                 EnemyGroup[] set_eg;
@@ -70,6 +68,7 @@ namespace SHS
                     default:
                     case 1:
                         set_eg = wave1_eg;
+
                         break;
 
                     case 2:
@@ -150,7 +149,7 @@ namespace SHS
 
         [Header("스폰 설정")]
         [SerializeField] Vector2 spawn_cooltime_set = new Vector2(1f, 5f);
-        [SerializeField] Vector2 spawn_radius = new Vector2(5f, 20f);
+        [SerializeField] Vector2 spawn_radius = new Vector2(5f, 18f);
 
         #endregion
 

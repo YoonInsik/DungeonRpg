@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Seperater
   m_EditorClassIdentifier: 
   enemytype: 3
-  hp: 4
-  hp_scaling: 3
-  speed: 2.5
+  hp: 6
+  hp_scaling: 4
+  speed: 2.1
   damage: 5
-  damage_scaling: 2
+  damage_scaling: 3

@@ -1834,14 +1834,14 @@ MonoBehaviour:
   baseStat: {fileID: 11400000, guid: f91ac5bf4e1dbdc4cb42151d173e09ae, type: 2}
   newPos: {x: 0, y: 0}
   animator: {fileID: 5507801869601646988}
-  speed: 3
+  speed: 4
   MaxHP: 0
   fullness: 10
   fullnessDecreaseAmount: 1
+  isDead: 0
   furnaceSpawnPoint: {fileID: 7937814287585493957}
   furnace: {fileID: 4124677026070218316, guid: 42d43dc87027e124bad0fb21a980026c, type: 3}
   scanner: {fileID: 0}
-  pause: 1
 --- !u!114 &3896529685970072328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,8 +1903,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0018472527, y: 0.060619593}
-  m_Size: {x: 0.64853334, y: 0.3331054}
+  m_Offset: {x: -0.004112714, y: 0.060619593}
+  m_Size: {x: 0.45362797, y: 0.33311117}
   m_Direction: 1
 --- !u!50 &283592353888735667
 Rigidbody2D:

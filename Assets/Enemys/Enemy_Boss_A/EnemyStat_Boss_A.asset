@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemyStat_Boss_A
   m_EditorClassIdentifier: 
   enemytype: 0
-  hp: 35
+  hp: 100
   hp_scaling: 10
   speed: 5
-  damage: 0
+  damage: 10
   damage_scaling: 0

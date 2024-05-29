@@ -20296,8 +20296,8 @@ MonoBehaviour:
   Model: {fileID: 6711882665319521072}
   burrow_time: {x: 3, y: 5}
   not_queue: 0
-  customMeatItem: {fileID: 0}
-  meatdrop_rate: 100
+  customMeatItem: {fileID: 11400000, guid: db40660cb38926042ab235f851fc31e2, type: 2}
+  meatdrop_rate: 20
 --- !u!70 &4696096069550243430
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

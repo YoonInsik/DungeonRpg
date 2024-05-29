@@ -79,9 +79,7 @@ public class Chunk : MonoBehaviour
 
         // 요리 버프 지속시간 시작
         UnitManager.Instance.player.pause = false;
-        // ���� �ݺ� ��ȯ
-        //var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
-        //  ----> EnemySpawner_v3�� ���̺� ����� ���� �Է�
+
         EnemySpawner_v3.Instance.MakeWave();
 
         yield return StartCoroutine(GameManager.Instance.StartTimer(25 + 5 * GameManager.Instance.Stage));
@@ -95,8 +93,6 @@ public class Chunk : MonoBehaviour
 
         // 요리 버프 지속 일시 정지
         UnitManager.Instance.player.pause = true;
-        //StopCoroutine(enemySpawnCo);
-        //  ----> ���̺갡 ������� �� ���̺� ũ��(�ð��� �ֱ⿡ ���� ����) ������ �־� ���� ������ ��� ��. ���� ���Ͱ� ���� �ÿ��� ���� ������ ��������.
 
         StopCoroutine(recoveryCo);
 
@@ -130,34 +126,28 @@ public class Chunk : MonoBehaviour
         // �����
         var decreaseFullnessCo = StartCoroutine(UnitManager.Instance.player.DecreaseFullness());
 
+        // 체력 재생
+        var recoveryCo = StartCoroutine(Player_HpManager.instance.RecoveryPerSec(1));
+
         // 요리 버프 지속시간 시작
         UnitManager.Instance.player.pause = false;
-        // ���� �ݺ� ��ȯ
-        //var enemySpawnCo = StartCoroutine(SHS.EnemySpawner.Instance.EnemySpawn_Coroutine(1f));
-        //  ----> EnemySpawner_v3�� ���̺� ����� ���� �Է�
+
         EnemySpawner_v3.Instance.MakeWave();
 
-        yield return StartCoroutine(GameManager.Instance.StartTimer(30));
-        if (UnitManager.Instance.player.HP <= 0)
+        yield return StartCoroutine(GameManager.Instance.StartTimer(25 + 5 * GameManager.Instance.Stage));
+        if (UnitManager.Instance.player.isDead)
             yield break;
 
         // �ð� ����
-        StopCoroutine(decreaseFullnessCo);
+        if (decreaseFullnessCo != null)
+            StopCoroutine(decreaseFullnessCo);
 
 
         // 요리 버프 지속 일시 정지
         UnitManager.Instance.player.pause = true;
-        //StopCoroutine(enemySpawnCo);
-        //  ----> ���̺갡 ������� �� ���̺� ũ��(�ð��� �ֱ⿡ ���� ����) ������ �־� ���� ������ ��� ��. ���� ���Ͱ� ���� �ÿ��� ���� ������ ��������.
 
-        // �� ���� �Լ�
-        /*
-        foreach (var enemy in EnemyQueueManager.instance.EnemyQueue)
-        {
-            EnemyQueueManager.ReturnObject(enemy);
-        }
-        EnemyQueueManager에서 정리하게 명령
-        */
+        StopCoroutine(recoveryCo);
+
         EnemyQueueManager.instance.ClearMonster();
         UnitManager.Instance.enemies.Clear();
 

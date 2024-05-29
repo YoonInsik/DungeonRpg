@@ -89,6 +89,10 @@ namespace SHS
                     instance.ShotgunEnemyQueue.Enqueue(_enemy);
                     break;
 
+                //Skater
+                case EnemyType.Skater:
+                    instance.SkaterEnemyQueue.Enqueue(_enemy);
+                    break;
             }
 
         }
