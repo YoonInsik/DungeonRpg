@@ -69,14 +69,6 @@ namespace SHS
                     case 1:
                         set_eg = wave1_eg;
 
-                        //테스트용
-                        if (wave_count == 1)
-                        {
-                            Debug.Log("보스 생성");
-                            sp_enemyspawn.BossSpawn(101);
-                        }
-                        //
-
                         break;
 
                     case 2:
