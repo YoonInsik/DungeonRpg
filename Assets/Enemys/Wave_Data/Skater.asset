@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skater
   m_EditorClassIdentifier: 
   enemytype: 5
-  hp: 5
-  hp_scaling: 2
-  speed: 5.5
+  hp: 7
+  hp_scaling: 4
+  speed: 5.8
   damage: 5
   damage_scaling: 4

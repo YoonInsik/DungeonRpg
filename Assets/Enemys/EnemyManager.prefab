@@ -95,7 +95,7 @@ MonoBehaviour:
   wave_level: 0
   wave_count: 0
   wave1_eg:
-  - enemyscale: 5
+  - enemyscale: 8
     enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
@@ -106,10 +106,14 @@ MonoBehaviour:
     customradius: {x: 0, y: 0}
   - enemyscale: 2
     enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
+    use_customradius: 1
+    customradius: {x: 8, y: 12}
+  - enemyscale: 1
+    enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
     use_customradius: 0
     customradius: {x: 8, y: 12}
   wave_r_1:
-  - enemyscale: 6
+  - enemyscale: 10
     enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
@@ -122,7 +126,7 @@ MonoBehaviour:
     use_customradius: 0
     customradius: {x: 8, y: 12}
   wave_r_2:
-  - enemyscale: 6
+  - enemyscale: 4
     enemystat: {fileID: 11400000, guid: f51548e1ca7795e46ac3cb73bb06894c, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
@@ -130,21 +134,21 @@ MonoBehaviour:
     enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
-  - enemyscale: 3
+  - enemyscale: 8
     enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
   wave_r_3:
-  - enemyscale: 6
+  - enemyscale: 7
     enemystat: {fileID: 11400000, guid: f4bfc06fac87b824f874ee1f704379ff, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
-  - enemyscale: 2
+  - enemyscale: 3
     enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     use_customradius: 1
     customradius: {x: 8, y: 12}
-  - enemyscale: 2
-    enemystat: {fileID: 11400000, guid: 8c1aa8f230017da4a81b1bfdca905d10, type: 2}
+  - enemyscale: 1
+    enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
     use_customradius: 1
     customradius: {x: 8, y: 12}
   wave_r_4:
@@ -152,7 +156,7 @@ MonoBehaviour:
     enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
-  - enemyscale: 6
+  - enemyscale: 10
     enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
@@ -173,17 +177,25 @@ MonoBehaviour:
     enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
-  wave_r_6:
-  - enemyscale: 2
+  - enemyscale: 1
     enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
-  - enemyscale: 4
-    enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+  wave_r_6:
+  - enemyscale: 1
+    enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
+    use_customradius: 0
+    customradius: {x: 0, y: 0}
+  - enemyscale: 5
+    enemystat: {fileID: 11400000, guid: f51548e1ca7795e46ac3cb73bb06894c, type: 2}
     use_customradius: 0
     customradius: {x: 0, y: 0}
   - enemyscale: 1
     enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
+    use_customradius: 1
+    customradius: {x: 8, y: 12}
+  - enemyscale: 1
+    enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
     use_customradius: 1
     customradius: {x: 8, y: 12}
   wave_r_7:
@@ -221,12 +233,75 @@ MonoBehaviour:
     enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
     use_customradius: 1
     customradius: {x: 8, y: 12}
-  enemyGroupList: []
-  hardEnemyGroupList: []
+  enemyGroupList:
+  - enemyGroup:
+    - enemyscale: 6
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 2
+      enemystat: {fileID: 11400000, guid: f51548e1ca7795e46ac3cb73bb06894c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+  - enemyGroup:
+    - enemyscale: 6
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 2
+      enemystat: {fileID: 11400000, guid: 8c1aa8f230017da4a81b1bfdca905d10, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+  - enemyGroup:
+    - enemyscale: 6
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 1
+      enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+  hardEnemyGroupList:
+  - enemyGroup:
+    - enemyscale: 8
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 3
+      enemystat: {fileID: 11400000, guid: f4bfc06fac87b824f874ee1f704379ff, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+  - enemyGroup:
+    - enemyscale: 8
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 2
+      enemystat: {fileID: 11400000, guid: 2fd3352654b704941befe5d856cb55e5, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+  - enemyGroup:
+    - enemyscale: 8
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 2
+      enemystat: {fileID: 11400000, guid: 9ab52c8a3d535e948b0482c358937b26, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+  - enemyGroup:
+    - enemyscale: 8
+      enemystat: {fileID: 11400000, guid: b0d6a35aa95c9a54aa15c6eb8321ea5c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
+    - enemyscale: 3
+      enemystat: {fileID: 11400000, guid: f51548e1ca7795e46ac3cb73bb06894c, type: 2}
+      use_customradius: 0
+      customradius: {x: 0, y: 0}
   WaveStart: 0
   WaveStop: 0
   spawn_cooltime_set: {x: 1, y: 5}
-  spawn_radius: {x: 5, y: 9}
+  spawn_radius: {x: 5, y: 8}
   Enemy_Group: []
   group_num: 0
   group_make: 0

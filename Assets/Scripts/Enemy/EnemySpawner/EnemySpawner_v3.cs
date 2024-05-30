@@ -90,6 +90,28 @@ namespace SHS
                         }
 
                         break;
+
+                    case 6:
+                        set_eg = hardEnemyGroupList[Random.Range(0, hardEnemyGroupList.Count)].enemyGroup;
+
+                        break;
+
+                    case 7:
+
+                        set_eg = hardEnemyGroupList[Random.Range(0, hardEnemyGroupList.Count)].enemyGroup;
+
+
+                        break;
+                    case 8:
+                        set_eg = hardEnemyGroupList[Random.Range(0, hardEnemyGroupList.Count)].enemyGroup;
+
+                        if (wave_count == 1)
+                        {
+                            Debug.Log("焊胶 积己");
+                            sp_enemyspawn.BossSpawn(101);
+                        }
+
+                        break;
                 }
 
                 //利 积己
