@@ -21,7 +21,12 @@ public class Furnace : MonoBehaviour
     {
         OpenFurnaceUI();
         CheckDestory();
+
+        e_key.SetActive(isIn);
     }
+
+    [Header("¾È³»Ã¢")]
+    [SerializeField] GameObject e_key;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
