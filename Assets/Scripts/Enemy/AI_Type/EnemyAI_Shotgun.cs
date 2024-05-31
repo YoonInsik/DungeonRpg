@@ -82,7 +82,12 @@ namespace SHS
 
             GameObject C = Instantiate(snipe_attackgroup, attack_center);
             C.transform.parent = null;
-            C.GetComponentInChildren<EnemyAttackBullet>().damamge = m_enemy.m_stat.damage + m_enemy.m_stat.damage_scaling * (EnemySpawner_v3.Instance.Get_WaveLevel() - 1);
+            EnemyAttackBullet[] bullets = C.GetComponentsInChildren<EnemyAttackBullet>();
+
+            for(int i = 0; i < bullets.Length; i++)
+            {
+                bullets[i].damamge = m_enemy.m_stat.damage + m_enemy.m_stat.damage_scaling * (EnemySpawner_v3.Instance.Get_WaveLevel() - 1);
+            }
 
             yield return new WaitForSeconds(snipe_time);
 
