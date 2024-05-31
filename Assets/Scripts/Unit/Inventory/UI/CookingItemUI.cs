@@ -70,9 +70,13 @@ public class CookingItemUI : Singleton<CookingItemUI>
             SoundManager.Instance.PlayCookingEat();
             StatUI.Instance.GetComponent<StatUI>().UpdateCell();
         }
-        else
+        else if(player.Fullness == 100)
         {
             alert.InstantiateAlert("포만감이 가득찼습니다.");
+        }
+        else
+        {
+            alert.InstantiateAlert("포만감이 초과하는 음식은 먹을 수 없습니다");
         }
     }
 }

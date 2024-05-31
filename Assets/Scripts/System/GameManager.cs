@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 {
     public delegate IEnumerator CoAction();
 
-    public const int MAXSTAGE = 5;
+    public const int MAXSTAGE = 8;
     
     public float Exp { get; private set; }
     public float MaxExp { get { return (Level + 3) * (Level + 3); } }
